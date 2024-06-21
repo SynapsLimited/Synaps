@@ -1,0 +1,11 @@
+{
+    "navbar": {
+      "home": "Inicio",
+      "about": "Acerca de",
+      "services": "Servicios",
+      "portfolio": "Portafolio",
+      "blog": "Blog",
+      "contact": "Contacto"
+    }
+  }
+  

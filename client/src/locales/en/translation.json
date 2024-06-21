@@ -1,0 +1,45 @@
+{
+    "navbar": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+
+    "header": {
+    "title": "The missing LINK to success!",
+    "description": "Synaps is the new way to reach new goals, more audience, and bigger success. Synaps cannot only solve your company’s problems, but also find them. Synaps is the missing link to your puzzle of success. Still waiting? Contact Now!"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Synaps is a company that improves the identity of your brand and finds solutions to your problems through the latest marketing techniques. Synaps is determined to become your marketing team. Outsource all your problems and goals to us and Synaps will provide the best results."
+  },
+  "services": {
+    "title": "Services",
+    "webDesign": "Web Design",
+    "socialMedia": "Social Media",
+    "branding": "Branding",
+    "video": "Video",
+    "advertisement": "Advertisement"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "Explore our portfolio section to witness some of our previous works for different clients throughout the years."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Keep up with the latest news from technology and marketing trends."
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Ready to start working with us? Scroll down!",
+    "details": {
+      "location": "Location",
+      "contact": "Contact",
+      "socials": "Socials"
+    }
+  }
+  }
+  

@@ -1,0 +1,63 @@
+#loadingScreen {
+  position: fixed;
+  background-color: var(--color-background);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 999; /* Ensure it covers other content */
+  opacity: 1;
+}
+
+#loadingScreen img {
+  position: absolute;
+  width: 100%;  /* Adjust as per your full screen requirement */
+  height: 100%;  /* Adjust as per your full screen requirement */
+  opacity: 1;
+  object-fit: cover;
+  display: block;/* Set to block but start with opacity 0 */
+}
+
+#image1 {
+  background-image: url('../../public/assets/Loading Screen/Loading Screen Transition 1.png');
+}
+
+#image2 {
+  background-image: url('../../public/assets/Loading Screen/Loading Screen Transition 2.png');
+}
+
+#image3 {
+  background-image: url('../../public/assets/Loading Screen/Loading Screen Transition 3.png');
+}
+
+#image4 {
+  background-image: url('../../public/assets/Loading Screen/Loading Screen Transition 4.png');
+}
+
+
+/* Define keyframes for fade-in and fade-out */
+@keyframes fadeOut {
+  from { opacity: 1;}
+  to { opacity: 0.25;}
+}
+
+@keyframes fadeIn {
+  from { opacity: 0.25;}
+  to { opacity: 1;}
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+#image4 {
+  transition: transform 0.6s ease-in-out; /* Transition for sliding out */
+  box-shadow: 25px 5px 3px rgba(0, 0, 0, 0.192); /* Adjust shadow to match the design */
+}

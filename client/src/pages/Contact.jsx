@@ -30,7 +30,7 @@ const Contact = () => {
                         <a href="contact" className="btn btn-secondary">Contact</a>
                     </div>
                     <div className="header__right" id="spline-container">
-                        <spline-viewer url="https://prod.spline.design/1VQSYrmiNFt3i0cz/scene.splinecode"></spline-viewer>
+                        <spline-viewer url="https://prod.spline.design/Aieg3XjNVXVy2DyI/scene.splinecode"></spline-viewer>
                     </div>
                 </div>
             </header>

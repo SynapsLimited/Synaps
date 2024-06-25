@@ -79,7 +79,7 @@ const PortfolioTemplate = ({ title, description, imgSrc, galleryItems }) => {
             <a href="/portfolio" className="btn btn-secondary">Portfolio</a>
           </div>
           <div className="header__right" id="spline-container">
-            <spline-viewer url="https://prod.spline.design/1VQSYrmiNFt3i0cz/scene.splinecode"></spline-viewer>
+            <spline-viewer url="https://prod.spline.design/TUJchywqt3sObPx0/scene.splinecode"></spline-viewer>
           </div>
         </div>
       </header>

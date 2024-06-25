@@ -36,7 +36,7 @@ const About = () => {
             <a href="contact" className="btn btn-secondary">Contact</a>
           </div>
           <div className="header__right" id="spline-container">
-          <spline-viewer url="https://prod.spline.design/4nJxkbEbygHdhegX/scene.splinecode"></spline-viewer>          </div>
+          <spline-viewer url="https://prod.spline.design/e7fMPi34Xpt4idpF/scene.splinecode"></spline-viewer>          </div>
         </div>
       </header>
 

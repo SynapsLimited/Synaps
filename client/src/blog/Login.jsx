@@ -32,7 +32,11 @@ const Login = () => {
       setCurrentUser(user);
       navigate('/');
     } catch (err) {
-      setError(err.response.data.message);
+      if (err.response) {
+        setError(err.response.data.message);
+      } else {
+        setError("An error occurred while logging in. Please try again.");
+      }
     }
   };
 

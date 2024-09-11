@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS configuration
 app.use(cors({
-  origin: ["http://localhost:3000", "http://127.0.0.1:3000"], // Allow both localhost and 127.0.0.1
+  origin: ["https://synaps-client.vercel.app"], // Allow both localhost and 127.0.0.1
   credentials: true // Allow credentials (cookies, authorization headers, etc.)
 }));
 

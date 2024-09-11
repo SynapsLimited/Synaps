@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactTimeAgo from 'react-time-ago';
 import TimeAgo from 'javascript-time-ago';
@@ -18,7 +18,6 @@ const PostAuthor = ({ authorID, createdAt }) => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/users/${authorID}`);
         setAuthor(response?.data);
-        console.log('Fetched author data:', response?.data);
       } catch (error) {
         console.log('Error fetching author:', error);
       }
@@ -32,13 +31,13 @@ const PostAuthor = ({ authorID, createdAt }) => {
   return (
     <Link to={`/posts/users/${authorID}`} className="post-author">
       <div className="post-author-avatar">
-        <img 
-          src={author?.avatar ? `${process.env.REACT_APP_ASSETS_URL}/uploads/${author.avatar}` : '/default-avatar.png'} 
-          alt={author?.name || 'Author Avatar'} 
+        <img
+          src={author?.avatar ? `${process.env.REACT_APP_ASSETS_URL}/uploads/${author.avatar}` : '/default-avatar.png'}
+          alt={author?.name || 'Author Avatar'}
         />
       </div>
       <div className="post-author-details">
-        <h5>By: {author?.name || 'Unknown Author'}</h5>
+        <h5>{author?.name || 'Synaps'}</h5>
         {createdAt && (
           <small>
             <ReactTimeAgo date={new Date(createdAt)} locale='en-US' />

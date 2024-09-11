@@ -5,8 +5,10 @@ import './../css/blog.css'; // Assuming you have a corresponding CSS file for st
 import Authors from '../blog/Authors';
 import Loader from './../components/Loader';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next'; // Importing useTranslation hook
 
 const CategoryPosts = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
   const [posts, setPosts] = useState([]);
   const [authorName, setAuthorName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -16,11 +18,9 @@ const CategoryPosts = () => {
     const fetchAuthorAndPosts = async () => {
       setIsLoading(true);
       try {
-        // Fetch the author's details
         const authorResponse = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/categories/${category}`);
         setAuthorName(authorResponse.data.name);
 
-        // Fetch the author's posts
         const postsResponse = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/categories/${category}`);
         setPosts(postsResponse?.data);
       } catch (err) {
@@ -40,7 +40,7 @@ const CategoryPosts = () => {
   return (
     <section className="posts">
       <div className="blog-title-filtered">
-        <h1>{category}</h1>
+        <h1>{t(`CategoryPosts.${category.toLowerCase()}`)}</h1>
       </div>
 
       {posts.length > 0 ? (
@@ -59,21 +59,21 @@ const CategoryPosts = () => {
           ))}
         </div>
       ) : (
-        <h1 className="error-blog-not-found">No Posts Found</h1>
+        <h1 className="error-blog-not-found">{t('CategoryPosts.noPostsFound')}</h1>
       )}
 
-<section className="container blog-categories-section">
+      <section className="container blog-categories-section">
         <div className="blog-title">
-          <h1>Categories</h1>
+          <h1>{t('CategoryPosts.categories')}</h1>
         </div>
         <ul className="blog-categories">
-          <li className="btn btn-secondary"><Link to="/posts/categories/Marketing">Marketing</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/Business">Business</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/Technology">Technology</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/AI">AI</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/Gaming">Gaming</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/Product">Product</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/Entertainment">Entertainment</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Marketing">{t('CategoryPosts.marketing')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Business">{t('CategoryPosts.business')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Technology">{t('CategoryPosts.technology')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/AI">{t('CategoryPosts.ai')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Gaming">{t('CategoryPosts.gaming')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Product">{t('CategoryPosts.product')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Entertainment">{t('CategoryPosts.entertainment')}</Link></li>
         </ul>
       </section>
 

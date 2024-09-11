@@ -1,11 +1,853 @@
 {
-    "navbar": {
-      "home": "Home",
-      "about": "Over ons",
-      "services": "Diensten",
-      "portfolio": "Portfolio",
-      "blog": "Blog",
-      "contact": "Contact"
+  "navbar": {
+    "home": "Home",
+    "about": "Over Ons",
+    "services": "Diensten",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "aboutPage": {
+    "title": "Over Ons",
+    "intro": "Ben je klaar om ons te leren kennen? Dat is spannend! Scroll naar beneden!",
+    "contactButton": "Contact",
+    "whatIsSynaps": "Wat is ",
+    "description": "Synaps is een branding- en marketing-outsourcingbedrijf dat gericht is op het verbeteren van bedrijven in het nieuwe digitale tijdperk. Ons doel is om de hoogste kwaliteit diensten te bieden om merken te helpen hun doelen te bereiken en te overtreffen. We richten ons op merkbekendheid, merkloyaliteit, digitale marketing, traditionele marketing en volledige branding. Synaps is wat jouw bedrijf nodig heeft om te groeien, uitdagingen aan te gaan en te overwinnen vanaf nu. Wij zijn de ontbrekende schakel.",
+    "mission": {
+      "title": "Missie",
+      "content": "Een vertrouwde partner zijn in het succes van onze klanten door innovatieve en effectieve branding- en marketingoplossingen te leveren."
+    },
+    "vision": {
+      "title": "Visie",
+      "content": "Een drijvende kracht zijn voor positieve verandering en de branding- en marketingindustrie revolutioneren, bedrijven inspireren en versterken om hun volledige potentieel te bereiken."
+    },
+    "values": {
+      "title": "Waarden",
+      "content": "Synaps wordt geleid door een reeks kernwaarden: Innovatie, Samenwerking, Creativiteit, Uitmuntendheid, Aanpassingsvermogen, Integriteit."
+    },
+    "team": {
+      "title": "Ontmoet Ons Team",
+      "members": {
+        "1": {
+          "name": "Muhamed Brojka",
+          "role": "Allround Marketeer"
+        },
+        "2": {
+          "name": "Bujar Shehaj",
+          "role": "Allround Marketeer"
+        },
+        "3": {
+          "name": "Enriko Shkurti",
+          "role": "Sales Manager"
+        },
+        "4": {
+          "name": "Yann Lazarev",
+          "role": "Copywriter"
+        }
+      }
     }
-  }
+  },
+
+  "blogPage": {
+    "title": "Blog",
+    "header": {
+      "heading": "Blog",
+      "description": "Blijf op de hoogte van het laatste nieuws over technologie en marketingtrends.",
+      "contactButton": "Contact"
+    },
+    "intro": {
+      "heading": "Klaar voor het laatste nieuws?",
+      "description": "Nieuws van ons en de wereld. Technologie en marketingtrends zijn onze specialiteit. We staan klaar om je op de hoogte te houden, onze mening te geven of zelfs onze eigen verhalen te delen."
+    },
+    "categories": {
+      "heading": "Categorieën",
+      "items": {
+        "Marketing": "Marketing",
+        "Business": "Business",
+        "Technology": "Technologie",
+        "AI": "AI",
+        "Gaming": "Gaming",
+        "Product": "Product",
+        "Entertainment": "Entertainment"
+      }
+    }
+  },
+
+  "contactPage": {
+    "title": "Contact",
+    "header": {
+      "heading": "Contact",
+      "description": "Klaar om met ons samen te werken? Scroll naar beneden!",
+      "contactButton": "Contact"
+    },
+    "overview": {
+      "contactDetailsTitle": "Contactgegevens",
+      "consultNowTitle": "Raadpleeg Nu!",
+      "consultNowDescription": "Als je klaar bent, probeer het dan! De consultatie is gratis, net als met ons praten voor een betere toekomst en groter succes. Vul dit formulier in en we nemen zo snel mogelijk contact met je op!"
+    },
+    "sections": {
+      "location": {
+        "title": "Locatie",
+        "imageAlt": "Locatie",
+        "description": "EN DAARBUITEN!"
+      },
+      "contact": {
+        "title": "Contact",
+        "phone": {
+          "alt": "Telefoon",
+          "number": "+32 499 60 38 04"
+        },
+        "email": {
+          "alt": "Email",
+          "address": "info@synaps.eu"
+        }
+      },
+      "socials": {
+        "title": "Sociale Media",
+        "facebookAlt": "Facebook",
+        "instagramAlt": "Instagram",
+        "linkedinAlt": "LinkedIn",
+        "youtubeAlt": "YouTube"
+      }
+    }
+  },
+  "indexPage": {
+    "title": "Synaps",
+    "header": {
+      "heading": "De ontbrekende SCHAKEL naar succes!",
+      "description": "Synaps is de nieuwe manier om nieuwe doelen, een groter publiek en meer succes te bereiken. Synaps kan niet alleen de problemen van je bedrijf oplossen, maar ze ook vinden. Synaps is de ontbrekende schakel in je puzzel naar succes. Nog steeds aan het wachten? Neem nu contact op!",
+      "contactButton": "Contact"
+    },
+    "about": {
+      "heading": "Over Ons",
+      "description": "Synaps is een bedrijf dat de identiteit van je merk verbetert en oplossingen vindt voor je problemen met behulp van de nieuwste marketingtechnieken. Synaps is vastbesloten om je marketingteam te worden. Besteed al je problemen en doelen aan ons uit en Synaps zal de beste resultaten leveren.",
+      "aboutButton": "Over Ons"
+    },
+    "services": {
+      "heading": "Diensten",
+      "items": {
+        "webDesign": "Webdesign",
+        "socialMedia": "Sociale Media",
+        "branding": "Branding",
+        "video": "Video",
+        "advertisement": "Advertentie"
+      },
+      "servicesButton": "Diensten"
+    },
+    "portfolio": {
+      "heading": "Portfolio",
+      "textLine1": "Ontdek onze portfolio-sectie om enkele van",
+      "textLine2": "onze eerdere werken voor verschillende klanten",
+      "textLine3": "door de jaren heen te zien.",
+      "portfolioButton": "Portfolio"
+    },
+    "blog": {
+      "categories": {
+        "marketing": {
+          "title": "Marketing",
+          "description": "Ontdek onze marketingblog voor de nieuwste inzichten, strategieën en tips om de aanwezigheid van je merk te vergroten en bedrijfsresultaten te behalen."
+        },
+        "business": {
+          "title": "Business",
+          "description": "Ontdek onze zakelijke blog voor deskundig advies, branchetrends en strategieën om je ondernemingsdoelen te bereiken en succes te boeken."
+        },
+        "technology": {
+          "title": "Technologie",
+          "description": "Ontdek onze technologische blog voor de nieuwste updates, inzichten en innovaties in de technologische wereld, ontworpen om je geïnformeerd en voorop te houden."
+        },
+        "ai": {
+          "title": "AI",
+          "description": "Ontdek onze AI-blog voor baanbrekende inzichten en doorbraken in kunstmatige intelligentie om op de hoogte te blijven van dit snel evoluerende veld."
+        },
+        "gaming": {
+          "title": "Gaming",
+          "description": "Ontdek onze gamingblog voor het laatste nieuws, recensies en strategieën, zodat je op de hoogte blijft van de dynamische wereld van videogames."
+        },
+        "product": {
+          "title": "Product",
+          "description": "Ontdek onze blog met productoverzichten voor diepgaande recensies, functies en hoogtepunten van de nieuwste en meest innovatieve producten op de markt."
+        },
+        "entertainment": {
+          "title": "Entertainment",
+          "description": "Ontdek onze entertainmentblog voor het laatste nieuws, recensies van films, tv-shows en muziek, zodat je verbonden blijft met de wereld van entertainment."
+        }
+      }
+    }
+  },
+  "portfolioPage": {
+    "title": "Portfolio",
+    "header": {
+      "heading": "Portfolio",
+      "description": "Ontdek en verken enkele van onze beste creatieve werken!",
+      "contactButton": "Contact"
+    },
+    "categoriesTitle": "Categorieën",
+    "items": {
+      "webDesign": "Webdesign",
+      "socialMedia": "Sociale Media",
+      "branding": "Branding",
+      "video": "Video",
+      "advertisement": "Advertentie"
+    }
+  },
+
+  "servicesPage": {
+    "title": "Diensten",
+    "header": {
+      "heading": "Diensten",
+      "description": "Weet je niet zeker wat je nodig hebt? Geen probleem.\nRaadpleeg ons nu gratis!",
+      "contactButton": "Contact"
+    },
+    "overview": {
+      "title": "Overzicht",
+      "description": "Kies een van de diensten om te bekijken en te begrijpen waar het allemaal om draait!"
+    },
+    "items": {
+      "webDesign": {
+        "title": "Webdesign",
+        "description": "Onze webdesignservices zijn afgestemd om je online aanwezigheid te vergroten met precisie en creativiteit. Of je nu op zoek bent naar een gestroomlijnde one-pager, een volledig op maat gemaakte digitale ervaring of een baanbrekende 3D-website die je publiek betovert, ons team van experts staat klaar om je visie tot leven te brengen.",
+        "subItems": ["One-pager Website", "Op Maat Gemaakte Website", "3D Website"]
+      },
+      "socialMedia": {
+        "title": "Sociale Media",
+        "description": "Onze sociale mediaservices zijn ontworpen om de stem en impact van je merk in de digitale sfeer te versterken. Boeiende contentcreatie, strategisch social media management of het stimuleren van betrokkenheid van de gemeenschap zijn allemaal mogelijk met onze expertise om je online aanwezigheid te verbeteren.",
+        "subItems": ["Contentcreatie", "Social Media Management", "Community Management"]
+      },
+      "branding": {
+        "title": "Branding",
+        "description": "Van meeslepende 3D-brandingervaringen tot uitgebreide volledige brandingpakketten, evenals op maat gemaakte logo- en kunstontwerpen en boeiende bedrijfsvoorstellingen, wij bieden een reeks oplossingen om de identiteit van je merk te versterken.",
+        "subItems": ["3D Branding", "Volledige Branding", "Logo en Kunst", "Bedrijfspresentatie"]
+      },
+      "video": {
+        "title": "Video",
+        "description": "Verhalend vertellen en boeiende contentcreatie. Of je nu op zoek bent naar opvallende reels, overtuigende YouTube-video's of impactvolle advertenties, wij kunnen het voor je regelen. We beheren elk aspect, van opname en scripting tot bewerking en eindproductie, zodat je video's opvallen tussen de concurrentie.",
+        "subItems": ["Reels", "YouTube", "Advertenties"]
+      },
+      "advertisement": {
+        "title": "Advertentie",
+        "description": "Innovatieve advertentieoplossingen die zijn ontworpen om je merk naar nieuwe hoogten te brengen. Onze diverse reeks advertentiediensten omvat digitale advertenties voor online zichtbaarheid, strategische e-mailmarketing om verbinding te maken met je doelgroep, en impactvolle fysieke advertenties om een tastbare indruk te maken.",
+        "subItems": ["Digitale Advertenties", "E-mail Marketing", "Fysieke Advertenties"]
+      }
+    },
+    "servicesButton": "Diensten",
+    "portfolioButton": "Portfolio"
+  },
+
+
+  "servicesTemplatePage": {
+    "titlePrefix": "Synaps - Diensten - ",
+    "header": {
+      "servicesHeading": "Diensten",
+      "contactButton": "Contact"
+    },
+    "categories": {
+      "webDesign": "Webdesign",
+      "socialMedia": "Sociale Media",
+      "branding": "Branding",
+      "video": "Video",
+      "advertisement": "Advertentie"
+    },
+    "importanceTitle": "Belang van {{title}}",
+    "typesTitle": "Soorten {{title}}",
+    "portfolioButton": "Portfolio",
+    "bundlesTitle": "{{title}} Bundels",
+    "bundles": {
+      "swiperPagination": "swiper-pagination"
+    }
+  },
+
+  "portfolioTemplatePage": {
+    "titlePrefix": "Synaps - Portfolio - ",
+    "header": {
+      "heading": "Portfolio",
+      "portfolioButton": "Portfolio"
+    },
+    "categories": {
+      "webDesign": "Webdesign",
+      "socialMedia": "Sociale Media",
+      "branding": "Branding",
+      "video": "Video",
+      "advertisement": "Advertentie"
+    },
+    "gallery": {
+      "closeButton": "Sluiten",
+      "viewProjectButton": "Bekijk Project"
+    }
+  },
+
+  "advertisementServices": {
+    "title": "Advertentie",
+    "description": "Ontdek onze topadvertentieservices die aan al je behoeften voldoen!",
+    "importanceTitle": "Advertentie",
+    "importanceText": "Synaps kan je helpen om snel een publiek te bereiken en producten te promoten. Via verschillende digitale tools en onze expertise kunnen we je bedrijf digitaal adverteren, via e-mails of zelfs fysieke advertenties aanbieden.",
+    "types": {
+      "digitalAdvertising": {
+        "title": "Digitale Advertenties",
+        "description": "Digitale advertenties bestaan uit verschillende elementen. Beginnend met betaalde social media advertenties zoals Instagram, Facebook en YouTube. Synaps beschikt over de tools om je SEO te verbeteren door je hoger te laten scoren in de zoekresultaten en je SEA door je direct te promoten via de zoekpagina."
+      },
+      "emailMarketing": {
+        "title": "E-mail Marketing",
+        "description": "E-mailmarketing is het toppunt van groei-marketing. Via een bepaalde database, die door jou of door ons kan worden geleverd, kunnen we de specifieke doelgroep targeten en de informatie verzenden en hen in real-time op de hoogte houden. Dit is het belangrijkste element als het gaat om het verkrijgen en behouden van klanten."
+      },
+      "physicalAdvertising": {
+        "title": "Fysieke Advertenties",
+        "description": "Fysieke advertenties kunnen een breed scala aan producten zijn die kunnen worden ontworpen en aangepast aan jouw behoeften. Beginnend bij flyers, banners of ander drukwerk tot grote assets zoals auto's of ideeën om onze advertenties op strategische plaatsen te plaatsen, zoals visitekaartjes, posters, catalogi, portfolio's, enz."
+      }
+    },
+    "bundles": {
+      "conversionBundle": {
+        "name": "Conversion Bundle",
+        "description": "Google Ads"
+      },
+      "awarenessBundle": {
+        "name": "Awareness Bundle",
+        "description": "Meta Ads"
+      },
+      "contactBundle": {
+        "name": "Contact Bundle",
+        "description": "E-mail Marketing"
+      },
+      "announcerBundle": {
+        "name": "Announcer Bundle",
+        "description": "E-mail Marketing & Nieuwsbrief"
+      },
+      "guerrillaBundle": {
+        "name": "Guerrilla Bundle",
+        "description": "Fysieke Advertenties"
+      }
+    }
+  },
+  "brandingServices": {
+    "title": "Branding",
+    "description": "Ontdek onze top brandingservices die aan al je behoeften voldoen!",
+    "importanceTitle": "Branding",
+    "importanceText": "Synaps biedt verschillende soorten branding voor je bedrijf. Logo en kunst om het belangrijkste gezicht van je bedrijf te creëren of een volledige branding om de volledige persoonlijkheid van je merk te creëren. Extra brandingelementen zoals 3D-branding die je bedrijf helpt zichzelf te identificeren of een bedrijfspresentatie die je in staat stelt je bedrijf te presenteren of te pitchen, zijn ook nuttige opties als het om branding gaat.",
+    "types": {
+      "logoAndArt": {
+        "title": "Logo en Kunst",
+        "description": "Het logo is het belangrijkste element als het om branding gaat, omdat het het gezicht van het bedrijf is. We bieden diensten aan die je logo, logo-kunst, logo-tekst en hoofdlogo creëren. Het hoofdlogo in 2D en 3D zijn nuttig en belangrijk om je logo te visualiseren en het te gebruiken op je website, sociale media, advertenties, enz."
+      },
+      "fullBranding": {
+        "title": "Volledige Branding",
+        "description": "Volledige branding omvat branding, te beginnen met het logo, achtergrond, hoofdkleuren, lettertypen, stijlstromen, enz. Volledige branding creëert het merk in al zijn elementen. Volledige branding creëert de volledige persoonlijkheid van het bedrijf."
+      },
+      "threeDBranding": {
+        "title": "3D Branding",
+        "description": "3D-branding is het meest visuele type branding dat kan worden gedaan, omdat het in elke dimensie kan worden toegepast. Dit kan je verschillende producten in staat stellen om geadverteerd of weergegeven te worden op je interactieve website, sociale media of zelfs in video's."
+      },
+      "companyPresentation": {
+        "title": "Bedrijfspresentatie",
+        "description": "Bedrijfspresentaties bestaan uit meerdere pagina's in een presentatie die je helpen om verschillende dia's te presenteren die elk deel van je thema vertegenwoordigen, en kunnen worden gebruikt om je bedrijf te pitchen of iets anders te presenteren. Deze presentaties kunnen op verschillende locaties worden getoond of worden toegepast in specifieke situaties, evenals een goede uitstraling creëren."
+      }
+    },
+    "bundles": {
+      "logoBundle": {
+        "name": "Logo Bundle",
+        "description": "Logo"
+      },
+      "brandIdentityBundle": {
+        "name": "Brand Identity Bundle",
+        "description": "Logo, Kleuren, Lettertypen, Ontwerpstromen"
+      },
+      "brandArtBundle": {
+        "name": "Brand Art Bundle",
+        "description": "Brand Identity & 2D Kunst"
+      },
+      "cyberBrandingBundle": {
+        "name": "CyberBranding Bundle",
+        "description": "Volledige Branding & Website"
+      }
+    }
+  },
+  "socialMediaServices": {
+    "title": "Sociale Media",
+    "description": "Ontdek onze topsociale mediaservices die aan al je behoeften voldoen!",
+    "importanceTitle": "Sociale Media",
+    "importanceText": "Synaps biedt drie soorten social media-diensten. Deze diensten kunnen samen of afzonderlijk worden gebruikt, afhankelijk van de doelen en targets van een bedrijf. Contentcreatie van hoge kwaliteit, social media-beheer en communitybeheer door Synaps om met het publiek in contact te komen en met je gemeenschap te communiceren.",
+    "types": {
+      "contentCreation": {
+        "title": "Contentcreatie",
+        "description": "Synaps biedt verschillende soorten contentcreatie voor sociale media. Beginnend met het maken van sjablonen om het bedrijfsprofiel up-to-date en consistent te houden, tot het creëren van maandelijkse inhoud en het gebruik van gespecialiseerde contentcreatie voor speciale evenementen, vereisten en verzoeken."
+      },
+      "socialMediaManagement": {
+        "title": "Social Media Management",
+        "description": "Synaps kan je sociale media voor je beheren door te plannen, te posten, je volledige feed te organiseren en je social media-profielen te verbeteren. Alle sociale media, zoals Instagram, Facebook, LinkedIn, TikTok, Snapchat, YouTube, Pinterest, enz."
+      },
+      "communityManagement": {
+        "title": "Community Management",
+        "description": "Communitymanagement is speciaal als het gaat om het organiseren van je gemeenschap en klanten. Deze service is goed geschikt voor bedrijven of makers, studenten, artiesten die van plan zijn hun gemeenschap met een positieve houding te beheren. Communitymanagement door Synaps met de juiste en professionele manier van communiceren met de gemeenschap is geen uitdaging voor Synaps."
+      }
+    },
+    "bundles": {
+      "basicBundle": {
+        "name": "Basic Bundle",
+        "description": "Instagram"
+      },
+      "trendBundle": {
+        "name": "Trend Bundle",
+        "description": "Instagram & TikTok"
+      },
+      "influentialBundle": {
+        "name": "Influential Bundle",
+        "description": "Influencer Marketing - Instagram & TikTok"
+      },
+      "professionalBundle": {
+        "name": "Professional Bundle",
+        "description": "Instagram, Facebook, LinkedIn"
+      },
+      "communityBundle": {
+        "name": "Community Bundle",
+        "description": "Instagram, Facebook, X"
+      },
+      "proMaxSocialBundle": {
+        "name": "Pro Max Social Bundle",
+        "description": "Alle Sociale Media"
+      }
+    }
+  },
+  "videoServices": {
+    "title": "Video",
+    "description": "Ontdek onze topvideoservices die aan al je behoeften voldoen!",
+    "importanceTitle": "Video",
+    "importanceText": "Synaps biedt drie soorten video's die in verschillende praktijken kunnen worden gebruikt, afhankelijk van de kanalen die je wilt promoten of betrekken. Beginnend met reels in een verticaal formaat, gaande naar YouTube-video's in horizontaal formaat met de nieuwste ideeën voor interactie, eindigend met advertenties van alle soorten en stijlen.",
+    "types": {
+      "reels": {
+        "title": "Reels",
+        "description": "Reels zijn het meest populaire videostijl van tegenwoordig. In een horizontaal formaat en met boeiende technieken kunnen deze video's worden gepitcht, gefilmd, gescript en bewerkt voor een gericht publiek via TikTok, Instagram, Facebook of YouTube Shorts."
+      },
+      "youtube": {
+        "title": "YouTube",
+        "description": "YouTube-video's zijn video's die verschillende vaardigheden, videobewerkers en verschillende boeiende content kunnen laten zien. We hebben de mogelijkheid om verschillende content te schrijven, te filmen of te bewerken, afhankelijk van de behoeften van het bedrijf. De horizontale YouTube-video's zijn meestal langer dan reels."
+      },
+      "ads": {
+        "title": "Advertenties",
+        "description": "Advertentievideo's kunnen in alle formaten worden gemaakt voor elk type product, bedrijf of evenement. We maken deze video aanpasbaar aan het thema van het bericht dat het probeert te promoten en aan het publiek waarop het gericht is."
+      }
+    },
+    "bundles": {
+      "editorBundle": {
+        "name": "Editor Bundle",
+        "description": "Videobewerking"
+      },
+      "internetBundle": {
+        "name": "Internet Bundle",
+        "description": "Video Ideatie & Bewerking voor Sociale Media"
+      },
+      "youtubeBundle": {
+        "name": "YouTube Bundle",
+        "description": "Video Ideatie & Bewerking voor YouTube"
+      }
+    }
+  },
+  "webDesignServices": {
+    "title": "Webdesign",
+    "description": "Ontdek onze top webdesignservices die aan al je behoeften voldoen!",
+    "importanceTitle": "Webdesign",
+    "importanceText": "Synaps presenteert drie soorten moderne webdesigns die zijn afgestemd en op maat gemaakt voor je bedrijf. Variërend van het hebben van een visueel aantrekkelijk website met meerdere 3D-elementen om de beste gebruikerservaring te bieden, tot een website die op maat is gemaakt volgens de voorkeuren van de klant met een oog voor detail, eindigend met een eenvoudige one-pager website die precies goed zijn werk doet.",
+    "types": {
+      "threeDWebsites": {
+        "title": "3D Websites",
+        "description": "3D-websites zijn websites die een geweldige gebruikerservaring bieden. 3D-modellen worden gemaakt, geïntegreerd en geanimeerd in een website om een sterke band met de gebruiker of klant te creëren. Deze websites kunnen geweldig zijn voor bedrijven in de mode, meubels, farmaceutische producten, huidverzorgingsproducten, enz."
+      },
+      "customizedWebsites": {
+        "title": "Op Maat Gemaakte Websites",
+        "description": "Op maat gemaakte websites zijn websites met meerdere pagina's die zijn afgestemd op de voorkeuren van bedrijven, inclusief de nieuwste trends, geavanceerde animaties, vectoren en iconen. We bieden nieuwe ideeën aan in deze websites om de gebruikersinterface te verbeteren met een vleugje creativiteit en innovatie."
+      },
+      "onePagerWebsites": {
+        "title": "One-pager Website",
+        "description": "One-pager websites zijn eenvoudige websites die uit één pagina bestaan. Deze pagina bevat alle secties die een website zou moeten hebben, zoals Over Ons, Diensten, Getuigenissen, Contact, Portfolio, Video Promotie, Certificeringen, enz., om alles wat een bedrijf te bieden heeft op één plek te tonen. Het doet het werk perfect en biedt voldoende informatie om een bedrijf te promoten."
+      }
+    },
+    "bundles": {
+      "simpleBundle": {
+        "name": "Simple Bundle",
+        "description": "WordPress"
+      },
+      "bloggerBundle": {
+        "name": "Blogger Bundle",
+        "description": "WordPress & SEO"
+      },
+      "shopperBundle": {
+        "name": "Shopper Bundle",
+        "description": "Shopify"
+      },
+      "originalBundle": {
+        "name": "Original Bundle",
+        "description": "Ontworpen & Ontwikkeld"
+      },
+      "authenticBundle": {
+        "name": "Authentic Bundle",
+        "description": "Ontworpen & Ontwikkeld & SEO"
+      },
+      "proPerformanceBundle": {
+        "name": "Pro Performance Bundle",
+        "description": "WordPress & SEO & SEA"
+      },
+      "proMaxPerformanceBundle": {
+        "name": "Pro Max Performance Bundle",
+        "description": "Ontworpen & Ontwikkeld & SEO & SEA"
+      }
+    }
+  },
+
+
+  "portfolioPages": {
+    "advertisementPortfolio": {
+      "title": "Advertentie",
+      "description": "Klaar om de producten te tonen die je wilt aan de mensen die je wilt bereiken?!",
+      "galleryItems": [
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Meliora Medical.jpg",
+          "alt": "Meliora Medical",
+          "title": "Meliora Medical - SEO & SEA",
+          "description": "We hebben uitgebreide SEO- en SEA-diensten geleverd voor Meliora Medical, een kliniek voor fysiotherapie en dermo-esthetiek, om hun online zichtbaarheid te vergroten en meer klanten aan te trekken. Onze strategische aanpak resulteerde in verbeterde zoekresultaten en een toename van het websiteverkeer.",
+          "link": "https://www.melioramedical.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Grei's Dental Clinic.jpg",
+          "alt": "Grei’s Dental Clinic",
+          "title": "Grei’s Dental Clinic - SEO & SEA",
+          "description": "Voor Grei's Dental Clinic hebben we effectieve SEO- en SEA-strategieën geïmplementeerd om hun online aanwezigheid en patiëntwerving te verbeteren. Onze inspanningen hebben hun prestaties in zoekmachines aanzienlijk verbeterd en hun zichtbaarheid in lokale zoekopdrachten vergroot.",
+          "link": ""
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Nika Rentals.jpg",
+          "alt": "Nika Rentals",
+          "title": "Nika Rentals - SEO & SEA",
+          "description": "We hebben Nika Rentals, een autoverhuurbedrijf, geholpen met SEO- en SEA-diensten om ervoor te zorgen dat ze opvallen in een concurrerende markt. Onze gerichte campagnes hebben hun online zichtbaarheid verbeterd, wat heeft geleid tot een hogere websiteverkeer en een toename van boekingen.",
+          "link": "https://nikarentcartirana.com/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/ADSH.jpg",
+          "alt": "ADSH - Fysieke Advertenties",
+          "title": "ADSH - Fysieke Advertenties",
+          "description": "Voor ADSH, een importeur/exporteur in de zuivelindustrie, hebben we fysieke advertenties ontworpen en gepland voor hun nieuwe winkel. Onze creatieve advertentieoplossingen trokken effectief de aandacht van potentiële klanten en zorgden voor meer voetverkeer naar hun locatie.",
+          "link": "https://www.adsh2014.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Balkan Sports Scholars.jpg",
+          "alt": "Balkan Sports Scholars - E-mail Marketing",
+          "title": "Balkan Sports Scholars - E-mail Marketing",
+          "description": "We hebben e-mailmarketingdiensten opgezet en beheerd voor Balkan Sports Scholars, een toonaangevend sportagentschap. Onze e-mailcampagnes waren ontworpen om hun publiek te betrekken, hun diensten te promoten en een sterke communicatie met atleten en partners te onderhouden.",
+          "link": ""
+        }
+      ]
+    },
+    "brandingPortfolio": {
+      "title": "Branding",
+      "description": "Laten we je merk een coole persoonlijkheid en uitstraling geven!",
+      "galleryItems": [
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/ADSH.jpg",
+          "alt": "ADSH",
+          "title": "ADSH",
+          "description": "Voor ADSH, een belangrijke speler in de import/export van zuivelproducten, hebben we een volledig brandingpakket geleverd, inclusief logodesign, kleurenpaletten en patronen. Onze samenhangende brandingstrategie hielp ADSH om een sterke en herkenbare identiteit op de markt te vestigen.",
+          "link": "https://www.adsh2014.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Cali Hype.jpg",
+          "alt": "Cali Hype",
+          "title": "Cali Hype",
+          "description": "We hebben Cali Hype, een kleding- en modemerk, voorzien van een volledige brandingoverhaul, inclusief het creëren van een logo, kleurenschema's en patroondesigns. Deze uitgebreide brandinginspanningen stelden Cali Hype in staat om zich te onderscheiden in de competitieve mode-industrie met een opvallende en stijlvolle visuele identiteit.",
+          "link": ""
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/MinoCare.jpg",
+          "alt": "MinoCare",
+          "title": "MinoCare",
+          "description": "We hebben MinoCare, een start-up die mannen een tweede kans biedt om weer volledig te leven en hun haar te verzorgen met behulp van minoxidilproducten, voorzien van een passende branding die hun ware houding en zorgzaamheid voor hun klanten weerspiegelt.",
+          "link": ""
+        }
+      ]
+    },
+    "socialMediaPortfolio": {
+      "title": "Social Media Portfolio",
+      "description": "Bijblijven met social media trends en je publiek is nog nooit zo eenvoudig geweest!",
+      "galleryItems": [
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Meliora Medical.jpg",
+          "alt": "Meliora Medical",
+          "title": "Meliora Medical",
+          "description": "Voor Meliora Medical, een kliniek voor fysiotherapie en dermo-esthetiek, hebben we hun social media-accounts opgezet en beheerd, met de nadruk op het creëren van boeiende en informatieve content. Deze aanpak verbeterde hun online zichtbaarheid en trok een breder publiek naar hun diensten.",
+          "link": "https://www.instagram.com/meliora_medical/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Melody's Thrift.jpg",
+          "alt": "Melody’s Thrift",
+          "title": "Melody’s Thrift",
+          "description": "Voor Melody's Thrift, een online tweedehandswinkel, hebben we communitybeheer geleverd en een uitgebreid contentplan voor sociale media ontwikkeld. Deze initiatieven hielpen bij het opbouwen van een loyale online community en verhoogden de interactie en verkoop.",
+          "link": "https://www.instagram.com/melodys_thrift/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Grei's Dental Clinic.jpg",
+          "alt": "Grei’s Dental Clinic",
+          "title": "Grei’s Dental Clinic",
+          "description": "We hebben de setup en het voortdurende beheer van social media voor Grei's Dental Clinic verzorgd, met hoogwaardige contentcreatie. Onze strategie was gericht op het vergroten van hun digitale voetafdruk en het effectief betrekken van zowel huidige als potentiële patiënten.",
+          "link": "https://www.instagram.com/grei_dental_clinic/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Balkan Sports Scholars.jpg",
+          "alt": "Balkan’s Sport Scholars",
+          "title": "Balkan’s Sport Scholars",
+          "description": "We hebben de aanwezigheid op sociale media voor Balkan Sports Scholars, een vooraanstaand sportagentschap, opgezet en beheerd, en zorgden voor consistente en boeiende contentcreatie. Onze inspanningen hielpen hun online interactie te vergroten en hun bereik op sociale media uit te breiden.",
+          "link": "https://www.instagram.com/balkansportscholars/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Onus Maison.jpg",
+          "alt": "Onus Maison",
+          "title": "Onus Maison",
+          "description": "We hebben Onus Maison, een merk dat gespecialiseerd is in 3D-geprinte en handgemaakte duurzame mode en kunst, ondersteund bij het bewerken en verbeteren van hun social media content. Ons werk zorgde ervoor dat hun berichten visueel aantrekkelijk waren en in lijn met de eco-vriendelijke ethiek van hun merk.",
+          "link": "https://www.instagram.com/onusmaison/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Vip Tie Dubai.jpg",
+          "alt": "Vip Tie",
+          "title": "Vip Tie",
+          "description": "Voor Vip Tie, bekend om hun unieke 3D-geprinte en handgemaakte stropdassen, hebben we ons gericht op het verfijnen van hun social media-inhoud. Onze contentbewerkingsdiensten zorgden ervoor dat de hoogwaardige ambachtelijke kwaliteit van het merk effectief werd getoond online.",
+          "link": "https://www.instagram.com/viptiemilano/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/URT shpk.jpg",
+          "alt": "URT Shpk",
+          "title": "URT Shpk",
+          "description": "We hebben uitgebreide contentcreatie en social media-management geleverd voor URT shpk, een bedrijf voor engineering, inkoop en constructie. Onze diensten hielpen hun autoriteit in de industrie te vestigen en een sterke online aanwezigheid te behouden.",
+          "link": "https://www.instagram.com/urtshpk/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Mother Earth.jpg",
+          "alt": "Mother Earth",
+          "title": "Mother Earth",
+          "description": "Voor Mother Earth, gespecialiseerd in groene oplossingen binnen de engineering, inkoop en constructiesector, hebben we contentcreatie en social media-beheer geleverd, vergelijkbaar met URT shpk. Onze inspanningen promootten hun duurzame projecten en verbeterden hun online interactie.",
+          "link": "https://www.instagram.com/motherearthalbania/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/MinoCare.jpg",
+          "alt": "MinoCare",
+          "title": "MinoCare",
+          "description": "We hebben MinoCare, een start-up die mannen een tweede kans biedt om weer volledig te leven en hun haar te verzorgen met behulp van minoxidil-producten, voorzien van een informatieve en interactieve social media om hun gemeenschap en publiek te beheren.",
+          "link": "https://www.instagram.com/minocare.al"
+        }
+      ]
+    },
+    "videoPortfolio": {
+      "title": "Video",
+      "description": "Tonen, filmen en bewerken is nog nooit zo eenvoudig geweest!",
+      "galleryItems": [
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Balkan Sports Scholars.jpg",
+          "alt": "Balkan Sports Scholars",
+          "title": "Balkan Sports Scholars",
+          "description": "Voor Balkan Sports Scholars hebben we YouTube-highlightvideo's voor meerdere spelers bewerkt, waarin hun voetbalvaardigheden en carrièrehoogtepunten worden getoond. Onze bewerking benadrukte de belangrijkste momenten en prestaties, waardoor hun zichtbaarheid en aantrekkingskracht op fans en scouts werd vergroot.",
+          "link": "https://www.youtube.com/watch?v=orqku91tNWk&t=65s"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Meliora Medical.jpg",
+          "alt": "Meliora Medical",
+          "title": "Meliora Medical",
+          "description": "We hebben samengewerkt met Meliora Medical om video's te bedenken en te bewerken die zijn afgestemd op TikTok, met als doel virale successen te behalen. Onze creatieve aanpak en bewerkingsvaardigheden hielpen om boeiende en deelbare inhoud te creëren, wat hun online zichtbaarheid en betrokkenheid op het platform vergrootte.",
+          "link": "https://www.tiktok.com/@meliora__medical"
+        }
+      ]
+    },
+    "webDesignPortfolio": {
+      "title": "Webdesign Portfolio",
+      "description": "Bekijk onze webdesignprojecten.",
+      "galleryItems": [
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Emko.jpg",
+          "alt": "Emko",
+          "title": "Emko",
+          "description": "We hebben een uitgebreide website ontwikkeld voor Emko, een leverancier van kantoordesign en meubels, om hun ethos en uitgebreide productaanbod te tonen. De site bevat een geïntegreerde catalogus binnen de productsectie, wat zorgt voor een naadloze browse-ervaring voor potentiële klanten.",
+          "link": "https://www.emko.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Balkan Sports Scholars.jpg",
+          "alt": "Balkan Sports Scholars",
+          "title": "Balkan Sports Scholars",
+          "description": "Voor Balkan Sports Scholars, een toonaangevend sportagentschap, hebben we een dynamische pagina gecreëerd om hun online aanwezigheid in de Balkan en de VS te versterken. De site ondersteunt hun digitale platforms, biedt gedetailleerde informatie en betrokkenheidsmogelijkheden voor atleten en partners.",
+          "link": ""
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Meliora Medical.jpg",
+          "alt": "Meliora Medical",
+          "title": "Meliora Medical",
+          "description": "We hebben een robuuste website ontworpen voor Meliora Medical, een kliniek voor fysiotherapie en dermo-esthetiek, om hun digitale aanwezigheid te versterken en hun SEO- en SEA-prestaties te verbeteren. De site benadrukt effectief hun diensten en expertise, wat resulteert in een toename van klanten en verbeterde online zichtbaarheid.",
+          "link": "https://www.melioramedical.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/ADSH.jpg",
+          "alt": "ADSH",
+          "title": "ADSH",
+          "description": "We hebben een eenvoudige maar effectieve one-pager website gecreëerd voor ADSH, importeurs en exporteurs in de zuivelindustrie, om hun digitale aanwezigheid te vestigen. Deze eenvoudige site biedt essentiële informatie over hun bedrijf, waardoor ze toegankelijk zijn voor potentiële klanten en partners.",
+          "link": "https://www.adsh2014.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Grei's Dental Clinic.jpg",
+          "alt": "Grei's Dental Clinic",
+          "title": "Grei's Dental Clinic",
+          "description": "Voor Grei's Dental Clinic hebben we een strakke en informatieve website ontwikkeld, vergelijkbaar met die van Meliora Medical, met als doel hun digitale aanwezigheid en SEO-rangschikking te verbeteren. De site presenteert hun tandheelkundige diensten duidelijk en professioneel, wat helpt bij het aantrekken van nieuwe patiënten en het behouden van bestaande."
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Grade Up Training.jpg",
+          "alt": "Grade Up Training",
+          "title": "Grade Up Training",
+          "description": "Voor Grade Up Training, bekend om hun professionele atletische training, hebben we een beknopte one-pager website ontwikkeld om hun digitale aanwezigheid te versterken. De pagina benadrukt hun hoogwaardige trainingsdiensten, waardoor het voor atleten eenvoudig is om meer te weten te komen en in contact te komen met hun experttrainers.",
+          "link": "https://www.gradeuptraining.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/MinoCare.jpg",
+          "alt": "MinoCare",
+          "title": "MinoCare",
+          "description": "We hebben MinoCare, een start-up die mannen een tweede kans biedt om weer volledig te leven en hun haar te verzorgen met behulp van minoxidil-producten, voorzien van een informatieve website waar mensen kunnen bestellen en hun ervaring met MinoCare kunnen proberen.",
+          "link": "https://www.instagram.com/minocare.al"
+        }
+      ]
+    }
+  },
+
+  "AuthorPosts": {
+    "postsBy": "Berichten van {authorName}",
+    "noPostsFound": "Geen berichten gevonden"
+  },
+  "Authors": {
+    "authors": "Auteurs",
+    "noAuthorsFound": "Geen auteurs gevonden",
+    "posts": "{posts} {postCount, select, 1 {bericht} other {berichten}}"
+  },
+  "CategoryPosts": {
+    "categories": "Categorieën",
+    "marketing": "Marketing",
+    "business": "Business",
+    "technology": "Technologie",
+    "ai": "AI",
+    "gaming": "Gaming",
+    "product": "Product",
+    "entertainment": "Entertainment",
+    "noPostsFound": "Geen berichten gevonden"
+  },
+  "CreatePost": {
+    "createPost": "Maak Bericht",
+    "titlePlaceholder": "Titel",
+    "categoryPlaceholder": "Categorie",
+    "fileUploadAccept": "png, jpg, jpeg",
+    "submitButton": "Maak"
+  },
+  "Dashboard": {
+    "dashboard": "Dashboard",
+    "viewButton": "Bekijk",
+    "editButton": "Bewerk",
+    "noPosts": "Je hebt nog geen berichten!"
+  },
+  "DeletePost": {
+    "deleteButton": "Verwijderen"
+  },
+  "EditPost": {
+    "editPost": "Bewerk Bericht",
+    "titlePlaceholder": "Titel",
+    "categoryPlaceholder": "Categorie",
+    "fileUploadAccept": "png, jpg, jpeg",
+    "submitButton": "Bijwerken"
+  },
+  "ErrorPage": {
+    "goBackButton": "Ga Terug",
+    "pageNotFound": "Pagina niet gevonden"
+  },
+  "Login": {
+    "signIn": "Inloggen",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Wachtwoord",
+    "loginButton": "Inloggen",
+    "signUpPrompt": "Nog geen account?"
+  },
+  "Logout": {},
+  "PostDetail": {
+    "editButton": "Bewerk"
+  },
+  "Register": {
+    "signUp": "Registreren",
+    "fullNamePlaceholder": "Volledige Naam",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Wachtwoord",
+    "confirmPasswordPlaceholder": "Bevestig Wachtwoord",
+    "registerButton": "Registreren",
+    "signInPrompt": "Heb je al een account?"
+  },
+  "UserProfile": {
+    "dashboardButton": "Dashboard",
+    "updateDetailsButton": "Werk mijn gegevens bij",
+    "fullNamePlaceholder": "Volledige Naam",
+    "emailPlaceholder": "E-mail",
+    "currentPasswordPlaceholder": "Huidig Wachtwoord",
+    "newPasswordPlaceholder": "Nieuw Wachtwoord",
+    "confirmNewPasswordPlaceholder": "Bevestig Nieuw Wachtwoord"
+  },
+
+  "contactForm": {
+    "namePlaceholder": "Naam *",
+    "surnamePlaceholder": "Achternaam *",
+    "countryPlaceholder": "Land *",
+    "emailPlaceholder": "E-mail *",
+    "phoneNumberPlaceholder": "Telefoonnummer *",
+    "companyNamePlaceholder": "Bedrijfsnaam (Optioneel)",
+    "messagePlaceholder": "Bericht *",
+    "submitButton": "Verzenden",
+    "successMessage": "Formulier verzonden!",
+    "failureMessage": "Verzenden van formulier mislukt. Probeer het later opnieuw."
+  },
+
+  "fixedMenu": {
+    "allPosts": "Alle Berichten",
+    "profile": "Profiel",
+    "create": "Maak",
+    "authors": "Auteurs",
+    "logout": "Uitloggen"
+  },
   
+  "footer": {
+    "locationTitle": "Locatie",
+    "locationSubtitle": "EN DAARBUITEN!",
+    "slogan": "Wij zijn de ontbrekende schakel",
+    "contactTitle": "Contact",
+    "socialsTitle": "Sociale Media",
+    "copyright": "Copyright © Synaps. Alle rechten voorbehouden",
+    "logIn": "Inloggen"
+  },
+
+  "posts": {
+    "title": "Berichten",
+    "noPostsFound": "Geen berichten gevonden",
+    "readMore": "Lees meer"
+  },
+
+  "categories": {
+    "Marketing": "Marketing",
+    "Business": "Business",
+    "Technology": "Technologie",
+    "AI": "AI",
+    "Gaming": "Gaming",
+    "Product": "Product",
+    "Entertainment": "Entertainment"
+  },
+
+  "servicesForm": {
+    "title": "Kies je servicepakket!",
+    "description": "Kies een of meer diensten om toe te voegen aan je pakket en dien je informatie in. We nemen zo snel mogelijk contact met je op!",
+    "namePlaceholder": "Naam *",
+    "surnamePlaceholder": "Achternaam *",
+    "countryPlaceholder": "Land *",
+    "emailPlaceholder": "E-mail *",
+    "phonePlaceholder": "Telefoonnummer *",
+    "companyPlaceholder": "Bedrijfsnaam (Optioneel)",
+    "messagePlaceholder": "Bericht *",
+    "submitButton": "Verzenden",
+    "successMessage": "Formulier verzonden!",
+    "failureMessage": "Verzenden van formulier mislukt. Probeer het later opnieuw."
+  },
+  "services": {
+    "Web Design": "Webdesign",
+    "Social Media": "Sociale Media",
+    "Branding": "Branding",
+    "Video": "Video",
+    "Advertisement": "Advertentie"
+  }
+}

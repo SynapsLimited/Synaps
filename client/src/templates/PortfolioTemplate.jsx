@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './../css/portfolio.css';
 import { Helmet } from 'react-helmet';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const Gallery = ({ items }) => {
+  const { t } = useTranslation();
   const [openItem, setOpenItem] = useState(null);
 
   const handleItemClick = (event, itemId) => {
@@ -24,7 +26,7 @@ const Gallery = ({ items }) => {
     <section className="container gallery">
       <div className="row">
         <ul>
-          <a href="#" className="close" onClick={handleCloseClick}></a>
+          <a href="#" className="close" onClick={handleCloseClick}>{t('portfolioTemplatePage.gallery.closeButton')}</a>
           {items.map((item, index) => (
             <li key={index}>
               <a href={`#item${index + 1}`} onClick={(event) => handleItemClick(event, `item${index + 1}`)}>
@@ -41,7 +43,7 @@ const Gallery = ({ items }) => {
             <div className="description">
               <h1>{item.title}</h1>
               <p>{item.description}</p>
-              <a href={item.link} className="btn btn-secondary btn-view-project">View Project</a>
+              <a href={item.link} className="btn btn-secondary btn-view-project">{t('portfolioTemplatePage.gallery.viewProjectButton')}</a>
             </div>
             <img src={item.imgSrc} alt={item.alt} />
           </div>
@@ -52,6 +54,8 @@ const Gallery = ({ items }) => {
 };
 
 const PortfolioTemplate = ({ title, description, imgSrc, galleryItems }) => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     // Dynamically load the Spline Viewer script
     const script = document.createElement('script');
@@ -68,15 +72,15 @@ const PortfolioTemplate = ({ title, description, imgSrc, galleryItems }) => {
   return (
     <div>
       <Helmet>
-        <title>Synaps - Portfolio - {title}</title>
+        <title>{t('portfolioTemplatePage.titlePrefix')}{title}</title>
       </Helmet>
       <header>
         <div className="container header__container">
           <div className="header__left header-about">
-            <h1>Portfolio</h1>
+            <h1>{t('portfolioTemplatePage.header.heading')}</h1>
             <h2 style={{ color: 'var(--color-primary)', marginTop: '10px' }}>{title}</h2>
             <p>{description}</p>
-            <a href="/portfolio" className="btn btn-secondary">Portfolio</a>
+            <a href="/portfolio" className="btn btn-secondary">{t('portfolioTemplatePage.header.portfolioButton')}</a>
           </div>
           <div className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/TUJchywqt3sObPx0/scene.splinecode"></spline-viewer>
@@ -86,17 +90,15 @@ const PortfolioTemplate = ({ title, description, imgSrc, galleryItems }) => {
 
       <section className="container portfolio-categories-section">
         <ul className="portfolio-categories">
-          <li className="btn btn-secondary"><Link to="/portfolio/webdesign">Web Design</Link></li>
-          <li className="btn btn-secondary"><Link to="/portfolio/socialmedia">Social Media</Link></li>
-          <li className="btn btn-secondary"><Link to="/portfolio/branding">Branding</Link></li>
-          <li className="btn btn-secondary"><Link to="/portfolio/video">Video</Link></li>
-          <li className="btn btn-secondary"><Link to="/portfolio/advertisement">Advertisement</Link></li>
+          <li className="btn btn-secondary"><Link to="/portfolio/webdesign">{t('portfolioTemplatePage.categories.webDesign')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/portfolio/socialmedia">{t('portfolioTemplatePage.categories.socialMedia')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/portfolio/branding">{t('portfolioTemplatePage.categories.branding')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/portfolio/video">{t('portfolioTemplatePage.categories.video')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/portfolio/advertisement">{t('portfolioTemplatePage.categories.advertisement')}</Link></li>
         </ul>
       </section>
 
       <Gallery items={galleryItems} />
-
-
     </div>
   );
 };

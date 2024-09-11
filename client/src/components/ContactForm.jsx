@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
+import { useTranslation } from 'react-i18next';
 import './../css/contact.css'; // Assuming you have a corresponding CSS file for styling
 
-
 const ContactForm = () => {
+  const { t } = useTranslation(); // Import translation hook
+  
   const [formData, setFormData] = useState({
     name: '',
     surname: '',
@@ -48,10 +50,10 @@ const ContactForm = () => {
     )
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
-        alert('Form submitted!');
+        alert(t('contactForm.successMessage')); // Use translation for success message
       }, (err) => {
         console.error('FAILED...', err);
-        alert('Failed to send the form. Please try again later.');
+        alert(t('contactForm.failureMessage')); // Use translation for failure message
       });
   };
 
@@ -62,7 +64,7 @@ const ContactForm = () => {
           <input
             type="text"
             name="name"
-            placeholder="Name *"
+            placeholder={t('contactForm.namePlaceholder')} // Use translation for placeholder
             value={formData.name}
             onChange={handleChange}
             required
@@ -70,7 +72,7 @@ const ContactForm = () => {
           <input
             type="text"
             name="surname"
-            placeholder="Surname *"
+            placeholder={t('contactForm.surnamePlaceholder')} // Use translation for placeholder
             value={formData.surname}
             onChange={handleChange}
             required
@@ -80,7 +82,7 @@ const ContactForm = () => {
           <input
             type="text"
             name="country"
-            placeholder="Country *"
+            placeholder={t('contactForm.countryPlaceholder')} // Use translation for placeholder
             value={formData.country}
             onChange={handleChange}
             required
@@ -88,7 +90,7 @@ const ContactForm = () => {
           <input
             type="email"
             name="email"
-            placeholder="Email *"
+            placeholder={t('contactForm.emailPlaceholder')} // Use translation for placeholder
             value={formData.email}
             onChange={handleChange}
             required
@@ -98,7 +100,7 @@ const ContactForm = () => {
           <input
             type="text"
             name="phoneNumber"
-            placeholder="Phone number *"
+            placeholder={t('contactForm.phoneNumberPlaceholder')} // Use translation for placeholder
             value={formData.phoneNumber}
             onChange={handleChange}
             required
@@ -106,19 +108,21 @@ const ContactForm = () => {
           <input
             type="text"
             name="companyName"
-            placeholder="Company name (Optional)"
+            placeholder={t('contactForm.companyNamePlaceholder')} // Use translation for placeholder
             value={formData.companyName}
             onChange={handleChange}
           />
         </div>
         <textarea
           name="message"
-          placeholder="Message *"
+          placeholder={t('contactForm.messagePlaceholder')} // Use translation for placeholder
           value={formData.message}
           onChange={handleChange}
           required
         />
-        <button type="submit" className="btn btn-secondary btn-submit-form">Submit</button>
+        <button type="submit" className="btn btn-secondary btn-submit-form">
+          {t('contactForm.submitButton')}
+        </button>
       </form>
     </section>
   );

@@ -118,7 +118,11 @@
 }
 
 .nav-item.has-dropdown .dropdown-menu li:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary-transparent);
+}
+
+.nav-item.has-dropdown .dropdown-menu li.scrolled:hover {
+  background-color: var(--color-primary-transparent);
 }
 
 
@@ -171,24 +175,119 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
+
+/* Dropdown Menu Animation */
+.nav-item.has-dropdown .dropdown-menu.show {
+  display: block;
+  animation: fadeIn 0.4s ease forwards; /* Fade in for the whole dropdown */
+  border-radius: 0 0 22px 22px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Menu starts slightly above */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Menu settles into place */
+  }
+}
+
+/* Staggered Animation for showing each item */
+.nav-item.has-dropdown .dropdown-menu.show li {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(-10px); /* Starts slightly above */
+  animation: fadeInItem 0.3s ease forwards;
+}
+
+@keyframes fadeInItem {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add delay for each item to create staggered effect */
+.nav-item.has-dropdown .dropdown-menu.show li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show li:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show .last-link {
+  animation-delay: 0.6s;
+}
+
+/* Dropdown Menu Closing Animation */
+.nav-item.has-dropdown .dropdown-menu.hide li {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeOutItem 0.3s ease forwards;
+}
+
+@keyframes fadeOutItem {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px); /* Items roll back up as they fade out */
+  }
+}
+
+/* Staggered Animation for closing each item in reverse */
+.nav-item.has-dropdown .dropdown-menu.hide li:nth-child(1) {
+  animation-delay: 0.6s; /* Delayed more so it's the last to disappear */
+}
+
+.nav-item.has-dropdown .dropdown-menu.hide li:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.hide li:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.hide li:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.hide li:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.hide .last-link {
+  animation-delay: 0.1s; /* First to disappear */
+}
+
+
+
+
+
 /* Mobile Devices - Phones/Tablets */
 
 @media only screen and (max-width: 720px) { 
 
-  /* MOBILE HEADINGS */
-  
-  h1 {
-    font-size: 1.9rem;
-  }
-  
-  h2 {
-    font-size: 1rem;
-  }
-  
-  p {
-    font-size: 0.8rem;
-  }
-  
   /* MOBILE NAVIGATION */
      
   .navbar ul {
@@ -245,7 +344,7 @@
   }
 
   .nav-item.has-dropdown .dropdown-menu.scrolled {
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); /* Adjust shadow to match the design */
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); /* Adjust shadow to match the design */
   }
 
   .nav-item.has-dropdown .dropdown-menu.show {
@@ -274,4 +373,7 @@
     color: var(--color-white);
   }
 
+  .nav-item.has-dropdown .dropdown-menu .last-link {
+    padding-left: 15px;
+  }
 }

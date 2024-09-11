@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaEdit } from "react-icons/fa";
-import { FaCheck } from "react-icons/fa";
+import { FaEdit, FaCheck } from "react-icons/fa";
 import './../css/blog.css'; // Assuming you have a corresponding CSS file for styling
 import { UserContext } from '../context/userContext';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next'; // Importing useTranslation hook
 
 const UserProfile = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
   const [avatar, setAvatar] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -22,7 +23,6 @@ const UserProfile = () => {
   const token = currentUser?.token;
   const navigate = useNavigate();
 
-  // Redirect to login page for any user who isn't logged in
   useEffect(() => {
     if (!token) {
       navigate('/login');
@@ -94,14 +94,13 @@ const UserProfile = () => {
   return (
     <section className="profile">
       <div className="container profile-container">
-        <Link to={`/myposts/${currentUser.id}`} className="btn btn-secondary">Dashboard</Link>
+        <Link to={`/myposts/${currentUser.id}`} className="btn btn-secondary">{t('UserProfile.dashboardButton')}</Link>
 
         <div className="profile-details">
           <div className="avatar-wrapper">
             <div className="profile-avatar">
               <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${avatarPreview}`} alt="" />
             </div>
-            {/* Form to update avatar */}
             <form className="avatar-form">
               <input 
                 type="file" 
@@ -114,22 +113,44 @@ const UserProfile = () => {
                 <FaEdit /> 
               </label>
             </form>
-            {isAvatarTouched && <button className="btn btn-primary profile-avatar-btn" onClick={changeAvatarHandler}><FaCheck/></button>}
+            {isAvatarTouched && <button className="btn btn-primary profile-avatar-btn" onClick={changeAvatarHandler}><FaCheck /></button>}
           </div>
 
           <h1>{currentUser.name}</h1>
 
-          {/* Form to update user details */}
           <form className="form profile-form" onSubmit={updateUserDetails}>
-            {error && <p className="form-error-message">
-              {error}
-            </p>}
-            <input type="text" placeholder="Full Name" value={name} onChange={e => setName(e.target.value)} />
-            <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-            <input type="password" placeholder="Current Password" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} />
-            <input type="password" placeholder="New Password" value={newPassword} onChange={e => setNewPassword(e.target.value)} />
-            <input type="password" placeholder="Confirm New Password" value={confirmNewPassword} onChange={e => setConfirmNewPassword(e.target.value)} />
-            <button type="submit" className='btn btn-primary btn-submit-profile'> Update my details </button>
+            {error && <p className="form-error-message">{error}</p>}
+            <input
+              type="text"
+              placeholder={t('UserProfile.fullNamePlaceholder')}
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder={t('UserProfile.emailPlaceholder')}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder={t('UserProfile.currentPasswordPlaceholder')}
+              value={currentPassword}
+              onChange={e => setCurrentPassword(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder={t('UserProfile.newPasswordPlaceholder')}
+              value={newPassword}
+              onChange={e => setNewPassword(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder={t('UserProfile.confirmNewPasswordPlaceholder')}
+              value={confirmNewPassword}
+              onChange={e => setConfirmNewPassword(e.target.value)}
+            />
+            <button type="submit" className='btn btn-primary btn-submit-profile'>{t('UserProfile.updateDetailsButton')}</button>
           </form>
         </div>
       </div>

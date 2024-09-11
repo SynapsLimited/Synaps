@@ -2,10 +2,13 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './../css/blog.css'; // Assuming you have a corresponding CSS file for styling
 import { Helmet } from 'react-helmet';
+import { useTranslation } from 'react-i18next';
 import Posts from '../components/Posts';
 import Authors from '../blog/Authors';
 
 const Blog = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     // Dynamically load the Spline Viewer script
     const script = document.createElement('script');
@@ -22,15 +25,15 @@ const Blog = () => {
   return (
     <div>
       <Helmet>
-        <title>Synaps - Blog</title>
+        <title>{t('blogPage.title')} - Synaps</title>
       </Helmet>
 
       <header>
         <div className="container header__container">
           <div className="header__left header-blog">
-            <h1>Blog</h1>
-            <p>Keep up with the latest news from technology and marketing trends.</p>
-            <a href="contact" className="btn btn-secondary">Contact</a>
+            <h1>{t('blogPage.header.heading')}</h1>
+            <p>{t('blogPage.header.description')}</p>
+            <a href="contact" className="btn btn-secondary">{t('blogPage.header.contactButton')}</a>
           </div>
           <div className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/A0hNRHhFOAhaezpC/scene.splinecode"></spline-viewer>
@@ -39,28 +42,26 @@ const Blog = () => {
       </header>
 
       <div className="blog-title">
-        <h1>Ready for the latest news?</h1>
-        <p>News from us and the world. Technology and marketing trends are our cup of tea. We are ready to keep you updated, tell our opinion, or even our own stories.</p>
+        <h1>{t('blogPage.intro.heading')}</h1>
+        <p>{t('blogPage.intro.description')}</p>
       </div>
 
       <section className="container blog-categories-section">
         <div className="blog-title">
-          <h1>Categories</h1>
+          <h1>{t('blogPage.categories.heading')}</h1>
         </div>
         <ul className="blog-categories">
-          <li className="btn btn-secondary"><Link to="/posts/categories/Marketing">Marketing</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/Business">Business</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/Technology">Technology</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/AI">AI</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/Gaming">Gaming</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/Product">Product</Link></li>
-          <li className="btn btn-secondary"><Link to="/posts/categories/Entertainment">Entertainment</Link></li>
+          {Object.entries(t('blogPage.categories.items', { returnObjects: true })).map(([key, value]) => (
+            <li key={key} className="btn btn-secondary">
+              <Link to={`/posts/categories/${key}`}>{value}</Link>
+            </li>
+          ))}
         </ul>
       </section>
 
       <Posts limit={6} />
 
-      <section className="container blog-authors-section">
+      <section className="blog-authors-section">
         <Authors />
       </section>
     </div>

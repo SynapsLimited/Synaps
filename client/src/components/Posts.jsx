@@ -3,8 +3,10 @@ import PostItem from './PostItem';
 import Loader from './Loader';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // Import translation hook
 
 const Posts = ({ limit }) => {
+    const { t } = useTranslation(); // Initialize translation
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +34,7 @@ const Posts = ({ limit }) => {
     return (
       <section className="posts">
         <div className="blog-title-filtered">
-          <h1>Posts</h1>
+          <h1>{t('posts.title')}</h1>
         </div>
         {displayedPosts.length > 0 ? (
           <div className="container posts-container">
@@ -50,11 +52,11 @@ const Posts = ({ limit }) => {
             ))}
           </div>
         ) : (
-          <h1 className="error-blog-not-found">No Posts Found</h1>
+          <h1 className="error-blog-not-found">{t('posts.noPostsFound')}</h1>
         )}
         {limit && posts.length > limit && (
           <div className="read-more-container">
-            <Link to="/posts" className="btn btn-secondary">Read More</Link>
+            <Link to="/posts" className="btn btn-secondary">{t('posts.readMore')}</Link> 
           </div>
         )}
       </section>

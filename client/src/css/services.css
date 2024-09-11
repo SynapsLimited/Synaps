@@ -250,6 +250,7 @@
 
 .importance-section {
   padding: 50px 0;
+  margin-bottom: -150px;
 }
 
 .importance-title {
@@ -523,6 +524,7 @@
       text-align: center; /* Center align text */
   }
 
+
   .services-overview-blobs {
     grid-template-columns: 1fr; /* Make it single column for mobile view */
 }
@@ -532,7 +534,8 @@
 }
 
   .specific-service-left img {
-      max-width: 90%;
+      min-width: 300px;
+      height: auto;
       margin-top: 15px;
       margin-left: auto;
       margin-right: auto;
@@ -610,6 +613,15 @@
   margin: 0 auto; /* Center image in the h1 on smaller screens */
   height: 100px;
   width: 120px;
+}
+
+.services-overview-title-select h1 {
+  font-size: 1.5rem; /* Increase font size */
+  margin: 30px;
+}
+
+.services-overview-title-select p {
+    text-align: center;
 }
 
 }

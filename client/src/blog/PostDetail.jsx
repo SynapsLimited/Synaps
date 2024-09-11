@@ -6,8 +6,10 @@ import Loader from '../components/Loader';
 import DeletePost from './DeletePost';
 import { UserContext } from '../context/userContext';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next'; // Importing useTranslation hook
 
 const PostDetail = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
@@ -20,9 +22,15 @@ const PostDetail = () => {
       setIsLoading(true);
       try {
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/${id}`);
-        setPost(response.data);
-        console.log('Fetched post data:', response.data);
+        if (response.data) {
+          setPost(response.data);
+          console.log('Fetched post data:', response.data);
+        } else {
+          console.log('No post data found.');
+          setError('No post data found.');
+        }
       } catch (error) {
+        console.log('Error fetching post data:', error);
         setError(error.message);
       }
       setIsLoading(false);
@@ -39,15 +47,19 @@ const PostDetail = () => {
     return <p className='error'>{error}</p>;
   }
 
+  if (!post) {
+    return <p className='error'>Post not found.</p>;
+  }
+
   return (
     <section className="container post-detail">
-      {post && (
+      {post && post.creator ? ( // Ensure post and creator are defined
         <div className="post-detail-container">
           <div className="post-detail-header">
             <PostAuthor authorID={post.creator} createdAt={post.createdAt} />
             {currentUser?.id === post?.creator && (
               <div className="post-detail-buttons">
-                <Link to={`/posts/${post?._id}/edit`} className="btn btn-primary">Edit</Link>
+                <Link to={`/posts/${post?._id}/edit`} className="btn btn-primary">{t('Dashboard.editButton')}</Link>
                 <DeletePost postId={id} />
               </div>
             )}
@@ -57,8 +69,10 @@ const PostDetail = () => {
           <div className="post-detail-thumbnail">
             <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${post.thumbnail}`} alt="" />
           </div>
-          <p dangerouslySetInnerHTML={{__html: post.description}}></p>
+          <p dangerouslySetInnerHTML={{ __html: post.description }}></p>
         </div>
+      ) : (
+        <p className='error'>Author not found for this post.</p>
       )}
     </section>
   );

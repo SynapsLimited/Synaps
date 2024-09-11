@@ -2,13 +2,14 @@ import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next'; // Importing useTranslation hook
 
 const DeletePost = ({ postId: id }) => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
   const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
 
-  // Redirect to login page for any user who isn't logged in
   useEffect(() => {
     if (!token) {
       navigate('/login');
@@ -32,7 +33,9 @@ const DeletePost = ({ postId: id }) => {
   };
 
   return (
-    <button className='btn btn-secondary' style={{fontFamily: 'Righteous, sans-serif'}} onClick={removePost}>Delete</button>
+    <button className='btn btn-secondary' style={{ fontFamily: 'Righteous, sans-serif' }} onClick={removePost}>
+      {t('DeletePost.deleteButton')}
+    </button>
   );
 };
 

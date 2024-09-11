@@ -96,6 +96,10 @@
     margin-top: 4rem;
 }
 
+.btn-postitem {
+    text-align: center;
+}
+
 
 /* ================== Post Categories ============= */
 
@@ -208,10 +212,11 @@ input, select, textarea {
 
 .btn-submit {
     font-family: "Righteous", sans-serif;
-    width: 20%;
+    width: 30%;
     height: 40px;
     align-self: center;
     margin-top: 25px;
+    text-align: center;
 }
 
 /* Styles for the form-small class */
@@ -245,6 +250,11 @@ input, select, textarea {
     gap: 3rem;
 }
 
+.authors {
+    width: 90%;
+    margin: 0 auto;
+}
+
 .author {
     background: var(--color-background-transparent-post);
     padding: 1rem;
@@ -254,6 +264,7 @@ input, select, textarea {
     transition: var(--transition);
     box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
     max-height: 7rem;
+
 }
 
 .author:hover {
@@ -564,6 +575,7 @@ input, select, textarea {
 .posts-container {
     grid-template-columns: 1fr;
     gap: 2rem;
+    width: auto;
 
 }
 
@@ -601,6 +613,12 @@ input, select, textarea {
     gap: 1rem;
     width: 100%;
     margin: 0 0 0 0;
+}
+
+
+.authors {
+    width: 80%;
+    margin: 0 auto;
 }
 
 

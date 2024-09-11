@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import LogoShowcase from './components/LogoShowcase';
 import LoadingScreen from './components/LoadingScreen';
 import FixedMenu from './components/FixedMenu';
+import ScrollToTop from './components/ScrollToTop';
 import Posts from './components/Posts';
 import ServicesForm from './components/ServicesForm';
 import UserProvider from './context/userContext';
@@ -85,6 +86,7 @@ function App() {
   return (
     <div className={`App ${getBackgroundClass(location.pathname)}`}>
       <LoadingScreen />
+      <ScrollToTop />
       <Navbar />
       <div className="content-wrapper">
         <Routes>

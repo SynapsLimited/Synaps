@@ -9,9 +9,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 import './../css/home.css';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importanceText, importanceImgSrc, types = [], bundles = [] }) => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     // Dynamically load the Spline Viewer script
     const script = document.createElement('script');
@@ -37,15 +40,16 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
   return (
     <div>
       <Helmet>
-        <title>Synaps - Services - {title}</title>
+        <title>{t('servicesTemplatePage.titlePrefix')}{title}</title>
+        <link rel="icon" href="/assets/Synaps Logos/Synaps Logo Icon.ico" />
       </Helmet>
       <header>
         <div className="container header__container">
           <div className="header__left header-about">
-            <h1>Services</h1>
+            <h1>{t('servicesTemplatePage.header.servicesHeading')}</h1>
             <h2 style={{ color: 'var(--color-secondary)' }}>{title}</h2>
             <p>{description}</p>
-            <a href="contact" className="btn btn-primary">Contact</a>
+            <a href="contact" className="btn btn-primary">{t('servicesTemplatePage.header.contactButton')}</a>
           </div>
           <div className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/l7zIP1lmkJQWSetc/scene.splinecode"></spline-viewer>
@@ -55,29 +59,29 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
 
       <section className="container portfolio-categories-section">
         <ul className="portfolio-categories">
-          <li className="btn btn-primary"><Link to="/services/webdesign">Web Design</Link></li>
-          <li className="btn btn-primary"><Link to="/services/socialmedia">Social Media</Link></li>
-          <li className="btn btn-primary"><Link to="/services/branding">Branding</Link></li>
-          <li className="btn btn-primary"><Link to="/services/video">Video</Link></li>
-          <li className="btn btn-primary"><Link to="/services/advertisement">Advertisement</Link></li>
+          <li className="btn btn-primary"><Link to="/services/webdesign">{t('servicesTemplatePage.categories.webDesign')}</Link></li>
+          <li className="btn btn-primary"><Link to="/services/socialmedia">{t('servicesTemplatePage.categories.socialMedia')}</Link></li>
+          <li className="btn btn-primary"><Link to="/services/branding">{t('servicesTemplatePage.categories.branding')}</Link></li>
+          <li className="btn btn-primary"><Link to="/services/video">{t('servicesTemplatePage.categories.video')}</Link></li>
+          <li className="btn btn-primary"><Link to="/services/advertisement">{t('servicesTemplatePage.categories.advertisement')}</Link></li>
         </ul>
       </section>
       
       <section className="importance-section">
-        <h2 className="importance-title">Importance of {importanceTitle}</h2>
+        <h2 className="importance-title">{t('servicesTemplatePage.importanceTitle', { title: importanceTitle })}</h2>
         <div className="importance-content">
           <div className="importance-text">
             <p>{importanceText}</p>
           </div>
           <div className="importance-image">
-            <img src={importanceImgSrc} alt={`Importance of ${importanceTitle}`} />
+            <img src={importanceImgSrc} alt={t('servicesTemplatePage.importanceTitle', { title: importanceTitle })} />
           </div>
         </div>
       </section>
 
       {types.length > 0 && (
         <section className="container types-section">
-          <h2 className="types-title">Types of {title}</h2>
+          <h2 className="types-title">{t('servicesTemplatePage.typesTitle', { title })}</h2>
           <Swiper
             spaceBetween={100}
             slidesPerView={1}
@@ -109,7 +113,7 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
                   <div>
                     <h4>{type.title}</h4>
                     <p>{type.description}</p>
-                    <a href={`/portfolio/${formatTitleToURL(title)}`} className="btn btn-secondary">Portfolio</a>
+                    <a href={`/portfolio/${formatTitleToURL(title)}`} className="btn btn-secondary">{t('servicesTemplatePage.portfolioButton')}</a>
                   </div>
                 </div>
               </SwiperSlide>
@@ -118,9 +122,9 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
         </section>
       )}
 
-<div className="bundle-text container">
-          <h1>{title} <img src="/assets/Synaps Logos/Synaps Logo Art copy - DARK.png" alt="Synaps logo" /> Bundles</h1>
-        </div>
+      <div className="bundle-text container">
+        <h1>{t('servicesTemplatePage.bundlesTitle', { title })} <img src="/assets/Synaps Logos/Synaps Logo Art copy - DARK.png" alt="Synaps logo" /></h1>
+      </div>
 
       {/* Bundle Section */}
       <section className="bundle-section">
@@ -148,7 +152,7 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
             spaceBetween={60}
             loop={true}
             pagination={{
-              el: ".swiper-pagination",
+              el: `.${t('servicesTemplatePage.bundles.swiperPagination')}`,
               clickable: true
             }}
           >

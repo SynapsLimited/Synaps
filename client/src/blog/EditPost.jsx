@@ -1,114 +1,115 @@
-import React, { useState, useEffect, useContext } from 'react'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
-import { useNavigate, useParams } from 'react-router-dom'
-import { UserContext } from '../context/userContext'
-import axios from 'axios'
-
+import React, { useState, useContext, useEffect } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import { UserContext } from '../context/userContext';
+import axios from 'axios';
+import { useTranslation } from 'react-i18next'; // Importing useTranslation hook
 
 const EditPost = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('Uncategorized');
+  const [description, setDescription] = useState('');
+  const [thumbnail, setThumbnail] = useState('');
+  const [error, setError] = useState('');
 
-const [title, setTitle] = useState('')
-const [category, setCategory] = useState('Uncategorized');
-const [description, setDescription] = useState('')
-const [thumbnail, setThumbnail] = useState('')
-const [error, setError] = useState('')
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-const navigate = useNavigate();
-const {id} = useParams();
+  const { currentUser } = useContext(UserContext);
+  const token = currentUser?.token;
 
-const {currentUser} = useContext(UserContext)
-const token = currentUser?.token;
+  useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    }
+  }, [token, navigate]);
 
-// redirect to login page for any user who isn't logged in
-useEffect(() => {
-  if(!token) {
-    navigate('/login')
-  }
-}, [])
+  const modules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+      ['link', 'image'],
+      ['clean']
+    ],
+  };
 
-const modules = {
-  toolbar: [
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [{'list':'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-    ['link', 'image'],
-    ['clean']
-  ],
-}
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image'
+  ];
 
+  const POST_CATEGORIES = [ "Marketing", "Business", "Technology", "Artificial Intelligence", "Gaming", "Product", "Entertainment"];
 
-const formats = [
-  'header',
-  'bold', 'italic', 'underline', 'strike', 'blockquote',
-  'list', 'bullet', 'indent',
-  'link', 'image'
-]
+  useEffect(() => {
+    const getPost = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/${id}`);
+        setTitle(response.data.title);
+        setDescription(response.data.description);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getPost();
+  }, [id]);
 
-const POST_CATEGORIES = ["Uncategorized", "Marketing", "Business", "Technology", "Artifical Intelligence","Gaming", "Product", "Entertainment"  ]
+  const editPost = async (e) => {
+    e.preventDefault();
 
+    const postData = new FormData();
+    postData.set('title', title);
+    postData.set('category', category);
+    postData.set('description', description);
+    postData.set('thumbnail', thumbnail);
 
-useEffect(() => {
-  const getPost = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/${id}`)
-      setTitle(response.data.title)
-      setDescription(response.data.description)
-    } catch (error) {
-      console.log(error)
+      const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/posts/${id}`, postData, {
+        withCredentials: true,
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.status === 200) {
+        return navigate('/blog');
+      }
+    } catch (err) {
+      setError(err.response.data.message);
     }
-  }
-  getPost();
- }, [])
-
-
- const editPost = async (e) => {
-  e.preventDefault();
-
-  const postData = new FormData();
-  postData.set('title', title)
-  postData.set('category', category)
-  postData.set('description', description)
-  postData.set('thumbnail', thumbnail)
-
-  try {
-    const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/posts/${id}`, postData, {withCredentials: true, headers: {Authorization: `Bearer ${token}`}})
-    if(response.status == 200) {
-      return navigate('/blog')
-    }
-  } catch (err) {
-    setError(err.response.data.message);
-  }
- }
-
+  };
 
   return (
     <section className="create-post">
-
       <div className="container">
-        <h2>Edit Post</h2>
+        <h2>{t('EditPost.editPost')}</h2>
         {error && <p className="form-error-message">{error}</p>}
         <form className="form create-post-form" onSubmit={editPost}>
-          <input type="text" placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} 
-          autoFocus />
+          <input
+            type="text"
+            placeholder={t('EditPost.titlePlaceholder')}
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            autoFocus
+          />
           <select name="category" value={category} onChange={e => setCategory(e.target.value)}>
-            {
-              POST_CATEGORIES.map(cat => <option key={cat}>{cat}</option>)
-            }
+            {POST_CATEGORIES.map(cat => <option key={cat}>{t(`CategoryPosts.${cat.toLowerCase()}`)}</option>)}
           </select>
           <ReactQuill modules={modules} formats={formats} value={description} onChange={setDescription} />
           <div className="custom-file-input-container">
-            <input className="custom-file-input" type="file" onChange={e => setThumbnail(e.target.files[0])} accept='png, jpg, jpeg' />
-          </div>          
-          <button type="submit" className="btn btn-primary btn-submit">Update</button>
-
-        </form> 
-      
-      
+            <input
+              className="custom-file-input"
+              type="file"
+              onChange={e => setThumbnail(e.target.files[0])}
+              accept={t('EditPost.fileUploadAccept')}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary btn-submit">{t('EditPost.submitButton')}</button>
+        </form>
       </div>
-
     </section>
-  )
-}
+  );
+};
 
-export default EditPost
+export default EditPost;

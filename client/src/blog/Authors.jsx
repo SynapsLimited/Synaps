@@ -13,7 +13,6 @@ const Authors = () => {
       setIsLoading(true);
       try {
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/users`);
-        console.log('Server response:', response.data); // Log the server response
         setAuthors(response.data);
       } catch (error) {
         console.log(error);

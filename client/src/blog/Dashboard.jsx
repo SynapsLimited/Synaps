@@ -4,8 +4,10 @@ import { UserContext } from '../context/userContext';
 import axios from 'axios';
 import Loader from '../components/Loader';
 import DeletePost from './DeletePost';
+import { useTranslation } from 'react-i18next'; // Importing useTranslation hook
 
 const Dashboard = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +16,6 @@ const Dashboard = () => {
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
 
-  // redirect to login page for any user who isn't logged in
   useEffect(() => {
     if (!token) {
       navigate('/login');
@@ -46,11 +47,9 @@ const Dashboard = () => {
 
   return (
     <section className="dashboard">
-
-        <div className="blog-title-filtered">
-          <h1>Dashboard</h1>
-        </div>
-
+      <div className="blog-title-filtered">
+        <h1>{t('Dashboard.dashboard')}</h1>
+      </div>
 
       {posts.length ? (
         <div className="container dashboard-container">
@@ -63,15 +62,15 @@ const Dashboard = () => {
                 <h4>{post.title}</h4>
               </div>
               <div className="dashboard-post-actions">
-                <Link to={`/posts/${post._id}`} className="btn btn-background">View</Link>
-                <Link to={`/posts/${post._id}/edit`} className="btn btn-primary">Edit</Link>
+                <Link to={`/posts/${post._id}`} className="btn btn-background">{t('Dashboard.viewButton')}</Link>
+                <Link to={`/posts/${post._id}/edit`} className="btn btn-primary">{t('Dashboard.editButton')}</Link>
                 <DeletePost postId={post._id} />
               </div>
             </article>
           ))}
         </div>
       ) : (
-        <h2 className="center"> You have no posts yet! </h2>
+        <h2 className="center">{t('Dashboard.noPosts')}</h2>
       )}
     </section>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
+import { useTranslation } from 'react-i18next'; // Import translation hook
 import './../css/services.css'; // Assuming you have a corresponding CSS file for styling
 
 const services = [
@@ -11,6 +12,7 @@ const services = [
 ];
 
 const ServicesForm = () => {
+  const { t } = useTranslation(); // Initialize translation
   const [selectedServices, setSelectedServices] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -73,20 +75,18 @@ const ServicesForm = () => {
     )
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
-        alert('Form submitted!');
+        alert(t('servicesForm.successMessage')); // Translated success message
       }, (err) => {
         console.error('FAILED...', err);
-        alert('Failed to send the form. Please try again later.');
+        alert(t('servicesForm.failureMessage')); // Translated failure message
       });
   };
 
   return (
     <section className="container services-overview-section">
       <div className="services-overview-title services-overview-title-select">
-        <h1>Choose your service bundle!</h1>
-        <p>
-          Pick one or more services to add to your bundle and submit your information with it. We will contact you as soon as possible!
-        </p>
+        <h1>{t('servicesForm.title')}</h1> {/* Translated form title */}
+        <p>{t('servicesForm.description')}</p> {/* Translated form description */}
       </div>
       <div className="container services-overview-blobs">
         {services.map(service => (
@@ -96,7 +96,7 @@ const ServicesForm = () => {
             onClick={() => toggleService(service.id)}
           >
             <img src={service.imgSrc} alt={service.name} />
-            <span>{service.name}</span>
+            <span>{t(`services.${service.name}`)}</span> {/* Translated service names */}
           </div>
         ))}
       </div>
@@ -105,7 +105,7 @@ const ServicesForm = () => {
           <input
             type="text"
             name="name"
-            placeholder="Name *"
+            placeholder={t('servicesForm.namePlaceholder')} // Translated placeholder
             value={formData.name}
             onChange={handleChange}
             required
@@ -113,7 +113,7 @@ const ServicesForm = () => {
           <input
             type="text"
             name="surname"
-            placeholder="Surname *"
+            placeholder={t('servicesForm.surnamePlaceholder')} // Translated placeholder
             value={formData.surname}
             onChange={handleChange}
             required
@@ -123,7 +123,7 @@ const ServicesForm = () => {
           <input
             type="text"
             name="country"
-            placeholder="Country *"
+            placeholder={t('servicesForm.countryPlaceholder')} // Translated placeholder
             value={formData.country}
             onChange={handleChange}
             required
@@ -131,7 +131,7 @@ const ServicesForm = () => {
           <input
             type="email"
             name="email"
-            placeholder="Email *"
+            placeholder={t('servicesForm.emailPlaceholder')} // Translated placeholder
             value={formData.email}
             onChange={handleChange}
             required
@@ -141,7 +141,7 @@ const ServicesForm = () => {
           <input
             type="text"
             name="phoneNumber"
-            placeholder="Phone number *"
+            placeholder={t('servicesForm.phonePlaceholder')} // Translated placeholder
             value={formData.phoneNumber}
             onChange={handleChange}
             required
@@ -149,19 +149,21 @@ const ServicesForm = () => {
           <input
             type="text"
             name="companyName"
-            placeholder="Company name (Optional)"
+            placeholder={t('servicesForm.companyPlaceholder')} // Translated placeholder
             value={formData.companyName}
             onChange={handleChange}
           />
         </div>
         <textarea
           name="message"
-          placeholder="Message *"
+          placeholder={t('servicesForm.messagePlaceholder')} // Translated placeholder
           value={formData.message}
           onChange={handleChange}
           required
         />
-        <button type="submit" className="btn btn-secondary btn-submit-form">Submit</button>
+        <button type="submit" className="btn btn-secondary btn-submit-form">
+          {t('servicesForm.submitButton')} {/* Translated submit button */}
+        </button>
       </form>
     </section>
   );

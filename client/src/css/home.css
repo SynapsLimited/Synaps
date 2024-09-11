@@ -363,7 +363,8 @@
   }
   
   .btn-blog {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 100px;
   }
   
   .swiper-button-next, .swiper-button-prev {

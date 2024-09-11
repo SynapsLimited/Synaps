@@ -1,71 +1,79 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ServicesTemplate from '../templates/ServicesTemplate';
 
 const WebDesignServices = () => {
+  const { t } = useTranslation();
+
   const types = [
     {
       imgSrc: '/assets/Art for Synaps/Services/3D Websites.png',
-      title: '3D Websites',
-      description: '3D Websites are websites which offer a great User Experience. 3D models are created, embedded and animated throughout a website to visualize and create a strong bond with the user or customer. These websites can be great for companies in the industries of fashion, furniture, pharmaceutical products, skin-care products, etc.',
+      title: t('webDesignServices.types.threeDWebsites.title'),
+      description: t('webDesignServices.types.threeDWebsites.description'),
       link: '/portfolio/3d-websites',
     },
     {
       imgSrc: '/assets/Art for Synaps/Services/Customized Website.png',
-      title: 'Customized Websites',
-      description: 'Customized Websites are multiple page websites which are tailored to the companies\' preferences including the latest trends, cutting-edge animations, vectors and icons. We offer new ideas in these websites to improve the User Interface with a spark of creativity and innovation.',
+      title: t('webDesignServices.types.customizedWebsites.title'),
+      description: t('webDesignServices.types.customizedWebsites.description'),
       link: '/portfolio/customized-websites',
     },
     {
       imgSrc: '/assets/Art for Synaps/Services/One-Pager Website.png',
-      title: 'One-Pager Website',
-      description: 'One-Pager Websites are simple websites which contain one page. This page includes all the sections that a website should such as About Us, Services, Testimonials, Contact, Portfolio, Video Promotion, Certifications, etc., to display everything a company has to show in one place. It does the job perfectly and has enough information to promote a company.',
+      title: t('webDesignServices.types.onePagerWebsites.title'),
+      description: t('webDesignServices.types.onePagerWebsites.description'),
       link: '/portfolio/one-pager-websites',
     },
   ];
 
   const bundles = [
     {
-      name: 'Simple Bundle',
-      description: 'Wordpress',
+      name: t('webDesignServices.bundles.simpleBundle.name'),
+      description: t('webDesignServices.bundles.simpleBundle.description'),
       imgSrc: '/assets/Bundles/Slide1.png',
     },
     {
-      name: 'Blogger Bundle',
-      description: 'Wordpress & SEO',
+      name: t('webDesignServices.bundles.bloggerBundle.name'),
+      description: t('webDesignServices.bundles.bloggerBundle.description'),
       imgSrc: '/assets/Bundles/Slide2.png',
     },
     {
-      name: 'Original Bundle',
-      description: 'Designed & Developed',
+      name: t('webDesignServices.bundles.shopperBundle.name'),
+      description: t('webDesignServices.bundles.shopperBundle.description'),
+      imgSrc: '/assets/Bundles/Slide2.png',
+    },
+    {
+      name: t('webDesignServices.bundles.originalBundle.name'),
+      description: t('webDesignServices.bundles.originalBundle.description'),
       imgSrc: '/assets/Bundles/Slide3.png',
     },
     {
-      name: 'Authentic Bundle',
-      description: 'Designed & Developed & SEO',
+      name: t('webDesignServices.bundles.authenticBundle.name'),
+      description: t('webDesignServices.bundles.authenticBundle.description'),
       imgSrc: '/assets/Bundles/Slide4.png',
     },
     {
-      name: 'Pro Performance Bundle',
-      description: 'WordPress & SEO & SEA',
+      name: t('webDesignServices.bundles.proPerformanceBundle.name'),
+      description: t('webDesignServices.bundles.proPerformanceBundle.description'),
       imgSrc: '/assets/Bundles/Slide5.png',
     },
     {
-      name: 'Pro Max Performance Bundle',
-      description: 'Designed & Developed & SEO & SEA',
+      name: t('webDesignServices.bundles.proMaxPerformanceBundle.name'),
+      description: t('webDesignServices.bundles.proMaxPerformanceBundle.description'),
       imgSrc: '/assets/Bundles/Slide6.png',
     },
   ];
 
   return (
     <ServicesTemplate 
-      title="Web Design" 
-      description="Discover our top-notch web design services that cater to all your needs!"
+      title={t('webDesignServices.title')}
+      description={t('webDesignServices.description')}
       imgSrc="/assets/Art for Synaps/Portfolio - Web Design.png"
-      importanceTitle="Web Design"
-      importanceText="Synaps presents to you three types of modern Web Designs that are suited and tailored to your company. Varying from having a website as visualizing as ever with multiple 3D elements to offer the best User Experience, to a website customized to the desires of the customer with an eye for details, ending to a simple one-pager website which does the job just right."
+      importanceTitle={t('webDesignServices.importanceTitle')}
+      importanceText={t('webDesignServices.importanceText')}
       importanceImgSrc="/assets/Art for Synaps/Services - Web Design.png"
       types={types}
-      bundles={bundles} // Pass bundles to the ServicesTemplate
+      bundles={bundles}
     />
   );
 };

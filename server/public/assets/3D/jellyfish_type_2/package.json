@@ -1,0 +1,11 @@
+{
+  "name": "jellyfish-type-2",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "serve"
+  },
+  "devDependencies": {
+    "serve": "^13.0.2"
+  }
+}

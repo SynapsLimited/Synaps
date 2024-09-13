@@ -8,7 +8,10 @@ const LoadingScreen = () => {
         prevImg.classList.add('fade-out');
         nextImg.classList.add('fade-in');
         nextImg.style.display = 'block';
-
+    
+        // Force reflow in Safari
+        nextImg.offsetWidth; // This forces reflow, making sure styles are applied correctly
+    
         setTimeout(() => {
           prevImg.style.display = 'none';
           prevImg.classList.remove('fade-out');
@@ -16,6 +19,7 @@ const LoadingScreen = () => {
         }, 600); // Animation duration
       }, delay);
     }
+    
 
     function updateImageSources() {
       const isMobile = window.innerWidth < 768; // or use matchMedia

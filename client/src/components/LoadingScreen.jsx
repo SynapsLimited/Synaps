@@ -45,6 +45,16 @@ const LoadingScreen = () => {
       }
     }
 
+    function setFallbackForImage1() {
+      const image1 = document.getElementById('image1');
+      setTimeout(() => {
+        if (image1) {
+          image1.classList.add('fade-out'); // Ensure the first image fades out if no animation triggers
+          image1.style.display = 'none';
+        }
+      }, 2400); // Total animation time (or more) to ensure it never takes too long
+    }
+
     // Update image sources immediately for quick load
     updateImageSources();
 
@@ -72,6 +82,9 @@ const LoadingScreen = () => {
         }, 2400); // Timing to start the slide out after the last fade in
       }
     });
+
+    // Set the fallback to ensure the first image never stays longer than the animation time
+    setFallbackForImage1();
 
     return () => {
       window.removeEventListener('resize', updateImageSources);

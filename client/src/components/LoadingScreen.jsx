@@ -3,6 +3,12 @@ import './../css/loadingscreen.css'; // Ensure you have appropriate CSS
 
 const LoadingScreen = () => {
   useEffect(() => {
+    const loadingScreen = document.getElementById('loadingScreen');
+    const image1 = document.getElementById('image1');
+    const image2 = document.getElementById('image2');
+    const image3 = document.getElementById('image3');
+    const image4 = document.getElementById('image4');
+
     function animateTransition(prevImg, nextImg, delay) {
       setTimeout(() => {
         if (prevImg && nextImg) { // Ensure both images exist before proceeding
@@ -24,10 +30,6 @@ const LoadingScreen = () => {
 
     function updateImageSources() {
       const isMobile = window.innerWidth < 768; // or use matchMedia
-      const image1 = document.getElementById('image1');
-      const image2 = document.getElementById('image2');
-      const image3 = document.getElementById('image3');
-      const image4 = document.getElementById('image4');
 
       if (image1 && image2 && image3 && image4) { // Ensure all images exist before setting sources
         image1.src = isMobile
@@ -46,7 +48,6 @@ const LoadingScreen = () => {
     }
 
     function setFallbackForImage1() {
-      const image1 = document.getElementById('image1');
       setTimeout(() => {
         if (image1) {
           image1.classList.add('fade-out'); // Ensure the first image fades out if no animation triggers
@@ -61,12 +62,6 @@ const LoadingScreen = () => {
     window.addEventListener('resize', updateImageSources);
 
     window.addEventListener('load', function () {
-      const loadingScreen = document.getElementById('loadingScreen');
-      const image1 = document.getElementById('image1');
-      const image2 = document.getElementById('image2');
-      const image3 = document.getElementById('image3');
-      const image4 = document.getElementById('image4');
-
       if (image1 && image2 && image3 && image4) { // Ensure all images exist before animating
         animateTransition(image1, image2, 600);    // Transition from image 1 to 2
         animateTransition(image2, image3, 1200); // Transition from image 2 to 3
@@ -75,7 +70,7 @@ const LoadingScreen = () => {
         // Set a timeout for the background color to change after 2 seconds
         setTimeout(() => {
           loadingScreen.style.backgroundColor = 'transparent'; // Change background color to transparent
-        }, 2200); // 2.2 seconds for background visibility
+        }, 2000); // 2 seconds for background visibility
 
         setTimeout(() => {
           image4.style.transform = 'translateY(-100%)'; // Slide out image 4
@@ -86,6 +81,13 @@ const LoadingScreen = () => {
             }, 600); // This timeout matches the last image slide out time
           }, 500); // Delay to let image4 finish its transition
         }, 2400); // Timing to start the slide out after the last fade in
+
+        // Set a timeout to hide the loading screen after 3 seconds if it hasn't already been hidden
+        setTimeout(() => {
+          if (loadingScreen.style.display !== 'none') {
+            loadingScreen.style.display = 'none'; // Hide the loading screen after 3 seconds
+          }
+        }, 3000); // 3 seconds
       }
     });
 

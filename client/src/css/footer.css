@@ -139,8 +139,9 @@
   }
 
   .footer-logo {
-    width: auto;
-    height: auto;
+    width: auto !important;
+    min-width: 100px;
+    height: none;
   }
   
 }

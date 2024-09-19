@@ -127,23 +127,26 @@
 
 
   @media screen and (max-width: 768px) {
-
-  .footer-top, .footer-bottom {
-    flex-direction: column;
+    /* Existing footer styles */
+    
+    .footer-top, .footer-bottom {
+      flex-direction: column;
+    }
+    
+    .footer-column {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 20px; /* Adjust as needed for spacing between mobile columns */
+    }
+  
+    .footer-logo {
+      width: auto !important; /* Override width for mobile */
+      max-width: 30%; /* Ensure the logo is responsive */
+      height: auto; /* Maintain aspect ratio */
+      min-width: 240px; /* Prevent the logo from getting too small */
+      padding: 40px;
+    }
   }
   
-  .footer-column {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px; /* Adjust as needed for spacing between mobile columns */
-  }
-
-  .footer-logo {
-    width: auto !important;
-    min-width: 100px;
-    height: none;
-  }
-  
-}
   
   

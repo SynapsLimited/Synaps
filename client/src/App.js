@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react'; // Import useState
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './i18n/i18n'; // Ensure this import is correct
@@ -13,7 +13,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Posts from './components/Posts';
 import ServicesForm from './components/ServicesForm';
 import UserProvider from './context/userContext';
-import Home from './pages/Index';
+import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
@@ -52,6 +52,7 @@ import WebDesignServices from './services/webdesign';
 function App() {
   const { t } = useTranslation();
   const location = useLocation();
+  const [loading, setLoading] = useState(true); // State for loading
 
   const getBackgroundClass = (pathname) => {
     switch (pathname) {
@@ -81,13 +82,25 @@ function App() {
         return 'other-background';
     }
   };
-  
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      // Simulate loading time
+      const timer = setTimeout(() => {
+        setLoading(false); // Set loading to false after 3 seconds
+      }, 3000);
+
+      return () => clearTimeout(timer); // Cleanup the timer on unmount
+    } else {
+      setLoading(false); // If not home, hide loading screen immediately
+    }
+  }, [location.pathname]); // Re-run effect when the pathname changes
 
   return (
     <div className={`App ${getBackgroundClass(location.pathname)}`}>
-      <LoadingScreen />
       <ScrollToTop />
       <Navbar />
+      {loading && <LoadingScreen />} {/* Show loading screen only on home page */}
       <div className="content-wrapper">
         <Routes>
           <Route path="/" element={<Home />} />

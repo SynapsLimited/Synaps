@@ -137,6 +137,11 @@
     margin-right: 0;
     margin-bottom: 20px; /* Adjust as needed for spacing between mobile columns */
   }
+
+  .footer-logo {
+    width: auto;
+    height: auto;
+  }
   
 }
   

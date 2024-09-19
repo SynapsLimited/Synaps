@@ -571,6 +571,14 @@
       justify-content: center;
       align-items: center;
     }
+
+    .less-margin-bottom {
+      margin-bottom: -70px;
+    }
+
+    .less-margin-top {
+      margin-top: -70px;
+    }
   
     .btn-about {
       margin-bottom: 70px;
@@ -621,6 +629,12 @@
     .service-btn {
       display: block;
       margin: 20px auto; /* Adds margin on the top and bottom, auto centers it horizontally */
+    }
+
+    .service-blob img {
+      min-width: 100px; /* Adjust based on your icon size */
+      max-width: 300px;
+      margin-bottom: 10px; /* Space between icon and text */
     }
   
     .portfolio-image {

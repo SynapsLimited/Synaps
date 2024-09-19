@@ -65,7 +65,7 @@ const Index = () => {
             <a href="#" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a>
             <a href="#" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
             <a href="#" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a>
-            <a href="#" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
+            <a href="#" className="social-link less-margin-bottom"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
             <a href="about" className="btn btn-primary btn-about">{t('indexPage.about.aboutButton')}</a>
           </div>
         </section>
@@ -123,7 +123,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="container blog-section">
+        <section className="container blog-section less-margin-bottom less-margin-top">
           <div className="article-container">
             <Swiper
               modules={[Navigation, Pagination, EffectCoverflow]}

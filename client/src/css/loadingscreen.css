@@ -19,7 +19,8 @@
   height: 100%;  /* Adjust as per your full screen requirement */
   opacity: 1;
   object-fit: cover;
-  display: block;/* Set to block but start with opacity 0 */
+  display: block; /* Set to block */
+  will-change: opacity, transform; /* Optimize for animation performance */
 }
 
 #image1 {
@@ -42,13 +43,13 @@
 
 /* Define keyframes for fade-in and fade-out */
 @keyframes fadeOut {
-  from { opacity: 1;}
-  to { opacity: 0.25;}
+  from { opacity: 1; }
+  to { opacity: 0.25; }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0.25;}
-  to { opacity: 1;}
+  from { opacity: 0.25; }
+  to { opacity: 1; }
 }
 
 .fade-out {
@@ -62,4 +63,12 @@
 /* Add a class for fading out the entire loading screen */
 .loading-screen-fade-out {
   opacity: 0; /* Fade out the entire loading screen, including background */
+}
+
+/* Media queries for mobile adjustments */
+@media (max-width: 768px) {
+  #loadingScreen img {
+    /* Adjust animation duration for mobile */
+    animation-duration: 0.3s;
+  }
 }

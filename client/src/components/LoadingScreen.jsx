@@ -72,9 +72,13 @@ const LoadingScreen = () => {
         animateTransition(image2, image3, 1200); // Transition from image 2 to 3
         animateTransition(image3, image4, 1800); // Transition from image 3 to 4
 
+        // Set a timeout for the background color to change after 2 seconds
+        setTimeout(() => {
+          loadingScreen.style.backgroundColor = 'transparent'; // Change background color to transparent
+        }, 2200); // 2.2 seconds for background visibility
+
         setTimeout(() => {
           image4.style.transform = 'translateY(-100%)'; // Slide out image 4
-          loadingScreen.style.backgroundColor = 'transparent'; // Change background color to transparent
           setTimeout(() => {
             loadingScreen.classList.add('loading-screen-fade-out'); // Fade out the entire loading screen
             setTimeout(() => {

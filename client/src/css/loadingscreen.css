@@ -10,6 +10,7 @@
   left: 0;
   z-index: 999; /* Ensure it covers other content */
   opacity: 1;
+  transition: opacity 0.6s ease-in-out; /* Transition for background fade */
 }
 
 #loadingScreen img {
@@ -35,8 +36,9 @@
 
 #image4 {
   background-image: url('../../public/assets/Loading Screen/Loading Screen Transition 4.png');
+  transition: transform 0.6s ease-in-out; /* Transition for sliding out */
+  box-shadow: 25px 5px 3px rgba(0, 0, 0, 0.192); /* Adjust shadow to match the design */
 }
-
 
 /* Define keyframes for fade-in and fade-out */
 @keyframes fadeOut {
@@ -57,7 +59,7 @@
   animation: fadeIn 0.5s ease forwards;
 }
 
-#image4 {
-  transition: transform 0.6s ease-in-out; /* Transition for sliding out */
-  box-shadow: 25px 5px 3px rgba(0, 0, 0, 0.192); /* Adjust shadow to match the design */
+/* Add a class for fading out the entire loading screen */
+.loading-screen-fade-out {
+  opacity: 0; /* Fade out the entire loading screen, including background */
 }

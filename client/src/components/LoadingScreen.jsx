@@ -76,9 +76,11 @@ const LoadingScreen = () => {
           image4.style.transform = 'translateY(-100%)'; // Slide out image 4
           loadingScreen.style.backgroundColor = 'transparent'; // Change background color to transparent
           setTimeout(() => {
-            document.getElementById('loadingScreen').style.display = 'none';
-            // Reveal the website content here or redirect if necessary
-          }, 500); // This timeout matches the last image slide out time
+            loadingScreen.classList.add('loading-screen-fade-out'); // Fade out the entire loading screen
+            setTimeout(() => {
+              loadingScreen.style.display = 'none'; // Hide the loading screen after fade out
+            }, 600); // This timeout matches the last image slide out time
+          }, 500); // Delay to let image4 finish its transition
         }, 2400); // Timing to start the slide out after the last fade in
       }
     });

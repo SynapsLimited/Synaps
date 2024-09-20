@@ -74,9 +74,8 @@ const AuthorPosts = () => {
         <h1 className="error-blog-not-found">No Posts Found</h1>
       )}
 
-      <div className="container">
         <Authors />
-      </div>
+
     </section>
   );
 };

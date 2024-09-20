@@ -43,7 +43,7 @@ const EditPost = () => {
     'link', 'image'
   ];
 
-  const POST_CATEGORIES = [ "Marketing", "Business", "Technology", "Artificial Intelligence", "Gaming", "Product", "Entertainment"];
+  const POST_CATEGORIES = [ "Marketing", "Business", "Technology", "AI", "Gaming", "Product", "Entertainment"];
 
   useEffect(() => {
     const getPost = async () => {

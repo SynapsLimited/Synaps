@@ -138,13 +138,14 @@
       margin-right: 0;
       margin-bottom: 20px; /* Adjust as needed for spacing between mobile columns */
     }
+
+    .footer-slogan {
+      text-align: center;
+      padding: 40px 0 40px 0;
+    }
   
     .footer-logo {
-      width: auto !important; /* Override width for mobile */
-      max-width: 30%; /* Ensure the logo is responsive */
-      height: auto; /* Maintain aspect ratio */
-      min-width: 240px; /* Prevent the logo from getting too small */
-      padding: 40px;
+      display: none !important;
     }
   }
   

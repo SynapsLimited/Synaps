@@ -371,7 +371,7 @@ header {
   }
 
   #spline-container::after {
-    width: 70%; /* Adjust to 70% of the container's width */
+    width: 100%; /* Adjust to 70% of the container's width */
   }
 
   .header__container {

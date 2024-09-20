@@ -46,13 +46,12 @@
         display: flex;
         justify-content: center; /* Center the content horizontally */
         align-items: center; /* Center the content vertically */
-        min-height: 80vh; /* Optional: Change as per your design needs */
         padding-top: 0;
         filter: drop-shadow(7px 8px 1px rgba(26, 26, 26, 0.374));
         transition: var(--transition);
-        padding-bottom: 0;
-        padding-top: 0;
-        min-height: 70vh;
+        padding-bottom: 60px;
+        padding-top: 120px;
+        min-height: 10vh;
       }
     
 

@@ -344,13 +344,11 @@
 
 
   @media screen and (max-width: 768px) {
-
+    /* Existing styles... */
+  
     .presentation-section {
       flex-direction: column;
-      
     }
-
-    
   
     .presentation-text h1,
     .presentation-text p {
@@ -363,114 +361,104 @@
       height: 100px;
       width: 120px;
     }
-
+  
     .presentation-image {
       margin-left: 0;
     }
     
     .card-section {
-        flex-direction: column;
-      }
-
-      .card {
-        background-color: var(--color-background-transparent);
-        color: var(--color-white);
-        border-radius: 50px;
-        padding: 50px;
-        box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.4); /* Optional shadow for depth */
-        text-align: center;
-        flex-basis: calc(33.333% - 20px); /* Adjust the width of the cards */
-        max-width: 250px; /* Maximum width of the cards */
-        box-sizing: border-box; /* Include padding and border in the element's width and height */
-        transition: var(--transition);
-      }
-
-
-      .team-title-container h2{
-       font-size: 2rem;
-    
+      flex-direction: column;
     }
-
-      .team-section { 
-
-        margin-bottom: 17rem;
-      }
-    
-      .team-card {
-        
-        flex-basis: auto;
-        min-width: 300px;
-        height: 100px;
-        padding: 30px;
-      }
-      
-
-      .team-card > .row {
-        margin-top: 20px;
-        flex-direction: column-reverse; 
-       }
-
-      .team-card > .row > .icon {
-        order: 2; /* Push icon to the bottom */
-        background: #223;
-        color: white;
-        border-radius: 50%;
-        width: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 15px;
-           
-        }
-
-        .team-wrapper {
-          margin-top: 400px;
-        }
-      
-        .team-container {
-          min-height: 280px;
-          height: 600px;
-          width: auto;
-          flex-direction: column;
-          gap: 50px;
-        }
-
-   
-
-      
-        .slide {
-          width: 300px;
-          align-items: flex-start;
-        }
-      
-        .slide > .row {
-          flex-direction: column;
-        }
-      
-        .slide > .row > .icon-1,
-        .icon-2,
-        .icon-3 {
-          width: 80px;
-           }
-      
-        .slide {
-          height: 80px;
-        }
-      
-        .slide > .row > .description {
-          height: 40px;
-          width: 40px;
-          flex-direction: row;
-          transform: translateY(0px);
-          justify-content: left;
-        }
-      
-        .team-wrapper input:checked + label {
-          height: 1200px;
-          width: 300px;
-          min-width: 200px;
-        }
-      
-
+  
+    .card {
+      background-color: var(--color-background-transparent);
+      color: var(--color-white);
+      border-radius: 50px;
+      padding: 50px;
+      box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.4); /* Optional shadow for depth */
+      text-align: center;
+      flex-basis: calc(33.333% - 20px); /* Adjust the width of the cards */
+      max-width: 250px; /* Maximum width of the cards */
+      box-sizing: border-box; /* Include padding and border in the element's width and height */
+      transition: var(--transition);
+    }
+  
+    .team-title-container h2 {
+      font-size: 2rem;
+    }
+  
+    .team-section { 
+      margin-bottom: 17rem;
+    }
+  
+    /* Adjust background images for the first two team cards */
+    .team-card[for="c1"] {
+      background-image: url('./../../public/assets/Team/Brojka.jpg');
+      background-position: right -70px center; /* Move the image left */
+    }
+  
+    .team-card[for="c2"] {
+      background-image: url('./../../public/assets/Team/Bujar.jpg');
+      background-position: right -70px center; /* Move the image left */
+    }
+  
+    .team-card[for="c3"] {
+      background-image: url('./../../public/assets/Team/Enriko.jpg');
+      background-position: right -70px center; /* Move the image left */
+    }
+  
+    .team-card[for="c4"] {
+      background-image: url('./../../public/assets/Team/Yann.jpg');
+      background-position: right -70px center; /* Move the image left */
+    }
+  
+    .team-wrapper {
+      margin-top: 400px;
+    }
+  
+    .team-container {
+      min-height: 280px;
+      height: 600px;
+      width: auto;
+      flex-direction: column;
+      gap: 50px;
+    }
+  
+    .slide {
+      width: 300px;
+      align-items: flex-start;
+    }
+  
+    .slide > .row {
+      flex-direction: column;
+    }
+  
+    .slide > .row > .icon-1,
+    .icon-2,
+    .icon-3 {
+      width: 80px;
+    }
+  
+    .slide {
+      height: 80px;
+    }
+  
+    .slide > .row > .description {
+      height: 40px;
+      width: 40px;
+      flex-direction: row;
+      transform: translateY(0px);
+      justify-content: left;
+    }
+  
+    .team-wrapper input:checked + label {
+      height: 1200px;
+      width: 300px;
+      min-width: 200px;
+    }
   }
+  
+  
+  
+  
   

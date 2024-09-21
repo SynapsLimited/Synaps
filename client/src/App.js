@@ -21,6 +21,7 @@ import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 
 // Import blog pages
+
 import ErrorPage from './blog/ErrorPage';
 import PostDetail from './blog/PostDetail';
 import Register from './blog/Register';

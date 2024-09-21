@@ -18,7 +18,7 @@ import ThumbnailGaming from "../images/gaming-blog.webp";
 import ThumbnailProduct from "../images/productshowcases-blog.webp";
 import ThumbnailEntertainment from "../images/gaming-blog.webp";
 
-const Index = () => {
+const Home = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -262,4 +262,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Home;

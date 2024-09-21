@@ -191,7 +191,7 @@ header {
 }
 
 #spline-container::after {
-  content: 'Click and Hover'; /* The text to display */
+  content: 'Cool 3D Model!'; /* The text to display */
   display: flex; /* Makes the pseudo-element a flex container */
   justify-content: center; /* Centers content horizontally within the container */
   align-items: center; /* Centers content vertically within the container */
@@ -206,11 +206,16 @@ header {
   z-index: 2; /* Ensures it sits on top of other content */
   transition: var(--transition);
   box-shadow: -4px 3px 4px rgba(0, 0, 0, 0.192); /* Adjust shadow to match the design */
+
+  background: linear-gradient(135deg, rgba(204, 204, 255, 0.101), rgba(204, 204, 255, 0.605));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border:1px solid rgba(255, 255, 255, 0.18);
 }
 
 #spline-container:hover::after {
   box-shadow: -4px 5px 2px rgba(0, 0, 0, 0.192); /* Adjust shadow to match the design */
-  transform: scale(1.1); /* Scale the element */
+  transform: scale(1.07); /* Scale the element */
 }
 
 /*====================  BG  =============================*/
@@ -368,10 +373,18 @@ header {
 
   spline-viewer {
     height: 500px;
+    pointer-events: none;
   }
 
   #spline-container::after {
-    width: 100%; /* Adjust to 70% of the container's width */
+    width: 98%; /* Adjust to 70% of the container's width */
+    bottom: 18px; /* Adjusted to position the element at the bottom */
+    right: 0; /* Positions the element to the right */
+  }
+
+  #spline-container:hover::after {
+    box-shadow: none;
+    transform: none;
   }
 
   .header__container {

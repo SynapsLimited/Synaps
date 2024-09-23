@@ -1,110 +1,126 @@
-import React, { useEffect } from 'react';
-import './../css/loadingscreen.css'; // Ensure you have appropriate CSS
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Import your SVGs
+import svg1 from './../Loading Screen/Loading Screen Transition 1.svg';
+import svg2 from './../Loading Screen/Loading Screen Transition 2.svg';
+import svg3 from './../Loading Screen/Loading Screen Transition 3.svg';
+import svg4 from './../Loading Screen/Loading Screen Transition 4.svg';
+
+import svgMobile1 from './../Loading Screen/Loading Screen Transition Mobile 1.svg';
+import svgMobile2 from './../Loading Screen/Loading Screen Transition Mobile 2.svg';
+import svgMobile3 from './../Loading Screen/Loading Screen Transition Mobile 3.svg';
+import svgMobile4 from './../Loading Screen/Loading Screen Transition Mobile 4.svg';
 
 const LoadingScreen = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentSvgIndex, setCurrentSvgIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  const desktopSvgs = [svg1, svg2, svg3, svg4];
+  const mobileSvgs = [svgMobile1, svgMobile2, svgMobile3, svgMobile4];
+  const selectedSvgs = isMobile ? mobileSvgs : desktopSvgs;
+
   useEffect(() => {
-    const loadingScreen = document.getElementById('loadingScreen');
-    const image1 = document.getElementById('image1');
-    const image2 = document.getElementById('image2');
-    const image3 = document.getElementById('image3');
-    const image4 = document.getElementById('image4');
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
 
-    function animateTransition(prevImg, nextImg, delay) {
-      setTimeout(() => {
-        if (prevImg && nextImg) { // Ensure both images exist before proceeding
-          prevImg.classList.add('fade-out');
-          nextImg.classList.add('fade-in');
-          nextImg.style.display = 'block';
+    // Cycle through SVGs
+    const interval = setInterval(() => {
+      setCurrentSvgIndex((prevIndex) => prevIndex + 1);
+    }, 1250); // Change SVG every 1.25 seconds
 
-          // Force reflow in Safari
-          void nextImg.offsetWidth; // This forces reflow, making sure styles are applied correctly
+    // Remove loading screen after animations
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 6000); // Adjust timing as needed
 
-          setTimeout(() => {
-            prevImg.style.display = 'none';
-            prevImg.classList.remove('fade-out');
-            nextImg.classList.remove('fade-in');
-          }, 600); // Animation duration
-        }
-      }, delay);
+    // Prevent background scrolling
+    if (isLoading) {
+      document.body.style.overflow = 'hidden';
     }
-
-    function updateImageSources() {
-      const isMobile = window.innerWidth < 768; // or use matchMedia
-
-      if (image1 && image2 && image3 && image4) { // Ensure all images exist before setting sources
-        image1.src = isMobile
-          ? '/assets/Loading Screen/Loading Screen Transition Mobile 1.svg'
-          : '/assets/Loading Screen/Loading Screen Transition 1.svg';
-        image2.src = isMobile
-          ? '/assets/Loading Screen/Loading Screen Transition Mobile 2.svg'
-          : '/assets/Loading Screen/Loading Screen Transition 2.svg';
-        image3.src = isMobile
-          ? '/assets/Loading Screen/Loading Screen Transition Mobile 3.svg'
-          : '/assets/Loading Screen/Loading Screen Transition 3.svg';
-        image4.src = isMobile
-          ? '/assets/Loading Screen/Loading Screen Transition Mobile 4.svg'
-          : '/assets/Loading Screen/Loading Screen Transition 4.svg';
-      }
-    }
-
-    function setFallbackForImage1() {
-      setTimeout(() => {
-        if (image1) {
-          image1.classList.add('fade-out'); // Ensure the first image fades out if no animation triggers
-          image1.style.display = 'none';
-        }
-      }, 2400); // Total animation time (or more) to ensure it never takes too long
-    }
-
-    // Update image sources immediately for quick load
-    updateImageSources();
-
-    window.addEventListener('resize', updateImageSources);
-
-    window.addEventListener('load', function () {
-      if (image1 && image2 && image3 && image4) { // Ensure all images exist before animating
-        animateTransition(image1, image2, 800);    // Transition from image 1 to 2
-        animateTransition(image2, image3, 1200); // Transition from image 2 to 3
-        animateTransition(image3, image4, 1800); // Transition from image 3 to 4
-
-        // Set a timeout for the background color to change after 2 seconds
-        setTimeout(() => {
-          loadingScreen.style.backgroundColor = 'transparent'; // Change background color to transparent
-        }, 2400); // 2 seconds for background visibility
-
-        setTimeout(() => {
-          image4.style.transform = 'translateY(-100%)'; // Slide out image 4
-          setTimeout(() => {
-            loadingScreen.classList.add('loading-screen-fade-out'); // Fade out the entire loading screen
-            setTimeout(() => {
-              loadingScreen.style.display = 'none'; // Hide the loading screen after fade out
-            }, 600); // This timeout matches the last image slide out time
-          }, 500); // Delay to let image4 finish its transition
-        }, 2400); // Timing to start the slide out after the last fade in
-
-        // Set a timeout to hide the loading screen after 3 seconds if it hasn't already been hidden
-        setTimeout(() => {
-          if (loadingScreen.style.display !== 'none') {
-            loadingScreen.style.display = 'none'; // Hide the loading screen after 3 seconds
-          }
-        }, 3000); // 3 seconds
-      }
-    });
-
-    // Set the fallback to ensure the first image never stays longer than the animation time
-    setFallbackForImage1();
 
     return () => {
-      window.removeEventListener('resize', updateImageSources);
+      window.removeEventListener('resize', handleResize);
+      clearInterval(interval);
+      clearTimeout(timeout);
+      document.body.style.overflow = ''; // Re-enable scrolling
     };
-  }, []);
+  }, [isLoading]);
+
+  if (!isLoading) {
+    return null;
+  }
+
+  const slideUpVariants = {
+    initial: { y: 0 },
+    animate: { y: '-100%', transition: { duration: 0.8, ease: 'easeInOut' } },
+  };
 
   return (
-    <div id="loadingScreen">
-      <img id="image1" alt="Image 1" />
-      <img id="image2" alt="Image 2" style={{ display: 'none' }} />
-      <img id="image3" alt="Image 3" style={{ display: 'none' }} />
-      <img id="image4" alt="Image 4" style={{ display: 'none' }} />
+    <div
+      id="loadingScreen"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+        zIndex: 1100,
+        backgroundColor:
+          currentSvgIndex < selectedSvgs.length
+            ? 'var(--color-background)'
+            : 'transparent', // Conditionally set background color
+      }}
+    >
+      <AnimatePresence>
+        {currentSvgIndex < selectedSvgs.length && (
+          <motion.img
+            key={currentSvgIndex}
+            src={selectedSvgs[currentSvgIndex]}
+            alt={`Loading ${currentSvgIndex + 1}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      {currentSvgIndex === selectedSvgs.length && (
+        <motion.div
+          key="slide-up-container"
+          variants={slideUpVariants}
+          initial="initial"
+          animate="animate"
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            overflow: 'hidden',
+          }}
+        >
+          <img
+            src={selectedSvgs[selectedSvgs.length - 1]}
+            alt="Loading final"
+            style={{
+              opacity: 1,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        </motion.div>
+      )}
     </div>
   );
 };

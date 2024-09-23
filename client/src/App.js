@@ -84,25 +84,13 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    if (location.pathname === '/') {
-      // Simulate loading time
-      const timer = setTimeout(() => {
-        setLoading(false); // Set loading to false after 3 seconds
-      }, 3000);
 
-      return () => clearTimeout(timer); // Cleanup the timer on unmount
-    } else {
-      setLoading(false); // If not home, hide loading screen immediately
-    }
-  }, [location.pathname]); // Re-run effect when the pathname changes
 
   return (
     <div className={`App ${getBackgroundClass(location.pathname)}`}>
       <ScrollToTop />
       <Navbar />
-      {loading && <LoadingScreen />} {/* Show loading screen only on home page */}
-      <div className="content-wrapper">
+      <LoadingScreen />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -145,7 +133,6 @@ function App() {
         <FixedMenu />
         <LogoShowcase />
         <Footer />
-      </div>
     </div>
   );
 }

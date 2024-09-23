@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './../css/blog.css'; // Assuming you have a corresponding CSS file for styling
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import Posts from '../components/Posts';
 import Authors from '../blog/Authors';
@@ -13,7 +13,7 @@ const Blog = () => {
     // Dynamically load the Spline Viewer script
     const script = document.createElement('script');
     script.type = 'module';
-    script.src = 'https://unpkg.com/@splinetool/viewer@1.7.2/build/spline-viewer.js';
+    script.src = 'https://unpkg.com/@splinetool/viewer@1.9.27/build/spline-viewer.js';
     document.body.appendChild(script);
 
     // Clean up the script when the component unmounts

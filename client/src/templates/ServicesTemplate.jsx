@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './../css/services.css';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
@@ -19,7 +19,7 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
     // Dynamically load the Spline Viewer script
     const script = document.createElement('script');
     script.type = 'module';
-    script.src = 'https://unpkg.com/@splinetool/viewer@1.7.2/build/spline-viewer.js';
+    script.src = 'https://unpkg.com/@splinetool/viewer@1.9.27/build/spline-viewer.js';
     document.body.appendChild(script);
 
     // Clean up the script when the component unmounts

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import SplineViewer from '../components/SplineViewer';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -25,7 +25,7 @@ const Home = () => {
     // Dynamically load the Spline Viewer script
     const script = document.createElement('script');
     script.type = 'module';
-    script.src = 'https://unpkg.com/@splinetool/viewer@1.7.2/build/spline-viewer.js';
+    script.src = 'https://unpkg.com/@splinetool/viewer@1.9.27/build/spline-viewer.js';
     document.body.appendChild(script);
 
     // Clean up the script when the component unmounts
@@ -256,7 +256,6 @@ const Home = () => {
           </div>
         </section>
 
-        <section id="logoshowcase-placeholder"></section>
       </div>
     </div>
   );

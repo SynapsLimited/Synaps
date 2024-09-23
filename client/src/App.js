@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'; // Import useState
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './i18n/i18n'; // Ensure this import is correct
+import { HelmetProvider } from 'react-helmet-async';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -87,6 +88,7 @@ function App() {
 
 
   return (
+    <HelmetProvider>
     <div className={`App ${getBackgroundClass(location.pathname)}`}>
       <ScrollToTop />
       <Navbar />
@@ -134,6 +136,7 @@ function App() {
         <LogoShowcase />
         <Footer />
     </div>
+    </HelmetProvider>
   );
 }
 

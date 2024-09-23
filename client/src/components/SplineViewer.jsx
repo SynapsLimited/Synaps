@@ -1,10 +1,11 @@
 // components/SplineViewer.js
 import React from 'react';
+import Spline from '@splinetool/react-spline';
 
 const SplineViewer = ({ url }) => {
   return (
     <div id="spline-container">
-      <spline-viewer url={url}></spline-viewer>
+      <Spline scene={url} />
     </div>
   );
 };

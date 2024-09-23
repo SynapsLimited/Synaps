@@ -203,7 +203,7 @@ header {
   border-radius: 22px; /* Gives rounded corners to the element */
   background: var(--color-background); /* Sets the background color */
   color: var(--color-white); /* Sets the text color for visibility */
-  z-index: 2; /* Ensures it sits on top of other content */
+  z-index: 4; /* Ensures it sits on top of other content */
   transition: var(--transition);
   box-shadow: -4px 3px 4px rgba(0, 0, 0, 0.192); /* Adjust shadow to match the design */
 

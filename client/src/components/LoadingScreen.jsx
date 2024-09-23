@@ -33,17 +33,17 @@ const LoadingScreen = () => {
 
       if (image1 && image2 && image3 && image4) { // Ensure all images exist before setting sources
         image1.src = isMobile
-          ? '/assets/Loading Screen/Loading Screen Transition Mobile 1.png'
-          : '/assets/Loading Screen/Loading Screen Transition 1.png';
+          ? '/assets/Loading Screen/Loading Screen Transition Mobile 1.svg'
+          : '/assets/Loading Screen/Loading Screen Transition 1.svg';
         image2.src = isMobile
-          ? '/assets/Loading Screen/Loading Screen Transition Mobile 2.png'
-          : '/assets/Loading Screen/Loading Screen Transition 2.png';
+          ? '/assets/Loading Screen/Loading Screen Transition Mobile 2.svg'
+          : '/assets/Loading Screen/Loading Screen Transition 2.svg';
         image3.src = isMobile
-          ? '/assets/Loading Screen/Loading Screen Transition Mobile 3.png'
-          : '/assets/Loading Screen/Loading Screen Transition 3.png';
+          ? '/assets/Loading Screen/Loading Screen Transition Mobile 3.svg'
+          : '/assets/Loading Screen/Loading Screen Transition 3.svg';
         image4.src = isMobile
-          ? '/assets/Loading Screen/Loading Screen Transition Mobile 4.png'
-          : '/assets/Loading Screen/Loading Screen Transition 4.png';
+          ? '/assets/Loading Screen/Loading Screen Transition Mobile 4.svg'
+          : '/assets/Loading Screen/Loading Screen Transition 4.svg';
       }
     }
 
@@ -63,14 +63,14 @@ const LoadingScreen = () => {
 
     window.addEventListener('load', function () {
       if (image1 && image2 && image3 && image4) { // Ensure all images exist before animating
-        animateTransition(image1, image2, 600);    // Transition from image 1 to 2
+        animateTransition(image1, image2, 800);    // Transition from image 1 to 2
         animateTransition(image2, image3, 1200); // Transition from image 2 to 3
         animateTransition(image3, image4, 1800); // Transition from image 3 to 4
 
         // Set a timeout for the background color to change after 2 seconds
         setTimeout(() => {
           loadingScreen.style.backgroundColor = 'transparent'; // Change background color to transparent
-        }, 2000); // 2 seconds for background visibility
+        }, 2400); // 2 seconds for background visibility
 
         setTimeout(() => {
           image4.style.transform = 'translateY(-100%)'; // Slide out image 4

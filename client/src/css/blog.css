@@ -231,7 +231,7 @@ input, select, textarea {
 }
   
 .register, .login, .create-post{
-    margin-top: 5rem;
+    padding: 70px;
     width: 50%;
     margin-inline: auto;
     height: calc(100hv - 12rem);

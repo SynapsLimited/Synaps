@@ -191,7 +191,7 @@ header {
 }
 
 #spline-container::after {
-  content: 'Cool 3D Model!'; /* The text to display */
+  content: 'Interact with Synaps!'; /* The text to display */
   display: flex; /* Makes the pseudo-element a flex container */
   justify-content: center; /* Centers content horizontally within the container */
   align-items: center; /* Centers content vertically within the container */

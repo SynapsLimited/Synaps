@@ -301,7 +301,8 @@
     height: calc(100vh - 55px);
     transform: translateX(-100%);
     text-align: center;
-    overflow: hidden;
+    overflow: scroll;
+    
   }
 
   .navbar ul.scrolled {
@@ -336,7 +337,7 @@
     display: none; /* Hidden by default */
     flex-direction: column; /* Arrange items in a column */
     align-items: center; /* Center items horizontally */
-    padding: 0; /* Optional: Add padding for spacing */
+    margin-top: -10px; /* Optional: Add padding for spacing */
     transition: max-height 0.3s ease, opacity 0.3s ease; /* Smooth transition for opening */
     overflow: hidden; /* Hide overflowing content */
     opacity: 0; /* Transparent by default */
@@ -344,3 +345,5 @@
   }
 
 }
+
+

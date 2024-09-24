@@ -45,7 +45,9 @@ const Contact = () => {
             <section className="container contact-section">
                 <div className="blob location-blob">
                     <h2>{t('contactPage.sections.location.title')}</h2>
+                    <a href='https://maps.app.goo.gl/bumqeQ7GmkcZK42F9'>
                     <img className="location-img" src="/assets/Icons For Synaps/Main Icons/Europe Map.png" alt={t('contactPage.sections.location.imageAlt')} />
+                    </a>
                     <h5>{t('contactPage.sections.location.description')}</h5>
                 </div>
                 <div className="blob phone-mail-blob">

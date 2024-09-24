@@ -286,7 +286,7 @@
 
 /* Mobile Devices - Phones/Tablets */
 
-@media only screen and (max-width: 720px) { 
+@media only screen and (max-width: 800px) { 
 
   /* MOBILE NAVIGATION */
      
@@ -299,7 +299,7 @@
     background-color: var(--color-background);
     width: 100%;
     height: calc(100vh - 55px);
-    transform: translate(-101%);
+    transform: translateX(-100%);
     text-align: center;
     overflow: hidden;
   }
@@ -330,50 +330,17 @@
   }
 
   .nav-item.has-dropdown .dropdown-menu {
-    position: fixed;
-    left: 50%;
-    top: 100%;
-    transform: translate(-50%, -50%);
-    display: none;
-    background-color: var(--color-background);
-    z-index: 1000;
-    border-radius: 0 0 22px 22px;
-    width: 100%;
-    padding: 10px;
-    margin: auto;
+    position: static; /* Remove absolute positioning */
+    width: 100%; /* Full width */
+    background-color: none !important;
+    display: none; /* Hidden by default */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center; /* Center items horizontally */
+    padding: 0; /* Optional: Add padding for spacing */
+    transition: max-height 0.3s ease, opacity 0.3s ease; /* Smooth transition for opening */
+    overflow: hidden; /* Hide overflowing content */
+    opacity: 0; /* Transparent by default */
+    box-shadow: none !important;
   }
 
-  .nav-item.has-dropdown .dropdown-menu.scrolled {
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); /* Adjust shadow to match the design */
-  }
-
-  .nav-item.has-dropdown .dropdown-menu.show {
-    display: block;
-  }
-
-  .nav-item.has-dropdown .dropdown-menu li {
-    padding: 5px 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-white);
-  }
-
-  .nav-item.has-dropdown .dropdown-menu li.scrolled {
-    color: var(--color-background);
-  }
-
-  .nav-item.has-dropdown .dropdown-menu li .country-flags {
-    margin-right: 10px;
-  }
-
-  .nav-item.has-dropdown .dropdown-menu li:hover {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
-
-  .nav-item.has-dropdown .dropdown-menu .last-link {
-    padding-left: 15px;
-  }
 }

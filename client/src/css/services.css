@@ -515,6 +515,12 @@
 
 
   @media screen and (max-width:768px) {
+
+h5{
+  font-size: 0.8rem;
+}
+
+
     .specific-service-section {
       margin-bottom: 0;
   }
@@ -623,6 +629,8 @@
 .services-overview-title-select p {
     text-align: center;
 }
+
+
 
 }
     

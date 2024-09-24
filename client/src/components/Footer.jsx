@@ -19,7 +19,9 @@ function Footer() {
         <div className="footer-bottom">
           <div className="footer-column footer-location">
             <h4>{t('footer.locationTitle')}</h4> {/* Translated location title */}
+            <a href='https://maps.app.goo.gl/bumqeQ7GmkcZK42F9'>
             <img src="/assets/Icons For Synaps/Main Icons/Europe Map.png" className="location-img" alt="Europe Map" />
+            </a>
             <h5>{t('footer.locationSubtitle')}</h5> {/* Translated subtitle */}
             <div className="footer-slogan">
               <h4>{t('footer.slogan')}</h4> {/* Translated slogan */}

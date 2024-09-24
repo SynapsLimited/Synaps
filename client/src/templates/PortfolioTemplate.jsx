@@ -26,7 +26,7 @@ const Gallery = ({ items }) => {
     <section className="container gallery">
       <div className="row">
         <ul>
-          <a href="#" className="close" onClick={handleCloseClick}>{t('portfolioTemplatePage.gallery.closeButton')}</a>
+          <a href="#" className="close" onClick={handleCloseClick}></a>
           {items.map((item, index) => (
             <li key={index}>
               <a href={`#item${index + 1}`} onClick={(event) => handleItemClick(event, `item${index + 1}`)}>

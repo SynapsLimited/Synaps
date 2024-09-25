@@ -84,7 +84,7 @@ const About = () => {
               <div className="row">
                 <div className="icon">1</div>
                 <div className="description">
-                  <h4>{t('aboutPage.team.members.1.name')}</h4>
+                  <h4>Brojka</h4>
                   <p>{t('aboutPage.team.members.1.role')}</p>
                 </div>
               </div>
@@ -94,7 +94,7 @@ const About = () => {
               <div className="row">
                 <div className="icon">2</div>
                 <div className="description">
-                  <h4>{t('aboutPage.team.members.2.name')}</h4>
+                  <h4>Bujar</h4>
                   <p>{t('aboutPage.team.members.2.role')}</p>
                 </div>
               </div>
@@ -104,7 +104,7 @@ const About = () => {
               <div className="row">
                 <div className="icon">3</div>
                 <div className="description">
-                  <h4>{t('aboutPage.team.members.3.name')}</h4>
+                  <h4>Enrique</h4>
                   <p>{t('aboutPage.team.members.3.role')}</p>
                 </div>
               </div>
@@ -114,7 +114,7 @@ const About = () => {
               <div className="row">
                 <div className="icon">4</div>
                 <div className="description">
-                  <h4>{t('aboutPage.team.members.4.name')}</h4>
+                  <h4>Yann-Patrick</h4>
                   <p>{t('aboutPage.team.members.4.role')}</p>
                 </div>
               </div>

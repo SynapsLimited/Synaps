@@ -29,20 +29,24 @@
       "title": "Meet Our Team",
       "members": {
         "1": {
-          "name": "Muhamed Brojka",
+          "name": "",
           "role": "All-round Marketer"
         },
         "2": {
-          "name": "Bujar Shehaj",
+          "name": "",
           "role": "All-round Marketer"
         },
         "3": {
-          "name": "Enriko Shkurti",
+          "name": "",
           "role": "Sales Manager"
         },
         "4": {
-          "name": "Yann Lazarev",
+          "name": "",
           "role": "Copywriter"
+        },
+        "5": {
+          "name": "",
+          "role": "Graphic Designer"
         }
       }
     }

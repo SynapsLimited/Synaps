@@ -119,6 +119,16 @@ const About = () => {
                 </div>
               </div>
             </label>
+            <input type="radio" name="slide" id="c5" />
+            <label htmlFor="c5" className="team-card">
+              <div className="row">
+                <div className="icon">5</div>
+                <div className="description">
+                  <h4>Nikki</h4>
+                  <p>{t('aboutPage.team.members.5.role')}</p>
+                </div>
+              </div>
+            </label>
           </div>
         </div>
       </section>

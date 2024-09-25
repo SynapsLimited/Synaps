@@ -230,6 +230,10 @@
     background-image: url('./../../public/assets/Team/Yann.jpg');
 }
 
+.team-card[for="c5"] {
+  background-image: url('./../../public/assets/Team/Niki.jpg');
+}
+
 
 
 
@@ -418,7 +422,7 @@
   
     .team-container {
       min-height: 280px;
-      height: 600px;
+      height: 700px;
       width: auto;
       flex-direction: column;
       gap: 50px;

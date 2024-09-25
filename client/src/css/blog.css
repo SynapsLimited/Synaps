@@ -17,7 +17,7 @@
 
 .blog-title-filtered {
     text-align: center;
-    margin-top: 7rem;
+    padding-top: 7rem;
     margin-bottom: 3rem;
 }
 
@@ -231,7 +231,7 @@ input, select, textarea {
 }
   
 .register, .login, .create-post{
-    padding: 70px;
+    padding-top: 70px;
     width: 50%;
     margin-inline: auto;
     height: calc(100hv - 12rem);
@@ -299,7 +299,7 @@ input, select, textarea {
     display: grid;
     place-items: center;
     text-align: center;
-    margin-top: 8rem;
+    padding-top: 8rem;
 }
 
 .profile-details {
@@ -375,11 +375,14 @@ input, select, textarea {
 
 /* ================== Dashboard ============= */
 
+
+.dashboard {
+    padding-top: 7rem;
+}
 .dashboard-container {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
-    margin-top: 8rem;
 }
 
 .dashboard-post {
@@ -631,17 +634,31 @@ input, select, textarea {
 
 .dashboard-post {
     flex-direction: column;
-    padding: 2rem;
+    padding: 0rem;
 }
 
 .dashboard-post-info {
     gap: 1.5rem;
+    flex-direction: column;
+    
+}
+
+.dashboard-post-info h4 {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 10px;
 }
 
 .dashboard-post-thumbnail {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 22%;
+    padding: 10px;
+}
+
+.dashboard-post-actions .btn {
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 20px;
 }
 
 

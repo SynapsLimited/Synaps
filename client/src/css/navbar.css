@@ -344,6 +344,10 @@
     box-shadow: none !important;
   }
 
+  .nav-item.has-dropdown .dropdown-menu.scrolled {
+    background-color: transparent;
+  }
+
 }
 
 

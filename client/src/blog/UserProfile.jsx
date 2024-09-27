@@ -1,13 +1,15 @@
+// src/components/UserProfile.jsx
+
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEdit, FaCheck } from "react-icons/fa";
-import './../css/blog.css'; // Assuming you have a corresponding CSS file for styling
+import './../css/blog.css'; // Ensure you have appropriate CSS
 import { UserContext } from '../context/userContext';
 import axios from 'axios';
-import { useTranslation } from 'react-i18next'; // Importing useTranslation hook
+import { useTranslation } from 'react-i18next';
 
 const UserProfile = () => {
-  const { t } = useTranslation(); // Initialize useTranslation hook
+  const { t } = useTranslation();
   const [avatar, setAvatar] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,19 +18,22 @@ const UserProfile = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [error, setError] = useState('');
   const [avatarPreview, setAvatarPreview] = useState('');
+  const [isAvatarTouched, setIsAvatarTouched] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const { currentUser } = useContext(UserContext);
-  const [isAvatarTouched, setIsAvatarTouched] = useState(false);
-
   const token = currentUser?.token;
   const navigate = useNavigate();
 
+  // Redirect to login if not authenticated
   useEffect(() => {
     if (!token) {
       navigate('/login');
     }
   }, [token, navigate]);
 
+  // Fetch user data on component mount
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -39,67 +44,128 @@ const UserProfile = () => {
         const { name, email, avatar } = response.data;
         setName(name);
         setEmail(email);
-        setAvatarPreview(avatar);
+        setAvatarPreview(avatar || ''); // 'avatar' is the Cloudinary URL
       } catch (error) {
-        console.log(error);
+        console.error("Failed to fetch user data.", error);
+        setError(t('UserProfile.fetchError'));
       }
     };
     getUser();
-  }, [currentUser.id, token]);
+  }, [currentUser.id, token, t]);
 
-  const changeAvatarHandler = async () => {
-    setIsAvatarTouched(false);
-    try {
-      const postData = new FormData();
-      postData.set('avatar', avatar);
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, postData, {
-        withCredentials: true,
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setAvatarPreview(response?.data.avatar);
-    } catch (error) {
-      console.log(error);
+  // Handle avatar file selection
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+      if (!allowedTypes.includes(file.type)) {
+        setError("Only JPEG, PNG, and WEBP formats are allowed.");
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+        setError("File size should be less than 5MB.");
+        return;
+      }
+      setAvatar(file);
+      setAvatarPreview(URL.createObjectURL(file));
+      setIsAvatarTouched(true);
+      setError(''); // Clear previous errors
     }
   };
 
+  // Upload new avatar to Cloudinary
+  const changeAvatarHandler = async () => {
+    if (!avatar) return;
+
+    setIsUploading(true);
+    setError('');
+    try {
+      const formData = new FormData();
+      formData.append('avatar', avatar);
+
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
+        withCredentials: true,
+        headers: { 
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      // Success: update avatar preview with the Cloudinary URL
+      setAvatarPreview(response.data.avatar || '');
+      setIsAvatarTouched(false);
+    } catch (error) {
+      console.error("Failed to upload avatar:", error);
+      if (error.response) {
+        console.error("Server Error:", error.response.data);
+        setError(error.response.data.message || "Failed to upload avatar. Server error.");
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+        setError("No response from the server. Please try again.");
+      } else {
+        console.error("Axios error setup:", error.message);
+        setError("Error in uploading avatar. Please try again.");
+      }
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  // Handle profile detail updates
   const updateUserDetails = async (e) => {
     e.preventDefault();
+    setIsUpdating(true);
+    setError('');
+
+    // Basic front-end validation
+    if (newPassword && newPassword !== confirmNewPassword) {
+      setError(t('UserProfile.passwordMismatch'));
+      setIsUpdating(false);
+      return;
+    }
+
     try {
       const userData = {
         name,
         email,
         currentPassword,
-        newPassword,
-        confirmNewPassword,
+        newPassword: newPassword || undefined, // Only send if provided
+        confirmNewPassword: confirmNewPassword || undefined,
       };
+
       const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/users/edit-user`, userData, {
         withCredentials: true,
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { 
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
       });
+
       if (response.status === 200) {
-        navigate('/logout');
+        navigate('/logout'); // Redirect to logout to refresh tokens or session
       }
     } catch (error) {
-      setError(error.response?.data?.message || 'An error occurred');
+      console.error("Failed to update user details.", error);
+      setError(error.response?.data?.message || "Error");
+    } finally {
+      setIsUpdating(false);
     }
-  };
-
-  const handleAvatarChange = (e) => {
-    const file = e.target.files[0];
-    setAvatar(file);
-    setAvatarPreview(URL.createObjectURL(file));
-    setIsAvatarTouched(true);
   };
 
   return (
     <section className="profile">
       <div className="container profile-container">
-        <Link to={`/myposts/${currentUser.id}`} className="btn btn-secondary">{t('UserProfile.dashboardButton')}</Link>
+        <Link to={`/myposts/${currentUser.id}`} className="btn btn-secondary">
+          {t('UserProfile.dashboardButton')}
+        </Link>
 
         <div className="profile-details">
           <div className="avatar-wrapper">
             <div className="profile-avatar">
-              <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${avatarPreview}`} alt="" />
+              <img 
+                src={avatarPreview || `${process.env.REACT_APP_ASSETS_URL}/Synaps_Avatar-b44b4475-2805-4e92-a0d5-f0089b974e1a_szy1ho.png`} 
+                alt="User Avatar"
+              />
             </div>
             <form className="avatar-form">
               <input 
@@ -108,15 +174,25 @@ const UserProfile = () => {
                 id="avatar" 
                 onChange={handleAvatarChange} 
                 accept="image/png, image/jpeg, image/webp" 
+                style={{ display: 'none' }} 
               />
-              <label className="btn btn-primary profile-avatar-btn" htmlFor="avatar">
-                <FaEdit /> 
+              <label className="btn btn-primary profile-avatar-btn" htmlFor="avatar" title={t('UserProfile.changeAvatar')}>
+                <FaEdit />
               </label>
             </form>
-            {isAvatarTouched && <button className="btn btn-primary profile-avatar-btn" onClick={changeAvatarHandler}><FaCheck /></button>}
+            {isAvatarTouched && (
+              <button 
+                className="btn btn-success profile-avatar-btn" 
+                onClick={changeAvatarHandler}
+                disabled={isUploading}
+                title={t('UserProfile.saveAvatar')}
+              >
+                <FaCheck /> {isUploading ? "Uploading..." : "Save"}
+              </button>
+            )}
           </div>
 
-          <h1>{currentUser.name}</h1>
+          <h1>{name}</h1>
 
           <form className="form profile-form" onSubmit={updateUserDetails}>
             {error && <p className="form-error-message">{error}</p>}
@@ -125,18 +201,21 @@ const UserProfile = () => {
               placeholder={t('UserProfile.fullNamePlaceholder')}
               value={name}
               onChange={e => setName(e.target.value)}
+              required
             />
             <input
               type="email"
               placeholder={t('UserProfile.emailPlaceholder')}
               value={email}
               onChange={e => setEmail(e.target.value)}
+              required
             />
             <input
               type="password"
               placeholder={t('UserProfile.currentPasswordPlaceholder')}
               value={currentPassword}
               onChange={e => setCurrentPassword(e.target.value)}
+              required
             />
             <input
               type="password"
@@ -150,7 +229,13 @@ const UserProfile = () => {
               value={confirmNewPassword}
               onChange={e => setConfirmNewPassword(e.target.value)}
             />
-            <button type="submit" className='btn btn-primary btn-submit-profile'>{t('UserProfile.updateDetailsButton')}</button>
+            <button 
+              type="submit" 
+              className='btn btn-primary btn-submit-profile'
+              disabled={isUpdating}
+            >
+              {isUpdating ? t('UserProfile.updating') : t('UserProfile.updateDetailsButton')}
+            </button>
           </form>
         </div>
       </div>

@@ -52,6 +52,7 @@ const PostDetail = () => {
   }
 
   return (
+    <div className='post-detail-section'>
     <section className="container post-detail">
       {post && post.creator ? ( // Ensure post and creator are defined
         <div className="post-detail-container">
@@ -67,14 +68,17 @@ const PostDetail = () => {
 
           <h1>{post.title}</h1>
           <div className="post-detail-thumbnail">
-            <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${post.thumbnail}`} alt="" />
+            <img src={`${process.env.REACT_APP_ASSETS_URL}/${post.thumbnail}`} alt="" />
           </div>
           <p dangerouslySetInnerHTML={{ __html: post.description }}></p>
         </div>
       ) : (
         <p className='error'>Author not found for this post.</p>
       )}
+
+      <a href="/blog" className="btn btn-secondary post-detail-btn">Back to Blog</a>
     </section>
+    </div>
   );
 };
 

@@ -137,13 +137,27 @@
 
 /* ================== Post Detail ============= */
 
+
+.post-detail-section {
+    padding-top: 10rem;
+
+}
+
+
+
 .post-detail {
-    margin-top: 10rem;
     width: var(--form-width);
     background: var(--color-background-transparent);
     margin-inline: auto;
     border-radius: 22px;
     padding: 2rem;
+}
+
+.post-detail-btn {
+    margin-top: 3rem;
+    text-align: center;
+    align-items: center;
+    align-self: center;
 }
 
 .post-detail-header {
@@ -588,7 +602,6 @@ input, select, textarea {
 
 .post-detail {
     width: 100%;
-    padding: 2rem;
 }
 
 .post-detail-buttons {

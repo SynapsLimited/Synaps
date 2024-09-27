@@ -1,12 +1,13 @@
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const fs = require('fs')
-const path = require('path')
-const {v4: uuid} = require("uuid")
 
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { v4: uuid } = require("uuid");
+const uploadToCloudinary = require('../helpers/cloudinaryUpload'); // Ensure correct path
+const cloudinary = require('cloudinary').v2; // Not necessary if already configured in cloudinaryConfig.js
 
-const User = require('../models/userModel')
-const HttpError = require("../models/errorModel")
+const User = require('../models/userModel');
+const HttpError = require("../models/errorModel");
+
 
 // Define allowed emails
 const allowedEmails = [
@@ -18,10 +19,9 @@ const allowedEmails = [
 ];
 
 
-
-// ======================= Register a new User
-// POST : api/users/register
-//UNPROTECTED
+// ======================= Register a New User
+// POST : /api/users/register
+// UNPROTECTED
 
 const registerUser = async (req, res, next) => {
     try {
@@ -32,8 +32,8 @@ const registerUser = async (req, res, next) => {
 
         const newEmail = email.toLowerCase();
 
-         // Check if the email is in the allowed list
-         if (!allowedEmails.includes(newEmail)) {
+        // Check if the email is in the allowed list
+        if (!allowedEmails.includes(newEmail)) {
             return next(new HttpError("Not authorized to register. Contact Synaps!", 422));
         }
 
@@ -61,9 +61,9 @@ const registerUser = async (req, res, next) => {
 };
 
 
-// ======================= Login a registered User
-// POST : api/users/login
-//UNPROTECTED
+// ======================= Login a Registered User
+// POST : /api/users/login
+// UNPROTECTED
 
 const loginUser = async (req, res, next) => {
     try {
@@ -100,143 +100,154 @@ const loginUser = async (req, res, next) => {
 
 
 
-// ======================= User Profile
-// POST : api/users/:id
-//UNPROTECTED
+// ======================= Get User Profile
+// GET : /api/users/:id
+// UNPROTECTED
 
 const getUser = async (req, res, next) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const user = await User.findById(id).select('-password');
-        if(!user) {
-            return next(new HttpError("User not found.", 404))
-        }
-            res.status(200).json(user);
-    }   catch (error) {
-        return next(new HttpError(error))
-    }
-}
-
-
-// ======================= Change User Avatar (profile picture)
-// POST : api/users/change-avatar
-//UNPROTECTED
-
-const changeAvatar = async (req, res, next) => {
-    try {
-        console.log("Received request files:", req.files); // Log the received files
-
-        if (!req.files || !req.files.avatar) {
-            return next(new HttpError("Please choose an image.", 422));
-        }
-
-        // find user from database
-        const user = await User.findById(req.user.id);
         if (!user) {
             return next(new HttpError("User not found.", 404));
         }
-
-        // delete old avatar if exists
-        if (user.avatar) {
-            fs.unlink(path.join(__dirname, '..', 'uploads', user.avatar), (err) => {
-                if (err) {
-                    return next(new HttpError(err));
-                }
-            });
-        }
-
-        const { avatar } = req.files;
-
-        // check file size
-        if (avatar.size > 2000000) {
-            return next(new HttpError("Profile picture too big. Should be less than 2MB", 422));
-        }
-
-        let fileName = avatar.name;
-        let splittedFilename = fileName.split('.');
-        let newFilename = `${splittedFilename[0]}-${uuid()}.${splittedFilename[splittedFilename.length - 1]}`;
-        
-        avatar.mv(path.join(__dirname, '..', 'uploads', newFilename), async (err) => {
-            if (err) {
-                return next(new HttpError(err));
-            }
-
-            const updatedAvatar = await User.findByIdAndUpdate(req.user.id, { avatar: newFilename }, { new: true });
-            if (!updatedAvatar) {
-                return next(new HttpError("Avatar couldn't be changed", 422));
-            }
-            res.status(200).json(updatedAvatar);
-        });
+        res.status(200).json(user);
     } catch (error) {
-        return next(new HttpError(error));
-    }
-};
-
-
-
-// ======================= Edit User Details (from profile)
-// POST : api/users/edit-user
-//UNPROTECTED
-
-const editUser = async (req, res, next) => {
-    try {
-        const {name, email, currentPassword, newPassword, confirmNewPassword} = req.body;
-        if(!name || !email || !currentPassword || !newPassword) {
-            return next(new HttpError("Fill in all fields", 422))
-        }
-
-        // get user from database
-        const user = await User.findById(req.user.id);
-        if(!user) {
-            return next(new HttpError("User not found", 403))
-        }
-
-
-        //make sure new email doesn't already exist
-        const emailExist = await User.findOne({email});
-
-        if(emailExist && (emailExist._id != req.user.id)) {
-            return next(new HttpError("Email already exist.", 422))
-        }
-
-        // compare current password to db password
-        const validateUserPassword = await bcrypt.compare(currentPassword, user.password);
-            if(!validateUserPassword) {
-                return next(new HttpError("Invalid current password.", 422))
-            }
-
-        //compare new passwords
-        if(newPassword !== confirmNewPassword) {
-            return next(new HttpError("New passwords do not match.", 422))
-        }
-
-        //hash new password
-        const salt = await bcrypt.genSalt(10)
-        const hash = await bcrypt.hash(newPassword, salt);
-
-        //update user info in database
-        const newInfo = await User.findByIdAndUpdate(req.user.id, {name, email, password: hash}, {new: true})
-        res.status(200).json(newInfo)
-
-    } catch (error) {
-        return next(new HttpError(error))
+        return next(new HttpError(error.message || "Failed to fetch user.", 500));
     }
 }
 
 
+// ======================= Change User Avatar
+// POST : /api/users/change-avatar
+// PROTECTED
+
+const changeAvatar = async (req, res, next) => {
+    try {
+      // Ensure user is authenticated (assuming authMiddleware sets req.user)
+      if (!req.user || !req.user.id) {
+        return next(new HttpError("Unauthorized.", 401));
+      }
+  
+      // Check if a file was uploaded
+      if (!req.file) {
+        return next(new HttpError("Please choose an image.", 422));
+      }
+  
+      // Generate a unique and sanitized filename for the avatar
+      const originalName = req.file.originalname.split('.')[0].replace(/\s+/g, '_'); // Replace spaces with underscores
+      const avatarExtension = req.file.mimetype.split('/')[1]; // Extract the file extension (e.g., png, jpeg)
+      const finalAvatarFilename = `${originalName}-${uuid()}`; // Append UUID to ensure uniqueness
+  
+      // Upload avatar to Cloudinary using the buffer
+      const result = await uploadToCloudinary(req.file.buffer, 'avatars', finalAvatarFilename);
+  
+      if (!result.secure_url || !result.public_id) {
+        return next(new HttpError("Failed to upload avatar to Cloudinary.", 500));
+      }
+  
+      // Optionally, delete the old avatar from Cloudinary (if one exists)
+      const user = await User.findById(req.user.id);
+      if (user && user.avatarPublicId) {
+        await cloudinary.uploader.destroy(user.avatarPublicId);
+      }
+  
+      // Update user in the database:
+      // - Save the Cloudinary URL in user.avatar
+      // - Save the Cloudinary public_id in user.avatarPublicId
+      const updatedUser = await User.findByIdAndUpdate(
+        req.user.id,
+        {
+          avatar: result.secure_url, // Save the Cloudinary URL
+          avatarPublicId: result.public_id, // Save the Cloudinary public_id
+        },
+        { new: true }
+      ).select("-password"); // Exclude password from the returned user
+  
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      console.error("Change Avatar Error:", error);
+      // Differentiate between Multer errors (e.g., file size limit) and other server errors
+      if (error instanceof multer.MulterError) {
+        return next(new HttpError(error.message, 422));
+      }
+      return next(new HttpError("Failed to upload avatar. Please try again.", 500));
+    }
+  };
+  
+  
+
+
+
+// ======================= Edit User Details
+// PATCH : /api/users/edit-user
+// PROTECTED
+
+const editUser = async (req, res, next) => {
+    try {
+        const { name, email, currentPassword, newPassword, confirmNewPassword } = req.body;
+        if (!name || !email || !currentPassword || !newPassword) {
+            return next(new HttpError("Fill in all fields", 422));
+        }
+
+        // Get user from database
+        const user = await User.findById(req.user.id);
+        if (!user) {
+            return next(new HttpError("User not found", 403));
+        }
+
+        // Ensure new email doesn't already exist
+        const emailExist = await User.findOne({ email: email.toLowerCase() });
+
+        if (emailExist && (emailExist._id.toString() !== req.user.id)) {
+            return next(new HttpError("Email already exists.", 422));
+        }
+
+        // Compare current password to db password
+        const validateUserPassword = await bcrypt.compare(currentPassword, user.password);
+        if (!validateUserPassword) {
+            return next(new HttpError("Invalid current password.", 422));
+        }
+
+        // Compare new passwords
+        if (newPassword !== confirmNewPassword) {
+            return next(new HttpError("New passwords do not match.", 422));
+        }
+
+        // Hash new password
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(newPassword, salt);
+
+        // Update email to lowercase
+        const newEmail = email.toLowerCase();
+
+        // Update user info in database
+        const newInfo = await User.findByIdAndUpdate(
+            req.user.id,
+            { name, email: newEmail, password: hash },
+            { new: true }
+        ).select('-password');
+
+        res.status(200).json(newInfo);
+    } catch (error) {
+        console.error("Edit User Error:", error);
+        return next(new HttpError(error.message || "Failed to edit user.", 500));
+    }
+}
+
+
+
 // ======================= Get Authors
-// POST : api/users/authors
-//UNPROTECTED
+// GET : /api/users/authors
+// UNPROTECTED
 
 const getAuthors = async (req, res, next) => {
     try {
         const authors = await User.find().select('-password');
-        res.json(authors);
-    }   catch (error) {
-        return next(new HttpError(error))
+        res.status(200).json(authors);
+    } catch (error) {
+        return next(new HttpError(error.message || "Failed to fetch authors.", 500));
     }
 }
 
-
-
-module.exports = {registerUser, loginUser, getUser, changeAvatar, editUser, getAuthors }
+module.exports = { registerUser, loginUser, getUser, changeAvatar, editUser, getAuthors };

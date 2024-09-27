@@ -743,6 +743,8 @@
     "editButton": "Edit",
     "noPosts": "You have no posts yet!"
   },
+
+
   "DeletePost": {
     "deleteButton": "Delete"
   },
@@ -855,7 +857,31 @@
             "Branding": "Branding",
             "Video": "Video",
             "Advertisement": "Advertisement"
-          }
-      
+          },
+
+  "deleteButton": "Delete",
+  "deleting": "Deleting...",
+  "confirmationMessage": "Are you sure you want to delete this post?",
+  "genericError": "Failed to delete the post. Please try again.",
+  "deleteButtonTooltip": "Delete this post",
+
+  "dashboardButton": "My Dashboard",
+  "avatarAlt": "User Avatar",
+  "changeAvatar": "Change Avatar",
+  "changeAvatarButton": "Edit",
+  "saveAvatar": "Save Avatar",
+  "uploading": "Uploading...",
+  "saveAvatarButton": "Save",
+  "fullNamePlaceholder": "Full Name",
+  "emailPlaceholder": "Email Address",
+  "currentPasswordPlaceholder": "Current Password",
+  "newPasswordPlaceholder": "New Password",
+  "confirmNewPasswordPlaceholder": "Confirm New Password",
+  "updateDetailsButton": "Update Details",
+  "updating": "Updating...",
+  "fetchError": "Failed to fetch user data.",
+  "avatarUploadError": "Failed to upload avatar. Please try again.",
+  "passwordMismatch": "New passwords do not match.",
+  "updateError": "Failed to update profile. Please check your inputs."
         
 }

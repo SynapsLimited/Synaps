@@ -1,13 +1,22 @@
-const {Schema, model} = require("mongoose")
+// models/postModel.js
 
-const postSchema = new Schema({
-    title: {type: String, required: true},
-    category: {type: String, enum: ["Marketing", "Business", "Technology", "AI", "Gaming", "Product", "Entertainment"], message: "{Value is not supported}"},
-    description: {type: String, required: true},
-    creator: {type: Schema.Types.ObjectId, ref: "User"},
-    thumbnail: {type: String, required: true}
+const { Schema, model } = require("mongoose");
 
-}, {timestamps: true})
+const postSchema = new Schema(
+  {
+    title: { type: String, required: true },
+    category: {
+      type: String,
+      enum: ["Marketing", "Business", "Technology", "AI", "Gaming", "Product", "Entertainment"],
+      message: "{VALUE} is not supported",
+      required: true,
+    },
+    description: { type: String, required: true },
+    creator: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    thumbnail: { type: String, required: true },
+    thumbnailPublicId: { type: String, required: true }, // Added for Cloudinary management
+  },
+  { timestamps: true }
+);
 
-
-module.exports = model("Post", postSchema)
+module.exports = model("Post", postSchema);

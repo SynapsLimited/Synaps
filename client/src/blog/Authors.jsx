@@ -1,3 +1,5 @@
+// src/components/Authors.jsx
+
 import React, { useEffect, useState } from 'react';
 import './../css/blog.css'; 
 import { Link } from 'react-router-dom';
@@ -42,7 +44,14 @@ const Authors = () => {
               state={{ authorName: name }}
             >
               <div className="author-avatar">
-                <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${avatar}`} alt={`Image of ${name}`} />
+              <img 
+                  src={
+                    avatar 
+                      ? `${process.env.REACT_APP_ASSETS_URL}/${avatar}` 
+                      : `${process.env.REACT_APP_ASSETS_URL}/Synaps_Avatar-b44b4475-2805-4e92-a0d5-f0089b974e1a_szy1ho.png`
+                  } 
+                  alt={`Image of ${name}`} 
+                />
               </div>
               <div className="author-info">
                 <h4>{name}</h4>

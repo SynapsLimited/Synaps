@@ -518,6 +518,14 @@ input, select, textarea {
   }
 
 
+  .edit-post {
+    padding-top: 10rem;
+  }
+
+
+  
+
+
     /* ================== Tablet ============= */
 
 @media screen and (max-width: 1100px) {

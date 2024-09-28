@@ -1,5 +1,3 @@
-// src/components/DeletePost.jsx
-
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
@@ -18,7 +16,7 @@ const DeletePost = ({ postId }) => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const removePost = async () => {
-    const confirmDelete = window.confirm(t('DeletePost.confirmationMessage'));
+    const confirmDelete = window.confirm(t("DeletePost.confirmationMessage")); // Translation added
     if (!confirmDelete) return;
 
     setIsDeleting(true);
@@ -32,8 +30,8 @@ const DeletePost = ({ postId }) => {
       }
     } catch (err) {
       console.error("Couldn't delete post.", err);
-      setError(err.response?.data?.message || t('DeletePost.genericError'));
-      setIsDeleting(false);
+      setError(err.response?.data?.message || t("DeletePost.genericErrorMessage")); // Translation for error
+      setIsDeleting(false); // Re-enable the button after error
     }
   };
 
@@ -46,14 +44,14 @@ const DeletePost = ({ postId }) => {
   return (
     <>
       {error && <p className='form-error-message'>{error}</p>}
-      <button 
-        className='btn btn-danger' 
+      <a 
+        className='btn btn-secondary' 
         onClick={removePost} 
-        disabled={isDeleting}
+        disabled={isDeleting} // Disable button while deleting
         title={t('DeletePost.deleteButtonTooltip')}
       >
-        <FaTrash /> {isDeleting ? t('DeletePost.deleting') : t('DeletePost.deleteButton')}
-      </button>
+        Delete
+      </a>
     </>
   );
 };

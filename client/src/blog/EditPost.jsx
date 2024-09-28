@@ -1,5 +1,3 @@
-// src/components/EditPost.jsx
-
 import React, { useState, useContext, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -15,6 +13,7 @@ const EditPost = () => {
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -58,6 +57,7 @@ const EditPost = () => {
   ];
 
   const POST_CATEGORIES = [
+    "Uncategorized",
     "Marketing",
     "Business",
     "Technology",
@@ -69,29 +69,27 @@ const EditPost = () => {
 
   useEffect(() => {
     const getPost = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/posts/${id}`
+          `${process.env.REACT_APP_BASE_URL}/posts/${id}`
         );
         setTitle(response.data.title);
         setDescription(response.data.description);
         setCategory(response.data.category);
       } catch (error) {
         console.error("Error fetching post:", error);
-        setError("Failed to load post data.");
+        setError(t("EditPost.fetchError"));
       }
+      setIsLoading(false);
     };
+    
     getPost();
-  }, [id]);
+  }, [id, t]);
 
   const editPost = async (e) => {
     e.preventDefault();
-
-    if (description.length < 12) {
-      setError("Description should be at least 12 characters.");
-      return;
-    }
-
+  
     const postData = new FormData();
     postData.set("title", title);
     postData.set("category", category);
@@ -99,29 +97,38 @@ const EditPost = () => {
     if (thumbnail) {
       postData.set("thumbnail", thumbnail);
     }
-
+  
     try {
+      const token = currentUser?.token; // Ensure token is set
+      console.log('Token being sent:', token); // Log token for debugging
+  
       const response = await axios.patch(
-        `${process.env.REACT_APP_BASE_URL}/api/posts/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/posts/${id}`,
         postData,
         {
+          headers: {
+            Authorization: `Bearer ${token}`, // Ensure token is included
+          },
           withCredentials: true,
-          headers: { Authorization: `Bearer ${token}` },
         }
       );
+  
       if (response.status === 200) {
-        return navigate("/blog");
+        navigate("/blog");
       }
     } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong.");
+      setError(err.response?.data?.message || t("EditPost.genericError"));
     }
   };
+  
+  
 
   return (
-    <section className="edit-post">
+    <section className="edit-post create-post">
       <div className="container">
         <h2>{t("EditPost.editPost")}</h2>
         {error && <p className="form-error-message">{error}</p>}
+        {isLoading && <p>{t("EditPost.loading")}</p>} {/* Add loading message */}
         <form className="form edit-post-form" onSubmit={editPost}>
           <input
             type="text"
@@ -160,7 +167,7 @@ const EditPost = () => {
           <button
             type="submit"
             className="btn btn-primary btn-submit"
-            disabled={!title || !category || !description}
+            disabled={!title || !category || !description || isLoading}
           >
             {t("EditPost.submitButton")}
           </button>

@@ -1,10 +1,31 @@
 // server/controllers/postController.js
 
 const Post = require('../models/postModel');
-const User = require("../models/userModel");
+const User = require('../models/userModel');
 const HttpError = require('../models/errorModel');
-const uploadToCloudinary = require('../helpers/cloudinaryUpload'); // Adjust the path accordingly
-const cloudinary = require('cloudinary').v2; // Added Cloudinary import
+const fetch = 'node-fetch'; // Use fetch to upload to Vercel Blob
+const FormData = require('form-data');
+
+
+// Upload to Vercel Blob function
+const uploadToVercelBlob = async (fileBuffer, fileName) => {
+  const formData = new FormData();
+  formData.append('file', fileBuffer, fileName);
+
+  const response = await fetch('https://blob.vercel-storage.com/api/v1/files', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.VERCEL_BLOB_TOKEN}`, // Vercel Blob API token
+    },
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to upload thumbnail to Vercel Blob');
+  }
+  const result = await response.json();
+  return result.url; // Return the URL of the uploaded image
+};
 
 // ======================== Create a Post
 // POST : /api/posts
@@ -14,22 +35,21 @@ const createPost = async (req, res, next) => {
     const { title, category, description } = req.body;
 
     if (!title || !category || !description || !req.file) {
-      return next(new HttpError("Fill in all fields and choose a thumbnail.", 422));
+      return next(new HttpError('Fill in all fields and choose a thumbnail.', 422));
     }
 
     const thumbnailBuffer = req.file.buffer;
     const thumbnailName = req.file.originalname.split('.')[0].replace(/\s+/g, '%20'); // Replace spaces with underscores
 
-    // Upload thumbnail to Cloudinary
-    const result = await uploadToCloudinary(thumbnailBuffer, 'post_thumbnails', thumbnailName);
+    // Upload thumbnail to Vercel Blob
+    const thumbnailUrl = await uploadToVercelBlob(thumbnailBuffer, thumbnailName);
 
-    // Create the new post with the Cloudinary URL and public_id
+    // Create the new post with the Vercel Blob URL
     const newPost = await Post.create({
       title,
       category,
       description,
-      thumbnail: result.secure_url,
-      thumbnailPublicId: result.public_id, // Save public_id
+      thumbnail: thumbnailUrl, // Save the Vercel Blob URL
       creator: req.user.id,
     });
 
@@ -44,8 +64,8 @@ const createPost = async (req, res, next) => {
 
     res.status(201).json(newPost);
   } catch (error) {
-    console.error("Create Post Error:", error);
-    return next(new HttpError(error.message || "Something went wrong.", 500));
+    console.error('Create Post Error:', error);
+    return next(new HttpError(error.message || 'Something went wrong.', 500));
   }
 };
 
@@ -120,23 +140,26 @@ const editPost = async (req, res, next) => {
     const { title, category, description } = req.body;
 
     if (!title || !category || description.length < 12) {
-      return next(new HttpError("Fill in all fields.", 422));
+      return next(new HttpError('Fill in all fields.', 422));
     }
 
     const post = await Post.findById(postId);
     if (!post) {
-      return next(new HttpError("Post not found.", 404));
+      return next(new HttpError('Post not found.', 404));
     }
 
-    // Ensure the requester is the creator of the post
+    // Log the user and post creator for debugging
+    console.log('Post Creator:', post.creator.toString());
+    console.log('Current User:', req.user.id);
+
+    // Ensure the user is the creator of the post
     if (post.creator.toString() !== req.user.id) {
-      return next(new HttpError("You are not authorized to edit this post.", 403));
+      return next(new HttpError('You are not authorized to edit this post.', 403));
     }
 
+    // Continue with post update logic
     let updatedPost;
-
     if (!req.file) {
-      // No new thumbnail uploaded
       updatedPost = await Post.findByIdAndUpdate(
         postId,
         { title, category, description },
@@ -146,36 +169,25 @@ const editPost = async (req, res, next) => {
       const thumbnailBuffer = req.file.buffer;
       const thumbnailName = req.file.originalname.split('.')[0].replace(/\s+/g, '%20');
 
-      // Upload new thumbnail to Cloudinary
-      const result = await uploadToCloudinary(thumbnailBuffer, 'post_thumbnails', thumbnailName);
+      const thumbnailUrl = await uploadToVercelBlob(thumbnailBuffer, thumbnailName);
 
-      // Delete the old thumbnail from Cloudinary
-      if (post.thumbnailPublicId) {
-        const cloudinaryResponse = await cloudinary.uploader.destroy(post.thumbnailPublicId);
-        if (cloudinaryResponse.result !== 'ok') {
-          console.warn(`Cloudinary deletion response: ${cloudinaryResponse.result}`);
-          // Optionally handle this scenario
-        }
-      }
-
-      // Update the post with the new thumbnail URL and public_id
       updatedPost = await Post.findByIdAndUpdate(
         postId,
-        { title, category, description, thumbnail: result.secure_url, thumbnailPublicId: result.public_id },
+        { title, category, description, thumbnail: thumbnailUrl },
         { new: true }
       ).populate('creator', 'name email avatar');
     }
 
-    if (!updatedPost) {
-      return next(new HttpError("Couldn't update post.", 400));
-    }
-
     res.status(200).json(updatedPost);
   } catch (error) {
-    console.error("Edit Post Error:", error);
-    return next(new HttpError(error.message || "Something went wrong.", 500));
+    console.error('Edit Post Error:', error);
+    return next(new HttpError(error.message || 'Something went wrong.', 500));
   }
 };
+
+
+
+
 
 // ======================== Delete a Post
 // DELETE : /api/posts/:id

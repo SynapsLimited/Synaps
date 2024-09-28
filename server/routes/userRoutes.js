@@ -3,7 +3,8 @@
 const { Router } = require('express');
 const { registerUser, loginUser, getUser, changeAvatar, editUser, getAuthors } = require("../controllers/userControllers");
 const authMiddleware = require('../middleware/authMiddleware');
-const upload = require('../middleware/multerConfig'); // Ensure correct path
+const multer = require('multer');
+const upload = multer(); // Multer middleware to handle file uploads
 
 const router = Router();
 

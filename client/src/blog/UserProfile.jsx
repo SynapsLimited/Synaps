@@ -1,5 +1,3 @@
-// src/components/UserProfile.jsx
-
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEdit, FaCheck } from "react-icons/fa";
@@ -26,6 +24,9 @@ const UserProfile = () => {
   const token = currentUser?.token;
   const navigate = useNavigate();
 
+  // Default avatar path (adjust based on your actual server setup)
+  const defaultAvatar = `${process.env.PUBLIC_URL}/assets/Avatar-default.png`;
+
   // Redirect to login if not authenticated
   useEffect(() => {
     if (!token) {
@@ -44,7 +45,7 @@ const UserProfile = () => {
         const { name, email, avatar } = response.data;
         setName(name);
         setEmail(email);
-        setAvatarPreview(avatar || ''); // 'avatar' is the Cloudinary URL
+        setAvatarPreview(avatar || ''); // 'avatar' is the URL for the uploaded avatar
       } catch (error) {
         console.error("Failed to fetch user data.", error);
         setError(t('UserProfile.fetchError'));
@@ -73,7 +74,7 @@ const UserProfile = () => {
     }
   };
 
-  // Upload new avatar to Cloudinary
+  // Upload new avatar to Vercel Blob (or other storage)
   const changeAvatarHandler = async () => {
     if (!avatar) return;
 
@@ -91,21 +92,12 @@ const UserProfile = () => {
         },
       });
 
-      // Success: update avatar preview with the Cloudinary URL
+      // Success: update avatar preview with the new avatar URL
       setAvatarPreview(response.data.avatar || '');
       setIsAvatarTouched(false);
     } catch (error) {
       console.error("Failed to upload avatar:", error);
-      if (error.response) {
-        console.error("Server Error:", error.response.data);
-        setError(error.response.data.message || "Failed to upload avatar. Server error.");
-      } else if (error.request) {
-        console.error("No response received:", error.request);
-        setError("No response from the server. Please try again.");
-      } else {
-        console.error("Axios error setup:", error.message);
-        setError("Error in uploading avatar. Please try again.");
-      }
+      setError(error.response?.data?.message || "Failed to upload avatar. Server error.");
     } finally {
       setIsUploading(false);
     }
@@ -163,7 +155,7 @@ const UserProfile = () => {
           <div className="avatar-wrapper">
             <div className="profile-avatar">
               <img 
-                src={avatarPreview || `${process.env.REACT_APP_ASSETS_URL}/Synaps_Avatar-b44b4475-2805-4e92-a0d5-f0089b974e1a_szy1ho.png`} 
+                src={avatarPreview || defaultAvatar}  // Use default avatar if no preview
                 alt="User Avatar"
               />
             </div>

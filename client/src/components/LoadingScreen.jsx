@@ -5,10 +5,10 @@ import BarLoader from 'react-spinners/BarLoader';
 import './../css/loadingscreen.css';
 
 // Import your SVGs
-import svg1 from './../Loading Screen/Loading Screen Transition 1.svg';
-import svg2 from './../Loading Screen/Loading Screen Transition 2.svg';
-import svg3 from './../Loading Screen/Loading Screen Transition 3.svg';
-import svg4 from './../Loading Screen/Loading Screen Transition 4.svg';
+import svg1 from './../Loading Screen/Loading Screen Transition 1.png';
+import svg2 from './../Loading Screen/Loading Screen Transition 2.png';
+import svg3 from './../Loading Screen/Loading Screen Transition 3.png';
+import svg4 from './../Loading Screen/Loading Screen Transition 4.png';
 
 import svgMobile1 from './../Loading Screen/Loading Screen Transition Mobile 1.svg';
 import svgMobile2 from './../Loading Screen/Loading Screen Transition Mobile 2.svg';

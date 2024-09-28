@@ -2,11 +2,10 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { v4: uuid } = require("uuid");
-const uploadToCloudinary = require('../helpers/cloudinaryUpload'); // Ensure correct path
-const cloudinary = require('cloudinary').v2; // Not necessary if already configured in cloudinaryConfig.js
-
 const User = require('../models/userModel');
 const HttpError = require("../models/errorModel");
+const { Blob } = require('@vercel/blob'); // Import Vercel Blob
+
 
 
 // Define allowed emails
@@ -122,56 +121,32 @@ const getUser = async (req, res, next) => {
 // POST : /api/users/change-avatar
 // PROTECTED
 
-const changeAvatar = async (req, res, next) => {
+const changeAvatar = async (req, res) => {
+    const userId = req.user._id;
+    const { file } = req; // Assuming you use multer for file upload
+    
+    if (!file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+  
     try {
-      // Ensure user is authenticated (assuming authMiddleware sets req.user)
-      if (!req.user || !req.user.id) {
-        return next(new HttpError("Unauthorized.", 401));
-      }
+      // Create a Vercel Blob bucket object
+      const blob = new Blob({ access: 'public' });
   
-      // Check if a file was uploaded
-      if (!req.file) {
-        return next(new HttpError("Please choose an image.", 422));
-      }
+      // Upload the file to Vercel Blob
+      const fileStream = file.buffer; // Get file buffer if using multer
+      const fileName = `${userId}_${Date.now()}_${file.originalname}`;
+      const { url } = await blob.upload(fileName, fileStream);
   
-      // Generate a unique and sanitized filename for the avatar
-      const originalName = req.file.originalname.split('.')[0].replace(/\s+/g, '_'); // Replace spaces with underscores
-      const avatarExtension = req.file.mimetype.split('/')[1]; // Extract the file extension (e.g., png, jpeg)
-      const finalAvatarFilename = `${originalName}-${uuid()}`; // Append UUID to ensure uniqueness
+      // Update user in MongoDB with the new avatar URL
+      const user = await User.findByIdAndUpdate(userId, {
+        avatar: url,
+      }, { new: true });
   
-      // Upload avatar to Cloudinary using the buffer
-      const result = await uploadToCloudinary(req.file.buffer, 'avatars', finalAvatarFilename);
-  
-      if (!result.secure_url || !result.public_id) {
-        return next(new HttpError("Failed to upload avatar to Cloudinary.", 500));
-      }
-  
-      // Optionally, delete the old avatar from Cloudinary (if one exists)
-      const user = await User.findById(req.user.id);
-      if (user && user.avatarPublicId) {
-        await cloudinary.uploader.destroy(user.avatarPublicId);
-      }
-  
-      // Update user in the database:
-      // - Save the Cloudinary URL in user.avatar
-      // - Save the Cloudinary public_id in user.avatarPublicId
-      const updatedUser = await User.findByIdAndUpdate(
-        req.user.id,
-        {
-          avatar: result.secure_url, // Save the Cloudinary URL
-          avatarPublicId: result.public_id, // Save the Cloudinary public_id
-        },
-        { new: true }
-      ).select("-password"); // Exclude password from the returned user
-  
-      res.status(200).json(updatedUser);
+      res.status(200).json({ avatar: user.avatar });
     } catch (error) {
-      console.error("Change Avatar Error:", error);
-      // Differentiate between Multer errors (e.g., file size limit) and other server errors
-      if (error instanceof multer.MulterError) {
-        return next(new HttpError(error.message, 422));
-      }
-      return next(new HttpError("Failed to upload avatar. Please try again.", 500));
+      console.error('Error uploading avatar:', error);
+      res.status(500).json({ message: "Server error while uploading avatar." });
     }
   };
   

@@ -13,18 +13,22 @@ TimeAgo.addLocale(ru);
 const PostAuthor = ({ authorID, createdAt }) => {
   const [author, setAuthor] = useState({});
 
+  const defaultAvatar = `${process.env.PUBLIC_URL}/assets/Avatar-default.png`; // Default avatar path
+
   useEffect(() => {
     const getAuthor = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/users/${authorID}`);
         setAuthor(response?.data);
       } catch (error) {
-        console.log('Error fetching author:', error);
+        console.error('Error fetching author:', error.response?.data || error.message);
       }
     };
 
-    if (authorID) {
+    if (typeof authorID === 'string') {
       getAuthor();
+    } else {
+      console.error('Invalid authorID:', authorID);
     }
   }, [authorID]);
 
@@ -32,7 +36,7 @@ const PostAuthor = ({ authorID, createdAt }) => {
     <Link to={`/posts/users/${authorID}`} className="post-author">
       <div className="post-author-avatar">
         <img
-          src={author?.avatar ? `${process.env.REACT_APP_ASSETS_URL}/${author.avatar}` : '/Synaps_Avatar-b44b4475-2805-4e92-a0d5-f0089b974e1a_szy1ho.png'}
+          src={author?.avatar || defaultAvatar}  // Use default avatar if none exists
           alt={author?.name || 'Author Avatar'}
         />
       </div>
@@ -40,7 +44,7 @@ const PostAuthor = ({ authorID, createdAt }) => {
         <h5>{author?.name || 'Synaps'}</h5>
         {createdAt && (
           <small>
-            <ReactTimeAgo date={new Date(createdAt)} locale='en-US' />
+            <ReactTimeAgo date={new Date(createdAt)} locale="en-US" />
           </small>
         )}
       </div>
@@ -49,3 +53,4 @@ const PostAuthor = ({ authorID, createdAt }) => {
 };
 
 export default PostAuthor;
+

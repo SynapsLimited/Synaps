@@ -5,14 +5,15 @@ import { useTranslation } from 'react-i18next'; // Import the translation hook
 
 const PostItem = ({ postID, category, title = '', description = '', authorID, thumbnail, createdAt }) => {
   const { t } = useTranslation(); // Initialize translation
-  // Add default values for title and description to avoid undefined errors
   const shortDescription = description.length > 145 ? description.substr(0, 145) + '...' : description;
   const postTitle = title.length > 30 ? title.substr(0, 30) + '...' : title;
+
+  const defaultThumbnail = `${process.env.PUBLIC_URL}/assets/Blog-default.webp`;
 
   return (
     <article className="post">
       <div className="post-thumbnail">
-        <img src={`${process.env.REACT_APP_ASSETS_URL}/${thumbnail}`} alt={title} />
+        <img src={thumbnail || defaultThumbnail} alt={title} />
       </div>
       <div className="post-content">
         <Link to={`/posts/${postID}`}>
@@ -20,7 +21,7 @@ const PostItem = ({ postID, category, title = '', description = '', authorID, th
         </Link>
         <p className="blog-text" dangerouslySetInnerHTML={{ __html: shortDescription }} />
         <div className="post-footer">
-          <PostAuthor authorID={authorID} createdAt={createdAt} />
+        <PostAuthor authorID={authorID._id} createdAt={createdAt} />
           <Link to={`/posts/categories/${category}`} className="btn btn-secondary btn-postitem">
             {t(`categories.${category}`, category)} {/* Translated category */}
           </Link>

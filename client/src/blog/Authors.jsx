@@ -1,5 +1,3 @@
-// src/components/Authors.jsx
-
 import React, { useEffect, useState } from 'react';
 import './../css/blog.css'; 
 import { Link } from 'react-router-dom';
@@ -9,6 +7,8 @@ import Loader from '../components/Loader';
 const Authors = () => {
   const [authors, setAuthors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const defaultAvatar = `${process.env.PUBLIC_URL}/assets/Avatar-default.png`; // Default avatar path
 
   useEffect(() => {
     const getAuthors = async () => {
@@ -44,12 +44,8 @@ const Authors = () => {
               state={{ authorName: name }}
             >
               <div className="author-avatar">
-              <img 
-                  src={
-                    avatar 
-                      ? `${process.env.REACT_APP_ASSETS_URL}/${avatar}` 
-                      : `${process.env.REACT_APP_ASSETS_URL}/Synaps_Avatar-b44b4475-2805-4e92-a0d5-f0089b974e1a_szy1ho.png`
-                  } 
+                <img 
+                  src={avatar || defaultAvatar}  // Use default avatar if none exists
                   alt={`Image of ${name}`} 
                 />
               </div>

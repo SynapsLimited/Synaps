@@ -51,7 +51,6 @@ const changeAvatarHandler = async () => {
   try {
       if (!avatar) return;
 
-      console.log("Avatar upload started");
 
       const formData = new FormData();
       formData.append('avatar', avatar); // Attach the file
@@ -59,23 +58,12 @@ const changeAvatarHandler = async () => {
       // Call backend to upload the avatar and update user profile
       const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
           headers: {
-              'Content-Type': 'multipart/form-data' // Required for file uploads
+              'Content-Type': 'multipart/form-data', // Required for file uploads
+              Authorization: `Bearer ${token}`  // Pass the JWT token in the Authorization header
           }
       });
 
-      console.log("Avatar uploaded successfully: ", response.data.avatar);
 
-      // Check if the avatar URL is returned in the response
-      if (response.data.avatar) {
-          // Set the new avatar URL as the avatar preview
-          setAvatarPreview(response.data.avatar);
-
-          console.log("Avatar preview updated to: ", response.data.avatar);
-      } else {
-          console.error('No avatar URL returned from backend');
-      }
-
-      // Optionally, update the state with the new avatar URL if needed
       setError('');
   } catch (error) {
       console.error('Error changing avatar:', error); // Log any errors
@@ -111,7 +99,6 @@ const changeAvatarHandler = async () => {
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-        console.log("Selected file:", file); // Debug: Check if file is selected
         setAvatar(file);
         setAvatarPreview(URL.createObjectURL(file)); // Show the preview locally before uploading
         setIsAvatarTouched(true);

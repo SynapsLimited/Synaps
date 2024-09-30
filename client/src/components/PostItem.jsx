@@ -21,7 +21,7 @@ const PostItem = ({ postID, category, title = '', description = '', authorID, th
         </Link>
         <p className="blog-text" dangerouslySetInnerHTML={{ __html: shortDescription }} />
         <div className="post-footer">
-        <PostAuthor authorID={authorID._id} createdAt={createdAt} />
+        <PostAuthor authorID={authorID} createdAt={createdAt} />
           <Link to={`/posts/categories/${category}`} className="btn btn-secondary btn-postitem">
             {t(`categories.${category}`, category)} {/* Translated category */}
           </Link>

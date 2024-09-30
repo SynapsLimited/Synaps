@@ -57,7 +57,7 @@ const PostDetail = () => {
           <div className="post-detail-container">
             <div className="post-detail-header">
               {/* Pass the creator's ID (authorID) and post createdAt date */}
-              <PostAuthor authorID={post.creator._id} createdAt={post.createdAt} />
+              <PostAuthor authorID={post.creator} createdAt={post.createdAt} />
               {currentUser?.id === post?.creator._id && (
                 <div className="post-detail-buttons">
                   <Link to={`/posts/${post?._id}/edit`} className="btn btn-primary">

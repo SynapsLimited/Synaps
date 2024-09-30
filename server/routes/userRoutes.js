@@ -8,7 +8,7 @@ const router = Router();
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);
-router.get('/:id', authMiddleware, getUser);
+router.get('/:id', getUser);
 router.get('/', getAuthors);
 // Remove `authMiddleware` from this route if you want to skip auth checks
 router.post('/change-avatar', authMiddleware, upload.single('avatar'), changeAvatar);

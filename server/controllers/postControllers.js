@@ -34,7 +34,7 @@ const deleteFromVercelBlob = async (fileUrl) => {
     const fileName = path.basename(fileUrl);  // Extract the filename from the URL
 
     try {
-        const response = await fetch(`https://api.vercel.com/v6/blob/files/${fileName}`, {
+        const response = await fetch(`https://api.vercel.com/v2/blob/files/${fileName}`, {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}`,  // Use your Vercel Blob API token

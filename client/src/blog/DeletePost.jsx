@@ -21,10 +21,9 @@ const DeletePost = ({ postId: id }) => {
         withCredentials: true,
         headers: { Authorization: `Bearer ${token}` }
       });
-      console.log('Delete response:', response); // Debugging log
       if (response.status === 200) {
-        console.log('Post deleted successfully. Reloading page...'); // Debugging log
-        window.location.reload(); // Refresh the page after deletion
+        console.log('Post deleted successfully. Redirecting to posts page...'); // Debugging log
+        navigate('/blog'); // Redirect to the blog or posts page
       }
     } catch (error) {
       console.log("Couldn't delete post.", error); // Debugging log
@@ -32,7 +31,9 @@ const DeletePost = ({ postId: id }) => {
   };
 
   return (
-    <button className='btn btn-secondary' style={{fontFamily: 'Righteous, sans-serif'}} onClick={removePost}>Delete</button>
+    <button className='btn btn-secondary' style={{ fontFamily: 'Righteous, sans-serif' }} onClick={removePost}>
+      Delete
+    </button>
   );
 };
 

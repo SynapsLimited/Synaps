@@ -57,7 +57,8 @@ const Dashboard = () => {
             <article key={post._id} className="dashboard-post">
               <div className="dashboard-post-info">
                 <div className="dashboard-post-thumbnail">
-                  <img src={`${process.env.REACT_APP_ASSETS_URL}/${post.thumbnail}`} alt="" />
+                  {/* Directly use post.thumbnail since it now contains the full URL */}
+                  <img src={post.thumbnail} alt={post.title} />
                 </div>
                 <h4>{post.title}</h4>
               </div>

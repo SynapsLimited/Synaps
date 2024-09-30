@@ -586,6 +586,13 @@ input, select, textarea {
         height: 5rem;
         border-radius: 50%;
     }
+
+    .author-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 0.3rem solid var(--color-primary);
+    }
     
 
 }

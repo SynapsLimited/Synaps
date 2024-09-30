@@ -11,7 +11,7 @@ router.post('/login', loginUser);
 router.get('/:id', authMiddleware, getUser);
 router.get('/', getAuthors);
 // Remove `authMiddleware` from this route if you want to skip auth checks
-router.post('/change-avatar', upload.single('avatar'), changeAvatar);
+router.post('/change-avatar', authMiddleware, upload.single('avatar'), changeAvatar);
 router.patch('/edit-user', authMiddleware, editUser);
 
 module.exports = router;

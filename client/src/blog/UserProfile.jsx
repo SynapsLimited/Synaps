@@ -35,36 +35,56 @@ const UserProfile = () => {
           withCredentials: true,
           headers: { Authorization: `Bearer ${token}` },
         });
-        const { name, email, avatar } = response.data;
+        const { name, email, avatar } = response.data; // Get the correct avatar URL here
         setName(name);
         setEmail(email);
-        setAvatarPreview(avatar);
+        setAvatarPreview(avatar); // Set the avatarPreview to the updated avatar URL
       } catch (error) {
         console.log(error);
       }
     };
     getUser();
-  }, [currentUser.id, token]);
+}, [currentUser.id, token]);
 
-  const changeAvatarHandler = async () => {
-    try {
+
+const changeAvatarHandler = async () => {
+  try {
       if (!avatar) return;
+
+      console.log("Avatar upload started");
 
       const formData = new FormData();
       formData.append('avatar', avatar); // Attach the file
 
+      // Call backend to upload the avatar and update user profile
       const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data' // Required for file uploads
-        }
+          headers: {
+              'Content-Type': 'multipart/form-data' // Required for file uploads
+          }
       });
 
-      setAvatarPreview(response.data.avatar); // Update avatar preview on success
-    } catch (error) {
+      console.log("Avatar uploaded successfully: ", response.data.avatar);
+
+      // Check if the avatar URL is returned in the response
+      if (response.data.avatar) {
+          // Set the new avatar URL as the avatar preview
+          setAvatarPreview(response.data.avatar);
+
+          console.log("Avatar preview updated to: ", response.data.avatar);
+      } else {
+          console.error('No avatar URL returned from backend');
+      }
+
+      // Optionally, update the state with the new avatar URL if needed
+      setError('');
+  } catch (error) {
       console.error('Error changing avatar:', error); // Log any errors
       setError('Failed to update avatar.');
-    }
-  };
+  }
+};
+
+
+
 
   const updateUserDetails = async (e) => {
     e.preventDefault();
@@ -90,10 +110,14 @@ const UserProfile = () => {
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
-    setAvatar(file);
-    setAvatarPreview(URL.createObjectURL(file)); // Show the preview locally before uploading
-    setIsAvatarTouched(true);
-  };
+    if (file) {
+        console.log("Selected file:", file); // Debug: Check if file is selected
+        setAvatar(file);
+        setAvatarPreview(URL.createObjectURL(file)); // Show the preview locally before uploading
+        setIsAvatarTouched(true);
+    }
+};
+
 
   return (
     <section className="profile">
@@ -118,7 +142,15 @@ const UserProfile = () => {
                 <FaEdit /> 
               </label>
             </form>
-            {isAvatarTouched && <button className="btn btn-primary profile-avatar-btn" onClick={changeAvatarHandler}><FaCheck/></button>}
+            {isAvatarTouched && <button 
+                  className="btn btn-primary profile-avatar-btn" 
+                  onClick={changeAvatarHandler}
+                  type="button" // Ensure this is a button and not submitting a form
+              >
+                  <FaCheck />
+              </button>
+
+                      }
           </div>
 
           <h1>{currentUser.name}</h1>

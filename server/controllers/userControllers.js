@@ -15,15 +15,17 @@ const uploadToVercelBlob = async (fileBuffer, fileName) => {
             access: 'public', // Make sure the file is publicly accessible
             token: process.env.BLOB_READ_WRITE_TOKEN, // Blob storage token
             headers: {
-                Authorization: `Bearer ${process.env.VERCEL_ACCESS_TOKEN}` // Add your Vercel API token for authorization
+                Authorization: `Bearer ${process.env.VERCEL_ACCESS_TOKEN}` // Vercel API token for authorization
             }
         });
+        console.log("Uploaded successfully to Vercel Blob: ", url); // Log URL
         return url; // Return the uploaded file URL
     } catch (error) {
         console.error("Error uploading file to Vercel Blob:", error);
         throw new Error("Failed to upload file to Vercel Blob");
     }
 };
+
 
 
 
@@ -144,25 +146,49 @@ const getUser = async (req, res, next) => {
 const changeAvatar = async (req, res, next) => {
     try {
         const file = req.file; // Access the file uploaded by Multer
-        
+
         if (!file) {
+            console.log("No file received");
             return res.status(422).json({ message: "No avatar file provided." });
         }
+
+        console.log("File received: ", file.originalname);
 
         // Multer stores the file in memory as a buffer
         const avatarBuffer = file.buffer; // Get buffer from memory
         const avatarFileName = `avatars/${Date.now()}.jpg`; // Generate a unique file name
-        
+
         // Upload to Vercel Blob
         const avatarUrl = await uploadToVercelBlob(avatarBuffer, avatarFileName);
-        
-        // Optionally, update user information in the database if needed
-        return res.status(200).json({ avatar: avatarUrl });
+        console.log("Uploaded to Vercel Blob. URL: ", avatarUrl);
+
+        // Find the user in the database
+        const user = await User.findById(req.user.id);
+        if (!user) {
+            console.log("User not found");
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        // Update the avatar and avatarPublicId fields
+        user.avatar = avatarUrl;  // Set the new avatar URL
+        user.avatarPublicId = avatarFileName;  // Set the public ID to track the file
+
+        // Save the user with the new avatar URL in MongoDB
+        const updatedUser = await user.save();
+        console.log("User updated in MongoDB: ", updatedUser);  // Ensure this log shows the updated document
+
+        // Return the new avatar URL in the response
+        return res.status(200).json({ avatar: updatedUser.avatar });
     } catch (error) {
         console.error("Error in changing avatar:", error);
         return res.status(500).json({ message: "Failed to update avatar." });
     }
 };
+
+
+
+
+
 
 
 

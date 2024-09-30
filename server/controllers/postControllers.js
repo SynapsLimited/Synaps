@@ -6,18 +6,24 @@ const {v4: uuid} = require('uuid')
 const HttpError = require('../models/errorModel')
 const fetch = require('node-fetch');
 const FormData = require('form-data');
+const { put } = require('@vercel/blob'); // Assuming you're using the @vercel/blob package for storage
+
+
 
 const uploadToVercelBlob = async (fileBuffer, fileName) => {
     try {
+        // Upload the file buffer to Vercel Blob storage
         const { url } = await put(fileName, fileBuffer, {
-            access: 'public', // Make sure the file is publicly accessible
-            token: process.env.BLOB_READ_WRITE_TOKEN, // Blob storage token (must be set in your env)
+            access: 'public',  // Ensure the file is publicly accessible
+            token: process.env.BLOB_READ_WRITE_TOKEN, // Token with read/write access
             headers: {
-                Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}` // Vercel API token for authorization
-            }
+                Authorization: `Bearer ${process.env.VERCEL_ACCESS_TOKEN}`, // Add Vercel API token
+            },
         });
-        console.log("Uploaded successfully to Vercel Blob: ", url); // Log URL
-        return url; // Return the uploaded file URL
+
+        // Log the success and return the URL
+        console.log("Uploaded successfully to Vercel Blob: ", url);
+        return url; // Return the public URL of the uploaded file
     } catch (error) {
         console.error("Error uploading file to Vercel Blob:", error);
         throw new Error("Failed to upload file to Vercel Blob");
@@ -25,38 +31,32 @@ const uploadToVercelBlob = async (fileBuffer, fileName) => {
 };
 
 
+
 const deleteFromVercelBlob = async (fileUrl) => {
-    if (!fileUrl || !fileUrl.includes('vercel-storage.com')) {
-        console.log("No valid Vercel Blob URL found, skipping deletion.");
-        return false;
-    }
-
-    const fileName = path.basename(fileUrl);  // Extract the filename from the URL
-
     try {
+        if (!fileUrl) {
+            console.log("No file to delete.");
+            return;
+        }
+
+        const fileName = fileUrl.split('/').pop(); // Extract file name from URL
         const response = await fetch(`https://api.vercel.com/v2/blob/files/${fileName}`, {
             method: 'DELETE',
             headers: {
-                Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}`,  // Use your Vercel Blob API token
+                Authorization: `Bearer ${process.env.VERCEL_ACCESS_TOKEN}`, // Vercel API token for authorization
             },
         });
-
-        if (response.status === 404) {
-            console.log("File not found on Vercel Blob, skipping deletion.");
-            return false;
-        }
 
         if (!response.ok) {
             throw new Error('Failed to delete from Vercel Blob Storage');
         }
 
-        console.log("Deleted successfully from Vercel Blob:", fileName);
-        return true;
+        console.log(`Deleted successfully from Vercel Blob: ${fileName}`);
     } catch (error) {
-        console.error("Error deleting file from Vercel Blob:", error);
-        return false;
+        console.error('Error deleting file from Vercel Blob:', error);
     }
 };
+
 
 
 
@@ -68,29 +68,25 @@ const createPost = async (req, res, next) => {
         const { title, category, description } = req.body;
 
         if (!title || !category || !description || !req.file) {
-            return next(new HttpError("Fill in all fields and choose thumbnail.", 422));
+            return next(new HttpError("Fill in all fields and choose a thumbnail.", 422));
         }
 
-        const { file: thumbnail } = req;
+        const thumbnail = req.file.buffer; // Assuming you're using multer to store files in memory
+        const fileName = `thumbnails/${Date.now()}-${req.file.originalname}`; // Generate a unique file name
 
-        // Check file size and upload to Vercel Blob
-        if (thumbnail.size > 2000000) {
-            return next(new HttpError("Thumbnail too big. File should be less than 2MB", 422));
-        }
+        // Upload thumbnail to Vercel Blob storage
+        const thumbnailUrl = await uploadToVercelBlob(thumbnail, fileName);
 
-        // Upload the thumbnail to Vercel Blob Storage
-        const thumbnailUrl = await uploadToVercelBlob(thumbnail.buffer, `thumbnails/${Date.now()}_${thumbnail.originalname}`);
-
-        // Create the post with the uploaded thumbnail URL
+        // Save the post with the thumbnail URL
         const newPost = await Post.create({
             title,
             category,
             description,
-            thumbnail: thumbnailUrl,  // Save the Vercel Blob URL in the DB
+            thumbnail: thumbnailUrl, // Save the URL of the uploaded file
             creator: req.user.id,
         });
 
-        // Update user post count
+        // Update user's post count
         const currentUser = await User.findById(req.user.id);
         currentUser.posts += 1;
         await currentUser.save();
@@ -100,6 +96,7 @@ const createPost = async (req, res, next) => {
         return next(new HttpError(error.message || 'Something went wrong', 500));
     }
 };
+
 
 
 
@@ -173,57 +170,44 @@ const editPost = async (req, res, next) => {
         const postId = req.params.id;
         const { title, category, description } = req.body;
 
-        if (!title || !category || description.length < 12) {
+        if (!title || !category || !description) {
             return next(new HttpError("Fill in all fields.", 422));
         }
 
-        // Get old post from database
         const oldPost = await Post.findById(postId);
         if (!oldPost) {
             return next(new HttpError("Post not found.", 404));
         }
 
-        let updatedPost;
-        if (!req.file) {
-            // Update post without changing the thumbnail
-            updatedPost = await Post.findByIdAndUpdate(postId, { title, category, description }, { new: true });
-        } else {
-            const { file: newThumbnail } = req;
+        let newThumbnailUrl = oldPost.thumbnail; // Default to the old thumbnail
 
-            // Check file size and upload to Vercel Blob
-            if (newThumbnail.size > 2000000) {
-                return next(new HttpError("Thumbnail too big. Should be less than 2MB"));
-            }
+        // Check if a new thumbnail was uploaded
+        if (req.file) {
+            const thumbnail = req.file.buffer; // Get the uploaded file buffer
+            const fileName = `thumbnails/${Date.now()}-${req.file.originalname}`; // Generate a unique file name
 
-            // Delete the old thumbnail from Vercel Blob if it exists and is valid
+            // Upload the new thumbnail to Vercel Blob storage
+            newThumbnailUrl = await uploadToVercelBlob(thumbnail, fileName);
+
+            // Optionally delete the old thumbnail from Vercel Blob storage
             if (oldPost.thumbnail) {
-                const deleted = await deleteFromVercelBlob(oldPost.thumbnail); // Delete old thumbnail
-                if (!deleted) {
-                    console.log("No valid thumbnail to delete, or deletion was skipped.");
-                }
+                await deleteFromVercelBlob(oldPost.thumbnail);
             }
-
-            // Upload the new thumbnail to Vercel Blob
-            const newThumbnailUrl = await uploadToVercelBlob(newThumbnail.buffer, `thumbnails/${Date.now()}_${newThumbnail.originalname}`);
-
-            // Update the post with the new thumbnail
-            updatedPost = await Post.findByIdAndUpdate(postId, {
-                title,
-                category,
-                description,
-                thumbnail: newThumbnailUrl
-            }, { new: true });
         }
 
-        if (!updatedPost) {
-            return next(new HttpError("Couldn't update post", 400));
-        }
+        // Update the post with the new data
+        const updatedPost = await Post.findByIdAndUpdate(
+            postId,
+            { title, category, description, thumbnail: newThumbnailUrl },
+            { new: true }
+        );
 
         res.status(200).json(updatedPost);
     } catch (error) {
-        return next(new HttpError(error));
+        return next(new HttpError(error.message || "Couldn't update post", 500));
     }
 };
+
 
 
 

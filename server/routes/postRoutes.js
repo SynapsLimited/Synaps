@@ -1,12 +1,10 @@
-// server/routes/postRoutes.js
-
 const { Router } = require('express');
+
 const { createPost, getPosts, getPost, getCatPosts, getUserPosts, editPost, deletePost } = require('../controllers/postControllers');
 const authMiddleware = require('../middleware/authMiddleware');
 
 const router = Router();
 
-// For routes that handle file uploads, use multer middleware
 router.post('/', authMiddleware, createPost);
 router.get('/', getPosts);
 router.get('/:id', getPost);

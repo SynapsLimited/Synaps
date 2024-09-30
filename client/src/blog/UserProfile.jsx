@@ -1,13 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEdit, FaCheck } from "react-icons/fa";
-import './../css/blog.css'; // Ensure you have appropriate CSS
+import './../css/blog.css'; // Assuming you have a corresponding CSS file for styling
 import { UserContext } from '../context/userContext';
 import axios from 'axios';
-import { useTranslation } from 'react-i18next';
+import { put } from '@vercel/blob'; // Import the Vercel Blob `put` function
 
 const UserProfile = () => {
-  const { t } = useTranslation();
   const [avatar, setAvatar] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,25 +15,20 @@ const UserProfile = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [error, setError] = useState('');
   const [avatarPreview, setAvatarPreview] = useState('');
-  const [isAvatarTouched, setIsAvatarTouched] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
-  const [isUpdating, setIsUpdating] = useState(false);
 
   const { currentUser } = useContext(UserContext);
+  const [isAvatarTouched, setIsAvatarTouched] = useState(false);
+
   const token = currentUser?.token;
   const navigate = useNavigate();
 
-  // Default avatar path (adjust based on your actual server setup)
-  const defaultAvatar = `${process.env.PUBLIC_URL}/assets/Avatar-default.png`;
-
-  // Redirect to login if not authenticated
+  // Redirect to login page for any user who isn't logged in
   useEffect(() => {
     if (!token) {
       navigate('/login');
     }
   }, [token, navigate]);
 
-  // Fetch user data on component mount
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -45,120 +39,82 @@ const UserProfile = () => {
         const { name, email, avatar } = response.data;
         setName(name);
         setEmail(email);
-        setAvatarPreview(avatar || ''); // 'avatar' is the URL for the uploaded avatar
+        setAvatarPreview(avatar);
       } catch (error) {
-        console.error("Failed to fetch user data.", error);
-        setError(t('UserProfile.fetchError'));
+        console.log(error);
       }
     };
     getUser();
-  }, [currentUser.id, token, t]);
+  }, [currentUser.id, token]);
 
-  // Handle avatar file selection
-  const handleAvatarChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
-      if (!allowedTypes.includes(file.type)) {
-        setError("Only JPEG, PNG, and WEBP formats are allowed.");
-        return;
-      }
-      if (file.size > 5 * 1024 * 1024) { // 5MB limit
-        setError("File size should be less than 5MB.");
-        return;
-      }
-      setAvatar(file);
-      setAvatarPreview(URL.createObjectURL(file));
-      setIsAvatarTouched(true);
-      setError(''); // Clear previous errors
-    }
-  };
-
-  // Upload new avatar to Vercel Blob (or other storage)
-  const changeAvatarHandler = async () => {
+const changeAvatarHandler = async () => {
+  setIsAvatarTouched(false);
+  try {
     if (!avatar) return;
 
-    setIsUploading(true);
-    setError('');
-    try {
-      const formData = new FormData();
-      formData.append('avatar', avatar);
+    const formData = new FormData();
+    formData.append('avatar', avatar); // Append the file to FormData
 
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
-        withCredentials: true,
-        headers: { 
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+    // Send the avatar file to your backend, which will upload it to Vercel Blob
+    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
+      withCredentials: true, // Send credentials like cookies
+      headers: { 
+        Authorization: `Bearer ${token}`,  // Ensure the JWT token is being sent here
+        "Content-Type": "multipart/form-data" // Properly set the content type for file upload
+      },
+    });
 
-      // Success: update avatar preview with the new avatar URL
-      setAvatarPreview(response.data.avatar || '');
-      setIsAvatarTouched(false);
-    } catch (error) {
-      console.error("Failed to upload avatar:", error);
-      setError(error.response?.data?.message || "Failed to upload avatar. Server error.");
-    } finally {
-      setIsUploading(false);
-    }
-  };
+    setAvatarPreview(response.data.avatar); // Update avatar preview with the new URL
+  } catch (error) {
+    console.error(error);
+    setError('Failed to update avatar');
+  }
+};
 
-  // Handle profile detail updates
+  
+  
+  
+
   const updateUserDetails = async (e) => {
     e.preventDefault();
-    setIsUpdating(true);
-    setError('');
-
-    // Basic front-end validation
-    if (newPassword && newPassword !== confirmNewPassword) {
-      setError(t('UserProfile.passwordMismatch'));
-      setIsUpdating(false);
-      return;
-    }
-
     try {
       const userData = {
         name,
         email,
         currentPassword,
-        newPassword: newPassword || undefined, // Only send if provided
-        confirmNewPassword: confirmNewPassword || undefined,
+        newPassword,
+        confirmNewPassword,
       };
-
       const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/users/edit-user`, userData, {
         withCredentials: true,
-        headers: { 
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
-
       if (response.status === 200) {
-        navigate('/logout'); // Redirect to logout to refresh tokens or session
+        navigate('/logout');
       }
     } catch (error) {
-      console.error("Failed to update user details.", error);
-      setError(error.response?.data?.message || "Error");
-    } finally {
-      setIsUpdating(false);
+      setError(error.response?.data?.message || 'An error occurred');
     }
+  };
+
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    setAvatar(file);
+    setAvatarPreview(URL.createObjectURL(file)); // Show the preview locally before uploading
+    setIsAvatarTouched(true);
   };
 
   return (
     <section className="profile">
       <div className="container profile-container">
-        <Link to={`/myposts/${currentUser.id}`} className="btn btn-secondary">
-          {t('UserProfile.dashboardButton')}
-        </Link>
+        <Link to={`/myposts/${currentUser.id}`} className="btn btn-secondary">Dashboard</Link>
 
         <div className="profile-details">
           <div className="avatar-wrapper">
             <div className="profile-avatar">
-              <img 
-                src={avatarPreview || defaultAvatar}  // Use default avatar if no preview
-                alt="User Avatar"
-              />
+              <img src={avatarPreview} alt="User Avatar" /> {/* Display the avatar preview */}
             </div>
+            {/* Form to update avatar */}
             <form className="avatar-form">
               <input 
                 type="file" 
@@ -166,68 +122,25 @@ const UserProfile = () => {
                 id="avatar" 
                 onChange={handleAvatarChange} 
                 accept="image/png, image/jpeg, image/webp" 
-                style={{ display: 'none' }} 
               />
-              <label className="btn btn-primary profile-avatar-btn" htmlFor="avatar" title={t('UserProfile.changeAvatar')}>
-                <FaEdit />
+              <label className="btn btn-primary profile-avatar-btn" htmlFor="avatar">
+                <FaEdit /> 
               </label>
             </form>
-            {isAvatarTouched && (
-              <button 
-                className="btn btn-success profile-avatar-btn" 
-                onClick={changeAvatarHandler}
-                disabled={isUploading}
-                title={t('UserProfile.saveAvatar')}
-              >
-                <FaCheck /> {isUploading ? "Uploading..." : "Save"}
-              </button>
-            )}
+            {isAvatarTouched && <button className="btn btn-primary profile-avatar-btn" onClick={changeAvatarHandler}><FaCheck/></button>}
           </div>
 
-          <h1>{name}</h1>
+          <h1>{currentUser.name}</h1>
 
+          {/* Form to update user details */}
           <form className="form profile-form" onSubmit={updateUserDetails}>
             {error && <p className="form-error-message">{error}</p>}
-            <input
-              type="text"
-              placeholder={t('UserProfile.fullNamePlaceholder')}
-              value={name}
-              onChange={e => setName(e.target.value)}
-              required
-            />
-            <input
-              type="email"
-              placeholder={t('UserProfile.emailPlaceholder')}
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              placeholder={t('UserProfile.currentPasswordPlaceholder')}
-              value={currentPassword}
-              onChange={e => setCurrentPassword(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              placeholder={t('UserProfile.newPasswordPlaceholder')}
-              value={newPassword}
-              onChange={e => setNewPassword(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder={t('UserProfile.confirmNewPasswordPlaceholder')}
-              value={confirmNewPassword}
-              onChange={e => setConfirmNewPassword(e.target.value)}
-            />
-            <button 
-              type="submit" 
-              className='btn btn-primary btn-submit-profile'
-              disabled={isUpdating}
-            >
-              {isUpdating ? t('UserProfile.updating') : t('UserProfile.updateDetailsButton')}
-            </button>
+            <input type="text" placeholder="Full Name" value={name} onChange={e => setName(e.target.value)} />
+            <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+            <input type="password" placeholder="Current Password" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} />
+            <input type="password" placeholder="New Password" value={newPassword} onChange={e => setNewPassword(e.target.value)} />
+            <input type="password" placeholder="Confirm New Password" value={confirmNewPassword} onChange={e => setConfirmNewPassword(e.target.value)} />
+            <button type="submit" className='btn btn-primary btn-submit-profile'> Update my details </button>
           </form>
         </div>
       </div>

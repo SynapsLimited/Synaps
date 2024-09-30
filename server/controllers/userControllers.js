@@ -1,12 +1,31 @@
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const fs = require('fs')
+const path = require('path')
+const {v4: uuid} = require("uuid")
+const User = require('../models/userModel')
+const HttpError = require("../models/errorModel")
+const fetch = require('node-fetch'); // Ensure you have node-fetch installed
+const FormData = require('form-data');
+const { put } = require('@vercel/blob'); // Import the Vercel Blob library
 
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const { v4: uuid } = require("uuid");
-const User = require('../models/userModel');
-const HttpError = require("../models/errorModel");
-const { Blob } = require('@vercel/blob'); // Import Vercel Blob
+// Function to upload avatar to Vercel Blob
+const uploadToVercelBlob = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
 
+    const response = await fetch('https://blob.vercel-storage.com/api/v1/files', {
+        method: 'POST',
+        body: formData,
+    });
 
+    if (!response.ok) {
+        throw new Error('Failed to upload to Vercel Blob Storage');
+    }
+
+    const result = await response.json();
+    return { url: result.url, publicId: result.file }; // Assuming `file` is a unique identifier
+};
 
 // Define allowed emails
 const allowedEmails = [
@@ -18,9 +37,10 @@ const allowedEmails = [
 ];
 
 
-// ======================= Register a New User
-// POST : /api/users/register
-// UNPROTECTED
+
+// ======================= Register a new User
+// POST : api/users/register
+//UNPROTECTED
 
 const registerUser = async (req, res, next) => {
     try {
@@ -31,8 +51,8 @@ const registerUser = async (req, res, next) => {
 
         const newEmail = email.toLowerCase();
 
-        // Check if the email is in the allowed list
-        if (!allowedEmails.includes(newEmail)) {
+         // Check if the email is in the allowed list
+         if (!allowedEmails.includes(newEmail)) {
             return next(new HttpError("Not authorized to register. Contact Synaps!", 422));
         }
 
@@ -60,9 +80,9 @@ const registerUser = async (req, res, next) => {
 };
 
 
-// ======================= Login a Registered User
-// POST : /api/users/login
-// UNPROTECTED
+// ======================= Login a registered User
+// POST : api/users/login
+//UNPROTECTED
 
 const loginUser = async (req, res, next) => {
     try {
@@ -99,130 +119,127 @@ const loginUser = async (req, res, next) => {
 
 
 
-// ======================= Get User Profile
-// GET : /api/users/:id
-// UNPROTECTED
+// ======================= User Profile
+// POST : api/users/:id
+//UNPROTECTED
 
 const getUser = async (req, res, next) => {
     try {
-        const { id } = req.params;
+        const {id} = req.params;
         const user = await User.findById(id).select('-password');
-        if (!user) {
-            return next(new HttpError("User not found.", 404));
+        if(!user) {
+            return next(new HttpError("User not found.", 404))
         }
-        res.status(200).json(user);
-    } catch (error) {
-        return next(new HttpError(error.message || "Failed to fetch user.", 500));
+            res.status(200).json(user);
+    }   catch (error) {
+        return next(new HttpError(error))
     }
 }
 
 
-// ======================= Change User Avatar
-// POST : /api/users/change-avatar
+// ======================= Change User Avatar (profile picture)
+// POST : api/users/change-avatar
 // PROTECTED
 
-const changeAvatar = async (req, res) => {
-    const userId = req.user._id;
-    const { file } = req; // Assuming you use multer for file upload
-    
-    if (!file) {
-      return res.status(400).json({ message: "No file uploaded" });
-    }
-  
+const changeAvatar = async (req, res, next) => {
     try {
-      // Create a Vercel Blob bucket object
-      const blob = new Blob({ access: 'public' });
-  
-      // Upload the file to Vercel Blob
-      const fileStream = file.buffer; // Get file buffer if using multer
-      const fileName = `${userId}_${Date.now()}_${file.originalname}`;
-      const { url } = await blob.upload(fileName, fileStream);
-  
-      // Update user in MongoDB with the new avatar URL
-      const user = await User.findByIdAndUpdate(userId, {
-        avatar: url,
-      }, { new: true });
-  
-      res.status(200).json({ avatar: user.avatar });
+        // Ensure avatar file is received from the frontend
+        const file = req.files?.avatar; // Assuming the avatar is sent as a 'file'
+
+        if (!file) {
+            return res.status(422).json({ message: "No avatar file provided." });
+        }
+
+        // Use FileReader to convert the file into a binary array buffer
+        const avatarBuffer = file.data; // This will give you the binary data of the file
+
+        // Upload to Vercel Blob
+        const { url, publicId } = await put(`avatars/${req.user.id}_${Date.now()}.jpg`, avatarBuffer, {
+            access: 'public',  // Ensure the file is publicly accessible
+            token: process.env.VERCEL_BLOB_TOKEN // Ensure the token is correct
+        });
+
+        // Update the user's avatar in the database
+        const user = await User.findById(req.user.id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        user.avatar = url; // Save the Vercel Blob URL in the database
+        await user.save();
+
+        return res.status(200).json({ avatar: user.avatar });
     } catch (error) {
-      console.error('Error uploading avatar:', error);
-      res.status(500).json({ message: "Server error while uploading avatar." });
+        console.error("Error in changing avatar:", error);
+        return res.status(500).json({ message: "Failed to update avatar." });
     }
-  };
+};
   
-  
 
 
-
-// ======================= Edit User Details
-// PATCH : /api/users/edit-user
-// PROTECTED
+// ======================= Edit User Details (from profile)
+// POST : api/users/edit-user
+//UNPROTECTED
 
 const editUser = async (req, res, next) => {
     try {
-        const { name, email, currentPassword, newPassword, confirmNewPassword } = req.body;
-        if (!name || !email || !currentPassword || !newPassword) {
-            return next(new HttpError("Fill in all fields", 422));
+        const {name, email, currentPassword, newPassword, confirmNewPassword} = req.body;
+        if(!name || !email || !currentPassword || !newPassword) {
+            return next(new HttpError("Fill in all fields", 422))
         }
 
-        // Get user from database
+        // get user from database
         const user = await User.findById(req.user.id);
-        if (!user) {
-            return next(new HttpError("User not found", 403));
+        if(!user) {
+            return next(new HttpError("User not found", 403))
         }
 
-        // Ensure new email doesn't already exist
-        const emailExist = await User.findOne({ email: email.toLowerCase() });
 
-        if (emailExist && (emailExist._id.toString() !== req.user.id)) {
-            return next(new HttpError("Email already exists.", 422));
+        //make sure new email doesn't already exist
+        const emailExist = await User.findOne({email});
+
+        if(emailExist && (emailExist._id != req.user.id)) {
+            return next(new HttpError("Email already exist.", 422))
         }
 
-        // Compare current password to db password
+        // compare current password to db password
         const validateUserPassword = await bcrypt.compare(currentPassword, user.password);
-        if (!validateUserPassword) {
-            return next(new HttpError("Invalid current password.", 422));
+            if(!validateUserPassword) {
+                return next(new HttpError("Invalid current password.", 422))
+            }
+
+        //compare new passwords
+        if(newPassword !== confirmNewPassword) {
+            return next(new HttpError("New passwords do not match.", 422))
         }
 
-        // Compare new passwords
-        if (newPassword !== confirmNewPassword) {
-            return next(new HttpError("New passwords do not match.", 422));
-        }
-
-        // Hash new password
-        const salt = await bcrypt.genSalt(10);
+        //hash new password
+        const salt = await bcrypt.genSalt(10)
         const hash = await bcrypt.hash(newPassword, salt);
 
-        // Update email to lowercase
-        const newEmail = email.toLowerCase();
+        //update user info in database
+        const newInfo = await User.findByIdAndUpdate(req.user.id, {name, email, password: hash}, {new: true})
+        res.status(200).json(newInfo)
 
-        // Update user info in database
-        const newInfo = await User.findByIdAndUpdate(
-            req.user.id,
-            { name, email: newEmail, password: hash },
-            { new: true }
-        ).select('-password');
-
-        res.status(200).json(newInfo);
     } catch (error) {
-        console.error("Edit User Error:", error);
-        return next(new HttpError(error.message || "Failed to edit user.", 500));
+        return next(new HttpError(error))
     }
 }
 
 
-
 // ======================= Get Authors
-// GET : /api/users/authors
-// UNPROTECTED
+// POST : api/users/authors
+//UNPROTECTED
 
 const getAuthors = async (req, res, next) => {
     try {
         const authors = await User.find().select('-password');
-        res.status(200).json(authors);
-    } catch (error) {
-        return next(new HttpError(error.message || "Failed to fetch authors.", 500));
+        res.json(authors);
+    }   catch (error) {
+        return next(new HttpError(error))
     }
 }
 
-module.exports = { registerUser, loginUser, getUser, changeAvatar, editUser, getAuthors };
+
+
+module.exports = {registerUser, loginUser, getUser, changeAvatar, editUser, getAuthors }

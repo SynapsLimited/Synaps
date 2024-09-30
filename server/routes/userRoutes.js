@@ -1,21 +1,14 @@
-// routes/userRoutes.js
-
 const { Router } = require('express');
 const { registerUser, loginUser, getUser, changeAvatar, editUser, getAuthors } = require("../controllers/userControllers");
 const authMiddleware = require('../middleware/authMiddleware');
-const multer = require('multer');
-const upload = multer(); // Multer middleware to handle file uploads
 
 const router = Router();
 
-// Public Routes
 router.post('/register', registerUser);
 router.post('/login', loginUser);
-router.get('/:id', getUser); // Public route to get user by ID
-router.get('/', getAuthors);  // Public route to get all authors
-
-// Protected Routes
-router.post('/change-avatar', authMiddleware, upload.single('avatar'), changeAvatar);
-router.patch('/edit-user', authMiddleware, editUser);
+router.get('/:id', authMiddleware, getUser);  // Ensure this uses authMiddleware
+router.get('/', getAuthors);
+router.post('/change-avatar', changeAvatar);  // Ensure this uses authMiddleware
+router.patch('/edit-user', authMiddleware, editUser);  // Ensure this uses authMiddleware
 
 module.exports = router;

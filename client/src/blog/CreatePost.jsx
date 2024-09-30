@@ -49,20 +49,27 @@ const createPost = async (e) => {
   e.preventDefault();
 
   const postData = new FormData();
-  postData.set('title', title)
-  postData.set('category', category)
-  postData.set('description', description)
-  postData.set('thumbnail', thumbnail)
+  postData.set('title', title);
+  postData.set('category', category);
+  postData.set('description', description);
+  postData.append('thumbnail', thumbnail); // Append the file for upload
 
   try {
-    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/posts`, postData, {withCredentials: true, headers: {Authorization: `Bearer ${token}`}})
-    if(response.status == 201) {
-      return navigate('/blog')
-    }
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/posts`, postData, {
+          withCredentials: true,
+          headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'multipart/form-data',
+          },
+      });
+      if (response.status === 201) {
+          navigate('/blog');
+      }
   } catch (err) {
-    setError(err.response.data.message);
+      setError(err.response.data.message);
   }
-}
+};
+
 
   return (
     <section className="create-post">

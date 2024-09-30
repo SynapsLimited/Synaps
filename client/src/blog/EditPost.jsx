@@ -66,20 +66,31 @@ useEffect(() => {
   e.preventDefault();
 
   const postData = new FormData();
-  postData.set('title', title)
-  postData.set('category', category)
-  postData.set('description', description)
-  postData.set('thumbnail', thumbnail)
+  postData.set('title', title);
+  postData.set('category', category);
+  postData.set('description', description);
+
+  // Only append thumbnail if it has changed
+  if (thumbnail) {
+      postData.append('thumbnail', thumbnail);
+  }
 
   try {
-    const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/posts/${id}`, postData, {withCredentials: true, headers: {Authorization: `Bearer ${token}`}})
-    if(response.status == 200) {
-      return navigate('/blog')
-    }
+      const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/posts/${id}`, postData, {
+          withCredentials: true,
+          headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'multipart/form-data',
+          },
+      });
+      if (response.status === 200) {
+          navigate('/blog');
+      }
   } catch (err) {
-    setError(err.response.data.message);
+      setError(err.response.data.message);
   }
- }
+};
+
 
 
   return (

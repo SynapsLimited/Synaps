@@ -24,6 +24,7 @@ const PostAuthor = ({ authorID, createdAt }) => {
         console.error('Error fetching author:', error.response?.data || error.message);
       }
     };
+    
 
     if (typeof authorID === 'string') {
       getAuthor();

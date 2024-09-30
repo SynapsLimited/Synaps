@@ -26,15 +26,25 @@ const uploadToVercelBlob = async (fileBuffer, fileName) => {
 
 
 const deleteFromVercelBlob = async (fileUrl) => {
+    if (!fileUrl || !fileUrl.includes('vercel-storage.com')) {
+        console.log("No valid Vercel Blob URL found, skipping deletion.");
+        return false;
+    }
+
     const fileName = path.basename(fileUrl);  // Extract the filename from the URL
 
     try {
-        const response = await fetch(`https://blob.vercel-storage.com/api/v1/files/${fileName}`, {
+        const response = await fetch(`https://api.vercel.com/v6/blob/files/${fileName}`, {
             method: 'DELETE',
             headers: {
-                Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}`, // Use your Vercel Blob API token
+                Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}`,  // Use your Vercel Blob API token
             },
         });
+
+        if (response.status === 404) {
+            console.log("File not found on Vercel Blob, skipping deletion.");
+            return false;
+        }
 
         if (!response.ok) {
             throw new Error('Failed to delete from Vercel Blob Storage');
@@ -44,7 +54,7 @@ const deleteFromVercelBlob = async (fileUrl) => {
         return true;
     } catch (error) {
         console.error("Error deleting file from Vercel Blob:", error);
-        throw new Error("Failed to delete file from Vercel Blob");
+        return false;
     }
 };
 
@@ -185,8 +195,13 @@ const editPost = async (req, res, next) => {
                 return next(new HttpError("Thumbnail too big. Should be less than 2MB"));
             }
 
-            // Delete the old thumbnail from Vercel Blob
-            await deleteFromVercelBlob(oldPost.thumbnail);
+            // Delete the old thumbnail from Vercel Blob if it exists and is valid
+            if (oldPost.thumbnail) {
+                const deleted = await deleteFromVercelBlob(oldPost.thumbnail); // Delete old thumbnail
+                if (!deleted) {
+                    console.log("No valid thumbnail to delete, or deletion was skipped.");
+                }
+            }
 
             // Upload the new thumbnail to Vercel Blob
             const newThumbnailUrl = await uploadToVercelBlob(newThumbnail.buffer, `thumbnails/${Date.now()}_${newThumbnail.originalname}`);
@@ -213,6 +228,7 @@ const editPost = async (req, res, next) => {
 
 
 
+
 // ======================== Delete post
 // DELETE : api/posts/:id
 // PROTECTED
@@ -229,9 +245,13 @@ const deletePost = async (req, res, next) => {
             return next(new HttpError("Post not found.", 404));
         }
 
-        // Delete the thumbnail from Vercel Blob storage
-        const thumbnailUrl = post.thumbnail;
-        await deleteFromVercelBlob(thumbnailUrl);
+        // Attempt to delete the thumbnail from Vercel Blob storage
+        if (post.thumbnail) {
+            const deleted = await deleteFromVercelBlob(post.thumbnail); // Use the thumbnail URL from DB
+            if (!deleted) {
+                console.log("No valid thumbnail to delete, or deletion was skipped.");
+            }
+        }
 
         // Delete the post from the database
         await Post.findByIdAndDelete(postId);
@@ -246,6 +266,7 @@ const deletePost = async (req, res, next) => {
         return next(new HttpError("Couldn't delete post.", 400));
     }
 };
+
 
 
 module.exports = {createPost, getPosts, getPost, getCatPosts, getUserPosts, editPost, deletePost }

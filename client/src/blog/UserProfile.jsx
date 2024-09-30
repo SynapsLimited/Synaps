@@ -50,23 +50,24 @@ const UserProfile = () => {
 
   const changeAvatarHandler = async () => {
     try {
-      if (!avatar) return;
-  
-      const formData = new FormData();
-      formData.append('avatar', avatar); // Attach the file
-  
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Required for file uploads
-        }
-      });
-  
-      setAvatarPreview(response.data.avatar); // Update avatar preview on success
+        if (!avatar) return;
+
+        const formData = new FormData();
+        formData.append('avatar', avatar); // Attach the file
+
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data' // Required for file uploads
+            }
+        });
+
+        setAvatarPreview(response.data.avatar); // Update avatar preview on success
     } catch (error) {
-      console.error('Error changing avatar:', error); // Log any errors
-      setError('Failed to update avatar.');
+        console.error('Error changing avatar:', error); // Log any errors
+        setError('Failed to update avatar.');
     }
-  };
+};
+
   
   
 

@@ -9,12 +9,14 @@ const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Function to upload avatar to Vercel Blob
 const uploadToVercelBlob = async (fileBuffer, fileName) => {
     try {
         const { url } = await put(fileName, fileBuffer, {
             access: 'public', // Make sure the file is publicly accessible
-            token: process.env.VERCEL_BLOB_TOKEN, // Ensure the token is correct
+            token: process.env.BLOB_READ_WRITE_TOKEN, // Blob storage token
+            headers: {
+                Authorization: `Bearer ${process.env.VERCEL_ACCESS_TOKEN}` // Add your Vercel API token for authorization
+            }
         });
         return url; // Return the uploaded file URL
     } catch (error) {
@@ -22,6 +24,8 @@ const uploadToVercelBlob = async (fileBuffer, fileName) => {
         throw new Error("Failed to upload file to Vercel Blob");
     }
 };
+
+
 
 
 // Define allowed emails
@@ -140,19 +144,20 @@ const getUser = async (req, res, next) => {
 
 const changeAvatar = async (req, res, next) => {
     try {
-        const file = req.file; // Access the file through multer
-
+        const file = req.file; // Access the file uploaded by Multer
+        
         if (!file) {
             return res.status(422).json({ message: "No avatar file provided." });
         }
 
-        const avatarBuffer = file.buffer; // Get file buffer from multer
-        const avatarFileName = `avatars/${Date.now()}.jpg`; // If no user id, generate a timestamp-based filename
-
+        // Multer stores the file in memory as a buffer
+        const avatarBuffer = file.buffer; // Get buffer from memory
+        const avatarFileName = `avatars/${Date.now()}.jpg`; // Generate a unique file name
+        
         // Upload to Vercel Blob
         const avatarUrl = await uploadToVercelBlob(avatarBuffer, avatarFileName);
-
-        // Respond with the avatar URL (or save it somewhere depending on your needs)
+        
+        // Optionally, update user information in the database if needed
         return res.status(200).json({ avatar: avatarUrl });
     } catch (error) {
         console.error("Error in changing avatar:", error);
@@ -160,9 +165,6 @@ const changeAvatar = async (req, res, next) => {
     }
 };
 
-
-
-  
 
 
 // ======================= Edit User Details (from profile)

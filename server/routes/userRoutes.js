@@ -2,15 +2,17 @@ const { Router } = require('express');
 const { registerUser, loginUser, getUser, changeAvatar, editUser, getAuthors } = require("../controllers/userControllers");
 const authMiddleware = require('../middleware/authMiddleware');
 const multer = require('multer');
-const upload = multer({ storage: multer.memoryStorage() }); // Store file in memory
-
+const upload = multer({
+    limits: { fileSize: 5 * 1024 * 1024 } // 5MB limit
+});
 const router = Router();
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);
-router.get('/:id', authMiddleware, getUser);  // Ensure this uses authMiddleware
+router.get('/:id', authMiddleware, getUser);
 router.get('/', getAuthors);
+// Remove `authMiddleware` from this route if you want to skip auth checks
 router.post('/change-avatar', upload.single('avatar'), changeAvatar);
-router.patch('/edit-user', authMiddleware, editUser);  // Ensure this uses authMiddleware
+router.patch('/edit-user', authMiddleware, editUser);
 
 module.exports = router;

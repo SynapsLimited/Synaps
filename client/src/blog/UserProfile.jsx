@@ -4,7 +4,6 @@ import { FaEdit, FaCheck } from "react-icons/fa";
 import './../css/blog.css'; // Assuming you have a corresponding CSS file for styling
 import { UserContext } from '../context/userContext';
 import axios from 'axios';
-import { put } from '@vercel/blob'; // Import the Vercel Blob `put` function
 
 const UserProfile = () => {
   const [avatar, setAvatar] = useState(null);
@@ -47,35 +46,25 @@ const UserProfile = () => {
     getUser();
   }, [currentUser.id, token]);
 
-
   const changeAvatarHandler = async () => {
     try {
-        if (!avatar) return;
+      if (!avatar) return;
 
-        const formData = new FormData();
-        formData.append('avatar', avatar); // Attach the file
+      const formData = new FormData();
+      formData.append('avatar', avatar); // Attach the file
 
-        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data' // Required for file uploads
-            }
-        });
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data' // Required for file uploads
+        }
+      });
 
-        setAvatarPreview(response.data.avatar); // Update avatar preview on success
+      setAvatarPreview(response.data.avatar); // Update avatar preview on success
     } catch (error) {
-        console.error('Error changing avatar:', error); // Log any errors
-        setError('Failed to update avatar.');
+      console.error('Error changing avatar:', error); // Log any errors
+      setError('Failed to update avatar.');
     }
-};
-
-  
-  
-
-  
-
-  
-  
-  
+  };
 
   const updateUserDetails = async (e) => {
     e.preventDefault();

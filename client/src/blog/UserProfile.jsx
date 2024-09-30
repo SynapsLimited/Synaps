@@ -47,29 +47,30 @@ const UserProfile = () => {
     getUser();
   }, [currentUser.id, token]);
 
-const changeAvatarHandler = async () => {
-  setIsAvatarTouched(false);
-  try {
-    if (!avatar) return;
 
-    const formData = new FormData();
-    formData.append('avatar', avatar); // Append the file to FormData
+  const changeAvatarHandler = async () => {
+    try {
+      if (!avatar) return;
+  
+      const formData = new FormData();
+      formData.append('avatar', avatar); // Attach the file
+  
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Required for file uploads
+        }
+      });
+  
+      setAvatarPreview(response.data.avatar); // Update avatar preview on success
+    } catch (error) {
+      console.error('Error changing avatar:', error); // Log any errors
+      setError('Failed to update avatar.');
+    }
+  };
+  
+  
 
-    // Send the avatar file to your backend, which will upload it to Vercel Blob
-    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, formData, {
-      withCredentials: true, // Send credentials like cookies
-      headers: { 
-        Authorization: `Bearer ${token}`,  // Ensure the JWT token is being sent here
-        "Content-Type": "multipart/form-data" // Properly set the content type for file upload
-      },
-    });
-
-    setAvatarPreview(response.data.avatar); // Update avatar preview with the new URL
-  } catch (error) {
-    console.error(error);
-    setError('Failed to update avatar');
-  }
-};
+  
 
   
   

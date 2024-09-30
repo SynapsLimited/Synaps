@@ -1,31 +1,28 @@
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const fs = require('fs')
-const path = require('path')
-const {v4: uuid} = require("uuid")
-const User = require('../models/userModel')
-const HttpError = require("../models/errorModel")
-const fetch = require('node-fetch'); // Ensure you have node-fetch installed
-const FormData = require('form-data');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/userModel');
+const HttpError = require("../models/errorModel");
 const { put } = require('@vercel/blob'); // Import the Vercel Blob library
+const multer = require('multer');
+
+// Setup multer to store files in memory for Vercel Blob
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 // Function to upload avatar to Vercel Blob
-const uploadToVercelBlob = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-
-    const response = await fetch('https://blob.vercel-storage.com/api/v1/files', {
-        method: 'POST',
-        body: formData,
-    });
-
-    if (!response.ok) {
-        throw new Error('Failed to upload to Vercel Blob Storage');
+const uploadToVercelBlob = async (fileBuffer, fileName) => {
+    try {
+        const { url } = await put(fileName, fileBuffer, {
+            access: 'public', // Make sure the file is publicly accessible
+            token: process.env.VERCEL_BLOB_TOKEN, // Ensure the token is correct
+        });
+        return url; // Return the uploaded file URL
+    } catch (error) {
+        console.error("Error uploading file to Vercel Blob:", error);
+        throw new Error("Failed to upload file to Vercel Blob");
     }
-
-    const result = await response.json();
-    return { url: result.url, publicId: result.file }; // Assuming `file` is a unique identifier
 };
+
 
 // Define allowed emails
 const allowedEmails = [
@@ -143,37 +140,28 @@ const getUser = async (req, res, next) => {
 
 const changeAvatar = async (req, res, next) => {
     try {
-        // Ensure avatar file is received from the frontend
-        const file = req.files?.avatar; // Assuming the avatar is sent as a 'file'
+        const file = req.file; // Access the file through multer
 
         if (!file) {
             return res.status(422).json({ message: "No avatar file provided." });
         }
 
-        // Use FileReader to convert the file into a binary array buffer
-        const avatarBuffer = file.data; // This will give you the binary data of the file
+        const avatarBuffer = file.buffer; // Get file buffer from multer
+        const avatarFileName = `avatars/${Date.now()}.jpg`; // If no user id, generate a timestamp-based filename
 
         // Upload to Vercel Blob
-        const { url, publicId } = await put(`avatars/${req.user.id}_${Date.now()}.jpg`, avatarBuffer, {
-            access: 'public',  // Ensure the file is publicly accessible
-            token: process.env.VERCEL_BLOB_TOKEN // Ensure the token is correct
-        });
+        const avatarUrl = await uploadToVercelBlob(avatarBuffer, avatarFileName);
 
-        // Update the user's avatar in the database
-        const user = await User.findById(req.user.id);
-        if (!user) {
-            return res.status(404).json({ message: "User not found." });
-        }
-
-        user.avatar = url; // Save the Vercel Blob URL in the database
-        await user.save();
-
-        return res.status(200).json({ avatar: user.avatar });
+        // Respond with the avatar URL (or save it somewhere depending on your needs)
+        return res.status(200).json({ avatar: avatarUrl });
     } catch (error) {
         console.error("Error in changing avatar:", error);
         return res.status(500).json({ message: "Failed to update avatar." });
     }
 };
+
+
+
   
 
 

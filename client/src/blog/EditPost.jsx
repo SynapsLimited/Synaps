@@ -45,7 +45,7 @@ const formats = [
   'link', 'image'
 ]
 
-const POST_CATEGORIES = ["Uncategorized", "Marketing", "Business", "Technology", "Artifical Intelligence","Gaming", "Product", "Entertainment"  ]
+const POST_CATEGORIES = ["Uncategorized", "Marketing", "Business", "Technology", "AI","Gaming", "Product", "Entertainment"  ]
 
 
 useEffect(() => {

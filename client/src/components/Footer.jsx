@@ -32,11 +32,11 @@ function Footer() {
             <div className="socials-container">
               <div className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/email.png" alt="Email" />
-                <a href="mailto:info@synaps.eu" className="footer-link">info@synaps.eu</a> {/* Email stays the same */}
+                <a href="mailto:info@synapslimited.eu" className="footer-link">info@synapslimited.eu</a> {/* Email stays the same */}
               </div>
               <div className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/phone-call.png" alt="Phone Number" />
-                <a href="tel:+32499603804" className="footer-link">+32 499 60 38 04</a> {/* Phone number stays the same */}
+                <a href="tel:+32456071631" className="footer-link">+32 45 607 1631</a> {/* Phone number stays the same */}
               </div>
             </div>
           </div>

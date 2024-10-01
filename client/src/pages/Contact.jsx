@@ -53,7 +53,7 @@ const Contact = () => {
                 <div className="blob phone-mail-blob">
                     <h2>{t('contactPage.sections.contact.title')}</h2>
                     <img src="/assets/Icons For Synaps/Main Icons/phone-call.png" alt={t('contactPage.sections.contact.phone.alt')} />
-                    <a href={`tel:${t('contactPage.sections.contact.phone.number')}`}><h4>{t('contactPage.sections.contact.phone.number')}</h4></a>
+                    <a href="tel:+32456071631"><h4>{t('contactPage.sections.contact.phone.number')}</h4></a>
                     <img src="/assets/Icons For Synaps/Main Icons/email.png" alt={t('contactPage.sections.contact.email.alt')} />
                     <a href={`mailto:${t('contactPage.sections.contact.email.address')}`}><h4>{t('contactPage.sections.contact.email.address')}</h4></a>
                 </div>

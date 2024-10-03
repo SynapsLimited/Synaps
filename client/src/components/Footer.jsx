@@ -59,6 +59,14 @@ function Footer() {
                 <img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" />
                 <a href="https://www.youtube.com" className="footer-link">YouTube</a> {/* YouTube stays the same */}
               </div>
+              <div className="social-row">
+                <img src="/assets/Icons For Synaps/Main Icons/TikTok.png" alt="TikTok" />
+                <a href="https://www.tiktok.com" className="footer-link">TikTok</a> {/* TikTok stays the same */}
+              </div>
+              <div className="social-row">
+                <img src="/assets/Icons For Synaps/Main Icons/TwitterX.png" alt="X" />
+                <a href="https://www.x.com" className="footer-link">X</a> {/* YouTube stays the same */}
+              </div>
             </div>
           </div>
         </div>

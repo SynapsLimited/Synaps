@@ -191,7 +191,7 @@
 }
 
 .description p {
-    color: #b0b0ba;
+    color: var(--color-white);
     padding-top: 5px;
 }
 
@@ -330,7 +330,10 @@
           flex-direction: row;
           transform: translateY(0px);
           justify-content: left;
+          
         }
+
+
       
         .team-wrapper input:checked + label {
           height: 1200px;

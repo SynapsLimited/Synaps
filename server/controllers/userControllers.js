@@ -35,7 +35,10 @@ const allowedEmails = [
     "synapslimited@gmail.com",
     "muhamedbrojka@yahoo.com",
     "enriko.shkurti11@gmail.com",
-    "yann2045@gmail.com"
+    "yann2045@gmail.com",
+    "bujar@synapslimited.eu",
+    "muhamed@synapslimited.eu",
+    "enrique@synapslimited.eu"
 ];
 
 

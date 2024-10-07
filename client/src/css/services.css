@@ -476,7 +476,7 @@
     }
 
     .specific-service-left img {
-      max-width: 70%; /* Make the image smaller on desktop */
+      max-width: 100%; /* Make the image smaller on desktop */
       height: 500px;
       filter: drop-shadow(7px 8px 1px rgba(26, 26, 26, 0.374));
       transition: var(--transition);
@@ -505,6 +505,11 @@
     .column-slide img {
       max-width: 70%;
       margin-bottom: 20px;
+    }
+
+    .services-form input,
+    .services-form textarea {
+      width: 100%; /* Full width on smaller screens */
     }
 
   }

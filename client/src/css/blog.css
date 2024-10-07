@@ -533,6 +533,8 @@ input, select, textarea {
     .posts-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
+        align-items: center;
+        align-self: center;
     
     }
     
@@ -594,6 +596,18 @@ input, select, textarea {
         border: 0.3rem solid var(--color-primary);
     }
     
+
+}
+
+
+@media screen and (max-width: 840px) {
+
+    .posts-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        width: auto;
+    
+    }
 
 }
 

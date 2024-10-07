@@ -421,6 +421,7 @@
 
   .about-section, .services-section, .portfolio-section {
     padding: 0 20px; /* Adds padding on the sides */
+    margin-bottom: 70px;
   }
 
   .header__container, .about-section, .services-section, .portfolio-section {
@@ -451,7 +452,7 @@
 
   .services-blobs {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(3fr, 1fr)); /* adjust minmax() for your preferred size */
+    grid-template-columns: repeat(auto-fit, minmax(2fr, 1fr)); /* adjust minmax() for your preferred size */
     gap: 1rem; /* Increase the gap between blobs */
     justify-content: center; /* Center grid items in the grid area */
     align-items: start; /* Align grid items to the start of their cell */
@@ -461,12 +462,20 @@
   .service-blob {
     /* Adjust the margin and alignment of individual blobs if needed */
     margin: 0.5rem; /* optional, for additional space around each blob */
+    width: 200px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
   }
 
-  .services-title-container {
-    text-align: center;
-    margin-bottom: 30px;
-    margin-top: 30px;
+
+
+  .social-link img {
+    display: block;
+    width: 40px; /* Adjust as needed */
+    height: 40px; /* Adjust as needed */
+  }
+
+  .social-links {
+    margin-top: -200px;
   }
 
   
@@ -479,7 +488,19 @@
     margin: 0 auto; /* Adds margin to the left and right */
     width: 100%; /* Ensure the section spans the full width */
     max-width: 960px; /* Adjust max-width to your design preference */
+    margin-top: 50px;
   }
+
+  .service-blob img {
+    min-width: 100px; /* Adjust based on your icon size */
+    max-width: 400px;
+  }
+
+  .services-image {
+    width: 600px;
+    height: 600px;
+  }
+
 
 
   .blog-section {

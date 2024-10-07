@@ -104,7 +104,7 @@ const About = () => {
               <div className="row">
                 <div className="icon">3</div>
                 <div className="description">
-                  <h4>Enrique</h4>
+                  <h4>Enrico</h4>
                   <p>{t('aboutPage.team.members.3.role')}</p>
                 </div>
               </div>

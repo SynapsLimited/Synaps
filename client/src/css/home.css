@@ -593,6 +593,10 @@
       align-items: center;
     }
 
+    .social-links {
+      margin-top: 0px;
+    }
+
     .less-margin-bottom {
       margin-bottom: -70px;
     }

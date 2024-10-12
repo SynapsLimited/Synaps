@@ -172,27 +172,27 @@ const Home = () => {
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
+                <article className="article-card">
                   <figure className="article-image">
                     <img src={ThumbnailBusiness} alt={t('indexPage.blog.categories.business.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.business.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.business.description')}</p>
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.business.title')}</h3>
+                    <p className="card-excerpt">{t('indexPage.blog.categories.business.description')}</p>
                     <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
+                <article className="article-card">
                   <figure className="article-image">
                     <img src={ThumbnailTechnology} alt={t('indexPage.blog.categories.technology.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.technology.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.technology.description')}</p>
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.technology.title')}</h3>
+                    <p className="card-excerpt">{t('indexPage.blog.categories.technology.description')}</p>
                     <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
@@ -202,51 +202,51 @@ const Home = () => {
                   <figure className="article-image">
                     <img src={ThumbnailAI} alt={t('indexPage.blog.categories.ai.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.ai.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.ai.title')}</h3>
+                    <p className="card-excerpt">
                     {t('indexPage.blog.categories.ai.description')}</p>
                     <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
+                <article className="article-card">
                   <figure className="article-image">
                     <img src={ThumbnailGaming} alt={t('indexPage.blog.categories.gaming.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.gaming.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.gaming.description')}</p>
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.gaming.title')}</h3>
+                    <p className="card-excerpt">{t('indexPage.blog.categories.gaming.description')}</p>
                     <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
+                <article className="article-card">
                   <figure className="article-image">
                     <img src={ThumbnailProduct} alt={t('indexPage.blog.categories.product.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.product.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.product.title')}</h3>
+                    <p className="card-excerpt">
                     {t('indexPage.blog.categories.product.description')}</p>
                     <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
+                <article className="article-card">
                   <figure className="article-image">
                     <img src={ThumbnailEntertainment} alt={t('indexPage.blog.categories.entertainment.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.entertainment.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.entertainment.title')}</h3>
+                    <p className="card-excerpt">
                     {t('indexPage.blog.categories.entertainment.description')}</p>
                     <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>

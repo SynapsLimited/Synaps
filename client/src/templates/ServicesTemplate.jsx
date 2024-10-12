@@ -49,7 +49,7 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
             <h1>{t('servicesTemplatePage.header.servicesHeading')}</h1>
             <h2 style={{ color: 'var(--color-secondary)' }}>{title}</h2>
             <p>{description}</p>
-            <a href="contact" data-aos="fade-up" className="btn btn-primary">{t('servicesTemplatePage.header.contactButton')}</a>
+            <a href="contact" className="btn btn-primary">{t('servicesTemplatePage.header.contactButton')}</a>
           </div>
           <div data-aos="fade-up" className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/l7zIP1lmkJQWSetc/scene.splinecode"></spline-viewer>
@@ -59,11 +59,11 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
 
       <section data-aos="fade-up" className="container portfolio-categories-section">
         <ul data-aos="fade-up" className="portfolio-categories">
-          <li data-aos="fade-up" className="btn btn-primary"><Link to="/services/webdesign">{t('servicesTemplatePage.categories.webDesign')}</Link></li>
-          <li data-aos="fade-up" className="btn btn-primary"><Link to="/services/socialmedia">{t('servicesTemplatePage.categories.socialMedia')}</Link></li>
-          <li data-aos="fade-up" className="btn btn-primary"><Link to="/services/branding">{t('servicesTemplatePage.categories.branding')}</Link></li>
-          <li data-aos="fade-up" className="btn btn-primary"><Link to="/services/video">{t('servicesTemplatePage.categories.video')}</Link></li>
-          <li data-aos="fade-up" className="btn btn-primary"><Link to="/services/advertisement">{t('servicesTemplatePage.categories.advertisement')}</Link></li>
+          <li className="btn btn-primary"><Link to="/services/webdesign">{t('servicesTemplatePage.categories.webDesign')}</Link></li>
+          <li className="btn btn-primary"><Link to="/services/socialmedia">{t('servicesTemplatePage.categories.socialMedia')}</Link></li>
+          <li className="btn btn-primary"><Link to="/services/branding">{t('servicesTemplatePage.categories.branding')}</Link></li>
+          <li className="btn btn-primary"><Link to="/services/video">{t('servicesTemplatePage.categories.video')}</Link></li>
+          <li className="btn btn-primary"><Link to="/services/advertisement">{t('servicesTemplatePage.categories.advertisement')}</Link></li>
         </ul>
       </section>
       
@@ -113,7 +113,7 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
                   <div>
                     <h4>{type.title}</h4>
                     <p>{type.description}</p>
-                    <a href={`/portfolio/${formatTitleToURL(title)}`} data-aos="fade-up" className="btn btn-secondary">{t('servicesTemplatePage.portfolioButton')}</a>
+                    <a href={`/portfolio/${formatTitleToURL(title)}`} className="btn btn-secondary">{t('servicesTemplatePage.portfolioButton')}</a>
                   </div>
                 </div>
               </SwiperSlide>

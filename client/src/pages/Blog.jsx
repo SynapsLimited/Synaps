@@ -33,7 +33,7 @@ const Blog = () => {
           <div data-aos="fade-up" className="header__left header-blog">
             <h1>{t('blogPage.header.heading')}</h1>
             <p>{t('blogPage.header.description')}</p>
-            <a href="contact" data-aos="fade-up" className="btn btn-secondary">{t('blogPage.header.contactButton')}</a>
+            <a href="contact" className="btn btn-secondary">{t('blogPage.header.contactButton')}</a>
           </div>
           <div data-aos="fade-up" className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/A0hNRHhFOAhaezpC/scene.splinecode"></spline-viewer>
@@ -52,7 +52,7 @@ const Blog = () => {
         </div>
         <ul data-aos="fade-up" className="blog-categories">
           {Object.entries(t('blogPage.categories.items', { returnObjects: true })).map(([key, value]) => (
-            <li key={key} data-aos="fade-up" className="btn btn-secondary">
+            <li key={key} className="btn btn-secondary">
               <Link to={`/posts/categories/${key}`}>{value}</Link>
             </li>
           ))}

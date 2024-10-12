@@ -161,7 +161,7 @@ const ServicesForm = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit" data-aos="fade-up" className="btn btn-secondary btn-submit-form">
+        <button type="submit" className="btn btn-secondary btn-submit-form">
           {t('servicesForm.submitButton')} {/* Translated submit button */}
         </button>
       </form>

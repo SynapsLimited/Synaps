@@ -63,8 +63,8 @@ const Dashboard = () => {
                 <h4>{post.title}</h4>
               </div>
               <div data-aos="fade-up" className="dashboard-post-actions">
-                <Link to={`/posts/${post._id}`} data-aos="fade-up" className="btn btn-background">{t('Dashboard.viewButton')}</Link>
-                <Link to={`/posts/${post._id}/edit`} data-aos="fade-up" className="btn btn-primary">{t('Dashboard.editButton')}</Link>
+                <Link to={`/posts/${post._id}`} className="btn btn-background">{t('Dashboard.viewButton')}</Link>
+                <Link to={`/posts/${post._id}/edit`} className="btn btn-primary">{t('Dashboard.editButton')}</Link>
                 <DeletePost postId={post._id} /> {/* Pass the postId here */}
               </div>
             </article>

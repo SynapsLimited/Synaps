@@ -74,7 +74,7 @@ const PostDetail = () => {
               {/* Only show edit and delete buttons if the current user is the post creator */}
               {currentUser?.id === (post.creator._id || post.creator) && (
                 <div data-aos="fade-up" className="post-detail-buttons">
-                  <Link to={`/posts/${post?._id}/edit`} data-aos="fade-up" className="btn btn-primary">
+                  <Link to={`/posts/${post?._id}/edit`} className="btn btn-primary">
                     {t('Dashboard.editButton')}
                   </Link>
                   <DeletePost postId={post._id} /> {/* Pass the postId to the DeletePost component */}
@@ -98,7 +98,7 @@ const PostDetail = () => {
         )}
 
         {/* Back to blog button */}
-        <a href="/blog" data-aos="fade-up" className="btn btn-secondary post-detail-btn">Back to Blog</a>
+        <a href="/blog" className="btn btn-secondary post-detail-btn">Back to Blog</a>
       </section>
     </div>
   );

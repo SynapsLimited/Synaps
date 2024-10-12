@@ -30,7 +30,7 @@ const Contact = () => {
                     <div data-aos="fade-up" className="header__left header-about">
                         <h1>{t('contactPage.header.heading')}</h1>
                         <p>{t('contactPage.header.description')}</p>
-                        <a href="contact" data-aos="fade-up" className="btn btn-secondary">{t('contactPage.header.contactButton')}</a>
+                        <a href="contact" className="btn btn-secondary">{t('contactPage.header.contactButton')}</a>
                     </div>
                     <div data-aos="fade-up" className="header__right" id="spline-container">
                         <spline-viewer url="https://prod.spline.design/Aieg3XjNVXVy2DyI/scene.splinecode"></spline-viewer>
@@ -46,7 +46,7 @@ const Contact = () => {
                 <div data-aos="fade-up" className="blob location-blob">
                     <h2>{t('contactPage.sections.location.title')}</h2>
                     <a href='https://maps.app.goo.gl/bumqeQ7GmkcZK42F9'>
-                    <img data-aos="fade-up" className="location-img" src="/assets/Icons For Synaps/Main Icons/Europe Map.png" alt={t('contactPage.sections.location.imageAlt')} />
+                    <img className="location-img" src="/assets/Icons For Synaps/Main Icons/Europe Map.png" alt={t('contactPage.sections.location.imageAlt')} />
                     </a>
                     <h5>{t('contactPage.sections.location.description')}</h5>
                 </div>

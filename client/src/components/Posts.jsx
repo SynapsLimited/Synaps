@@ -56,7 +56,7 @@ const Posts = ({ limit }) => {
         )}
         {limit && posts.length > limit && (
           <div data-aos="fade-up" className="read-more-container">
-            <Link to="/posts" data-aos="fade-up" className="btn btn-secondary">{t('posts.readMore')}</Link> 
+            <Link to="/posts" className="btn btn-secondary">{t('posts.readMore')}</Link> 
           </div>
         )}
       </section>

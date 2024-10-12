@@ -31,7 +31,7 @@ const About = () => {
           <div data-aos="fade-up" className="header__left header-about">
             <h1>{t('aboutPage.title')}</h1>
             <p>{t('aboutPage.intro')}</p>
-            <a href="contact" data-aos="fade-up" className="btn btn-secondary">{t('aboutPage.contactButton')}</a>
+            <a href="contact" className="btn btn-secondary">{t('aboutPage.contactButton')}</a>
           </div>
           <div data-aos="fade-up" className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/e7fMPi34Xpt4idpF/scene.splinecode"></spline-viewer>

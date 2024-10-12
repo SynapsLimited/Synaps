@@ -92,7 +92,7 @@ const Register = () => {
             value={userData.password2}
             onChange={changeInputHandler}
           />
-          <button type="submit" data-aos="fade-up" className="btn btn-secondary btn-submit">
+          <button type="submit" className="btn btn-secondary btn-submit">
             {t('Register.registerButton')}
           </button>
         </form>

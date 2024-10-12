@@ -109,7 +109,7 @@ const changeAvatarHandler = async () => {
   return (
     <section data-aos="fade-up" className="profile">
       <div data-aos="fade-up" className="container profile-container">
-        <Link to={`/myposts/${currentUser.id}`} data-aos="fade-up" className="btn btn-secondary">Dashboard</Link>
+        <Link to={`/myposts/${currentUser.id}`} className="btn btn-secondary">Dashboard</Link>
 
         <div data-aos="fade-up" className="profile-details">
           <div data-aos="fade-up" className="avatar-wrapper">
@@ -125,12 +125,12 @@ const changeAvatarHandler = async () => {
                 onChange={handleAvatarChange} 
                 accept="image/png, image/jpeg, image/webp" 
               />
-              <label data-aos="fade-up" className="btn btn-primary profile-avatar-btn" htmlFor="avatar">
+              <label className="btn btn-primary profile-avatar-btn" htmlFor="avatar">
                 <FaEdit /> 
               </label>
             </form>
             {isAvatarTouched && <button 
-                  data-aos="fade-up" className="btn btn-primary profile-avatar-btn" 
+                  className="btn btn-primary profile-avatar-btn" 
                   onClick={changeAvatarHandler}
                   type="button" // Ensure this is a button and not submitting a form
               >

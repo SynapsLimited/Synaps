@@ -63,7 +63,7 @@ const Login = () => {
             value={userData.password}
             onChange={changeInputHandler}
           />
-          <button type="submit" data-aos="fade-up" className="btn btn-secondary btn-submit">
+          <button type="submit" className="btn btn-secondary btn-submit">
             {t('Login.loginButton')}
           </button>
         </form>

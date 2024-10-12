@@ -45,7 +45,7 @@ const Home = () => {
             <div data-aos="fade-up" className="header__left">
               <h1>{t('indexPage.header.heading')}</h1>
               <p>{t('indexPage.header.description')}</p>
-              <a href="contact" data-aos="fade-up" className="btn btn-primary">{t('indexPage.header.contactButton')}</a>
+              <a href="contact" className="btn btn-primary">{t('indexPage.header.contactButton')}</a>
             </div>
             <div data-aos="fade-up" className="header__right" id="spline-container">
               <spline-viewer url="https://prod.spline.design/1VQSYrmiNFt3i0cz/scene.splinecode" />
@@ -66,7 +66,7 @@ const Home = () => {
             <a href="#" data-aos="fade-up" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
             <a href="#" data-aos="fade-up" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a>
             <a href="#" data-aos="fade-up" className="social-link less-margin-bottom"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
-            <a href="about" data-aos="fade-up" className="btn btn-primary btn-about">{t('indexPage.about.aboutButton')}</a>
+            <a href="about" className="btn btn-primary btn-about">{t('indexPage.about.aboutButton')}</a>
           </div>
         </section>
 
@@ -96,9 +96,9 @@ const Home = () => {
               <span>{t('indexPage.services.items.advertisement')}</span>
             </a>
           </div>
-          <div data-aos="fade-up" className="services-image">
+          <div  className="services-image">
             <img src="/assets/Art for Synaps/Phone - Homepage.png" alt="Phone" data-aos="fade-up" className="service-phone" />
-            <a href="services" data-aos="fade-up" className="btn btn-primary service-btn">{t('indexPage.services.servicesButton')}</a>
+            <a href="services" className="btn btn-primary service-btn">{t('indexPage.services.servicesButton')}</a>
           </div>
         </section>
 
@@ -107,7 +107,7 @@ const Home = () => {
             <img src="assets/Art for Synaps/Portfolio - Hompage.png" alt="VR Headset" data-aos="fade-up" className="vr-headset" />
           </div>
           <div data-aos="fade-up" className="btn-location">
-            <a href="portfolio" data-aos="fade-up" className="btn btn-secondary btn-portfolio">{t('indexPage.portfolio.portfolioButton')}</a>
+            <a href="portfolio" className="btn btn-secondary btn-portfolio">{t('indexPage.portfolio.portfolioButton')}</a>
           </div>
           <div data-aos="fade-up" className="portfolio-content">
             <div data-aos="fade-up" className="portfolio-text-circle">
@@ -167,7 +167,7 @@ const Home = () => {
                     <a href="blog" data-aos="fade-up" className="card-category">Blog</a>
                     <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.marketing.title')}</h3>
                     <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.marketing.description')}</p>
-                    <a href="blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                    <a href="blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
@@ -180,7 +180,7 @@ const Home = () => {
                     <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
                     <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.business.title')}</h3>
                     <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.business.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
@@ -193,7 +193,7 @@ const Home = () => {
                     <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
                     <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.technology.title')}</h3>
                     <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.technology.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
@@ -207,7 +207,7 @@ const Home = () => {
                     <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.ai.title')}</h3>
                     <p data-aos="fade-up" className="card-excerpt">
                     {t('indexPage.blog.categories.ai.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
@@ -220,7 +220,7 @@ const Home = () => {
                     <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
                     <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.gaming.title')}</h3>
                     <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.gaming.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
@@ -234,7 +234,7 @@ const Home = () => {
                     <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.product.title')}</h3>
                     <p data-aos="fade-up" className="card-excerpt">
                     {t('indexPage.blog.categories.product.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
@@ -248,7 +248,7 @@ const Home = () => {
                     <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.entertainment.title')}</h3>
                     <p data-aos="fade-up" className="card-excerpt">
                     {t('indexPage.blog.categories.entertainment.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>

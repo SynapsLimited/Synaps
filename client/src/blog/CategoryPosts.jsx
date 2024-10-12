@@ -67,13 +67,13 @@ const CategoryPosts = () => {
           <h1>{t('CategoryPosts.categories')}</h1>
         </div>
         <ul data-aos="fade-up" className="blog-categories">
-          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/posts/categories/Marketing">{t('CategoryPosts.marketing')}</Link></li>
-          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/posts/categories/Business">{t('CategoryPosts.business')}</Link></li>
-          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/posts/categories/Technology">{t('CategoryPosts.technology')}</Link></li>
-          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/posts/categories/AI">{t('CategoryPosts.ai')}</Link></li>
-          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/posts/categories/Gaming">{t('CategoryPosts.gaming')}</Link></li>
-          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/posts/categories/Product">{t('CategoryPosts.product')}</Link></li>
-          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/posts/categories/Entertainment">{t('CategoryPosts.entertainment')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Marketing">{t('CategoryPosts.marketing')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Business">{t('CategoryPosts.business')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Technology">{t('CategoryPosts.technology')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/AI">{t('CategoryPosts.ai')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Gaming">{t('CategoryPosts.gaming')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Product">{t('CategoryPosts.product')}</Link></li>
+          <li className="btn btn-secondary"><Link to="/posts/categories/Entertainment">{t('CategoryPosts.entertainment')}</Link></li>
         </ul>
       </section>
 

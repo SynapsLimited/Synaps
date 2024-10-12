@@ -8,7 +8,7 @@ const PortfolioItem = ({ imgSrc, title, link }) => {
   return (
     <div data-aos="fade-up" className="portfolio-page-item">
       <img src={imgSrc} alt={title} data-aos="fade-up" className="portfolio-page-img" />
-      <Link to={link} data-aos="fade-up" className="btn btn-primary">{title}</Link>
+      <Link to={link} className="btn btn-primary">{title}</Link>
     </div>
   );
 };
@@ -39,7 +39,7 @@ const Portfolio = () => {
           <div data-aos="fade-up" className="header__left header-about">
             <h1>{t('portfolioPage.header.heading')}</h1>
             <p>{t('portfolioPage.header.description')}</p>
-            <a href="contact" data-aos="fade-up" className="btn btn-primary">{t('portfolioPage.header.contactButton')}</a>
+            <a href="contact" className="btn btn-primary">{t('portfolioPage.header.contactButton')}</a>
           </div>
           <div data-aos="fade-up" className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/TUJchywqt3sObPx0/scene.splinecode"></spline-viewer>

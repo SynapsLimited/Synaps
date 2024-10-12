@@ -32,7 +32,7 @@ const Services = () => {
             <p>
               {t('servicesPage.header.description')}
             </p>
-            <a href="contact" data-aos="fade-up" className="btn btn-primary">{t('servicesPage.header.contactButton')}</a>
+            <a href="contact" className="btn btn-primary">{t('servicesPage.header.contactButton')}</a>
           </div>
           <div data-aos="fade-up" className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/l7zIP1lmkJQWSetc/scene.splinecode"></spline-viewer>
@@ -84,8 +84,8 @@ const Services = () => {
                 <h1 key={index}>{subItem}</h1>
               ))}
             </div>
-            <a href="services/webdesign" data-aos="fade-up" className="btn btn-primary">{t('servicesPage.servicesButton')}</a>
-            <a href="portfolio/webdesign" data-aos="fade-up" className="btn btn-secondary">{t('servicesPage.portfolioButton')}</a>
+            <a href="services/webdesign" className="btn btn-primary">{t('servicesPage.servicesButton')}</a>
+            <a href="portfolio/webdesign" className="btn btn-secondary">{t('servicesPage.portfolioButton')}</a>
           </div>
         </div>
       </section>
@@ -104,8 +104,8 @@ const Services = () => {
                 <h1 key={index}>{subItem}</h1>
               ))}
             </div>
-            <a href="services/socialmedia" data-aos="fade-up" className="btn btn-primary">{t('servicesPage.servicesButton')}</a>
-            <a href="portfolio/socialmedia" data-aos="fade-up" className="btn btn-secondary">{t('servicesPage.portfolioButton')}</a>
+            <a href="services/socialmedia" className="btn btn-primary">{t('servicesPage.servicesButton')}</a>
+            <a href="portfolio/socialmedia" className="btn btn-secondary">{t('servicesPage.portfolioButton')}</a>
           </div>
         </div>
       </section>
@@ -124,8 +124,8 @@ const Services = () => {
                 <h1 key={index}>{subItem}</h1>
               ))}
             </div>
-            <a href="services/branding" data-aos="fade-up" className="btn btn-primary">{t('servicesPage.servicesButton')}</a>
-            <a href="portfolio/branding" data-aos="fade-up" className="btn btn-secondary">{t('servicesPage.portfolioButton')}</a>
+            <a href="services/branding" className="btn btn-primary">{t('servicesPage.servicesButton')}</a>
+            <a href="portfolio/branding" className="btn btn-secondary">{t('servicesPage.portfolioButton')}</a>
           </div>
         </div>
       </section>
@@ -144,8 +144,8 @@ const Services = () => {
                 <h1 key={index}>{subItem}</h1>
               ))}
             </div>
-            <a href="services/video" data-aos="fade-up" className="btn btn-primary">{t('servicesPage.servicesButton')}</a>
-            <a href="portfolio/video" data-aos="fade-up" className="btn btn-secondary">{t('servicesPage.portfolioButton')}</a>
+            <a href="services/video" className="btn btn-primary">{t('servicesPage.servicesButton')}</a>
+            <a href="portfolio/video" className="btn btn-secondary">{t('servicesPage.portfolioButton')}</a>
           </div>
         </div>
       </section>
@@ -164,8 +164,8 @@ const Services = () => {
                 <h1 key={index}>{subItem}</h1>
               ))}
             </div>
-            <a href="services/advertisement" data-aos="fade-up" className="btn btn-primary">{t('servicesPage.servicesButton')}</a>
-            <a href="portfolio/advertisement" data-aos="fade-up" className="btn btn-secondary">{t('servicesPage.portfolioButton')}</a>
+            <a href="services/advertisement" className="btn btn-primary">{t('servicesPage.servicesButton')}</a>
+            <a href="portfolio/advertisement" className="btn btn-secondary">{t('servicesPage.portfolioButton')}</a>
           </div>
         </div>
       </section>

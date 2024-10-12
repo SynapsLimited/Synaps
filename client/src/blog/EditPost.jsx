@@ -105,7 +105,7 @@ const EditPost = () => {
           <div data-aos="fade-up" className="custom-file-input-container">
             <input data-aos="fade-up" className="custom-file-input" type="file" onChange={e => setThumbnail(e.target.files[0])} accept='png, jpg, jpeg' />
           </div>
-          <button type="submit" data-aos="fade-up" className="btn btn-primary btn-submit">Update</button>
+          <button type="submit" className="btn btn-primary btn-submit">Update</button>
 
         </form>
       </div>

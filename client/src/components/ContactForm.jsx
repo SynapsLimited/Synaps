@@ -120,7 +120,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit" data-aos="fade-up" className="btn btn-secondary btn-submit-form">
+        <button type="submit" className="btn btn-secondary btn-submit-form">
           {t('contactForm.submitButton')}
         </button>
       </form>

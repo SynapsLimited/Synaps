@@ -88,11 +88,11 @@ const ServicesForm = () => {
         <h1>{t('servicesForm.title')}</h1> {/* Translated form title */}
         <p>{t('servicesForm.description')}</p> {/* Translated form description */}
       </div>
-      <div data-aos="fade-up" className="container services-overview-blobs">
+      <div className="container services-overview-blobs">
         {services.map(service => (
           <div
             key={service.id}
-            data-aos="fade-up" className={`service-overview-blob-art ${selectedServices.includes(service.id) ? 'selected' : ''}`}
+            className={`service-overview-blob-art ${selectedServices.includes(service.id) ? 'selected' : ''}`}
             onClick={() => toggleService(service.id)}
           >
             <img src={service.imgSrc} alt={service.name} />

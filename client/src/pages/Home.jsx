@@ -39,7 +39,7 @@ const Home = () => {
       <Helmet>
         <title>{t('indexPage.title')}</title>
       </Helmet>
-      <div data-aos="fade-up" className="Index">
+      <div className="Index">
         <header>
           <div data-aos="fade-up" className="container header__container">
             <div data-aos="fade-up" className="header__left">

@@ -43,27 +43,27 @@ const Contact = () => {
             </div>
 
             <section data-aos="fade-up" className="container contact-section">
-                <div data-aos="fade-up" className="blob location-blob">
+                <div className="blob location-blob">
                     <h2>{t('contactPage.sections.location.title')}</h2>
                     <a href='https://maps.app.goo.gl/bumqeQ7GmkcZK42F9'>
                     <img className="location-img" src="/assets/Icons For Synaps/Main Icons/Europe Map.png" alt={t('contactPage.sections.location.imageAlt')} />
                     </a>
                     <h5>{t('contactPage.sections.location.description')}</h5>
                 </div>
-                <div data-aos="fade-up" className="blob phone-mail-blob">
+                <div className="blob phone-mail-blob">
                     <h2>{t('contactPage.sections.contact.title')}</h2>
                     <img src="/assets/Icons For Synaps/Main Icons/phone-call.png" alt={t('contactPage.sections.contact.phone.alt')} />
                     <a href="tel:+32456071631"><h4>{t('contactPage.sections.contact.phone.number')}</h4></a>
                     <img src="/assets/Icons For Synaps/Main Icons/email.png" alt={t('contactPage.sections.contact.email.alt')} />
                     <a href={`mailto:${t('contactPage.sections.contact.email.address')}`}><h4>{t('contactPage.sections.contact.email.address')}</h4></a>
                 </div>
-                <div data-aos="fade-up" className="blob socials-blob">
+                <div className="blob socials-blob">
                     <h2>{t('contactPage.sections.socials.title')}</h2>
-                    <div data-aos="fade-up" className="social-icons">
-                        <a href="https://www.facebook.com" data-aos="fade-up" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt={t('contactPage.sections.socials.facebookAlt')} /></a>
-                        <a href="https://www.instagram.com" data-aos="fade-up" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt={t('contactPage.sections.socials.instagramAlt')} /></a>
-                        <a href="https://www.linkedin.com" data-aos="fade-up" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt={t('contactPage.sections.socials.linkedinAlt')} /></a>
-                        <a href="https://www.youtube.com" data-aos="fade-up" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt={t('contactPage.sections.socials.youtubeAlt')} /></a>
+                    <div className="social-icons">
+                        <a href="https://www.facebook.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt={t('contactPage.sections.socials.facebookAlt')} /></a>
+                        <a href="https://www.instagram.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt={t('contactPage.sections.socials.instagramAlt')} /></a>
+                        <a href="https://www.linkedin.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt={t('contactPage.sections.socials.linkedinAlt')} /></a>
+                        <a href="https://www.youtube.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt={t('contactPage.sections.socials.youtubeAlt')} /></a>
                     </div>
                 </div>
             </section>

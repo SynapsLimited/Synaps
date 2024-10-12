@@ -47,23 +47,23 @@ const Services = () => {
         </div>
 
         <div data-aos="fade-up" className="services-overview-blobs">
-          <a href="services/webdesign" data-aos="fade-up" className="service-overview-blob-art">
+          <a href="services/webdesign" className="service-overview-blob-art">
             <img src="/assets/Art for Synaps/Services - Web Design.png" alt={t('servicesPage.items.webDesign.title')} />
             <span>{t('servicesPage.items.webDesign.title')}</span>
           </a>
-          <a href="services/socialmedia" data-aos="fade-up" className="service-overview-blob-art">
+          <a href="services/socialmedia" className="service-overview-blob-art">
             <img src="/assets/Art for Synaps/Services - Social Media.png" alt={t('servicesPage.items.socialMedia.title')} />
             <span>{t('servicesPage.items.socialMedia.title')}</span>
           </a>
-          <a href="services/branding" data-aos="fade-up" className="service-overview-blob-art">
+          <a href="services/branding" className="service-overview-blob-art">
             <img src="/assets/Art for Synaps/Services - Branding.png" alt={t('servicesPage.items.branding.title')} />
             <span>{t('servicesPage.items.branding.title')}</span>
           </a>
-          <a href="services/video" data-aos="fade-up" className="service-overview-blob-art">
+          <a href="services/video" className="service-overview-blob-art">
             <img src="/assets/Art for Synaps/Services - Video.png" alt={t('servicesPage.items.video.title')} />
             <span>{t('servicesPage.items.video.title')}</span>
           </a>
-          <a href="services/advertisement" data-aos="fade-up" className="service-overview-blob-art">
+          <a href="services/advertisement" className="service-overview-blob-art">
             <img src="/assets/Art for Synaps/Services - Advertisement.png" alt={t('servicesPage.items.advertisement.title')} />
             <span>{t('servicesPage.items.advertisement.title')}</span>
           </a>

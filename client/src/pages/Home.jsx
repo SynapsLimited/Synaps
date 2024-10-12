@@ -75,23 +75,23 @@ const Home = () => {
         </div>
         <section data-aos="fade-up" className="container services-section">
           <div data-aos="fade-up" className="services-blobs">
-            <a href="services/webdesign" data-aos="fade-up" className="service-blob">
+            <a href="services/webdesign" className="service-blob">
               <img src="/assets/Art for Synaps/Services - Web Design.png" alt={t('indexPage.services.items.webDesign')} />
               <span>{t('indexPage.services.items.webDesign')}</span>
             </a>
-            <a href="services/socialmedia" data-aos="fade-up" className="service-blob">
+            <a href="services/socialmedia" className="service-blob">
               <img src="/assets/Art for Synaps/Services - Social Media.png" alt={t('indexPage.services.items.socialMedia')} />
               <span>{t('indexPage.services.items.socialMedia')}</span>
             </a>
-            <a href="services/branding" data-aos="fade-up" className="service-blob">
+            <a href="services/branding" className="service-blob">
               <img src="/assets/Art for Synaps/Services - Branding.png" alt={t('indexPage.services.items.branding')} />
               <span>{t('indexPage.services.items.branding')}</span>
             </a>
-            <a href="services/video" data-aos="fade-up" className="service-blob">
+            <a href="services/video" className="service-blob">
               <img src="/assets/Art for Synaps/Services - Video.png" alt={t('indexPage.services.items.video')} />
               <span>{t('indexPage.services.items.video')}</span>
             </a>
-            <a href="services/advertisement" data-aos="fade-up" className="service-blob">
+            <a href="services/advertisement" className="service-blob">
               <img src="assets/Art for Synaps/Services - Advertisement.png" alt={t('indexPage.services.items.advertisement')} />
               <span>{t('indexPage.services.items.advertisement')}</span>
             </a>

@@ -123,8 +123,8 @@ const Home = () => {
           </div>
         </section>
 
-        <section data-aos="fade-up" className="container blog-section less-margin-bottom less-margin-top">
-          <div data-aos="fade-up" className="article-container">
+        <section className="container blog-section less-margin-bottom less-margin-top">
+          <div className="article-container">
             <Swiper
               modules={[Navigation, Pagination, EffectCoverflow]}
               effect="coverflow"
@@ -159,14 +159,14 @@ const Home = () => {
               navigation={true}
             >
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
+                <article className="article-card">
                   <figure className="article-image">
                     <img src={ThumbnailMarketing} alt={t('indexPage.blog.categories.marketing.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.marketing.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.marketing.description')}</p>
+                  <div className="article-content">
+                    <a href="blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.marketing.title')}</h3>
+                    <p className="card-excerpt">{t('indexPage.blog.categories.marketing.description')}</p>
                     <a href="blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
@@ -198,7 +198,7 @@ const Home = () => {
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
+                <article className="article-card">
                   <figure className="article-image">
                     <img src={ThumbnailAI} alt={t('indexPage.blog.categories.ai.title')} />
                   </figure>

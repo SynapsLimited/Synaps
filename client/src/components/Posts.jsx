@@ -32,12 +32,12 @@ const Posts = ({ limit }) => {
     const displayedPosts = limit ? posts.slice(0, limit) : posts;
 
     return (
-      <section data-aos="fade-up" className="posts">
-        <div data-aos="fade-up" className="blog-title-filtered">
+      <section data-aos="fade-up"   className="posts">
+        <div  className="blog-title-filtered">
           <h1>{t('posts.title')}</h1>
         </div>
         {displayedPosts.length > 0 ? (
-          <div data-aos="fade-up" className="container posts-container">
+          <div  className="container posts-container">
             {displayedPosts.map(({ _id: id, thumbnail, category, title, description, creator, createdAt }) => (
               <PostItem
                 key={id}
@@ -52,11 +52,11 @@ const Posts = ({ limit }) => {
             ))}
           </div>
         ) : (
-          <h1 data-aos="fade-up" className="error-blog-not-found">{t('posts.noPostsFound')}</h1>
+          <h1  className="error-blog-not-found">{t('posts.noPostsFound')}</h1>
         )}
         {limit && posts.length > limit && (
-          <div data-aos="fade-up" className="read-more-container">
-            <Link to="/posts" data-aos="fade-up" className="btn btn-secondary">{t('posts.readMore')}</Link> 
+          <div  className="read-more-container">
+            <Link to="/posts" className="btn btn-secondary">{t('posts.readMore')}</Link> 
           </div>
         )}
       </section>

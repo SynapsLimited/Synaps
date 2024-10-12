@@ -56,13 +56,13 @@ const Register = () => {
   };
 
   return (
-    <section data-aos="fade-up" className="register">
-      <div data-aos="fade-up" className="container">
-        <div data-aos="fade-up" className="blog-title">
+    <section data-aos="fade-up"   className="register">
+      <div  className="container">
+        <div  className="blog-title">
           <h1>{t('Register.signUp')}</h1>
         </div>
-        <form data-aos="fade-up" className="form register-form" onSubmit={registerUser}>
-          {error && <p data-aos="fade-up" className="form-error-message">{error}</p>}
+        <form  className="form register-form" onSubmit={registerUser}>
+          {error && <p  className="form-error-message">{error}</p>}
           <input
             type="text"
             placeholder={t('Register.fullNamePlaceholder')}
@@ -92,7 +92,7 @@ const Register = () => {
             value={userData.password2}
             onChange={changeInputHandler}
           />
-          <button type="submit" data-aos="fade-up" className="btn btn-secondary btn-submit">
+          <button type="submit" className="btn btn-secondary btn-submit">
             {t('Register.registerButton')}
           </button>
         </form>

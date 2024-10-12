@@ -41,13 +41,13 @@ const Login = () => {
   };
 
   return (
-    <section data-aos="fade-up" className="login">
-      <div data-aos="fade-up" className="container">
-        <div data-aos="fade-up" className="blog-title">
+    <section data-aos="fade-up"   className="login">
+      <div  className="container">
+        <div  className="blog-title">
           <h1>{t('Login.signIn')}</h1>
         </div>
-        <form data-aos="fade-up" className="form login-form" onSubmit={loginUser}>
-          {error && <p data-aos="fade-up" className="form-error-message">{error}</p>}
+        <form  className="form login-form" onSubmit={loginUser}>
+          {error && <p  className="form-error-message">{error}</p>}
           <input
             type="text"
             placeholder={t('Login.emailPlaceholder')}
@@ -63,7 +63,7 @@ const Login = () => {
             value={userData.password}
             onChange={changeInputHandler}
           />
-          <button type="submit" data-aos="fade-up" className="btn btn-secondary btn-submit">
+          <button type="submit" className="btn btn-secondary btn-submit">
             {t('Login.loginButton')}
           </button>
         </form>

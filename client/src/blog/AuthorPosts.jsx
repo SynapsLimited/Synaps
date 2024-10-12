@@ -50,13 +50,13 @@ const AuthorPosts = () => {
   }
 
   return (
-    <section data-aos="fade-up" className="posts">
-      <div data-aos="fade-up" className="blog-title-filtered">
+    <section data-aos="fade-up"   className="posts">
+      <div  className="blog-title-filtered">
         <h1>Posts by {authorName}</h1>
       </div>
 
       {posts.length > 0 ? (
-        <div data-aos="fade-up" className="container posts-container">
+        <div  className="container posts-container">
           {posts.map(({ _id: postId, thumbnail, category, title, description, creator, createdAt }) => (
             <PostItem
               key={postId}
@@ -71,7 +71,7 @@ const AuthorPosts = () => {
           ))}
         </div>
       ) : (
-        <h1 data-aos="fade-up" className="error-blog-not-found">No Posts Found</h1>
+        <h1  className="error-blog-not-found">No Posts Found</h1>
       )}
 
         <Authors />

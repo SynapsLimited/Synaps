@@ -39,81 +39,81 @@ const Home = () => {
       <Helmet>
         <title>{t('indexPage.title')}</title>
       </Helmet>
-      <div data-aos="fade-up" className="Index">
+      <div className="Index">
         <header>
-          <div data-aos="fade-up" className="container header__container">
-            <div data-aos="fade-up" className="header__left">
+          <div  className="container header__container">
+            <div  className="header__left">
               <h1>{t('indexPage.header.heading')}</h1>
               <p>{t('indexPage.header.description')}</p>
-              <a href="contact" data-aos="fade-up" className="btn btn-primary">{t('indexPage.header.contactButton')}</a>
+              <a href="contact" className="btn btn-primary">{t('indexPage.header.contactButton')}</a>
             </div>
-            <div data-aos="fade-up" className="header__right" id="spline-container">
+            <div  className="header__right" id="spline-container">
               <spline-viewer url="https://prod.spline.design/1VQSYrmiNFt3i0cz/scene.splinecode" />
             </div>
-          </div>
+          </div> 
         </header>
 
-        <div data-aos="fade-up" className="title-container about-title">
-          <h2 data-aos="fade-up" className="title-about">{t('indexPage.about.heading')}</h2>
+        <div  className="title-container about-title">
+          <h2  className="title-about">{t('indexPage.about.heading')}</h2>
           <p>{t('indexPage.about.description')}</p>
         </div>
-        <section data-aos="fade-up" className="container about-section">
-          <div data-aos="fade-up" className="about-image">
+        <section data-aos="fade-up"   className="container about-section">
+          <div className="about-image">
             <img src="/assets/Art for Synaps/Laptop - Hompage.png" alt="Computer" />
           </div>
-          <div data-aos="fade-up" className="social-links">
-            <a href="#" data-aos="fade-up" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a>
-            <a href="#" data-aos="fade-up" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
-            <a href="#" data-aos="fade-up" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a>
-            <a href="#" data-aos="fade-up" className="social-link less-margin-bottom"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
-            <a href="about" data-aos="fade-up" className="btn btn-primary btn-about">{t('indexPage.about.aboutButton')}</a>
+          <div  className="social-links">
+            <a href="#"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a>
+            <a href="#"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
+            <a href="#"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a>
+            <a href="#"  className="social-link less-margin-bottom"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
+            <a href="about" className="btn btn-primary btn-about">{t('indexPage.about.aboutButton')}</a>
           </div>
         </section>
 
-        <div data-aos="fade-up" className="title-container">
-          <h2 data-aos="fade-up" className="title">{t('indexPage.services.heading')}</h2>
+        <div  className="title-container">
+          <h2  className="title">{t('indexPage.services.heading')}</h2>
         </div>
-        <section data-aos="fade-up" className="container services-section">
-          <div data-aos="fade-up" className="services-blobs">
-            <a href="services/webdesign" data-aos="fade-up" className="service-blob">
+        <section data-aos="fade-up"   className="container services-section">
+          <div  className="services-blobs">
+            <a href="services/webdesign" className="service-blob">
               <img src="/assets/Art for Synaps/Services - Web Design.png" alt={t('indexPage.services.items.webDesign')} />
               <span>{t('indexPage.services.items.webDesign')}</span>
             </a>
-            <a href="services/socialmedia" data-aos="fade-up" className="service-blob">
+            <a href="services/socialmedia" className="service-blob">
               <img src="/assets/Art for Synaps/Services - Social Media.png" alt={t('indexPage.services.items.socialMedia')} />
               <span>{t('indexPage.services.items.socialMedia')}</span>
             </a>
-            <a href="services/branding" data-aos="fade-up" className="service-blob">
+            <a href="services/branding" className="service-blob">
               <img src="/assets/Art for Synaps/Services - Branding.png" alt={t('indexPage.services.items.branding')} />
               <span>{t('indexPage.services.items.branding')}</span>
             </a>
-            <a href="services/video" data-aos="fade-up" className="service-blob">
+            <a href="services/video" className="service-blob">
               <img src="/assets/Art for Synaps/Services - Video.png" alt={t('indexPage.services.items.video')} />
               <span>{t('indexPage.services.items.video')}</span>
             </a>
-            <a href="services/advertisement" data-aos="fade-up" className="service-blob">
+            <a href="services/advertisement" className="service-blob">
               <img src="assets/Art for Synaps/Services - Advertisement.png" alt={t('indexPage.services.items.advertisement')} />
               <span>{t('indexPage.services.items.advertisement')}</span>
             </a>
           </div>
-          <div data-aos="fade-up" className="services-image">
-            <img src="/assets/Art for Synaps/Phone - Homepage.png" alt="Phone" data-aos="fade-up" className="service-phone" />
-            <a href="services" data-aos="fade-up" className="btn btn-primary service-btn">{t('indexPage.services.servicesButton')}</a>
+          <div className="services-image">
+            <img src="/assets/Art for Synaps/Phone - Homepage.png" alt="Phone" className="service-phone" />
+            <a href="services" className="btn btn-primary service-btn">{t('indexPage.services.servicesButton')}</a>
           </div>
         </section>
 
-        <section data-aos="fade-up" className="container portfolio-section">
-          <div data-aos="fade-up" className="portfolio-image">
-            <img src="assets/Art for Synaps/Portfolio - Hompage.png" alt="VR Headset" data-aos="fade-up" className="vr-headset" />
+        <section data-aos="fade-up"   className="container portfolio-section">
+          <div className="portfolio-image">
+            <img src="assets/Art for Synaps/Portfolio - Hompage.png" alt="VR Headset" className="vr-headset" />
           </div>
-          <div data-aos="fade-up" className="btn-location">
-            <a href="portfolio" data-aos="fade-up" className="btn btn-secondary btn-portfolio">{t('indexPage.portfolio.portfolioButton')}</a>
+          <div  className="btn-location">
+            <a href="portfolio" className="btn btn-secondary btn-portfolio">{t('indexPage.portfolio.portfolioButton')}</a>
           </div>
-          <div data-aos="fade-up" className="portfolio-content">
-            <div data-aos="fade-up" className="portfolio-text-circle">
+          <div  className="portfolio-content">
+            <div  className="portfolio-text-circle">
               <span>{t('indexPage.portfolio.heading')}</span>
             </div>
-            <div data-aos="fade-up" className="portfolio-text-line">
+            <div  className="portfolio-text-line">
               <span>
                 {t('indexPage.portfolio.textLine1')} <br />
                 {t('indexPage.portfolio.textLine2')} <br />
@@ -123,8 +123,8 @@ const Home = () => {
           </div>
         </section>
 
-        <section data-aos="fade-up" className="container blog-section less-margin-bottom less-margin-top">
-          <div data-aos="fade-up" className="article-container">
+        <section  className="container blog-section less-margin-bottom less-margin-top">
+          <div className="article-container">
             <Swiper
               modules={[Navigation, Pagination, EffectCoverflow]}
               effect="coverflow"
@@ -159,96 +159,96 @@ const Home = () => {
               navigation={true}
             >
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                <article className="article-card">
+                  <figure className="article-image">
                     <img src={ThumbnailMarketing} alt={t('indexPage.blog.categories.marketing.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.marketing.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.marketing.description')}</p>
-                    <a href="blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                  <div className="article-content">
+                    <a href="blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.marketing.title')}</h3>
+                    <p className="card-excerpt">{t('indexPage.blog.categories.marketing.description')}</p>
+                    <a href="blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                <article className="article-card">
+                  <figure className="article-image">
                     <img src={ThumbnailBusiness} alt={t('indexPage.blog.categories.business.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.business.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.business.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.business.title')}</h3>
+                    <p className="card-excerpt">{t('indexPage.blog.categories.business.description')}</p>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                <article className="article-card">
+                  <figure className="article-image">
                     <img src={ThumbnailTechnology} alt={t('indexPage.blog.categories.technology.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.technology.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.technology.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.technology.title')}</h3>
+                    <p className="card-excerpt">{t('indexPage.blog.categories.technology.description')}</p>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                <article className="article-card">
+                  <figure className="article-image">
                     <img src={ThumbnailAI} alt={t('indexPage.blog.categories.ai.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.ai.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.ai.title')}</h3>
+                    <p className="card-excerpt">
                     {t('indexPage.blog.categories.ai.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                <article className="article-card">
+                  <figure className="article-image">
                     <img src={ThumbnailGaming} alt={t('indexPage.blog.categories.gaming.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.gaming.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">{t('indexPage.blog.categories.gaming.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.gaming.title')}</h3>
+                    <p className="card-excerpt">{t('indexPage.blog.categories.gaming.description')}</p>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                <article className="article-card">
+                  <figure className="article-image">
                     <img src={ThumbnailProduct} alt={t('indexPage.blog.categories.product.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.product.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.product.title')}</h3>
+                    <p className="card-excerpt">
                     {t('indexPage.blog.categories.product.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>
               <SwiperSlide>
-                <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                <article className="article-card">
+                  <figure className="article-image">
                     <img src={ThumbnailEntertainment} alt={t('indexPage.blog.categories.entertainment.title')} />
                   </figure>
-                  <div data-aos="fade-up" className="article-content">
-                    <a href="/blog" data-aos="fade-up" className="card-category">Blog</a>
-                    <h3 data-aos="fade-up" className="card-title">{t('indexPage.blog.categories.entertainment.title')}</h3>
-                    <p data-aos="fade-up" className="card-excerpt">
+                  <div className="article-content">
+                    <a href="/blog" className="card-category">Blog</a>
+                    <h3 className="card-title">{t('indexPage.blog.categories.entertainment.title')}</h3>
+                    <p className="card-excerpt">
                     {t('indexPage.blog.categories.entertainment.description')}</p>
-                    <a href="/blog" data-aos="fade-up" className="btn btn-secondary btn-blog">Blog</a>
+                    <a href="/blog" className="btn btn-secondary btn-blog">Blog</a>
                   </div>
                 </article>
               </SwiperSlide>

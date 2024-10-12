@@ -46,32 +46,32 @@ const Dashboard = () => {
   }
 
   return (
-    <section data-aos="fade-up" className="dashboard">
-      <div data-aos="fade-up" className="blog-title-filtered">
+    <section data-aos="fade-up"   className="dashboard">
+      <div  className="blog-title-filtered">
         <h1>{t('Dashboard.dashboard')}</h1>
       </div>
 
       {posts.length ? (
-        <div data-aos="fade-up" className="container dashboard-container">
+        <div  className="container dashboard-container">
           {posts.map((post) => (
-            <article key={post._id} data-aos="fade-up" className="dashboard-post">
-              <div data-aos="fade-up" className="dashboard-post-info">
-                <div data-aos="fade-up" className="dashboard-post-thumbnail">
+            <article key={post._id}  className="dashboard-post">
+              <div  className="dashboard-post-info">
+                <div  className="dashboard-post-thumbnail">
                   {/* Directly use post.thumbnail since it now contains the full URL */}
                   <img src={post.thumbnail} alt={post.title} />
                 </div>
                 <h4>{post.title}</h4>
               </div>
-              <div data-aos="fade-up" className="dashboard-post-actions">
-                <Link to={`/posts/${post._id}`} data-aos="fade-up" className="btn btn-background">{t('Dashboard.viewButton')}</Link>
-                <Link to={`/posts/${post._id}/edit`} data-aos="fade-up" className="btn btn-primary">{t('Dashboard.editButton')}</Link>
+              <div  className="dashboard-post-actions">
+                <Link to={`/posts/${post._id}`} className="btn btn-background">{t('Dashboard.viewButton')}</Link>
+                <Link to={`/posts/${post._id}/edit`} className="btn btn-primary">{t('Dashboard.editButton')}</Link>
                 <DeletePost postId={post._id} /> {/* Pass the postId here */}
               </div>
             </article>
           ))}
         </div>
       ) : (
-        <h2 data-aos="fade-up" className="center">{t('Dashboard.noPosts')}</h2>
+        <h2  className="center">{t('Dashboard.noPosts')}</h2>
       )}
     </section>
   );

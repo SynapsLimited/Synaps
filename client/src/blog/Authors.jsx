@@ -30,7 +30,7 @@ const Authors = () => {
   }
 
   return (
-    <section data-aos="fade-up" className="authors">
+    <section data-aos="fade-up"   className="authors">
       <div  className="blog-title">
         <h1>Authors</h1>
       </div>

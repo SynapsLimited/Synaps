@@ -32,17 +32,17 @@ const FixedMenu = () => {
     }
 
     return (
-        <div className="fixed-menu" ref={menuRef}>
+        <div data-aos="fade-up" className="fixed-menu" ref={menuRef}>
             <div
-                className={`menu-toggle ${isMenuOpen ? 'is-active' : ''}`}
+                data-aos="fade-up" className={`menu-toggle ${isMenuOpen ? 'is-active' : ''}`}
                 onClick={handleMenuToggle}
             >
-                <span className="bar"></span>
-                <span className="bar"></span>
-                <span className="bar"></span>
+                <span data-aos="fade-up" className="bar"></span>
+                <span data-aos="fade-up" className="bar"></span>
+                <span data-aos="fade-up" className="bar"></span>
             </div>
-            <ul className={`menu-content ${isMenuOpen ? 'show' : ''}`}>
-                <li className="welcome-user"><b>{currentUser?.name}</b></li>
+            <ul data-aos="fade-up" className={`menu-content ${isMenuOpen ? 'show' : ''}`}>
+                <li data-aos="fade-up" className="welcome-user"><b>{currentUser?.name}</b></li>
                 <li><Link to="/posts">{t('fixedMenu.allPosts')}</Link></li> {/* Translated "All Posts" */}
                 <li><Link to={`/profile/${currentUser.id}`}>{t('fixedMenu.profile')}</Link></li> {/* Translated "Profile" */}
                 <li><Link to="/create">{t('fixedMenu.create')}</Link></li> {/* Translated "Create" */}

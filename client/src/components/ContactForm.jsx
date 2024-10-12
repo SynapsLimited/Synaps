@@ -58,9 +58,9 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="container contact-form-section">
-      <form className="container contact-form" onSubmit={handleSubmit}>
-        <div className="form-group">
+    <section data-aos="fade-up" className="container contact-form-section">
+      <form data-aos="fade-up" className="container contact-form" onSubmit={handleSubmit}>
+        <div data-aos="fade-up" className="form-group">
           <input
             type="text"
             name="name"
@@ -78,7 +78,7 @@ const ContactForm = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div data-aos="fade-up" className="form-group">
           <input
             type="text"
             name="country"
@@ -96,7 +96,7 @@ const ContactForm = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div data-aos="fade-up" className="form-group">
           <input
             type="text"
             name="phoneNumber"
@@ -120,7 +120,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit" className="btn btn-secondary btn-submit-form">
+        <button type="submit" data-aos="fade-up" className="btn btn-secondary btn-submit-form">
           {t('contactForm.submitButton')}
         </button>
       </form>

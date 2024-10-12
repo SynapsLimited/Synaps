@@ -44,44 +44,44 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
         <link rel="icon" href="/assets/Synaps Logos/Synaps Logo Icon.ico" />
       </Helmet>
       <header>
-        <div className="container header__container">
-          <div className="header__left header-about">
+        <div data-aos="fade-up" className="container header__container">
+          <div data-aos="fade-up" className="header__left header-about">
             <h1>{t('servicesTemplatePage.header.servicesHeading')}</h1>
             <h2 style={{ color: 'var(--color-secondary)' }}>{title}</h2>
             <p>{description}</p>
-            <a href="contact" className="btn btn-primary">{t('servicesTemplatePage.header.contactButton')}</a>
+            <a href="contact" data-aos="fade-up" className="btn btn-primary">{t('servicesTemplatePage.header.contactButton')}</a>
           </div>
-          <div className="header__right" id="spline-container">
+          <div data-aos="fade-up" className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/l7zIP1lmkJQWSetc/scene.splinecode"></spline-viewer>
           </div>
         </div>
       </header>
 
-      <section className="container portfolio-categories-section">
-        <ul className="portfolio-categories">
-          <li className="btn btn-primary"><Link to="/services/webdesign">{t('servicesTemplatePage.categories.webDesign')}</Link></li>
-          <li className="btn btn-primary"><Link to="/services/socialmedia">{t('servicesTemplatePage.categories.socialMedia')}</Link></li>
-          <li className="btn btn-primary"><Link to="/services/branding">{t('servicesTemplatePage.categories.branding')}</Link></li>
-          <li className="btn btn-primary"><Link to="/services/video">{t('servicesTemplatePage.categories.video')}</Link></li>
-          <li className="btn btn-primary"><Link to="/services/advertisement">{t('servicesTemplatePage.categories.advertisement')}</Link></li>
+      <section data-aos="fade-up" className="container portfolio-categories-section">
+        <ul data-aos="fade-up" className="portfolio-categories">
+          <li data-aos="fade-up" className="btn btn-primary"><Link to="/services/webdesign">{t('servicesTemplatePage.categories.webDesign')}</Link></li>
+          <li data-aos="fade-up" className="btn btn-primary"><Link to="/services/socialmedia">{t('servicesTemplatePage.categories.socialMedia')}</Link></li>
+          <li data-aos="fade-up" className="btn btn-primary"><Link to="/services/branding">{t('servicesTemplatePage.categories.branding')}</Link></li>
+          <li data-aos="fade-up" className="btn btn-primary"><Link to="/services/video">{t('servicesTemplatePage.categories.video')}</Link></li>
+          <li data-aos="fade-up" className="btn btn-primary"><Link to="/services/advertisement">{t('servicesTemplatePage.categories.advertisement')}</Link></li>
         </ul>
       </section>
       
-      <section className="importance-section">
-        <h2 className="importance-title">{t('servicesTemplatePage.importanceTitle', { title: importanceTitle })}</h2>
-        <div className="importance-content">
-          <div className="importance-text">
+      <section data-aos="fade-up" className="importance-section">
+        <h2 data-aos="fade-up" className="importance-title">{t('servicesTemplatePage.importanceTitle', { title: importanceTitle })}</h2>
+        <div data-aos="fade-up" className="importance-content">
+          <div data-aos="fade-up" className="importance-text">
             <p>{importanceText}</p>
           </div>
-          <div className="importance-image">
+          <div data-aos="fade-up" className="importance-image">
             <img src={importanceImgSrc} alt={t('servicesTemplatePage.importanceTitle', { title: importanceTitle })} />
           </div>
         </div>
       </section>
 
       {types.length > 0 && (
-        <section className="container types-section">
-          <h2 className="types-title">{t('servicesTemplatePage.typesTitle', { title })}</h2>
+        <section data-aos="fade-up" className="container types-section">
+          <h2 data-aos="fade-up" className="types-title">{t('servicesTemplatePage.typesTitle', { title })}</h2>
           <Swiper
             spaceBetween={100}
             slidesPerView={1}
@@ -108,12 +108,12 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
           >
             {types.map((type, index) => (
               <SwiperSlide key={index}>
-                <div className="types-slide">
+                <div data-aos="fade-up" className="types-slide">
                   <img src={type.imgSrc} alt={type.title} />
                   <div>
                     <h4>{type.title}</h4>
                     <p>{type.description}</p>
-                    <a href={`/portfolio/${formatTitleToURL(title)}`} className="btn btn-secondary">{t('servicesTemplatePage.portfolioButton')}</a>
+                    <a href={`/portfolio/${formatTitleToURL(title)}`} data-aos="fade-up" className="btn btn-secondary">{t('servicesTemplatePage.portfolioButton')}</a>
                   </div>
                 </div>
               </SwiperSlide>

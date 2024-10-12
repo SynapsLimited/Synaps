@@ -3,8 +3,8 @@ import LoadingGif from '../images/loading.gif'
 
 const Loader = () => {
     return (
-        <div className="loader">
-            <div className="loader-image">
+        <div data-aos="fade-up" className="loader">
+            <div data-aos="fade-up" className="loader-image">
                 <img src={LoadingGif} alt="" />
             </div>
         </div>

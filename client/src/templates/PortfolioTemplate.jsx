@@ -38,8 +38,8 @@ const Gallery = ({ items }) => {
       </div>
 
       {items.map((item, index) => (
-        <div id={`item${index + 1}`} key={index} className={`port ${openItem === `item${index + 1}` ? 'item_open' : ''}`}>
-          <div className="row">
+        <div id={`item${index + 1}`} key={index}  className={`port ${openItem === `item${index + 1}` ? 'item_open' : ''}`}>
+          <div  className="row">
             <div className="description">
               <h1>{item.title}</h1>
               <p>{item.description}</p>
@@ -75,26 +75,26 @@ const PortfolioTemplate = ({ title, description, imgSrc, galleryItems }) => {
         <title>{t('portfolioTemplatePage.titlePrefix')}{title}</title>
       </Helmet>
       <header>
-        <div className="container header__container">
-          <div className="header__left header-about">
+        <div data-aos="fade-up" className="container header__container">
+          <div data-aos="fade-up" className="header__left header-about">
             <h1>{t('portfolioTemplatePage.header.heading')}</h1>
             <h2 style={{ color: 'var(--color-primary)', marginTop: '10px' }}>{title}</h2>
             <p>{description}</p>
-            <a href="/portfolio" className="btn btn-secondary">{t('portfolioTemplatePage.header.portfolioButton')}</a>
+            <a href="/portfolio" data-aos="fade-up" className="btn btn-secondary">{t('portfolioTemplatePage.header.portfolioButton')}</a>
           </div>
-          <div className="header__right" id="spline-container">
+          <div data-aos="fade-up" className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/TUJchywqt3sObPx0/scene.splinecode"></spline-viewer>
           </div>
         </div>
       </header>
 
-      <section className="container portfolio-categories-section">
-        <ul className="portfolio-categories">
-          <li className="btn btn-secondary"><Link to="/portfolio/webdesign">{t('portfolioTemplatePage.categories.webDesign')}</Link></li>
-          <li className="btn btn-secondary"><Link to="/portfolio/socialmedia">{t('portfolioTemplatePage.categories.socialMedia')}</Link></li>
-          <li className="btn btn-secondary"><Link to="/portfolio/branding">{t('portfolioTemplatePage.categories.branding')}</Link></li>
-          <li className="btn btn-secondary"><Link to="/portfolio/video">{t('portfolioTemplatePage.categories.video')}</Link></li>
-          <li className="btn btn-secondary"><Link to="/portfolio/advertisement">{t('portfolioTemplatePage.categories.advertisement')}</Link></li>
+      <section data-aos="fade-up" className="container portfolio-categories-section">
+        <ul data-aos="fade-up" className="portfolio-categories">
+          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/portfolio/webdesign">{t('portfolioTemplatePage.categories.webDesign')}</Link></li>
+          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/portfolio/socialmedia">{t('portfolioTemplatePage.categories.socialMedia')}</Link></li>
+          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/portfolio/branding">{t('portfolioTemplatePage.categories.branding')}</Link></li>
+          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/portfolio/video">{t('portfolioTemplatePage.categories.video')}</Link></li>
+          <li data-aos="fade-up" className="btn btn-secondary"><Link to="/portfolio/advertisement">{t('portfolioTemplatePage.categories.advertisement')}</Link></li>
         </ul>
       </section>
 

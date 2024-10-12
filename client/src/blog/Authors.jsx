@@ -30,12 +30,12 @@ const Authors = () => {
   }
 
   return (
-    <section className="authors">
-      <div className="blog-title">
+    <section data-aos="fade-up" className="authors">
+      <div  className="blog-title">
         <h1>Authors</h1>
       </div>
       {authors.length > 0 ? (
-        <div className="authors-container">
+        <div  className="authors-container">
           {authors.map(({ _id: id, avatar, name, posts }) => (
             <Link 
               key={id} 

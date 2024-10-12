@@ -66,62 +66,62 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={`page-wrapper ${isScrolled ? 'scrolled' : ''}`}>
-      <div className={`nav-wrapper ${isScrolled ? 'scrolled' : ''}`}>
-        <nav className="navbar">
+    <div  className={`page-wrapper ${isScrolled ? 'scrolled' : ''}`}>
+      <div  className={`nav-wrapper ${isScrolled ? 'scrolled' : ''}`}>
+        <nav  className="navbar">
           <Link to="/" onClick={handleMenuClose}>
-            <img src="/assets/Synaps Logos/Synaps Logo Art navbar.png" alt="Company Logo" className={isScrolled ? 'scrolled' : ''} />
+            <img src="/assets/Synaps Logos/Synaps Logo Art navbar.png" alt="Company Logo"  className={isScrolled ? 'scrolled' : ''} />
           </Link>
           <div
-            className={`menu-toggle ${isMobileMenuOpen ? 'is-active' : ''} ${isScrolled ? 'scrolled' : ''}`}
+             className={`menu-toggle ${isMobileMenuOpen ? 'is-active' : ''} ${isScrolled ? 'scrolled' : ''}`}
             id="mobile-menu"
             onClick={handleMenuToggle}
           >
-            <span className={`bar ${isScrolled ? 'scrolled' : ''}`}></span>
-            <span className={`bar ${isScrolled ? 'scrolled' : ''}`}></span>
-            <span className={`bar ${isScrolled ? 'scrolled' : ''}`}></span>
+            <span  className={`bar ${isScrolled ? 'scrolled' : ''}`}></span>
+            <span  className={`bar ${isScrolled ? 'scrolled' : ''}`}></span>
+            <span  className={`bar ${isScrolled ? 'scrolled' : ''}`}></span>
           </div>
-          <ul className={`nav no-search ${isMobileMenuOpen ? 'mobile-nav' : ''} ${isScrolled ? 'scrolled' : ''}`}>
-            <li className="nav-item">
-              <Link to="/" className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.home')}</Link>
+          <ul  className={`nav no-search ${isMobileMenuOpen ? 'mobile-nav' : ''} ${isScrolled ? 'scrolled' : ''}`}>
+            <li  className="nav-item">
+              <Link to="/"  className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.home')}</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/about" className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.about')}</Link>
+            <li  className="nav-item">
+              <Link to="/about"  className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.about')}</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/services" className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.services')}</Link>
+            <li  className="nav-item">
+              <Link to="/services"  className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.services')}</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/portfolio" className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.portfolio')}</Link>
+            <li  className="nav-item">
+              <Link to="/portfolio"  className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.portfolio')}</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/blog" className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.blog')}</Link>
+            <li  className="nav-item">
+              <Link to="/blog"  className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.blog')}</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/contact" className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.contact')}</Link>
+            <li  className="nav-item">
+              <Link to="/contact"  className={isScrolled ? 'scrolled' : ''} onClick={handleMenuClose}>{t('navbar.contact')}</Link>
             </li>
-            <li className="nav-item has-dropdown">
-              <a href="/" className={isScrolled ? 'scrolled' : ''} onClick={handleLanguageDropdownToggle}>
+            <li  className="nav-item has-dropdown">
+              <a href="/"  className={isScrolled ? 'scrolled' : ''} onClick={handleLanguageDropdownToggle}>
                 {language}
               </a>
-              <ul className={`dropdown-menu ${isLanguageDropdownOpen ? 'show' : ''} ${isScrolled ? 'scrolled' : ''}`}>
-                <li className={isScrolled ? 'scrolled' : ''} onClick={() => handleLanguageChange('EN')}>
-                  <ReactCountryFlag countryCode="US" svg className="country-flags" /> EN
+              <ul  className={`dropdown-menu ${isLanguageDropdownOpen ? 'show' : ''} ${isScrolled ? 'scrolled' : ''}`}>
+                <li  className={isScrolled ? 'scrolled' : ''} onClick={() => handleLanguageChange('EN')}>
+                  <ReactCountryFlag countryCode="US" svg  className="country-flags" /> EN
                 </li>
-                <li className={isScrolled ? 'scrolled' : ''} onClick={() => handleLanguageChange('FR')}>
-                  <ReactCountryFlag countryCode="FR" svg className="country-flags" /> FR
+                <li  className={isScrolled ? 'scrolled' : ''} onClick={() => handleLanguageChange('FR')}>
+                  <ReactCountryFlag countryCode="FR" svg  className="country-flags" /> FR
                 </li>
-                <li className={isScrolled ? 'scrolled' : ''} onClick={() => handleLanguageChange('NL')}>
-                  <ReactCountryFlag countryCode="NL" svg className="country-flags" /> NL
+                <li  className={isScrolled ? 'scrolled' : ''} onClick={() => handleLanguageChange('NL')}>
+                  <ReactCountryFlag countryCode="NL" svg  className="country-flags" /> NL
                 </li>
-                <li className={isScrolled ? 'scrolled' : ''} onClick={() => handleLanguageChange('IT')}>
-                  <ReactCountryFlag countryCode="IT" svg className="country-flags" /> IT
+                <li  className={isScrolled ? 'scrolled' : ''} onClick={() => handleLanguageChange('IT')}>
+                  <ReactCountryFlag countryCode="IT" svg  className="country-flags" /> IT
                 </li>
-                <li className={isScrolled ? 'scrolled' : ''} onClick={() => handleLanguageChange('DE')}>
-                  <ReactCountryFlag countryCode="DE" svg className="country-flags" /> DE
+                <li  className={isScrolled ? 'scrolled' : ''} onClick={() => handleLanguageChange('DE')}>
+                  <ReactCountryFlag countryCode="DE" svg  className="country-flags" /> DE
                 </li>
-                <li className={`${isScrolled ? 'scrolled' : ''} last-link`} onClick={() => handleLanguageChange('ES')}>
-                  <ReactCountryFlag countryCode="ES" svg className="country-flags" /> ES
+                <li  className={`${isScrolled ? 'scrolled' : ''} last-link`} onClick={() => handleLanguageChange('ES')}>
+                  <ReactCountryFlag countryCode="ES" svg  className="country-flags" /> ES
                 </li>
               </ul>
             </li>

@@ -86,7 +86,7 @@ const LoadingScreen = () => {
     // Mobile loading screen
     return (
       <div className={`loading-screen ${fadeOut ? 'fade-out' : ''}`}>
-        <div className="loading-content">
+        <div  className="loading-content">
           <img
             src={`${process.env.PUBLIC_URL}/assets/Synaps Logos/Synaps Logo Art navbar.png`} // Update with your logo path
             alt="Synaps Logo"

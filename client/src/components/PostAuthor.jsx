@@ -34,14 +34,14 @@ const PostAuthor = ({ authorID, createdAt }) => {
   }, [authorID]);
 
   return (
-    <Link to={`/posts/users/${authorID}`} className="post-author">
-      <div className="post-author-avatar">
+    <Link to={`/posts/users/${authorID}`}  className="post-author">
+      <div  className="post-author-avatar">
         <img
           src={author?.avatar || defaultAvatar}  // Use default avatar if none exists
           alt={author?.name || 'Author Avatar'}
         />
       </div>
-      <div className="post-author-details">
+      <div  className="post-author-details">
         <h5>{author?.name || 'Synaps'}</h5>
         {createdAt && (
           <small>

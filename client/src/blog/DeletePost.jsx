@@ -31,7 +31,7 @@ const DeletePost = ({ postId: id }) => {
   };
 
   return (
-    <button className='btn btn-secondary' style={{ fontFamily: 'Righteous, sans-serif' }} onClick={removePost}>
+    <button data-aos="fade-up" className='btn btn-secondary' style={{ fontFamily: 'Righteous, sans-serif' }} onClick={removePost}>
       Delete
     </button>
   );

@@ -648,6 +648,7 @@
       justify-content: center;
       align-items: center;
       margin-top: 20px; /* Space between blobs and the image */
+      max-width: 350px;
     }
   
     /* Adjust the service button to center it below the services image */

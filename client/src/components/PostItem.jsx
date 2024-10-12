@@ -11,18 +11,18 @@ const PostItem = ({ postID, category, title = '', description = '', authorID, th
   const defaultThumbnail = `${process.env.PUBLIC_URL}/assets/Blog-default.webp`;
 
   return (
-    <article className="post">
-      <div className="post-thumbnail">
+    <article  className="post">
+      <div  className="post-thumbnail">
         <img src={thumbnail || defaultThumbnail} alt={title} />
       </div>
-      <div className="post-content">
+      <div  className="post-content">
         <Link to={`/posts/${postID}`}>
           <h3>{postTitle}</h3>
         </Link>
-        <p className="blog-text" dangerouslySetInnerHTML={{ __html: shortDescription }} />
-        <div className="post-footer">
+        <p  className="blog-text" dangerouslySetInnerHTML={{ __html: shortDescription }} />
+        <div  className="post-footer">
         <PostAuthor authorID={authorID} createdAt={createdAt} />
-          <Link to={`/posts/categories/${category}`} className="btn btn-secondary btn-postitem">
+          <Link to={`/posts/categories/${category}`}  className="btn btn-secondary btn-postitem">
             {t(`categories.${category}`, category)} {/* Translated category */}
           </Link>
         </div>

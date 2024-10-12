@@ -5,6 +5,10 @@ import { useTranslation } from 'react-i18next';
 import './i18n/i18n'; // Ensure this import is correct
 import { HelmetProvider } from 'react-helmet-async';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LogoShowcase from './components/LogoShowcase';
@@ -14,6 +18,8 @@ import ScrollToTop from './components/ScrollToTop';
 import Posts from './components/Posts';
 import ServicesForm from './components/ServicesForm';
 import UserProvider from './context/userContext';
+import Layout from './components/Layout';
+
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -85,6 +91,18 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in ms
+      once: true,     // Whether animation should happen only once
+      mirror: false,  // Whether elements should animate out while scrolling past them
+    });
+
+    // Refresh AOS on route change
+    // This ensures that AOS detects new elements on page navigation
+    AOS.refresh();
+  }, []);
+
 
 
   return (
@@ -92,6 +110,7 @@ function App() {
     <div className={`App ${getBackgroundClass(location.pathname)}`}>
       <ScrollToTop />
       <Navbar />
+      <Layout>
       <LoadingScreen />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -135,6 +154,7 @@ function App() {
         <FixedMenu />
         <LogoShowcase />
         <Footer />
+        </Layout>
     </div>
     </HelmetProvider>
   );
@@ -148,4 +168,6 @@ export default function AppWrapper() {
       </UserProvider>
     </Router>
   );
+  
 }
+

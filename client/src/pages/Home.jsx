@@ -123,7 +123,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section data-aos="fade-up"  className="container blog-section less-margin-bottom less-margin-top">
+        <section  className="container blog-section less-margin-bottom less-margin-top">
           <div className="article-container">
             <Swiper
               modules={[Navigation, Pagination, EffectCoverflow]}

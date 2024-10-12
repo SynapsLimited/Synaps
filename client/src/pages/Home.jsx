@@ -50,7 +50,7 @@ const Home = () => {
             <div data-aos="fade-up" className="header__right" id="spline-container">
               <spline-viewer url="https://prod.spline.design/1VQSYrmiNFt3i0cz/scene.splinecode" />
             </div>
-          </div>
+          </div> 
         </header>
 
         <div data-aos="fade-up" className="title-container about-title">
@@ -58,7 +58,7 @@ const Home = () => {
           <p>{t('indexPage.about.description')}</p>
         </div>
         <section data-aos="fade-up" className="container about-section">
-          <div data-aos="fade-up" className="about-image">
+          <div  className="about-image">
             <img src="/assets/Art for Synaps/Laptop - Hompage.png" alt="Computer" />
           </div>
           <div data-aos="fade-up" className="social-links">

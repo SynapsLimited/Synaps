@@ -73,7 +73,7 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
           <div data-aos="fade-up" className="importance-text">
             <p>{importanceText}</p>
           </div>
-          <div data-aos="fade-up" className="importance-image">
+          <div className="importance-image">
             <img src={importanceImgSrc} alt={t('servicesTemplatePage.importanceTitle', { title: importanceTitle })} />
           </div>
         </div>

@@ -44,7 +44,7 @@ const About = () => {
           <h1>{t('aboutPage.whatIsSynaps')} <img src="assets/Synaps Logos/Synaps Logo Art navbar.png" alt="Synaps logo" />?</h1>
           <p>{t('aboutPage.description')}</p>
         </div>
-        <div data-aos="fade-up" className="presentation-image">
+        <div className="presentation-image">
           <img src="assets/Art for Synaps/Jellyfish - About us.png" alt="Visual representation" />
         </div>
       </section>

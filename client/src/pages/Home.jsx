@@ -58,7 +58,7 @@ const Home = () => {
           <p>{t('indexPage.about.description')}</p>
         </div>
         <section data-aos="fade-up" className="container about-section">
-          <div  className="about-image">
+          <div className="about-image">
             <img src="/assets/Art for Synaps/Laptop - Hompage.png" alt="Computer" />
           </div>
           <div data-aos="fade-up" className="social-links">
@@ -96,15 +96,15 @@ const Home = () => {
               <span>{t('indexPage.services.items.advertisement')}</span>
             </a>
           </div>
-          <div  className="services-image">
-            <img src="/assets/Art for Synaps/Phone - Homepage.png" alt="Phone" data-aos="fade-up" className="service-phone" />
+          <div className="services-image">
+            <img src="/assets/Art for Synaps/Phone - Homepage.png" alt="Phone" className="service-phone" />
             <a href="services" className="btn btn-primary service-btn">{t('indexPage.services.servicesButton')}</a>
           </div>
         </section>
 
         <section data-aos="fade-up" className="container portfolio-section">
-          <div data-aos="fade-up" className="portfolio-image">
-            <img src="assets/Art for Synaps/Portfolio - Hompage.png" alt="VR Headset" data-aos="fade-up" className="vr-headset" />
+          <div className="portfolio-image">
+            <img src="assets/Art for Synaps/Portfolio - Hompage.png" alt="VR Headset" className="vr-headset" />
           </div>
           <div data-aos="fade-up" className="btn-location">
             <a href="portfolio" className="btn btn-secondary btn-portfolio">{t('indexPage.portfolio.portfolioButton')}</a>
@@ -160,7 +160,7 @@ const Home = () => {
             >
               <SwiperSlide>
                 <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                  <figure className="article-image">
                     <img src={ThumbnailMarketing} alt={t('indexPage.blog.categories.marketing.title')} />
                   </figure>
                   <div data-aos="fade-up" className="article-content">
@@ -173,7 +173,7 @@ const Home = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                  <figure className="article-image">
                     <img src={ThumbnailBusiness} alt={t('indexPage.blog.categories.business.title')} />
                   </figure>
                   <div data-aos="fade-up" className="article-content">
@@ -186,7 +186,7 @@ const Home = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                  <figure className="article-image">
                     <img src={ThumbnailTechnology} alt={t('indexPage.blog.categories.technology.title')} />
                   </figure>
                   <div data-aos="fade-up" className="article-content">
@@ -199,7 +199,7 @@ const Home = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                  <figure className="article-image">
                     <img src={ThumbnailAI} alt={t('indexPage.blog.categories.ai.title')} />
                   </figure>
                   <div data-aos="fade-up" className="article-content">
@@ -213,7 +213,7 @@ const Home = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                  <figure className="article-image">
                     <img src={ThumbnailGaming} alt={t('indexPage.blog.categories.gaming.title')} />
                   </figure>
                   <div data-aos="fade-up" className="article-content">
@@ -226,7 +226,7 @@ const Home = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                  <figure className="article-image">
                     <img src={ThumbnailProduct} alt={t('indexPage.blog.categories.product.title')} />
                   </figure>
                   <div data-aos="fade-up" className="article-content">
@@ -240,7 +240,7 @@ const Home = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <article data-aos="fade-up" className="article-card">
-                  <figure data-aos="fade-up" className="article-image">
+                  <figure className="article-image">
                     <img src={ThumbnailEntertainment} alt={t('indexPage.blog.categories.entertainment.title')} />
                   </figure>
                   <div data-aos="fade-up" className="article-content">

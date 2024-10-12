@@ -27,20 +27,20 @@ const About = () => {
         <title>{t('aboutPage.title')} - Synaps</title>
       </Helmet>
       <header>
-        <div data-aos="fade-up" className="container header__container">
-          <div data-aos="fade-up" className="header__left header-about">
+        <div  className="container header__container">
+          <div  className="header__left header-about">
             <h1>{t('aboutPage.title')}</h1>
             <p>{t('aboutPage.intro')}</p>
             <a href="contact" className="btn btn-secondary">{t('aboutPage.contactButton')}</a>
           </div>
-          <div data-aos="fade-up" className="header__right" id="spline-container">
+          <div  className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/e7fMPi34Xpt4idpF/scene.splinecode"></spline-viewer>
           </div>
         </div>
       </header>
 
-      <section data-aos="fade-up" className="container presentation-section">
-        <div data-aos="fade-up" className="presentation-text">
+      <section data-aos="fade-up"   className="container presentation-section">
+        <div  className="presentation-text">
           <h1>{t('aboutPage.whatIsSynaps')} <img src="assets/Synaps Logos/Synaps Logo Art navbar.png" alt="Synaps logo" />?</h1>
           <p>{t('aboutPage.description')}</p>
         </div>
@@ -49,31 +49,31 @@ const About = () => {
         </div>
       </section>
 
-      <section data-aos="fade-up" className="card-section">
-        <div data-aos="fade-up" className="card">
+      <section data-aos="fade-up"   className="card-section">
+        <div  className="card">
           <h1>{t('aboutPage.mission.title')}</h1>
-          <div data-aos="fade-up" className="card-content">
+          <div  className="card-content">
             <img src="assets/Icons For Synaps/Main Icons/rocket.png" alt="Mission Icon" />
             <p>{t('aboutPage.mission.content')}</p>
           </div>
         </div>
-        <div data-aos="fade-up" className="card">
+        <div  className="card">
           <h1>{t('aboutPage.vision.title')}</h1>
-          <div data-aos="fade-up" className="card-content">
+          <div  className="card-content">
             <img src="assets/Icons For Synaps/Main Icons/binoculars.png" alt="Vision Icon" />
             <p>{t('aboutPage.vision.content')}</p>
           </div>
         </div>
-        <div data-aos="fade-up" className="card">
+        <div  className="card">
           <h1>{t('aboutPage.values.title')}</h1>
-          <div data-aos="fade-up" className="card-content">
+          <div  className="card-content">
             <img src="assets/Icons For Synaps/Main Icons/values.png" alt="Values Icon" />
             <p>{t('aboutPage.values.content')}</p>
           </div>
         </div>
       </section>
 
-      <section className="team-section">
+      <section data-aos="fade-up"  className="team-section">
         <div className="team-title-container">
           <h2>{t('aboutPage.team.title')}</h2>
         </div>

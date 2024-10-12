@@ -51,29 +51,29 @@ const PostDetail = () => {
 
   // Show error message if there is an error
   if (error) {
-    return <p data-aos="fade-up" className='error'>{error}</p>;
+    return <p  className='error'>{error}</p>;
   }
 
   // Show error if no post data is available
   if (!post) {
-    return <p data-aos="fade-up" className='error'>Post not found.</p>;
+    return <p  className='error'>Post not found.</p>;
   }
 
   // Default thumbnail if no custom thumbnail is available for the post
   const defaultThumbnail = `${process.env.PUBLIC_URL}/assets/Blog-default.webp`;
 
   return (
-    <div data-aos="fade-up" className='post-detail-section'>
-      <section data-aos="fade-up" className="container post-detail">
+    <div  className='post-detail-section'>
+      <section data-aos="fade-up"   className="container post-detail">
         {post && post.creator ? (
-          <div data-aos="fade-up" className="post-detail-container">
-            <div data-aos="fade-up" className="post-detail-header">
+          <div  className="post-detail-container">
+            <div  className="post-detail-header">
               {/* Pass the creator's ID (authorID) and post createdAt date */}
               <PostAuthor authorID={post.creator._id || post.creator} createdAt={post.createdAt} />
               
               {/* Only show edit and delete buttons if the current user is the post creator */}
               {currentUser?.id === (post.creator._id || post.creator) && (
-                <div data-aos="fade-up" className="post-detail-buttons">
+                <div  className="post-detail-buttons">
                   <Link to={`/posts/${post?._id}/edit`} className="btn btn-primary">
                     {t('Dashboard.editButton')}
                   </Link>
@@ -86,7 +86,7 @@ const PostDetail = () => {
             <h1>{post.title}</h1>
 
             {/* Post thumbnail */}
-            <div data-aos="fade-up" className="post-detail-thumbnail">
+            <div  className="post-detail-thumbnail">
               <img src={post.thumbnail || defaultThumbnail} alt={post.title} />
             </div>
 
@@ -94,7 +94,7 @@ const PostDetail = () => {
             <p dangerouslySetInnerHTML={{ __html: post.description }}></p>
           </div>
         ) : (
-          <p data-aos="fade-up" className='error'>Author not found for this post.</p>
+          <p  className='error'>Author not found for this post.</p>
         )}
 
         {/* Back to blog button */}

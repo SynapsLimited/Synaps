@@ -26,23 +26,23 @@ const Contact = () => {
                 <title>{t('contactPage.title')} - Synaps</title>
             </Helmet>
             <header>
-                <div data-aos="fade-up" className="container header__container">
-                    <div data-aos="fade-up" className="header__left header-about">
+                <div  className="container header__container">
+                    <div  className="header__left header-about">
                         <h1>{t('contactPage.header.heading')}</h1>
                         <p>{t('contactPage.header.description')}</p>
                         <a href="contact" className="btn btn-secondary">{t('contactPage.header.contactButton')}</a>
                     </div>
-                    <div data-aos="fade-up" className="header__right" id="spline-container">
+                    <div  className="header__right" id="spline-container">
                         <spline-viewer url="https://prod.spline.design/Aieg3XjNVXVy2DyI/scene.splinecode"></spline-viewer>
                     </div>
                 </div>
             </header>
 
-            <div data-aos="fade-up" className="contact-overview-title">
+            <div  className="contact-overview-title">
                 <h1>{t('contactPage.overview.contactDetailsTitle')}</h1>
             </div>
 
-            <section data-aos="fade-up" className="container contact-section">
+            <section data-aos="fade-up"   className="container contact-section">
                 <div className="blob location-blob">
                     <h2>{t('contactPage.sections.location.title')}</h2>
                     <a href='https://maps.app.goo.gl/bumqeQ7GmkcZK42F9'>
@@ -68,7 +68,7 @@ const Contact = () => {
                 </div>
             </section>
 
-            <div data-aos="fade-up" className="contact-overview-title">
+            <div  className="contact-overview-title">
                 <h1>{t('contactPage.overview.consultNowTitle')}</h1>
                 <p>{t('contactPage.overview.consultNowDescription')}</p>
             </div>

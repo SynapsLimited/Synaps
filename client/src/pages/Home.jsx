@@ -41,40 +41,40 @@ const Home = () => {
       </Helmet>
       <div className="Index">
         <header>
-          <div data-aos="fade-up" className="container header__container">
-            <div data-aos="fade-up" className="header__left">
+          <div  className="container header__container">
+            <div  className="header__left">
               <h1>{t('indexPage.header.heading')}</h1>
               <p>{t('indexPage.header.description')}</p>
               <a href="contact" className="btn btn-primary">{t('indexPage.header.contactButton')}</a>
             </div>
-            <div data-aos="fade-up" className="header__right" id="spline-container">
+            <div  className="header__right" id="spline-container">
               <spline-viewer url="https://prod.spline.design/1VQSYrmiNFt3i0cz/scene.splinecode" />
             </div>
           </div> 
         </header>
 
-        <div data-aos="fade-up" className="title-container about-title">
-          <h2 data-aos="fade-up" className="title-about">{t('indexPage.about.heading')}</h2>
+        <div  className="title-container about-title">
+          <h2  className="title-about">{t('indexPage.about.heading')}</h2>
           <p>{t('indexPage.about.description')}</p>
         </div>
-        <section data-aos="fade-up" className="container about-section">
+        <section data-aos="fade-up"   className="container about-section">
           <div className="about-image">
             <img src="/assets/Art for Synaps/Laptop - Hompage.png" alt="Computer" />
           </div>
-          <div data-aos="fade-up" className="social-links">
-            <a href="#" data-aos="fade-up" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a>
-            <a href="#" data-aos="fade-up" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
-            <a href="#" data-aos="fade-up" className="social-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a>
-            <a href="#" data-aos="fade-up" className="social-link less-margin-bottom"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
+          <div  className="social-links">
+            <a href="#"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a>
+            <a href="#"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
+            <a href="#"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a>
+            <a href="#"  className="social-link less-margin-bottom"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
             <a href="about" className="btn btn-primary btn-about">{t('indexPage.about.aboutButton')}</a>
           </div>
         </section>
 
-        <div data-aos="fade-up" className="title-container">
-          <h2 data-aos="fade-up" className="title">{t('indexPage.services.heading')}</h2>
+        <div  className="title-container">
+          <h2  className="title">{t('indexPage.services.heading')}</h2>
         </div>
-        <section data-aos="fade-up" className="container services-section">
-          <div data-aos="fade-up" className="services-blobs">
+        <section data-aos="fade-up"   className="container services-section">
+          <div  className="services-blobs">
             <a href="services/webdesign" className="service-blob">
               <img src="/assets/Art for Synaps/Services - Web Design.png" alt={t('indexPage.services.items.webDesign')} />
               <span>{t('indexPage.services.items.webDesign')}</span>
@@ -102,18 +102,18 @@ const Home = () => {
           </div>
         </section>
 
-        <section data-aos="fade-up" className="container portfolio-section">
+        <section data-aos="fade-up"   className="container portfolio-section">
           <div className="portfolio-image">
             <img src="assets/Art for Synaps/Portfolio - Hompage.png" alt="VR Headset" className="vr-headset" />
           </div>
-          <div data-aos="fade-up" className="btn-location">
+          <div  className="btn-location">
             <a href="portfolio" className="btn btn-secondary btn-portfolio">{t('indexPage.portfolio.portfolioButton')}</a>
           </div>
-          <div data-aos="fade-up" className="portfolio-content">
-            <div data-aos="fade-up" className="portfolio-text-circle">
+          <div  className="portfolio-content">
+            <div  className="portfolio-text-circle">
               <span>{t('indexPage.portfolio.heading')}</span>
             </div>
-            <div data-aos="fade-up" className="portfolio-text-line">
+            <div  className="portfolio-text-line">
               <span>
                 {t('indexPage.portfolio.textLine1')} <br />
                 {t('indexPage.portfolio.textLine2')} <br />
@@ -123,7 +123,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="container blog-section less-margin-bottom less-margin-top">
+        <section data-aos="fade-up"  className="container blog-section less-margin-bottom less-margin-top">
           <div className="article-container">
             <Swiper
               modules={[Navigation, Pagination, EffectCoverflow]}

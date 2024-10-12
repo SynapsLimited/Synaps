@@ -73,12 +73,12 @@ const createPost = async (e) => {
 
 
   return (
-    <section data-aos="fade-up" className="create-post">
+    <section data-aos="fade-up"   className="create-post">
 
-      <div data-aos="fade-up" className="container">
+      <div  className="container">
         <h2>Create Post</h2>
-        {error && <p data-aos="fade-up" className='form-error-message'>{error}</p>}
-        <form data-aos="fade-up" className="form create-post-form" onSubmit={createPost}>
+        {error && <p  className='form-error-message'>{error}</p>}
+        <form  className="form create-post-form" onSubmit={createPost}>
           <input type="text" placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} 
           autoFocus />
           <select name="category" value={category} onChange={e => setCategory(e.target.value)}>
@@ -87,8 +87,8 @@ const createPost = async (e) => {
             }
           </select>
           <ReactQuill modules={modules} formats={formats} value={description} onChange={setDescription} />
-          <div data-aos="fade-up" className="custom-file-input-container">
-            <input data-aos="fade-up" className="custom-file-input" type="file" onChange={e => setThumbnail(e.target.files[0])} accept='png, jpg, jpeg' />
+          <div  className="custom-file-input-container">
+            <input  className="custom-file-input" type="file" onChange={e => setThumbnail(e.target.files[0])} accept='png, jpg, jpeg' />
           </div>          
           <button type="submit" className="btn btn-primary btn-submit">Create</button>
 

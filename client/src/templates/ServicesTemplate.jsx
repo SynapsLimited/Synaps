@@ -44,21 +44,21 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
         <link rel="icon" href="/assets/Synaps Logos/Synaps Logo Icon.ico" />
       </Helmet>
       <header>
-        <div data-aos="fade-up" className="container header__container">
-          <div data-aos="fade-up" className="header__left header-about">
+        <div  className="container header__container">
+          <div  className="header__left header-about">
             <h1>{t('servicesTemplatePage.header.servicesHeading')}</h1>
             <h2 style={{ color: 'var(--color-secondary)' }}>{title}</h2>
             <p>{description}</p>
             <a href="contact" className="btn btn-primary">{t('servicesTemplatePage.header.contactButton')}</a>
           </div>
-          <div data-aos="fade-up" className="header__right" id="spline-container">
+          <div  className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/l7zIP1lmkJQWSetc/scene.splinecode"></spline-viewer>
           </div>
         </div>
       </header>
 
-      <section data-aos="fade-up" className="container portfolio-categories-section">
-        <ul data-aos="fade-up" className="portfolio-categories">
+      <section data-aos="fade-up"   className="container portfolio-categories-section">
+        <ul  className="portfolio-categories">
           <li className="btn btn-primary"><Link to="/services/webdesign">{t('servicesTemplatePage.categories.webDesign')}</Link></li>
           <li className="btn btn-primary"><Link to="/services/socialmedia">{t('servicesTemplatePage.categories.socialMedia')}</Link></li>
           <li className="btn btn-primary"><Link to="/services/branding">{t('servicesTemplatePage.categories.branding')}</Link></li>
@@ -67,10 +67,10 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
         </ul>
       </section>
       
-      <section data-aos="fade-up" className="importance-section">
-        <h2 data-aos="fade-up" className="importance-title">{t('servicesTemplatePage.importanceTitle', { title: importanceTitle })}</h2>
-        <div data-aos="fade-up" className="importance-content">
-          <div data-aos="fade-up" className="importance-text">
+      <section data-aos="fade-up"   className="importance-section">
+        <h2  className="importance-title">{t('servicesTemplatePage.importanceTitle', { title: importanceTitle })}</h2>
+        <div  className="importance-content">
+          <div  className="importance-text">
             <p>{importanceText}</p>
           </div>
           <div className="importance-image">
@@ -80,8 +80,8 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
       </section>
 
       {types.length > 0 && (
-        <section data-aos="fade-up" className="container types-section">
-          <h2 data-aos="fade-up" className="types-title">{t('servicesTemplatePage.typesTitle', { title })}</h2>
+        <section data-aos="fade-up"   className="container types-section">
+          <h2  className="types-title">{t('servicesTemplatePage.typesTitle', { title })}</h2>
           <Swiper
             spaceBetween={100}
             slidesPerView={1}
@@ -108,7 +108,7 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
           >
             {types.map((type, index) => (
               <SwiperSlide key={index}>
-                <div data-aos="fade-up" className="types-slide">
+                <div  className="types-slide">
                   <img src={type.imgSrc} alt={type.title} />
                   <div>
                     <h4>{type.title}</h4>
@@ -127,7 +127,7 @@ const ServicesTemplate = ({ title, description, imgSrc, importanceTitle, importa
       </div>
 
       {/* Bundle Section */}
-      <section className="bundle-section">
+      <section data-aos="fade-up"  className="bundle-section">
         <div className="bundle-swiper">
           <Swiper
             modules={[Navigation, Pagination, EffectCoverflow, Autoplay]}

@@ -38,13 +38,13 @@ const CategoryPosts = () => {
   }
 
   return (
-    <section data-aos="fade-up" className="posts">
-      <div data-aos="fade-up" className="blog-title-filtered">
+    <section data-aos="fade-up"   className="posts">
+      <div  className="blog-title-filtered">
         <h1>{t(`CategoryPosts.${category.toLowerCase()}`)}</h1>
       </div>
 
       {posts.length > 0 ? (
-        <div data-aos="fade-up" className="container posts-container">
+        <div  className="container posts-container">
           {posts.map(({ _id: postId, thumbnail, category, title, description, creator, createdAt }) => (
             <PostItem
               key={postId}
@@ -59,14 +59,14 @@ const CategoryPosts = () => {
           ))}
         </div>
       ) : (
-        <h1 data-aos="fade-up" className="error-blog-not-found">{t('CategoryPosts.noPostsFound')}</h1>
+        <h1  className="error-blog-not-found">{t('CategoryPosts.noPostsFound')}</h1>
       )}
 
-      <section data-aos="fade-up" className="container blog-categories-section">
-        <div data-aos="fade-up" className="blog-title">
+      <section data-aos="fade-up"   className="container blog-categories-section">
+        <div  className="blog-title">
           <h1>{t('CategoryPosts.categories')}</h1>
         </div>
-        <ul data-aos="fade-up" className="blog-categories">
+        <ul  className="blog-categories">
           <li className="btn btn-secondary"><Link to="/posts/categories/Marketing">{t('CategoryPosts.marketing')}</Link></li>
           <li className="btn btn-secondary"><Link to="/posts/categories/Business">{t('CategoryPosts.business')}</Link></li>
           <li className="btn btn-secondary"><Link to="/posts/categories/Technology">{t('CategoryPosts.technology')}</Link></li>

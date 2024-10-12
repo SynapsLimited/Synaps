@@ -83,8 +83,8 @@ const ServicesForm = () => {
   };
 
   return (
-    <section data-aos="fade-up" className="container services-overview-section">
-      <div data-aos="fade-up" className="services-overview-title services-overview-title-select">
+    <section data-aos="fade-up"   className="container services-overview-section">
+      <div  className="services-overview-title services-overview-title-select">
         <h1>{t('servicesForm.title')}</h1> {/* Translated form title */}
         <p>{t('servicesForm.description')}</p> {/* Translated form description */}
       </div>
@@ -100,8 +100,8 @@ const ServicesForm = () => {
           </div>
         ))}
       </div>
-      <form data-aos="fade-up" className="container services-form" onSubmit={handleSubmit}>
-        <div data-aos="fade-up" className="form-group">
+      <form  className="container services-form" onSubmit={handleSubmit}>
+        <div  className="form-group">
           <input
             type="text"
             name="name"
@@ -119,7 +119,7 @@ const ServicesForm = () => {
             required
           />
         </div>
-        <div data-aos="fade-up" className="form-group">
+        <div  className="form-group">
           <input
             type="text"
             name="country"
@@ -137,7 +137,7 @@ const ServicesForm = () => {
             required
           />
         </div>
-        <div data-aos="fade-up" className="form-group">
+        <div  className="form-group">
           <input
             type="text"
             name="phoneNumber"

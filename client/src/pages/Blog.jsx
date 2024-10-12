@@ -29,28 +29,28 @@ const Blog = () => {
       </Helmet>
 
       <header>
-        <div data-aos="fade-up" className="container header__container">
-          <div data-aos="fade-up" className="header__left header-blog">
+        <div  className="container header__container">
+          <div  className="header__left header-blog">
             <h1>{t('blogPage.header.heading')}</h1>
             <p>{t('blogPage.header.description')}</p>
             <a href="contact" className="btn btn-secondary">{t('blogPage.header.contactButton')}</a>
           </div>
-          <div data-aos="fade-up" className="header__right" id="spline-container">
+          <div  className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/A0hNRHhFOAhaezpC/scene.splinecode"></spline-viewer>
           </div>
         </div>
       </header>
 
-      <div data-aos="fade-up" className="blog-title">
+      <div  className="blog-title">
         <h1>{t('blogPage.intro.heading')}</h1>
         <p>{t('blogPage.intro.description')}</p>
       </div>
 
-      <section data-aos="fade-up" className="container blog-categories-section">
-        <div data-aos="fade-up" className="blog-title">
+      <section data-aos="fade-up"   className="container blog-categories-section">
+        <div  className="blog-title">
           <h1>{t('blogPage.categories.heading')}</h1>
         </div>
-        <ul data-aos="fade-up" className="blog-categories">
+        <ul  className="blog-categories">
           {Object.entries(t('blogPage.categories.items', { returnObjects: true })).map(([key, value]) => (
             <li key={key} className="btn btn-secondary">
               <Link to={`/posts/categories/${key}`}>{value}</Link>
@@ -61,7 +61,7 @@ const Blog = () => {
 
       <Posts limit={6} />
 
-      <section data-aos="fade-up" className="blog-authors-section">
+      <section data-aos="fade-up"   className="blog-authors-section">
         <Authors />
       </section>
     </div>

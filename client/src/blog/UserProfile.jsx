@@ -107,17 +107,17 @@ const changeAvatarHandler = async () => {
 
 
   return (
-    <section data-aos="fade-up" className="profile">
-      <div data-aos="fade-up" className="container profile-container">
+    <section data-aos="fade-up"   className="profile">
+      <div  className="container profile-container">
         <Link to={`/myposts/${currentUser.id}`} className="btn btn-secondary">Dashboard</Link>
 
-        <div data-aos="fade-up" className="profile-details">
-          <div data-aos="fade-up" className="avatar-wrapper">
-            <div data-aos="fade-up" className="profile-avatar">
+        <div  className="profile-details">
+          <div  className="avatar-wrapper">
+            <div  className="profile-avatar">
               <img src={avatarPreview} alt="User Avatar" /> {/* Display the avatar preview */}
             </div>
             {/* Form to update avatar */}
-            <form data-aos="fade-up" className="avatar-form">
+            <form  className="avatar-form">
               <input 
                 type="file" 
                 name="avatar" 
@@ -143,14 +143,14 @@ const changeAvatarHandler = async () => {
           <h1>{currentUser.name}</h1>
 
           {/* Form to update user details */}
-          <form data-aos="fade-up" className="form profile-form" onSubmit={updateUserDetails}>
-            {error && <p data-aos="fade-up" className="form-error-message">{error}</p>}
+          <form  className="form profile-form" onSubmit={updateUserDetails}>
+            {error && <p  className="form-error-message">{error}</p>}
             <input type="text" placeholder="Full Name" value={name} onChange={e => setName(e.target.value)} />
             <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
             <input type="password" placeholder="Current Password" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} />
             <input type="password" placeholder="New Password" value={newPassword} onChange={e => setNewPassword(e.target.value)} />
             <input type="password" placeholder="Confirm New Password" value={confirmNewPassword} onChange={e => setConfirmNewPassword(e.target.value)} />
-            <button type="submit" data-aos="fade-up" className='btn btn-primary btn-submit-profile'> Update my details </button>
+            <button type="submit"  className='btn btn-primary btn-submit-profile'> Update my details </button>
           </form>
         </div>
       </div>

@@ -26,27 +26,27 @@ const Services = () => {
         <title>{t('servicesPage.title')} - Synaps</title>
       </Helmet>
       <header>
-        <div data-aos="fade-up" className="container header__container">
-          <div data-aos="fade-up" className="header__left header-services">
+        <div  className="container header__container">
+          <div  className="header__left header-services">
             <h1>{t('servicesPage.header.heading')}</h1>
             <p>
               {t('servicesPage.header.description')}
             </p>
             <a href="contact" className="btn btn-primary">{t('servicesPage.header.contactButton')}</a>
           </div>
-          <div data-aos="fade-up" className="header__right" id="spline-container">
+          <div  className="header__right" id="spline-container">
             <spline-viewer url="https://prod.spline.design/l7zIP1lmkJQWSetc/scene.splinecode"></spline-viewer>
           </div>
         </div>
       </header>
       
-      <section data-aos="fade-up" className="container services-overview-section">
-        <div data-aos="fade-up" className="services-overview-title">
+      <section data-aos="fade-up"   className="container services-overview-section">
+        <div  className="services-overview-title">
           <h1>{t('servicesPage.overview.title')}</h1>
           <p>{t('servicesPage.overview.description')}</p>
         </div>
 
-        <div data-aos="fade-up" className="services-overview-blobs">
+        <div  className="services-overview-blobs">
           <a href="services/webdesign" className="service-overview-blob-art">
             <img src="/assets/Art for Synaps/Services - Web Design.png" alt={t('servicesPage.items.webDesign.title')} />
             <span>{t('servicesPage.items.webDesign.title')}</span>
@@ -71,15 +71,15 @@ const Services = () => {
       </section>
 
       {/* Web Design Section */}
-      <section data-aos="fade-up" className="web-design container specific-service-section">
-        <div data-aos="fade-up" className="specific-service-container">
-          <div data-aos="fade-up" className="specific-service-left">
+      <section data-aos="fade-up"   className="web-design container specific-service-section">
+        <div  className="specific-service-container">
+          <div  className="specific-service-left">
             <h1>{t('servicesPage.items.webDesign.title')}</h1>
             <h5>{t('servicesPage.items.webDesign.description')}</h5>
             <img src="/assets/Art for Synaps/Services - Web Design.png" alt={t('servicesPage.items.webDesign.title')} />
           </div>
-          <div data-aos="fade-up" className="specific-service-right">
-            <div data-aos="fade-up" className="specific-service-text-group">
+          <div  className="specific-service-right">
+            <div  className="specific-service-text-group">
               {t('servicesPage.items.webDesign.subItems', { returnObjects: true }).map((subItem, index) => (
                 <h1 key={index}>{subItem}</h1>
               ))}
@@ -91,15 +91,15 @@ const Services = () => {
       </section>
 
       {/* Social Media Section */}
-      <section data-aos="fade-up" className="social-media container specific-service-section">
-        <div data-aos="fade-up" className="specific-service-container">
-          <div data-aos="fade-up" className="specific-service-left">
+      <section data-aos="fade-up"   className="social-media container specific-service-section">
+        <div  className="specific-service-container">
+          <div  className="specific-service-left">
             <h1>{t('servicesPage.items.socialMedia.title')}</h1>
             <h5>{t('servicesPage.items.socialMedia.description')}</h5>
             <img src="/assets/Art for Synaps/Services - Social Media.png" alt={t('servicesPage.items.socialMedia.title')} />
           </div>
-          <div data-aos="fade-up" className="specific-service-right">
-            <div data-aos="fade-up" className="specific-service-text-group">
+          <div  className="specific-service-right">
+            <div  className="specific-service-text-group">
               {t('servicesPage.items.socialMedia.subItems', { returnObjects: true }).map((subItem, index) => (
                 <h1 key={index}>{subItem}</h1>
               ))}
@@ -111,15 +111,15 @@ const Services = () => {
       </section>
 
       {/* Branding Section */}
-      <section data-aos="fade-up" className="branding container specific-service-section">
-        <div data-aos="fade-up" className="specific-service-container">
-          <div data-aos="fade-up" className="specific-service-left">
+      <section data-aos="fade-up"   className="branding container specific-service-section">
+        <div  className="specific-service-container">
+          <div  className="specific-service-left">
             <h1>{t('servicesPage.items.branding.title')}</h1>
             <h5>{t('servicesPage.items.branding.description')}</h5>
             <img src="/assets/Art for Synaps/Services - Branding.png" alt={t('servicesPage.items.branding.title')} />
           </div>
-          <div data-aos="fade-up" className="specific-service-right">
-            <div data-aos="fade-up" className="specific-service-text-group">
+          <div  className="specific-service-right">
+            <div  className="specific-service-text-group">
               {t('servicesPage.items.branding.subItems', { returnObjects: true }).map((subItem, index) => (
                 <h1 key={index}>{subItem}</h1>
               ))}
@@ -131,15 +131,15 @@ const Services = () => {
       </section>
 
       {/* Video Section */}
-      <section data-aos="fade-up" className="video container specific-service-section">
-        <div data-aos="fade-up" className="specific-service-container">
-          <div data-aos="fade-up" className="specific-service-left">
+      <section data-aos="fade-up"   className="video container specific-service-section">
+        <div  className="specific-service-container">
+          <div  className="specific-service-left">
             <h1>{t('servicesPage.items.video.title')}</h1>
             <h5>{t('servicesPage.items.video.description')}</h5>
             <img src="/assets/Art for Synaps/Services - Video.png" alt={t('servicesPage.items.video.title')} />
           </div>
-          <div data-aos="fade-up" className="specific-service-right">
-            <div data-aos="fade-up" className="specific-service-text-group">
+          <div  className="specific-service-right">
+            <div  className="specific-service-text-group">
               {t('servicesPage.items.video.subItems', { returnObjects: true }).map((subItem, index) => (
                 <h1 key={index}>{subItem}</h1>
               ))}
@@ -151,15 +151,15 @@ const Services = () => {
       </section>
 
       {/* Advertisement Section */}
-      <section data-aos="fade-up" className="advertisement container specific-service-section">
-        <div data-aos="fade-up" className="specific-service-container">
-          <div data-aos="fade-up" className="specific-service-left">
+      <section data-aos="fade-up"   className="advertisement container specific-service-section">
+        <div  className="specific-service-container">
+          <div  className="specific-service-left">
             <h1>{t('servicesPage.items.advertisement.title')}</h1>
             <h5>{t('servicesPage.items.advertisement.description')}</h5>
             <img src="/assets/Art for Synaps/Services - Advertisement.png" alt={t('servicesPage.items.advertisement.title')} />
           </div>
-          <div data-aos="fade-up" className="specific-service-right">
-            <div data-aos="fade-up" className="specific-service-text-group">
+          <div  className="specific-service-right">
+            <div  className="specific-service-text-group">
               {t('servicesPage.items.advertisement.subItems', { returnObjects: true }).map((subItem, index) => (
                 <h1 key={index}>{subItem}</h1>
               ))}

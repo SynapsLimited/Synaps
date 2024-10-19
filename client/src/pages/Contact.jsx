@@ -60,10 +60,13 @@ const Contact = () => {
                 <div className="blob socials-blob">
                     <h2>{t('contactPage.sections.socials.title')}</h2>
                     <div className="social-icons">
-                        <a href="https://www.facebook.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt={t('contactPage.sections.socials.facebookAlt')} /></a>
-                        <a href="https://www.instagram.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt={t('contactPage.sections.socials.instagramAlt')} /></a>
-                        <a href="https://www.linkedin.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt={t('contactPage.sections.socials.linkedinAlt')} /></a>
-                        <a href="https://www.youtube.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt={t('contactPage.sections.socials.youtubeAlt')} /></a>
+                        <a href="https://www.facebook.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a>
+                        <a href="https://www.instagram.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
+                        <a href="https://wa.me/message/SU2TIHKYORJHH1" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/whatsapp.png" alt="Whatsapp" /></a>
+                        <a href="https://www.linkedin.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a>
+                        <a href="https://www.youtube.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
+                        <a href="https://www.tiktok.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/TikTok.png" alt="Tiktok" /></a>
+                        <a href="https://www.x.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/TwitterX.png" alt="X/Twitter" /></a>
                     </div>
                 </div>
             </section>

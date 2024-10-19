@@ -61,7 +61,7 @@ const Blog = () => {
 
       <Posts limit={6} />
 
-      <section data-aos="fade-up"   className="blog-authors-section">
+      <section data-aos="fade-up "   className="blog-authors-section">
         <Authors />
       </section>
     </div>

@@ -97,7 +97,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    width: 50%;
+    width: 80%;
 }
 
 .contact-link {

@@ -40,7 +40,7 @@
 }
 
 .post {
-    background: var(--color-tertiary);
+    background: var(--color-background-transparent-post);
     padding: 1rem;
     border-radius: 22px;
     padding-bottom: 2rem;
@@ -62,12 +62,12 @@
 
 .post-content {
     margin-top: 1.5rem; 
-    color: var(--color-secondary);
+    color: var(--color-white);
 }
 
 .post-content h3 {
     margin: 1rem 0 0.6rem;
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .post-footer {
@@ -85,7 +85,7 @@
     display: flex;
     gap: 1rem;
     align-items: flex-start;
-    color: var(--color-secondary);
+    color: var(--color-primary);
     
 }
 
@@ -152,7 +152,7 @@
 
 .post-detail {
     width: var(--form-width);
-    background: var(--color-tertiary);
+    background: var(--color-background-transparent-post);
     margin-inline: auto;
     border-radius: 22px;
     padding: 2rem;
@@ -194,7 +194,7 @@
     text-align: center;
     font-size: 2rem;
     margin-top: 5rem;
-    color: var(--color-primary);
+    color: var(--color-background);
 }
 
 
@@ -277,7 +277,7 @@ input, select, textarea {
 }
 
 .author {
-    background: var(--color-tertiary);
+    background: var(--color-background-transparent-post);
     padding: 1rem;
     border-radius: 22px;
     display: flex;

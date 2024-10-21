@@ -23,7 +23,7 @@ const Gallery = ({ items }) => {
   };
 
   return (
-    <section data-aos="fade-up"  className="container gallery">
+    <section  className="container gallery">
       <div className="row">
         <ul>
           <a href="#" className="close" onClick={handleCloseClick}></a>
@@ -88,7 +88,7 @@ const PortfolioTemplate = ({ title, description, imgSrc, galleryItems }) => {
         </div>
       </header>
 
-      <section data-aos="fade-up"   className="container portfolio-categories-section">
+      <section  className="container portfolio-categories-section">
         <ul  className="portfolio-categories">
           <li className="btn btn-secondary"><Link to="/portfolio/webdesign">{t('portfolioTemplatePage.categories.webDesign')}</Link></li>
           <li className="btn btn-secondary"><Link to="/portfolio/socialmedia">{t('portfolioTemplatePage.categories.socialMedia')}</Link></li>

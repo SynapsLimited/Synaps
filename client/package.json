@@ -9,6 +9,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@vercel/blob": "^0.24.0",
+    "aos": "^2.3.4",
     "axios": "^1.7.2",
     "cloudinary": "^2.5.0",
     "emailjs-com": "^3.2.0",

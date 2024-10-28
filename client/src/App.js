@@ -9,6 +9,10 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import CookieConsent from './components/CookieConsent';
+
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LogoShowcase from './components/LogoShowcase';
@@ -112,6 +116,7 @@ function App() {
       <Navbar />
       <Layout>
       <LoadingScreen />
+      <CookieConsent />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -150,6 +155,9 @@ function App() {
           <Route path="/services/socialmedia" element={<SocialMediaServices />} />
           <Route path="/services/video" element={<VideoServices />} />
           <Route path="/services/webdesign" element={<WebDesignServices />} />
+
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
         </Routes>
         <FixedMenu />
         <LogoShowcase />

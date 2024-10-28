@@ -77,7 +77,7 @@ function Footer() {
         </div>
         <div  className="footer-copy">
           <p  className="footer-copy">{t('footer.copyright')}</p> {/* Translated copyright text */}
-          <a  className="blog-log-in-btn" href="/login">{t('footer.logIn')}</a> {/* Translated login button */}
+          <a  className="blog-log-in-btn" href="/privacy-policy">Privacy Policy</a> {/* Translated login button */}
         </div>
       </div>
     </Fragment>

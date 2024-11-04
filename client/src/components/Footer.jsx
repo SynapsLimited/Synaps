@@ -58,11 +58,11 @@ function Footer() {
               </div>
               <div  className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" />
-                <a href="https://www.linkedin.com"  className="footer-link">LinkedIn</a> {/* LinkedIn stays the same */}
+                <a href="https://www.linkedin.com/company/synaps-marketing"  className="footer-link">LinkedIn</a> {/* LinkedIn stays the same */}
               </div>
               <div  className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" />
-                <a href="https://www.youtube.com"  className="footer-link">YouTube</a> {/* YouTube stays the same */}
+                <a href="https://www.youtube.com/@synaps-limited"  className="footer-link">YouTube</a> {/* YouTube stays the same */}
               </div>
               <div  className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/TikTok.png" alt="TikTok" />

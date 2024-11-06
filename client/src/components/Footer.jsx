@@ -50,11 +50,11 @@ function Footer() {
               </div>
               <div  className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" />
-                <a href="https://www.facebook.com"  className="footer-link">Facebook</a> {/* Facebook stays the same */}
+                <a href="https://www.facebook.com/people/Synaps/61568060890785/"  className="footer-link">Facebook</a> {/* Facebook stays the same */}
               </div>
               <div  className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" />
-                <a href="https://www.instagram.com"  className="footer-link">Instagram</a> {/* Instagram stays the same */}
+                <a href="https://www.instagram.com/synapslimited/"  className="footer-link">Instagram</a> {/* Instagram stays the same */}
               </div>
               <div  className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" />
@@ -66,11 +66,15 @@ function Footer() {
               </div>
               <div  className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/TikTok.png" alt="TikTok" />
-                <a href="https://www.tiktok.com"  className="footer-link">TikTok</a> {/* TikTok stays the same */}
+                <a href="https://www.tiktok.com/@synapslimited.eu?_t=8rAFYTtXYBz&_r=1"  className="footer-link">TikTok</a> {/* TikTok stays the same */}
               </div>
               <div  className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/TwitterX.png" alt="X" />
-                <a href="https://www.x.com"  className="footer-link">X</a> {/* YouTube stays the same */}
+                <a href="https://x.com/SynapsLimited"  className="footer-link">X</a> {/* YouTube stays the same */}
+              </div>
+              <div  className="social-row">
+                <img src="/assets/Icons For Synaps/Main Icons/threads.png" alt="X" />
+                <a href="https://www.threads.net/@synapslimited?invite=0"  className="footer-link">Threads</a> 
               </div>
             </div>
           </div>

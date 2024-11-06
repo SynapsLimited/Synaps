@@ -60,13 +60,15 @@ const Contact = () => {
                 <div className="blob socials-blob">
                     <h2>{t('contactPage.sections.socials.title')}</h2>
                     <div className="social-icons">
-                        <a href="https://www.facebook.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a>
-                        <a href="https://www.instagram.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
+                        <a href="https://www.facebook.com/people/Synaps/61568060890785/" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a>
+                        <a href="https://www.instagram.com/synapslimited/" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
                         <a href="https://wa.me/message/SU2TIHKYORJHH1" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/whatsapp.png" alt="Whatsapp" /></a>
                         <a href="https://www.linkedin.com/company/synaps-marketing" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a>
                         <a href="https://www.youtube.com/@synaps-limited" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
-                        <a href="https://www.tiktok.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/TikTok.png" alt="Tiktok" /></a>
-                        <a href="https://www.x.com" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/TwitterX.png" alt="X/Twitter" /></a>
+                        <a href="https://www.tiktok.com/@synapslimited.eu?_t=8rAFYTtXYBz&_r=1" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/TikTok.png" alt="Tiktok" /></a>
+                        <a href="https://x.com/SynapsLimited" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/TwitterX.png" alt="X/Twitter" /></a>
+                        <a href="https://www.threads.net/@synapslimited?invite=0" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/threads.png" alt="Threads" /></a>
+
                     </div>
                 </div>
             </section>

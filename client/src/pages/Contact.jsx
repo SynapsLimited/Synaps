@@ -45,16 +45,18 @@ const Contact = () => {
             <section data-aos="fade-up"   className="container contact-section">
                 <div className="blob location-blob">
                     <h2>{t('contactPage.sections.location.title')}</h2>
-                    <a href='https://maps.app.goo.gl/bumqeQ7GmkcZK42F9'>
+                    <a href='https://maps.app.goo.gl/bumqeQ7GmkcZK42F9' className='contact-link'>
                     <img className="location-img" src="/assets/Icons For Synaps/Main Icons/Europe Map.png" alt={t('contactPage.sections.location.imageAlt')} />
                     </a>
-                    <h5>{t('contactPage.sections.location.description')}</h5>
+                    <a href="https://maps.app.goo.gl/Vgs2p8wTLbe4XMZf8" className="contact-link"><h5>{t('contactPage.sections.location.description')}</h5></a>
                 </div>
                 <div className="blob phone-mail-blob">
                     <h2>{t('contactPage.sections.contact.title')}</h2>
-                    <img src="/assets/Icons For Synaps/Main Icons/phone-call.png" alt={t('contactPage.sections.contact.phone.alt')} />
+                    <a href="https://wa.me/message/SU2TIHKYORJHH1" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/whatsapp.png" alt="Whatsapp" /></a>
+                    <a href="https://wa.me/message/SU2TIHKYORJHH1"><h4>WhatsApp</h4></a>
+                    <a href="tel:+32456071631" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/phone-call.png" alt="Whatsapp" /></a>
                     <a href="tel:+32456071631"><h4>{t('contactPage.sections.contact.phone.number')}</h4></a>
-                    <img src="/assets/Icons For Synaps/Main Icons/email.png" alt={t('contactPage.sections.contact.email.alt')} />
+                    <a href={`mailto:${t('contactPage.sections.contact.email.address')}`} className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/email.png" alt="Whatsapp" /></a>
                     <a href={`mailto:${t('contactPage.sections.contact.email.address')}`}><h4>{t('contactPage.sections.contact.email.address')}</h4></a>
                 </div>
                 <div className="blob socials-blob">
@@ -62,7 +64,6 @@ const Contact = () => {
                     <div className="social-icons">
                         <a href="https://www.facebook.com/people/Synaps/61568060890785/" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a>
                         <a href="https://www.instagram.com/synapslimited/" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
-                        <a href="https://wa.me/message/SU2TIHKYORJHH1" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/whatsapp.png" alt="Whatsapp" /></a>
                         <a href="https://www.linkedin.com/company/synaps-marketing" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a>
                         <a href="https://www.youtube.com/@synaps-limited" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
                         <a href="https://www.tiktok.com/@synapslimited.eu?_t=8rAFYTtXYBz&_r=1" className="contact-link"><img src="/assets/Icons For Synaps/Main Icons/TikTok.png" alt="Tiktok" /></a>

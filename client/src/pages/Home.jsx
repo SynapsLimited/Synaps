@@ -62,11 +62,16 @@ const Home = () => {
             <img src="/assets/Art for Synaps/Laptop - Hompage.png" alt="Computer" />
           </div>
           <div  className="social-links">
-            <a href="#"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a>
-            <a href="#"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a>
-            <a href="#"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a>
-            <a href="#"  className="social-link less-margin-bottom"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a>
-            <a href="about" className="btn btn-primary btn-about">{t('indexPage.about.aboutButton')}</a>
+          <a href="https://wa.me/message/SU2TIHKYORJHH1"  className="social-link"></a> {/* WhatsApp stays the same */}
+          <a href="https://www.facebook.com/people/Synaps/61568060890785/"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" /></a> {/* Facebook stays the same */}
+          <a href="https://www.instagram.com/synapslimited/"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/instagram.png" alt="Instagram" /></a> {/* Instagram stays the same */}
+          <a href="https://www.linkedin.com/company/synaps-marketing"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/linkedin.png" alt="LinkedIn" /></a> {/* LinkedIn stays the same */}
+          <a href="https://www.youtube.com/@synaps-limited"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/youtube.png" alt="YouTube" /></a> {/* YouTube stays the same */}
+          <a href="https://www.tiktok.com/@synapslimited.eu?_t=8rAFYTtXYBz&_r=1"  className="social-link">    <img src="/assets/Icons For Synaps/Main Icons/TikTok.png" alt="TikTok" /></a> {/* TikTok stays the same */}
+          <a href="https://x.com/SynapsLimited"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/TwitterX.png" alt="X" /></a> 
+          <a href="https://www.threads.net/@synapslimited?invite=0"  className="social-link"><img src="/assets/Icons For Synaps/Main Icons/threads.png" alt="X" /></a> 
+
+          <a href="about" className="btn btn-primary btn-about">{t('indexPage.about.aboutButton')}</a>
           </div>
         </section>
 

@@ -30,7 +30,10 @@ function Footer() {
           <div  className="footer-column footer-socials">
             <h4>{t('footer.contactTitle')}</h4> {/* Translated contact title */}
             <div  className="socials-container">
-                
+            <div  className="social-row">
+                <img src="/assets/Icons For Synaps/Main Icons/whatsapp.png" alt="WhatsApp" />
+                <a href="https://wa.me/message/SU2TIHKYORJHH1"  className="footer-link">WhatsApp</a> {/* WhatsApp stays the same */}
+              </div>
               <div  className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/email.png" alt="Email" />
                 <a href="mailto:info@synapslimited.eu"  className="footer-link">info@synapslimited.eu</a> {/* Email stays the same */}
@@ -44,10 +47,7 @@ function Footer() {
           <div  className="footer-column footer-socials">
             <h4>{t('footer.socialsTitle')}</h4> {/* Translated socials title */}
             <div  className="socials-container">
-            <div  className="social-row">
-                <img src="/assets/Icons For Synaps/Main Icons/whatsapp.png" alt="WhatsApp" />
-                <a href="https://wa.me/message/SU2TIHKYORJHH1"  className="footer-link">WhatsApp</a> {/* WhatsApp stays the same */}
-              </div>
+
               <div  className="social-row">
                 <img src="/assets/Icons For Synaps/Main Icons/facebook.png" alt="Facebook" />
                 <a href="https://www.facebook.com/people/Synaps/61568060890785/"  className="footer-link">Facebook</a> {/* Facebook stays the same */}

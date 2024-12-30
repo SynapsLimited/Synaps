@@ -57,7 +57,7 @@ const Home = () => {
           <h2  className="title-about">{t('indexPage.about.heading')}</h2>
           <p>{t('indexPage.about.description')}</p>
         </div>
-        <section data-aos="fade-up"   className="container about-section">
+        <section   className="container about-section">
           <div className="about-image">
             <img src="/assets/Art for Synaps/Laptop - Hompage.png" alt="Computer" />
           </div>
@@ -78,7 +78,7 @@ const Home = () => {
         <div  className="title-container">
           <h2  className="title">{t('indexPage.services.heading')}</h2>
         </div>
-        <section data-aos="fade-up"   className="container services-section">
+        <section    className="container services-section">
           <div  className="services-blobs">
             <a href="services/webdesign" className="service-blob">
               <img src="/assets/Art for Synaps/Services - Web Design.png" alt={t('indexPage.services.items.webDesign')} />
@@ -107,7 +107,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section data-aos="fade-up"   className="container portfolio-section">
+        <section   className="container portfolio-section">
           <div className="portfolio-image">
             <img src="assets/Art for Synaps/Portfolio - Hompage.png" alt="VR Headset" className="vr-headset" />
           </div>

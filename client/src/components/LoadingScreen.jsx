@@ -184,7 +184,7 @@ const LoadingScreen = () => {
               <img
                 src="/assets/Synaps Logos/Synaps Logo Art navbar.png"
                 alt="Synaps Logo"
-                className="w-full h-32"
+                className="w-auto h-32"
               />
             </motion.div>
           ) : (

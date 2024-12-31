@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -7,18 +9,13 @@ import svg2 from '../loading-screen/loading-screen-transition-2.svg';
 import svg3 from '../loading-screen/loading-screen-transition-3.svg';
 import svg4 from '../loading-screen/loading-screen-transition-4.svg';
 
-import svgMobile1 from '../loading-screen/loading-screen-transition-mobile-1.svg';
-import svgMobile2 from '../loading-screen/loading-screen-transition-mobile-2.svg';
-import svgMobile3 from '../loading-screen/loading-screen-transition-mobile-3.svg';
-import svgMobile4 from '../loading-screen/loading-screen-transition-mobile-4.svg';
-
 const LoadingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentSvgIndex, setCurrentSvgIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
 
   const desktopSvgs = [svg1, svg2, svg3, svg4];
-  const mobileSvgs = [svgMobile1, svgMobile2, svgMobile3, svgMobile4];
 
   useEffect(() => {
     const handleResize = () => {
@@ -38,54 +35,112 @@ const LoadingScreen = () => {
   }, []);
 
   useEffect(() => {
-    const transitionDuration = 1000; // 1 second for each transition
-    const fadeOutDuration = 1000; // 1 second for fade out
+    const svgDuration = 1200; // 1.2 seconds for each SVG
+    const mobilePulseDuration = 4500; // 4.5 seconds for mobile pulsing (2 full pulses + bounce)
+    const logoExitDuration = 500; // 0.5 seconds for logo exit
+    const backgroundFadeDuration = 1000; // 1 second for background fade-out
+    const slideUpDuration = 1000; // 0.8 seconds for slide-up animation
 
-    if (currentSvgIndex < 3) {
+    if (isMobile) {
+      // Total duration: mobilePulseDuration + logoExitDuration + backgroundFadeDuration
       const timer = setTimeout(() => {
-        setCurrentSvgIndex((prevIndex) => prevIndex + 1);
-      }, transitionDuration);
+        setIsExiting(true);
+        // First, exit the logo
+        setTimeout(() => {
+          // Then, fade out the background
+          setTimeout(() => {
+            setIsLoading(false);
+            document.body.style.overflow = '';
+          }, backgroundFadeDuration);
+        }, logoExitDuration);
+      }, mobilePulseDuration);
+
       return () => clearTimeout(timer);
     } else {
-      // After the last SVG, initiate slide-up exit animation
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-        document.body.style.overflow = '';
-      }, transitionDuration + fadeOutDuration);
-      return () => clearTimeout(timer);
+      if (currentSvgIndex < desktopSvgs.length) {
+        const timer = setTimeout(() => {
+          setCurrentSvgIndex((prevIndex) => prevIndex + 1);
+        }, svgDuration);
+        return () => clearTimeout(timer);
+      } else {
+        // Initiate exit sequence
+        setIsExiting(true);
+        const timer = setTimeout(() => {
+          setIsLoading(false);
+          document.body.style.overflow = '';
+        }, slideUpDuration);
+        return () => clearTimeout(timer);
+      }
     }
-  }, [currentSvgIndex]);
+  }, [currentSvgIndex, desktopSvgs.length, isMobile]);
 
   if (!isLoading) return null;
 
-  const selectedSvgs = isMobile ? mobileSvgs : desktopSvgs;
-
+  // Variants for container animation (only affects exit)
   const containerVariants = {
-    initial: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -100, transition: { ease: 'easeIn', duration: 0.5 } },
+    initial: { opacity: 1 },
+    exit: {
+      opacity: 0,
+      transition: {
+        ease: 'easeOut',
+        duration: 1,
+      },
+    },
   };
 
-  const svgVariants = {
-    enter: (index) => ({
-      y: index === 4 ? 0 : 1000,
+  // Variants for background fade-out
+  const backgroundVariants = {
+    initial: { opacity: 1 },
+    fade: {
       opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      y: 0,
-      opacity: 1,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+      },
     },
-    exit: (index) => {
-      if (index === 4) {
-        return {
-          opacity: 0,
-        };
-      }
-      return {
-        zIndex: 0,
-        y: index === 4 ? -1000 : 0,
-        opacity: index === 4 ? 1 : 0,
-      };
+  };
+
+  // Variants for SVG blending and slide-up animation
+  const svgVariants = {
+    initial: { opacity: 0, y: 0 },
+    animate: { 
+      opacity: 1,
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
+    exit: (index) => ({
+      opacity: index === desktopSvgs.length - 1 ? 1 : 0, // Maintain opacity for the last SVG
+      y: index === desktopSvgs.length - 1 ? '-100%' : 0, // Slide up only for the last SVG
+      transition: {
+        opacity: {
+          duration: 1,
+          ease: 'easeIn',
+        },
+        y: index === desktopSvgs.length - 1 ? {
+          duration: 0.8,
+          ease: 'easeInOut',
+        } : {},
+      },
+    }),
+  };
+
+  // Variants for mobile logo pulsing
+  const pulseVariants = {
+    initial: { scale: 1 },
+    animate: { 
+      scale: [1, 1.2, 1],
+      transition: { 
+        duration: 1.5,
+        ease: "easeInOut",
+        repeat: Infinity,
+      },
+    },
+    exit: { 
+      scale: 0,
+      opacity: 0,
+      transition: { 
+        duration: 0.5,
+        ease: "easeIn",
+      },
     },
   };
 
@@ -93,44 +148,72 @@ const LoadingScreen = () => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 z-100000 flex items-center justify-center bg-background overflow-hidden"
+          className="fixed inset-0 z-[10000] flex items-center justify-center overflow-hidden"
           variants={containerVariants}
           initial="initial"
+          animate="initial"
           exit="exit"
+          aria-live="assertive"
         >
-          <AnimatePresence initial={false} custom={currentSvgIndex}>
+          {/* Background Handling */}
+          {isMobile ? (
             <motion.div
-              key={currentSvgIndex}
-              custom={currentSvgIndex}
-              variants={svgVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                y: { type: 'spring', stiffness: 300, damping: 30 },
-                opacity: { duration: currentSvgIndex === 4 ? 1 : 0.2 },
-              }}
-              className="absolute inset-0"
+              className="absolute inset-0 bg-background"
+              variants={backgroundVariants}
+              initial="initial"
+              animate={isExiting ? "fade" : "initial"}
+            />
+          ) : (
+            <motion.div
+              className="absolute inset-0 bg-background"
+              variants={backgroundVariants}
+              initial="initial"
+              animate={isExiting ? "fade" : "initial"}
+            />
+          )}
+
+          {/* Content Handling */}
+          {isMobile ? (
+            // Mobile loading animation
+            <motion.div
+              className="relative z-[10001]"
+              variants={pulseVariants}
+              initial="initial"
+              animate={isExiting ? "exit" : "animate"}
             >
               <img
-                src={selectedSvgs[currentSvgIndex]}
-                alt={`Loading ${currentSvgIndex + 1}`}
-                className="object-cover w-full h-full"
+                src="/assets/Synaps Logos/Synaps Logo Art navbar.png"
+                alt="Synaps Logo"
+                className="w-full h-32"
               />
             </motion.div>
-          </AnimatePresence>
-          <motion.div
-            className="relative z-10"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-          >
-            <img
-              src="/assets/Synaps Logos/Synaps Logo Art navbar.png"
-              alt="Synaps Logo"
-              className="w-32 h-32 md:w-48 md:h-48"
-            />
-          </motion.div>
+          ) : (
+            // Desktop SVG transitions
+            <AnimatePresence initial={false}>
+              {desktopSvgs.map((svg, index) => (
+                currentSvgIndex === index && (
+                  <motion.div
+                    key={index}
+                    custom={index}
+                    variants={svgVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    className={`absolute inset-0 z-[10000] ${
+                      // Apply 'bg-transparent' only to the last SVG before sliding up
+                      isExiting && index === desktopSvgs.length - 1 ? 'bg-transparent' : 'shadow-xl'
+                    }`}
+                  >
+                    <img
+                      src={svg}
+                      alt={`Loading ${index + 1}`}
+                      className="object-cover w-full h-full"
+                    />
+                  </motion.div>
+                )
+              ))}
+            </AnimatePresence>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

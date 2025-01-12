@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import { useTranslation } from 'react-i18next';
 import './i18n/i18n'; // Ensure this import is correct
 import { HelmetProvider } from 'react-helmet-async';
+import { Analytics } from "@vercel/analytics/react"
+
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -112,6 +114,7 @@ function App() {
   return (
     <HelmetProvider>
     <div className={`App ${getBackgroundClass(location.pathname)}`}>
+      <Analytics />
       <ScrollToTop />
       <Navbar />
       <Layout>

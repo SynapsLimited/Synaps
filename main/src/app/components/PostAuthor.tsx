@@ -16,7 +16,8 @@ const PostAuthor: React.FC<{ authorID: string; createdAt?: string }> = ({ author
   useEffect(() => {
     const getAuthor = async () => {
       try {
-        const response = await axios.get(`/api/users/${authorID}`);
+        // Updated endpoint to fetch a single author by ID
+        const response = await axios.get(`/api/users/authors/${authorID}`);
         setAuthor(response.data);
       } catch (error: any) {
         console.error('Error fetching author:', error.message || error);
@@ -31,18 +32,16 @@ const PostAuthor: React.FC<{ authorID: string; createdAt?: string }> = ({ author
   }, [authorID]);
 
   return (
-    <Link href={`/blog/authors/${authorID}`}  className="post-author">
+    <Link href={`/blog/authors/${authorID}`} className="post-author">
       <div className="post-author-avatar">
-        <img
-          src={author?.avatar || defaultAvatar}
-          alt={author?.name || 'Author Avatar'}
-        />
+        <img src={author?.avatar || defaultAvatar} alt={author?.name || 'Author Avatar'} />
       </div>
       <div className="post-author-details">
         <h5>{author?.name || 'Synaps'}</h5>
         {createdAt && (
           <small>
-            <ReactTimeAgo date={new Date(createdAt)} locale="en-US" />
+            {/* The locale here is set to "en"; adjust as needed based on your current language */}
+            <ReactTimeAgo date={new Date(createdAt)} locale="en" />
           </small>
         )}
       </div>

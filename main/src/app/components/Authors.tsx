@@ -21,7 +21,8 @@ const Authors: React.FC = () => {
     const getAuthors = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`/api/users`);
+        // Updated endpoint to fetch the authors list
+        const response = await axios.get(`/api/users/authors`);
         setAuthors(response.data);
       } catch (error) {
         console.error('Error fetching authors:', error);
@@ -44,20 +45,15 @@ const Authors: React.FC = () => {
       {authors.length > 0 ? (
         <div className="authors-container">
           {authors.map(({ _id: id, avatar, name, posts }) => (
-            <Link 
-              key={id} 
-              href={`/blog/authors/${id}`} 
-              className="author"
-            >
+            <Link key={id} href={`/blog/authors/${id}`} className="author">
               <div className="author-avatar">
-                <img 
-                  src={avatar || defaultAvatar}  
-                  alt={`Image of ${name}`} 
-                />
+                <img src={avatar || defaultAvatar} alt={`Image of ${name}`} />
               </div>
               <div className="author-info">
                 <h4>{name}</h4>
-                <p>{posts} {posts === 1 ? 'post' : 'posts'}</p>
+                <p>
+                  {posts} {posts === 1 ? 'post' : 'posts'}
+                </p>
               </div>
             </Link>
           ))}

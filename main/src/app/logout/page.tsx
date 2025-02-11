@@ -12,16 +12,12 @@ const Logout: React.FC = () => {
   useEffect(() => {
     const performLogout = async () => {
       try {
-        await axios.post(
-          `/api/users/logout`,
-          {},
-          { withCredentials: true }
-        );
+        await axios.post('/api/users/logout', {}, { withCredentials: true });
       } catch (error) {
         console.error("Error during logout:", error);
       }
       setCurrentUser(null);
-      router.push('/login');
+      router.push('/'); // Redirect to homepage after logout.
     };
     performLogout();
   }, [setCurrentUser, router]);

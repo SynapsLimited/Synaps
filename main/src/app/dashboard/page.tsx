@@ -26,13 +26,12 @@ const Dashboard: React.FC = () => {
   const { currentUser } = useContext(UserContext);
   const userId = currentUser?.id;
 
-  // Fetch posts for the logged-in user.
+  // Only fetch posts if a user is logged in.
   useEffect(() => {
     const fetchPosts = async () => {
       if (!userId) return;
       setIsLoading(true);
       try {
-        // Note the /api prefix to correctly target your API route.
         const response = await axios.get(`/api/posts/users/${userId}`, {
           withCredentials: true,
         });
@@ -47,6 +46,20 @@ const Dashboard: React.FC = () => {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  // If no user is logged in, show a message with a login link.
+  if (!currentUser) {
+    return (
+      <section className="dashboard">
+        <div className="container">
+          <p>
+            You must be logged in to view your dashboard. Please{' '}
+            <Link href="/login">login</Link>.
+          </p>
+        </div>
+      </section>
+    );
   }
 
   return (

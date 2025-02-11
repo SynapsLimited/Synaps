@@ -1,10 +1,12 @@
+// app/profile/page.tsx
 'use client';
+
 import React, { useState, useContext, useEffect, ChangeEvent, FormEvent } from 'react';
 import Link from 'next/link';
 import { FaEdit, FaCheck } from "react-icons/fa";
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
 import { UserContext } from '@/context/userContext';
+import { useRouter } from 'next/navigation';
 import './../../css/blog.css';
 
 const UserProfile: React.FC = () => {
@@ -20,12 +22,19 @@ const UserProfile: React.FC = () => {
   const { currentUser } = useContext(UserContext);
   const router = useRouter();
 
-  // Redirect to login if not authenticated.
-  useEffect(() => {
-    if (!currentUser) {
-      router.push('/login');
-    }
-  }, [currentUser, router]);
+  // Instead of auto‑redirecting, show a message if not logged in.
+  if (!currentUser) {
+    return (
+      <section className="profile">
+        <div className="container">
+          <p>
+            You must be logged in to view your profile. Please{' '}
+            <Link href="/login">login</Link>.
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   // Fetch user data.
   useEffect(() => {
@@ -100,7 +109,6 @@ const UserProfile: React.FC = () => {
   return (
     <section data-aos="fade-up" className="profile">
       <div className="container profile-container">
-        {/* Updated Dashboard link to point to /dashboard */}
         <Link href="/dashboard" className="btn btn-secondary">
           Dashboard
         </Link>
@@ -131,7 +139,7 @@ const UserProfile: React.FC = () => {
               </button>
             )}
           </div>
-          <h1>{currentUser?.name}</h1>
+          <h1>{currentUser.name}</h1>
           <form className="form profile-form" onSubmit={updateUserDetails}>
             {error && <p className="form-error-message">{error}</p>}
             <input 

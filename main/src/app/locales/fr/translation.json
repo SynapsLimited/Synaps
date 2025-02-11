@@ -1,0 +1,859 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "aboutPage": {
+    "title": "À propos",
+    "intro": "Êtes-vous prêt à faire notre connaissance ? C'est excitant ! Faisons défiler vers le bas !",
+    "contactButton": "Contact",
+    "whatIsSynaps": "Qu'est-ce que ",
+    "description": "Synaps est une entreprise spécialisée dans le branding et le marketing externalisé qui vise à améliorer les entreprises dans la nouvelle ère numérique. Notre objectif est de fournir des services de la plus haute qualité pour aider les marques à atteindre et dépasser leurs objectifs. Nous nous concentrons sur la notoriété de la marque, la fidélité à la marque, le marketing digital, le marketing traditionnel et le branding complet. Synaps est ce dont votre entreprise a besoin pour croître, relever des défis et conquérir dès maintenant. Nous sommes le lien manquant.",
+    "mission": {
+      "title": "Mission",
+      "content": "Être un partenaire de confiance dans la réussite de nos clients en offrant des solutions de branding et de marketing innovantes et efficaces."
+    },
+    "vision": {
+      "title": "Vision",
+      "content": "Devenir une force motrice du changement positif et révolutionner l'industrie du branding et du marketing, en inspirant et en donnant aux entreprises les moyens d'atteindre leur plein potentiel."
+    },
+    "values": {
+      "title": "Valeurs",
+      "content": "Synaps est guidé par un ensemble de valeurs fondamentales : Innovation, Collaboration, Créativité, Excellence, Adaptabilité, Intégrité."
+    },
+    "team": {
+      "title": "Rencontrez notre équipe",
+      "members": {
+        "1": {
+          "name": "Muhamed Brojka",
+          "role": "Marketeur Polyvalent"
+        },
+        "2": {
+          "name": "Bujar Shehaj",
+          "role": "Marketeur Polyvalent"
+        },
+        "3": {
+          "name": "Enriko Shkurti",
+          "role": "Responsable des Ventes"
+        },
+        "4": {
+          "name": "Yann Lazarev",
+          "role": "Rédacteur"
+        },
+        "5": {
+          "name": "",
+          "role": "Designer graphique"
+        }
+      }
+    }
+  },
+
+  "blogPage": {
+    "title": "Blog",
+    "header": {
+      "heading": "Blog",
+      "description": "Suivez les dernières actualités des tendances technologiques et marketing.",
+      "contactButton": "Contact"
+    },
+    "intro": {
+      "heading": "Prêt pour les dernières nouvelles ?",
+      "description": "Des nouvelles de nous et du monde. La technologie et les tendances du marketing sont notre spécialité. Nous sommes prêts à vous tenir informés, à partager notre opinion ou même nos propres histoires."
+    },
+    "categories": {
+      "heading": "Catégories",
+      "items": {
+        "Marketing": "Marketing",
+        "Business": "Affaires",
+        "Technology": "Technologie",
+        "AI": "IA",
+        "Gaming": "Jeux vidéo",
+        "Product": "Produit",
+        "Entertainment": "Divertissement"
+      }
+    }
+  },
+
+  "contactPage": {
+    "title": "Contact",
+    "header": {
+      "heading": "Contact",
+      "description": "Prêt à commencer à travailler avec nous ? Faites défiler vers le bas !",
+      "contactButton": "Contact"
+    },
+    "overview": {
+      "contactDetailsTitle": "Coordonnées",
+      "consultNowTitle": "Consultez maintenant !",
+      "consultNowDescription": "Si vous êtes prêt, allez-y ! La consultation est gratuite et discuter avec nous pour un meilleur avenir et plus de succès l'est aussi. Soumettez ce formulaire et nous vous répondrons dès que possible !"
+    },
+    "sections": {
+      "location": {
+        "title": "Localisation",
+        "imageAlt": "Localisation",
+        "description": "ET AU-DELÀ !"
+      },
+      "contact": {
+        "title": "Contact",
+        "phone": {
+          "alt": "Téléphone",
+          "number": "+32 45 607 1631"
+        },
+        "email": {
+          "alt": "E-mail",
+          "address": "info@synapslimited.eu"
+        }
+      },
+      "socials": {
+        "title": "Réseaux sociaux",
+        "facebookAlt": "Facebook",
+        "instagramAlt": "Instagram",
+        "linkedinAlt": "LinkedIn",
+        "youtubeAlt": "YouTube"
+      }
+    }
+  },
+  "indexPage": {
+    "title": "Synaps",
+    "header": {
+      "heading": "Le lien manquant vers le succès !",
+      "description": "Synaps est la nouvelle manière d'atteindre de nouveaux objectifs, plus d'audience et un plus grand succès. Synaps ne peut pas seulement résoudre les problèmes de votre entreprise, mais aussi les trouver. Synaps est le lien manquant à votre puzzle de succès. Toujours en attente ? Contactez maintenant !",
+      "contactButton": "Contact"
+    },
+    "about": {
+      "heading": "À propos de nous",
+      "description": "Synaps est une entreprise qui améliore l'identité de votre marque et trouve des solutions à vos problèmes grâce aux dernières techniques de marketing. Synaps est déterminé à devenir votre équipe marketing. Externalisez tous vos problèmes et objectifs avec nous et Synaps fournira les meilleurs résultats.",
+      "aboutButton": "À propos de nous"
+    },
+    "services": {
+      "heading": "Services",
+      "items": {
+        "webDesign": "Conception Web",
+        "socialMedia": "Réseaux sociaux",
+        "branding": "Branding",
+        "video": "Vidéo",
+        "advertisement": "Publicité"
+      },
+      "servicesButton": "Services"
+    },
+    "portfolio": {
+      "heading": "Portfolio",
+      "textLine1": "Explorez notre section portfolio pour découvrir certains de",
+      "textLine2": "nos travaux précédents pour différents clients",
+      "textLine3": "au fil des ans.",
+      "portfolioButton": "Portfolio"
+    },
+    "blog": {
+      "categories": {
+        "marketing": {
+          "title": "Marketing",
+          "description": "Explorez notre section de blog marketing pour des idées, stratégies et astuces pour élever la présence de votre marque et stimuler la croissance de l'entreprise."
+        },
+        "business": {
+          "title": "Affaires",
+          "description": "Explorez notre section de blog sur les affaires pour des conseils d'experts, des tendances du secteur et des stratégies pratiques pour vous aider à atteindre vos objectifs entrepreneuriaux et à réussir."
+        },
+        "technology": {
+          "title": "Technologie",
+          "description": "Explorez notre section blog technologique pour les dernières mises à jour, idées et innovations dans le monde de la technologie, conçues pour vous tenir informé et vous garder en avance sur la courbe."
+        },
+        "ai": {
+          "title": "IA",
+          "description": "Explorez notre section blog sur l'IA pour des idées et des percées de pointe en intelligence artificielle afin de vous tenir informé dans ce domaine en pleine évolution."
+        },
+        "gaming": {
+          "title": "Jeux vidéo",
+          "description": "Explorez notre section blog sur les jeux vidéo pour les dernières nouvelles, critiques et stratégies, vous tenant informé et engagé dans le monde dynamique des jeux vidéo."
+        },
+        "product": {
+          "title": "Produit",
+          "description": "Explorez notre section blog sur les produits pour des critiques approfondies, des fonctionnalités et des points forts des produits les plus innovants sur le marché."
+        },
+        "entertainment": {
+          "title": "Divertissement",
+          "description": "Explorez notre section blog sur le divertissement pour les dernières nouvelles, critiques de films, séries télévisées et musique, vous tenant connecté au monde du divertissement."
+        }
+      }
+    }
+  },
+  "portfolioPage": {
+    "title": "Portfolio",
+    "header": {
+      "heading": "Portfolio",
+      "description": "Explorez et découvrez certains de nos meilleurs travaux créatifs !",
+      "contactButton": "Contact"
+    },
+    "categoriesTitle": "Catégories",
+    "items": {
+      "webDesign": "Conception Web",
+      "socialMedia": "Réseaux sociaux",
+      "branding": "Branding",
+      "video": "Vidéo",
+      "advertisement": "Publicité"
+    }
+  },
+
+  "servicesPage": {
+    "title": "Services",
+    "header": {
+      "heading": "Services",
+      "description": "Vous ne savez pas ce dont vous avez besoin ? Pas de problème.\nConsultez-nous gratuitement dès maintenant !",
+      "contactButton": "Contact"
+    },
+    "overview": {
+      "title": "Aperçu",
+      "description": "Sélectionnez l'un des services pour jeter un œil et comprendre de quoi il s'agit !"
+    },
+    "items": {
+      "webDesign": {
+        "title": "Conception Web",
+        "description": "Nos services de conception web sont conçus pour améliorer votre présence en ligne avec précision et créativité. Que vous recherchiez un site web simple d'une page, une expérience numérique entièrement personnalisée ou un site web 3D de pointe immergeant votre audience, notre équipe d'experts est dédiée à donner vie à votre vision.",
+        "subItems": ["Site Web d'une page", "Site Web personnalisé", "Site Web 3D"]
+      },
+      "socialMedia": {
+        "title": "Réseaux sociaux",
+        "description": "Les services de réseaux sociaux sont conçus pour amplifier la voix et l'impact de votre marque dans la sphère numérique. La création de contenu captivant, la gestion stratégique des réseaux sociaux ou l'engagement communautaire, tout est possible grâce à notre expertise pour élever votre présence en ligne.",
+        "subItems": ["Création de contenu", "Gestion des réseaux sociaux", "Gestion de communauté"]
+      },
+      "branding": {
+        "title": "Branding",
+        "description": "Des expériences de branding immersives en 3D aux packages complets de branding, ainsi que la conception de logos et d'art sur mesure, et des présentations d'entreprise captivantes, nous proposons une gamme de solutions pour faire passer l'identité de votre marque à un niveau supérieur.",
+        "subItems": ["Branding 3D", "Branding complet", "Logo et Art", "Présentation d'entreprise"]
+      },
+      "video": {
+        "title": "Vidéo",
+        "description": "Narration et création de contenu captivant. Que vous recherchiez à créer des reels accrocheurs, produire des vidéos YouTube ou créer des annonces percutantes, nous pouvons le faire. Avec la capacité de gérer chaque aspect, du tournage à l'écriture de scénarios en passant par le montage et la production finale, nous veillerons à ce que vos vidéos se démarquent de la concurrence.",
+        "subItems": ["Reels", "YouTube", "Annonces"]
+      },
+      "advertisement": {
+        "title": "Publicité",
+        "description": "Des solutions publicitaires innovantes conçues pour propulser votre marque vers de nouveaux sommets. Notre gamme diversifiée de services publicitaires comprend la publicité numérique pour une visibilité en ligne, le marketing par e-mail stratégique pour connecter avec votre audience, et la publicité physique percutante pour laisser une impression tangible.",
+        "subItems": ["Publicité numérique", "Marketing par e-mail", "Publicité physique"]
+      }
+    },
+    "servicesButton": "Services",
+    "portfolioButton": "Portfolio"
+  },
+
+
+  "servicesTemplatePage": {
+    "titlePrefix": "Synaps - Services - ",
+    "header": {
+      "servicesHeading": "Services",
+      "contactButton": "Contact"
+    },
+    "categories": {
+      "webDesign": "Conception Web",
+      "socialMedia": "Réseaux sociaux",
+      "branding": "Branding",
+      "video": "Vidéo",
+      "advertisement": "Publicité"
+    },
+    "importanceTitle": "Importance de {{title}}",
+    "typesTitle": "Types de {{title}}",
+    "portfolioButton": "Portfolio",
+    "bundlesTitle": "Forfaits {{title}}",
+    "bundles": {
+      "swiperPagination": "swiper-pagination"
+    }
+  },
+
+  "portfolioTemplatePage": {
+    "titlePrefix": "Synaps - Portfolio - ",
+    "header": {
+      "heading": "Portfolio",
+      "portfolioButton": "Portfolio"
+    },
+    "categories": {
+      "webDesign": "Conception Web",
+      "socialMedia": "Réseaux sociaux",
+      "branding": "Branding",
+      "video": "Vidéo",
+      "advertisement": "Publicité"
+    },
+    "gallery": {
+      "closeButton": "Fermer",
+      "viewProjectButton": "Voir le projet"
+    }
+  },
+
+  "advertisementServices": {
+    "title": "Publicité",
+    "description": "Découvrez nos services publicitaires de premier ordre qui répondent à tous vos besoins !",
+    "importanceTitle": "Publicité",
+    "importanceText": "Synaps peut vous aider à atteindre des audiences et promouvoir des produits en un rien de temps. Grâce à différents outils numériques et à notre expertise, nous pouvons faire la publicité de l'entreprise numériquement, via des e-mails ou même fournir une publicité physique.",
+    "types": {
+      "digitalAdvertising": {
+        "title": "Publicité numérique",
+        "description": "La publicité numérique se compose de plusieurs éléments différents. À partir des publicités payantes sur les réseaux sociaux comme Instagram, Facebook et également YouTube. Synaps possède les outils pour améliorer votre SEO en vous classant plus haut dans les résultats de recherche et votre SEA en vous promouvant directement via la page de recherche."
+      },
+      "emailMarketing": {
+        "title": "Marketing par e-mail",
+        "description": "Le marketing par e-mail est le sommet du Growth Marketing. Grâce à une base de données fournie par vous ou par nous, nous pouvons cibler un public spécifique et lui envoyer des informations et le mettre à jour en temps réel. C'est l'élément clé pour atteindre l'acquisition et la fidélité des clients."
+      },
+      "physicalAdvertising": {
+        "title": "Publicité physique",
+        "description": "La publicité physique peut comprendre une large gamme de produits qui peuvent être conçus et adaptés à vos besoins. De la création de flyers, de bannières ou d'autres matériaux imprimés à de grands actifs tels que des véhicules ou des idées pour placer nos publicités dans des endroits stratégiques comme des cartes de visite, des affiches, des catalogues, etc."
+      }
+    },
+    "bundles": {
+      "conversionBundle": {
+        "name": "Forfait Conversion",
+        "description": "Google Ads"
+      },
+      "awarenessBundle": {
+        "name": "Forfait Notoriété",
+        "description": "Annonces Meta"
+      },
+      "contactBundle": {
+        "name": "Forfait Contact",
+        "description": "Marketing par e-mail"
+      },
+      "announcerBundle": {
+        "name": "Forfait Annonceur",
+        "description": "Marketing par e-mail & Newsletter"
+      },
+      "guerrillaBundle": {
+        "name": "Forfait Guerrilla",
+        "description": "Publicité Physique"
+      }
+    }
+  },
+  "brandingServices": {
+    "title": "Branding",
+    "description": "Découvrez nos services de branding de premier ordre qui répondent à tous vos besoins !",
+    "importanceTitle": "Branding",
+    "importanceText": "Synaps propose différents types de branding pour votre entreprise. Logo et art pour créer la face principale de votre entreprise ou un branding complet pour créer la personnalité complète de votre marque. Des éléments supplémentaires de branding comme le branding 3D qui aident votre entreprise à se différencier ou une présentation d'entreprise qui vous permet de présenter ou de pitcher votre entreprise sont également des options utiles lorsqu'il s'agit de branding.",
+    "types": {
+      "logoAndArt": {
+        "title": "Logo et Art",
+        "description": "Le logo est l'élément le plus important lorsqu'il s'agit de branding, car il est le visage de l'entreprise. Nous offrons des services qui créeront votre Logo, l'Art du Logo, le Texte du Logo et le Logo Principal. Le Logo Principal en 2D et 3D est utile et important pour visualiser votre logo et l'utiliser sur votre site web, réseaux sociaux, publicités, etc."
+      },
+      "fullBranding": {
+        "title": "Branding complet",
+        "description": "Le branding complet comprend la création de l'image de marque en commençant par le logo, l'arrière-plan, les couleurs principales, les types de polices, les styles, etc. Le branding complet crée la personnalité complète de l'entreprise."
+      },
+      "threeDBranding": {
+        "title": "Branding 3D",
+        "description": "Le branding 3D est le type de branding le plus visuel, car il peut être appliqué dans toutes les dimensions. Cela peut permettre à vos différents produits d'être publicisés ou affichés sur votre site web interactif, vos réseaux sociaux ou même dans des vidéos."
+      },
+      "companyPresentation": {
+        "title": "Présentation d'entreprise",
+        "description": "Les présentations d'entreprise sont plusieurs pages dans une présentation qui peuvent vous aider à représenter chaque partie de votre thème, et peuvent être utilisées pour pitcher votre entreprise ou présenter autre chose. Ces présentations peuvent être affichées à différents endroits ou appliquées à des situations spécifiques, créant ainsi un bon aspect."
+      }
+    },
+    "bundles": {
+      "logoBundle": {
+        "name": "Forfait Logo",
+        "description": "Logo"
+      },
+      "brandIdentityBundle": {
+        "name": "Forfait Identité de Marque",
+        "description": "Logo, Couleurs, Polices, Flux de Conception"
+      },
+      "brandArtBundle": {
+        "name": "Forfait Art de Marque",
+        "description": "Identité de Marque & Art 2D"
+      },
+      "cyberBrandingBundle": {
+        "name": "Forfait CyberBranding",
+        "description": "Branding Complet & Site Web"
+      }
+    }
+  },
+  "socialMediaServices": {
+    "title": "Réseaux sociaux",
+    "description": "Découvrez nos services de réseaux sociaux de premier ordre qui répondent à tous vos besoins !",
+    "importanceTitle": "Réseaux sociaux",
+    "importanceText": "Synaps propose trois types de services pour les réseaux sociaux. Ces services peuvent être utilisés ensemble ou séparément en fonction des objectifs et des cibles d'une entreprise. Création de contenu de haute qualité, gestion des réseaux sociaux et gestion de communauté par Synaps pour engager l'audience et interagir avec votre communauté.",
+    "types": {
+      "contentCreation": {
+        "title": "Création de contenu",
+        "description": "Synaps propose différents types de création de contenu pour les réseaux sociaux. De la création de modèles pour garder le profil de l'entreprise à jour et cohérent, à la création de contenu mensuel et à la création de contenu spécialisé pour des événements spéciaux, exigences et demandes spécifiques."
+      },
+      "socialMediaManagement": {
+        "title": "Gestion des réseaux sociaux",
+        "description": "Synaps peut gérer vos réseaux sociaux pour vous en planifiant, publiant, organisant l'ensemble de votre flux et en augmentant vos profils sur les réseaux sociaux. Tous les réseaux sociaux avec possibilité comme Instagram, Facebook, LinkedIn, TikTok, Snapchat, YouTube, Pinterest, etc."
+      },
+      "communityManagement": {
+        "title": "Gestion de communauté",
+        "description": "La gestion de communauté est essentielle lorsqu'il s'agit d'organiser votre communauté et vos clients. Ce service est bien adapté aux entreprises, créateurs, étudiants, artistes qui envisagent de gérer leur communauté avec une attitude appropriée. La gestion de communauté par Synaps avec une manière professionnelle de s'adresser à la communauté n'est pas un défi pour nous."
+      }
+    },
+    "bundles": {
+      "basicBundle": {
+        "name": "Forfait de base",
+        "description": "Instagram"
+      },
+      "trendBundle": {
+        "name": "Forfait Tendances",
+        "description": "Instagram & TikTok"
+      },
+      "influentialBundle": {
+        "name": "Forfait Influent",
+        "description": "Marketing d'influence - Instagram & TikTok"
+      },
+      "professionalBundle": {
+        "name": "Forfait Professionnel",
+        "description": "Instagram, Facebook, LinkedIn"
+      },
+      "communityBundle": {
+        "name": "Forfait Communauté",
+        "description": "Instagram, Facebook, X"
+      },
+      "proMaxSocialBundle": {
+        "name": "Forfait Pro Max Social",
+        "description": "Tous les Réseaux Sociaux"
+      }
+    }
+  },
+  "videoServices": {
+    "title": "Vidéo",
+    "description": "Découvrez nos services de vidéo de premier ordre qui répondent à tous vos besoins !",
+    "importanceTitle": "Vidéo",
+    "importanceText": "Synaps propose trois types de vidéos qui peuvent être utilisées dans différentes pratiques selon les canaux que vous souhaitez commencer à promouvoir ou à impliquer. Des reels au format vertical, en passant par les vidéos YouTube au format horizontal avec les idées les plus récentes pour interagir, jusqu'aux annonces de tous types et styles.",
+    "types": {
+      "reels": {
+        "title": "Reels",
+        "description": "Les reels sont le style de vidéo le plus populaire ces derniers temps. En format horizontal et avec des techniques engageantes, ces vidéos peuvent être scénarisées, filmées et éditées pour un public cible via TikTok, Instagram, Facebook ou YouTube Shorts."
+      },
+      "youtube": {
+        "title": "YouTube",
+        "description": "Les vidéos YouTube peuvent afficher différentes compétences, des éditeurs vidéo, du contenu diversifié et attrayant. Nous avons la capacité de scénariser, filmer ou éditer différents contenus selon les besoins de l'entreprise. Les vidéos YouTube au format horizontal sont généralement plus longues que les reels."
+      },
+      "ads": {
+        "title": "Annonces",
+        "description": "Les vidéos publicitaires peuvent être réalisées dans tous les formats pour tout type de produit, entreprise ou événement. Nous créons ces vidéos en les adaptant au thème du message qu'elles tentent de promouvoir et au public cible."
+      }
+    },
+    "bundles": {
+      "editorBundle": {
+        "name": "Forfait Éditeur",
+        "description": "Montage vidéo"
+      },
+      "internetBundle": {
+        "name": "Forfait Internet",
+        "description": "Idéation et montage vidéo pour les réseaux sociaux"
+      },
+      "youtubeBundle": {
+        "name": "Forfait YouTube",
+        "description": "Idéation et montage vidéo pour YouTube"
+      }
+    }
+  },
+  "webDesignServices": {
+    "title": "Conception Web",
+    "description": "Découvrez nos services de conception web de premier ordre qui répondent à tous vos besoins !",
+    "importanceTitle": "Conception Web",
+    "importanceText": "Synaps vous présente trois types de conceptions Web modernes qui sont adaptées et sur mesure pour votre entreprise. D'un site web aussi visuel que jamais avec plusieurs éléments 3D pour offrir la meilleure expérience utilisateur, à un site web personnalisé aux désirs du client avec un souci du détail, jusqu'à un site web d'une seule page qui fait parfaitement le travail.",
+    "types": {
+      "threeDWebsites": {
+        "title": "Sites Web 3D",
+        "description": "Les sites Web 3D offrent une excellente expérience utilisateur. Des modèles 3D sont créés, intégrés et animés sur tout le site Web pour visualiser et créer un lien fort avec l'utilisateur ou le client. Ces sites Web peuvent être excellents pour les entreprises des secteurs de la mode, du mobilier, des produits pharmaceutiques, des produits de soins de la peau, etc."
+      },
+      "customizedWebsites": {
+        "title": "Sites Web personnalisés",
+        "description": "Les sites Web personnalisés sont des sites Web multi-pages adaptés aux préférences des entreprises, y compris les dernières tendances, des animations de pointe, des vecteurs et des icônes. Nous proposons de nouvelles idées sur ces sites Web pour améliorer l'interface utilisateur avec une touche de créativité et d'innovation."
+      },
+      "onePagerWebsites": {
+        "title": "Sites Web d'une page",
+        "description": "Les sites Web d'une page sont des sites simples qui contiennent une seule page. Cette page comprend toutes les sections qu'un site Web doit comporter, telles que À propos de nous, Services, Témoignages, Contact, Portfolio, Vidéo promotionnelle, Certifications, etc., pour afficher tout ce qu'une entreprise a à offrir en un seul endroit. Cela fonctionne parfaitement et contient suffisamment d'informations pour promouvoir une entreprise."
+      }
+    },
+    "bundles": {
+      "simpleBundle": {
+        "name": "Forfait Simple",
+        "description": "WordPress"
+      },
+      "bloggerBundle": {
+        "name": "Forfait Blogger",
+        "description": "WordPress & SEO"
+      },
+      "shopperBundle": {
+        "name": "Forfait Shopper",
+        "description": "Shopify"
+      },
+      "originalBundle": {
+        "name": "Forfait Original",
+        "description": "Conçu & Développé"
+      },
+      "authenticBundle": {
+        "name": "Forfait Authentique",
+        "description": "Conçu & Développé & SEO"
+      },
+      "proPerformanceBundle": {
+        "name": "Forfait Performance Pro",
+        "description": "WordPress & SEO & SEA"
+      },
+      "proMaxPerformanceBundle": {
+        "name": "Forfait Performance Pro Max",
+        "description": "Conçu & Développé & SEO & SEA"
+      }
+    }
+  },
+
+
+  "portfolioPages": {
+    "advertisementPortfolio": {
+      "title": "Publicité",
+      "description": "Prêt à montrer les produits que vous voulez aux personnes que vous voulez ?!",
+      "galleryItems": [
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Meliora Medical.jpg",
+          "alt": "Meliora Medical",
+          "title": "Meliora Medical - SEO & SEA",
+          "description": "Nous avons fourni des services complets de SEO et SEA pour Meliora Medical, une clinique de physiothérapie et de dermoesthétique, afin d'améliorer leur visibilité en ligne et d'attirer plus de clients. Notre approche stratégique a entraîné une amélioration du classement dans les moteurs de recherche et une augmentation du trafic web.",
+          "link": "https://www.melioramedical.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Grei's Dental Clinic.jpg",
+          "alt": "Grei’s Dental Clinic",
+          "title": "Grei’s Dental Clinic - SEO & SEA",
+          "description": "Pour la clinique dentaire Grei, nous avons mis en place des stratégies SEO et SEA efficaces pour améliorer leur présence en ligne et l'acquisition de patients. Nos efforts ont considérablement amélioré leurs performances dans les moteurs de recherche et leur visibilité dans les recherches locales.",
+          "link": ""
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Nika Rentals.jpg",
+          "alt": "Nika Rentals",
+          "title": "Nika Rentals - SEO & SEA",
+          "description": "Nous avons assisté Nika Rentals, une société de location de voitures, avec des services SEO et SEA pour s'assurer qu'ils se démarquent dans un marché concurrentiel. Nos campagnes ciblées ont amélioré leur visibilité en ligne, entraînant une augmentation du trafic sur le site Web et des réservations.",
+          "link": "https://nikarentcartirana.com/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/ADSH.jpg",
+          "alt": "ADSH - Publicités physiques",
+          "title": "ADSH - Publicités physiques",
+          "description": "Pour ADSH, un importateur/exportateur dans l'industrie laitière, nous avons conçu et planifié des publicités physiques pour leur nouveau magasin. Nos solutions publicitaires créatives ont efficacement attiré l'attention des clients potentiels et entraîné une augmentation du trafic piétonnier vers leur emplacement.",
+          "link": "https://www.adsh2014.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Balkan Sports Scholars.jpg",
+          "alt": "Balkan Sports Scholars - Marketing par E-mail",
+          "title": "Balkan Sports Scholars - Marketing par E-mail",
+          "description": "Nous avons mis en place et géré des services de marketing par e-mail pour Balkan Sports Scholars, une agence sportive leader. Nos campagnes par e-mail étaient conçues pour engager leur audience, promouvoir leurs services et maintenir une communication solide avec les athlètes et les partenaires.",
+          "link": ""
+        }
+      ]
+    },
+    "brandingPortfolio": {
+      "title": "Branding",
+      "description": "Donnons à votre marque une personnalité cool et une ambiance autour d'elle !",
+      "galleryItems": [
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/ADSH.jpg",
+          "alt": "ADSH",
+          "title": "ADSH",
+          "description": "Pour ADSH, un acteur clé dans l'industrie de l'import/export de produits laitiers, nous avons livré un package complet de branding qui incluait la conception de logo, les schémas de couleurs et les motifs. Notre stratégie de branding cohérente a aidé ADSH à établir une identité forte et reconnaissable sur le marché.",
+          "link": "https://www.adsh2014.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Cali Hype.jpg",
+          "alt": "Cali Hype",
+          "title": "Cali Hype",
+          "description": "Nous avons fourni à Cali Hype, une marque de vêtements et de mode, une refonte complète du branding, comprenant la création de logo, les palettes de couleurs et les motifs de conception. Cet effort de branding complet a permis à Cali Hype de se démarquer dans l'industrie de la mode avec une identité visuelle distinctive et élégante.",
+          "link": ""
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/MinoCare.jpg",
+          "alt": "MinoCare",
+          "title": "MinoCare",
+          "description": "Nous avons fourni à MinoCare, une start-up qui offre aux hommes une seconde chance de vivre pleinement et de prendre soin de leurs cheveux grâce à des produits au minoxidil, un branding approprié montrant leur véritable attitude et leur attention envers leurs clients.",
+          "link": ""
+        }
+      ]
+    },
+    "socialMediaPortfolio": {
+      "title": "Portefeuille de Réseaux sociaux",
+      "description": "Rester à jour avec les tendances des réseaux sociaux et l'audience n'a jamais été aussi facile !",
+      "galleryItems": [
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Meliora Medical.jpg",
+          "alt": "Meliora Medical",
+          "title": "Meliora Medical",
+          "description": "Pour Meliora Medical, une clinique de physiothérapie et de dermoesthétique, nous avons configuré et géré leurs comptes de réseaux sociaux, en nous concentrant sur la création de contenu captivant et informatif. Cette approche a amélioré leur visibilité en ligne et attiré une audience plus large vers leurs services.",
+          "link": "https://www.instagram.com/meliora_medical/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Melody's Thrift.jpg",
+          "alt": "Melody’s Thrift",
+          "title": "Melody’s Thrift",
+          "description": "Pour Melody's Thrift, une friperie en ligne, nous avons fourni la gestion de communauté et développé un plan de contenu complet pour les réseaux sociaux. Cette initiative a aidé à construire une communauté en ligne fidèle et a favorisé une interaction et des ventes accrues.",
+          "link": "https://www.instagram.com/melodys_thrift/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Grei's Dental Clinic.jpg",
+          "alt": "Grei’s Dental Clinic",
+          "title": "Grei’s Dental Clinic",
+          "description": "Nous avons pris en charge la configuration des réseaux sociaux et la gestion continue pour la clinique dentaire Grei, en leur fournissant une création de contenu de haute qualité. Notre stratégie visait à accroître leur empreinte numérique et à engager efficacement les patients actuels et potentiels.",
+          "link": "https://www.instagram.com/grei_dental_clinic/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Balkan Sports Scholars.jpg",
+          "alt": "Balkan Sports Scholars",
+          "title": "Balkan Sports Scholars",
+          "description": "Nous avons établi et géré la présence sur les réseaux sociaux de Balkan Sports Scholars, une agence sportive de premier plan, en garantissant une création de contenu cohérente et attrayante. Nos efforts ont contribué à accroître leur engagement en ligne et à étendre leur portée sur les plateformes de réseaux sociaux.",
+          "link": "https://www.instagram.com/balkansportscholars/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Onus Maison.jpg",
+          "alt": "Onus Maison",
+          "title": "Onus Maison",
+          "description": "Nous avons assisté Onus Maison, une marque spécialisée dans la mode durable imprimée en 3D et faite à la main, en éditant et en améliorant leur contenu sur les réseaux sociaux. Notre travail a permis de garantir que leurs publications étaient visuellement attrayantes et alignées avec l'éthique écologique de leur marque.",
+          "link": "https://www.instagram.com/onusmaison/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Vip Tie Dubai.jpg",
+          "alt": "Vip Tie",
+          "title": "Vip Tie",
+          "description": "Pour Vip Tie, connu pour leurs cravates imprimées en 3D et faites à la main, nous nous sommes concentrés sur l'affinement de leur contenu sur les réseaux sociaux. Nos services d'édition de contenu ont permis de s'assurer que l'artisanat de haute qualité de leur marque était efficacement mis en valeur en ligne.",
+          "link": "https://www.instagram.com/viptiemilano/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/URT shpk.jpg",
+          "alt": "URT Shpk",
+          "title": "URT Shpk",
+          "description": "Nous avons fourni une création de contenu complète et une gestion des réseaux sociaux pour URT shpk, une entreprise d'ingénierie, d'approvisionnement et de construction. Nos services ont aidé à établir leur autorité dans l'industrie et à maintenir une forte présence en ligne.",
+          "link": "https://www.instagram.com/urtshpk/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Mother Earth.jpg",
+          "alt": "Mother Earth",
+          "title": "Mother Earth",
+          "description": "Pour Mother Earth, spécialisée dans les solutions vertes dans le secteur de l'ingénierie, des approvisionnements et de la construction, nous avons fourni des services similaires à ceux de URT shpk en matière de création de contenu et de gestion des réseaux sociaux. Nos efforts ont promu leurs projets durables et amélioré leur engagement en ligne.",
+          "link": "https://www.instagram.com/motherearthalbania/"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/MinoCare.jpg",
+          "alt": "MinoCare",
+          "title": "MinoCare",
+          "description": "Nous avons fourni à MinoCare, une start-up offrant aux hommes une seconde chance de vivre pleinement et de prendre soin de leurs cheveux grâce aux produits au minoxidil, une présence sur les réseaux sociaux informative et interactive pour gérer leur communauté et leur audience.",
+          "link": "https://www.instagram.com/minocare.al"
+        }
+      ]
+    },
+    "videoPortfolio": {
+      "title": "Vidéo",
+      "description": "Montrer, filmer et monter n'a jamais été aussi facile !",
+      "galleryItems": [
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Balkan Sports Scholars.jpg",
+          "alt": "Balkan Sports Scholars",
+          "title": "Balkan Sports Scholars",
+          "description": "Pour Balkan Sports Scholars, nous avons monté des vidéos de moments forts sur YouTube pour plusieurs joueurs, montrant leurs compétences footballistiques et les moments clés de leur carrière. Notre montage a mis en valeur les moments clés et les performances, améliorant leur visibilité et leur attrait auprès des fans et des recruteurs.",
+          "link": "https://www.youtube.com/watch?v=orqku91tNWk&t=65s"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Meliora Medical.jpg",
+          "alt": "Meliora Medical",
+          "title": "Meliora Medical",
+          "description": "Nous avons collaboré avec Meliora Medical pour concevoir et monter des vidéos adaptées à TikTok, visant un succès viral. Notre approche créative et nos compétences en montage ont aidé à créer du contenu engageant et partageable, augmentant leur visibilité en ligne et leur engagement sur la plateforme.",
+          "link": "https://www.tiktok.com/@meliora__medical"
+        }
+      ]
+    },
+    "webDesignPortfolio": {
+      "title": "Portefeuille de Conception Web",
+      "description": "Découvrez nos projets de conception web.",
+      "galleryItems": [
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Emko.jpg",
+          "alt": "Emko",
+          "title": "Emko",
+          "description": "Nous avons développé un site web complet pour Emko, un fournisseur de design et de mobilier de bureau, afin de présenter l'éthique de l'entreprise et ses nombreuses offres de produits. Le site comprend un catalogue intégré dans la section des produits, assurant une expérience de navigation fluide pour les clients potentiels.",
+          "link": "https://www.emko.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Balkan Sports Scholars.jpg",
+          "alt": "Balkan Sports Scholars",
+          "title": "Balkan Sports Scholars",
+          "description": "Pour Balkan Sports Scholars, une agence sportive leader, nous avons créé une page dynamique pour améliorer leur présence en ligne dans les Balkans et aux États-Unis. Le site soutient leurs plateformes numériques, offrant des informations détaillées et des opportunités d'engagement pour les athlètes et les partenaires.",
+          "link": "https://www.balkansportscholars.com"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Meliora Medical.jpg",
+          "alt": "Meliora Medical",
+          "title": "Meliora Medical",
+          "description": "Nous avons conçu un site web robuste pour Meliora Medical, une clinique de physiothérapie et de dermoesthétique, afin d'améliorer leur présence numérique et d'améliorer leurs performances en SEO et SEA. Le site met en valeur efficacement leurs services et leur expertise, attirant plus de clients et améliorant leur visibilité en ligne.",
+          "link": "https://www.melioramedical.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/ADSH.jpg",
+          "alt": "ADSH",
+          "title": "ADSH",
+          "description": "Nous avons créé un site web simple mais efficace d'une seule page pour ADSH, importateurs et exportateurs dans l'industrie laitière, afin d'établir leur présence numérique. Ce site simple fournit des informations essentielles sur leur entreprise, les rendant accessibles aux clients et partenaires potentiels.",
+          "link": "https://www.adsh2014.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Grei's Dental Clinic.jpg",
+          "alt": "Grei's Dental Clinic",
+          "title": "Grei's Dental Clinic",
+          "description": "Pour la clinique dentaire Grei, nous avons développé un site web élégant et informatif similaire à celui de Meliora Medical, visant à améliorer leur présence numérique et leur classement SEO. Le site présente clairement et professionnellement leurs services dentaires, aidant à attirer de nouveaux patients et à fidéliser ceux déjà existants.",
+          "link": ""
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/Grade Up Training.jpg",
+          "alt": "Grade Up Training",
+          "title": "Grade Up Training",
+          "description": "Pour Grade Up Training, réputé pour leur formation athlétique professionnelle, nous avons développé un site web concis d'une seule page pour renforcer leur présence numérique. La page met en valeur leurs services d'entraînement de haute qualité, facilitant ainsi la connexion des athlètes avec leurs entraîneurs experts.",
+          "link": "https://www.gradeuptraining.al"
+        },
+        {
+          "imgSrc": "/assets/Art for Synaps/Portfolio/MinoCare.jpg",
+          "alt": "MinoCare",
+          "title": "MinoCare",
+          "description": "Nous avons fourni à MinoCare, une start-up offrant aux hommes une seconde chance de vivre pleinement et de prendre soin de leurs cheveux grâce à des produits au minoxidil, un site web informatif à partir duquel les clients peuvent commander et essayer leur expérience avec MinoCare.",
+          "link": "https://www.minocare.al"
+        }
+      ]
+    }
+  },
+
+  "AuthorPosts": {
+    "postsBy": "Publications de {authorName}",
+    "noPostsFound": "Aucune publication trouvée"
+  },
+  "Authors": {
+    "authors": "Auteurs",
+    "noAuthorsFound": "Aucun auteur trouvé",
+    "posts": "{posts} {postCount, select, 1 {publication} other {publications}}"
+  },
+  "CategoryPosts": {
+    "categories": "Catégories",
+    "marketing": "Marketing",
+    "business": "Affaires",
+    "technology": "Technologie",
+    "ai": "IA",
+    "gaming": "Jeux vidéo",
+    "product": "Produit",
+    "entertainment": "Divertissement",
+    "noPostsFound": "Aucune publication trouvée"
+  },
+  "CreatePost": {
+    "createPost": "Créer une publication",
+    "titlePlaceholder": "Titre",
+    "categoryPlaceholder": "Catégorie",
+    "fileUploadAccept": "png, jpg, jpeg",
+    "submitButton": "Créer"
+  },
+  "Dashboard": {
+    "dashboard": "Tableau de bord",
+    "viewButton": "Voir",
+    "editButton": "Éditer",
+    "noPosts": "Vous n'avez encore aucune publication !"
+  },
+  "DeletePost": {
+    "deleteButton": "Supprimer"
+  },
+  "EditPost": {
+    "editPost": "Modifier la publication",
+    "titlePlaceholder": "Titre",
+    "categoryPlaceholder": "Catégorie",
+    "fileUploadAccept": "png, jpg, jpeg",
+    "submitButton": "Mettre à jour"
+  },
+  "ErrorPage": {
+    "goBackButton": "Retour",
+    "pageNotFound": "Page non trouvée"
+  },
+  "Login": {
+    "signIn": "Se connecter",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Mot de passe",
+    "loginButton": "Connexion",
+    "signUpPrompt": "Vous n'avez pas de compte ?"
+  },
+  "Logout": {},
+  "PostDetail": {
+    "editButton": "Éditer"
+  },
+  "Register": {
+    "signUp": "S'inscrire",
+    "fullNamePlaceholder": "Nom complet",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Mot de passe",
+    "confirmPasswordPlaceholder": "Confirmer le mot de passe",
+    "registerButton": "S'inscrire",
+    "signInPrompt": "Vous avez déjà un compte ?"
+  },
+  "UserProfile": {
+    "dashboardButton": "Tableau de bord",
+    "updateDetailsButton": "Mettre à jour mes informations",
+    "fullNamePlaceholder": "Nom complet",
+    "emailPlaceholder": "E-mail",
+    "currentPasswordPlaceholder": "Mot de passe actuel",
+    "newPasswordPlaceholder": "Nouveau mot de passe",
+    "confirmNewPasswordPlaceholder": "Confirmer le nouveau mot de passe"
+  },
+
+    "contactForm": {
+      "namePlaceholder": "Nom *",
+      "surnamePlaceholder": "Nom de famille *",
+      "countryPlaceholder": "Pays *",
+      "emailPlaceholder": "E-mail *",
+      "phoneNumberPlaceholder": "Numéro de téléphone *",
+      "companyNamePlaceholder": "Nom de l'entreprise (facultatif)",
+      "messagePlaceholder": "Message *",
+      "submitButton": "Envoyer",
+      "successMessage": "Formulaire soumis !",
+      "failureMessage": "Échec de l'envoi du formulaire. Veuillez réessayer plus tard."
+    },
+
+    "fixedMenu": {
+      "allPosts": "Toutes les publications",
+      "profile": "Profil",
+      "create": "Créer",
+      "authors": "Auteurs",
+      "logout": "Se déconnecter"
+    },
+    
+      "footer": {
+        "locationTitle": "Localisation",
+        "locationSubtitle": "ET AU-DELÀ !",
+        "slogan": "Nous sommes le lien manquant",
+        "contactTitle": "Contact",
+        "socialsTitle": "Réseaux sociaux",
+        "copyright": "Copyright © Synaps. Tous droits réservés",
+        "logIn": "Se connecter"
+      },
+
+        "posts": {
+          "title": "Publications",
+          "noPostsFound": "Aucune publication trouvée",
+          "readMore": "Lire la suite"
+        },
+
+
+          "categories": {
+            "Marketing": "Marketing",
+            "Business": "Affaires",
+            "Technology": "Technologie",
+            "AI": "IA",
+            "Gaming": "Jeux vidéo",
+            "Product": "Produit",
+            "Entertainment": "Divertissement"
+          },
+
+          "servicesForm": {
+            "title": "Choisissez votre forfait de services !",
+            "description": "Choisissez un ou plusieurs services pour ajouter à votre forfait et soumettez vos informations. Nous vous contacterons dès que possible !",
+            "namePlaceholder": "Nom *",
+            "surnamePlaceholder": "Nom de famille *",
+            "countryPlaceholder": "Pays *",
+            "emailPlaceholder": "E-mail *",
+            "phonePlaceholder": "Numéro de téléphone *",
+            "companyPlaceholder": "Nom de l'entreprise (facultatif)",
+            "messagePlaceholder": "Message *",
+            "submitButton": "Envoyer",
+            "successMessage": "Formulaire soumis !",
+            "failureMessage": "Échec de l'envoi du formulaire. Veuillez réessayer plus tard."
+          },
+          "services": {
+            "Web Design": "Conception Web",
+            "Social Media": "Réseaux sociaux",
+            "Branding": "Branding",
+            "Video": "Vidéo",
+            "Advertisement": "Publicité"
+          }
+}

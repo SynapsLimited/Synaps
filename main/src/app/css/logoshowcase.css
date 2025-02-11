@@ -1,0 +1,59 @@
+/* ====================== Logo Showcase =============================== */
+
+
+.logo-showcase {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    min-height: 100vh; /* Optional: Change as per your design needs */
+    padding-top: 20rem;
+    padding-bottom: 10rem;
+    filter: drop-shadow(7px 8px 1px rgba(26, 26, 26, 0.374));
+    transition: var(--transition);
+  }
+  
+  .logo-showcase:hover {
+    filter: drop-shadow(10px 10px 1px rgba(26, 26, 26, 0.374));
+  }
+  
+  .logo-image {
+    max-width: 30%; /* Ensures the image is responsive */
+    height: auto; /* Maintains the aspect ratio */
+    min-width: 240px; /* Prevents the logo from getting too small */
+    /* ... your existing styles ... */
+  }
+
+
+@media screen and (max-width: 1024px) {
+    
+    .logo-showcase {
+        display: flex;
+        justify-content: center; /* Center the content horizontally */
+        align-items: center; /* Center the content vertically */
+        min-height: 50vh; /* Optional: Change as per your design needs */
+        filter: drop-shadow(7px 8px 1px rgba(26, 26, 26, 0.374));
+        transition: var(--transition);
+        width: 100%;
+        height: 100%;
+      }
+    
+
+}
+
+@media screen and (max-width: 768px) {
+    
+    .logo-showcase {
+        display: flex;
+        justify-content: center; /* Center the content horizontally */
+        align-items: center; /* Center the content vertically */
+        padding-top: 0;
+        filter: drop-shadow(7px 8px 1px rgba(26, 26, 26, 0.374));
+        transition: var(--transition);
+        padding-bottom: 60px;
+        padding-top: 120px;
+        min-height: 10vh;
+      }
+    
+
+}
+

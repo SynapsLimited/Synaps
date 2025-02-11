@@ -1,0 +1,642 @@
+  /*====================  Header  =============================*/
+
+.header-services {
+    text-align: center;
+    margin-bottom: 8rem;
+}
+
+/*====================  Specific Section  =============================*/
+
+
+.services-overview-title {
+  margin-top: 4rem;
+}
+
+/*====================  Services Overview Section  =============================*/
+.services-overview-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center align both content and image */
+  padding: 30px 30px; /* Add padding top and bottom */
+
+}
+
+.services-overview-title {
+  align-self: center; /* Center the title */
+  padding-top: 20px; /* Space from the top */
+  text-align: center; /* Center align text */
+  margin-bottom: 4rem; /* Add margin bottom to separate from blobs */
+}
+
+.services-overview-title h1 {
+  font-size: 2.4rem; /* Increase font size */
+  font-family: "Righteous", sans-serif;
+  color: var(--color-white);
+  margin:30px;
+}
+
+.services-overview-title p {
+  color: var(--color-white);
+}
+
+.services-overview-blobs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* Increase gap between blobs */
+  margin: 0; /* Remove margin-left */
+}
+
+.service-overview-blob-art {
+  background: rgba(255, 255, 255, 0.265); /* Color of the blob */
+  border-radius: 20px; /* Rounded corners for the blob */
+  padding: 20px; /* Padding inside the blob */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none; /* Remove underline from the link */
+  color: var(--color-background); /* Text color */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1); /* Shadow for the blob */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.service-overview-blob-art:hover {
+  transform: translateY(-5px); /* Slightly raise the blob on hover */
+  box-shadow: 0px 8px 3px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.service-overview-blob-art img {
+  max-width: 200px; /* Increase based on your icon size */
+  margin-bottom: 10px; /* Space between icon and text */
+}
+
+/*====================  Specific Section  =============================*/
+
+.specific-service-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 10rem;
+    color: var(--color-background);
+    margin-bottom: -13rem;
+  }
+  
+  .specific-service-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    gap: 20px;
+  }
+  
+
+  .specific-service-left {
+    flex: 0 0 70%; /* Take up 70% of the container's width */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .specific-service-right {
+    flex: 0 0 30%; /* Take up the remaining 30% of the container's width */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start; /* Ensure the content starts at the top */
+  }
+  
+  .specific-service-left h1,
+  .specific-service-left p,
+  .specific-service-right h2,
+  .specific-service-right .btn {
+    margin-bottom: 20px;
+  }
+
+  .specific-service-right .btn {
+    margin-left: 150px;
+  }
+
+  .specific-service-left p {
+    font-size: 14px;
+
+  }
+
+  .specific-service-left h1 {
+    font-size: 50px;
+  }
+
+  .specific-service-right h1{
+    opacity: 30%;
+    color: var(--color-white);
+    font-size: 1.34em; /* Adjust the size as needed */   
+    margin-bottom: 20px;
+    text-align: right;
+  }
+
+  .specific-service-text-group{
+    margin-top: 0rem; /* Move it 3rem higher */
+    margin-bottom: 8rem;
+    text-align: right;
+    margin-left: 7rem;
+  }
+
+  
+  .specific-service-left img {
+    max-width: 60%; /* Make the image smaller on desktop */
+    height: auto;
+    filter: drop-shadow(7px 8px 1px rgba(26, 26, 26, 0.374));
+    transition: var(--transition);
+    margin-top: -4rem;
+  }
+  
+  .specific-service-left img:hover {
+    filter: drop-shadow(10px 10px 1px rgba(26, 26, 26, 0.482));
+  }
+  
+  .specific-service-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .strategy-img {
+    padding: 4rem;
+  }
+
+ /*====================  Services Forms  =============================*/
+
+.container {
+  width: 80%; /* Set container width to 80% */
+  margin: 0 auto; /* Center the container */
+}
+
+.services-overview-title-select h1 {
+  font-size: 2.4rem; /* Increase font size */
+  font-family: "Righteous", sans-serif;
+  color: var(--color-background);
+  margin: 30px;
+}
+
+.services-overview-title-select p {
+  color: var(--color-background);
+}
+
+
+.service-overview-blob-art {
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.service-overview-blob-art img {
+  width: 120px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.service-overview-blob-art.selected {
+  border-color: var(--color-primary); /* Change to your desired color */
+  transform: scale(1.15);
+}
+
+.service-overview-blob-art:hover {
+  transform: scale(1.2);
+}
+
+.services-form {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  gap: 20px; /* Decrease gap between form groups */
+  flex-wrap: wrap; /* Allow form groups to wrap on smaller screens */
+}
+
+.services-form input,
+.services-form textarea {
+  padding: 15px;
+  border-radius: 22px;
+  border: 2px solid var(--color-secondary);
+  width: calc(50% - 10px); /* Maintain width while accounting for gap */
+  max-width: 100%;
+  font-family: 'Righteous', sans-serif;
+}
+
+.services-form textarea {
+  width: 100%; /* Make textarea full width */
+  height: 100px; /* Set a fixed height for the textarea */
+}
+
+.btn-submit-form {
+  font-family: "Righteous", sans-serif;
+  width: 20%;
+  height: 40px;
+  align-self: center;
+  margin-top: 25px;
+}
+
+
+/*====================  Importance  =============================*/
+
+
+.importance-section {
+  padding: 50px 0;
+  margin-bottom: -150px;
+}
+
+.importance-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: -50px;
+}
+
+.importance-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.importance-text {
+  flex: 1;
+  margin-left: 4rem;
+  margin-top: -6rem;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.importance-image {
+  flex: 1;
+  text-align: center;
+}
+
+.importance-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*====================  Types  =============================*/
+
+
+
+.types-section {
+  padding: 50px 0;
+}
+
+.types-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 50px;
+}
+
+.types-slide {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  background: var(--color-background-transparent);
+  border-radius: 22px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  transition: var(--transition);
+}
+
+.types-slide:hover {
+  transform: scale(1.02);
+}
+
+.types-slide img {
+  border-radius: 22px;
+  box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.3);
+  max-width: 50%;
+  margin-right: 20px;
+}
+
+.types-slide h4 {
+  margin-bottom: 10px;
+}
+
+.types-slide p {
+  margin-bottom: 20px;
+}
+
+/*====================  Bundle Section  =============================*/
+
+
+.bundle-section {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bundle-section .bundle-swiper {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+.bundle-section .bundle-swiper .bundle-swiper-slide {
+  width: 300px;
+  height: 500px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 80px;
+  margin-top: 30px;
+}
+
+
+.bundle-swiper-slide-active {
+  filter: blur(0px);
+}
+
+.bundle-swiper-pagination-bullet,
+.bundle-swiper-pagination-bullet-active {
+  background: #fff;
+}
+
+.bundle-section .bundle-swiper .bundle-swiper-slide span {
+  text-transform: uppercase;
+  color: var(--color-background);
+  padding: 7px 18px 7px 25px;
+  display: inline-block;
+  border-radius: 0 20px 20px 0px;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  font-family: "RocknRoll One", sans-serif;
+}
+
+.bundle-section .bundle-swiper .bundle-swiper-slide-specific span {
+  background: var(--color-white);
+  box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+
+.bundle-swiper-slide h2 {
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  padding: 25px 45px 0 25px;
+}
+
+.bundle-swiper-slide p {
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  padding: 0 25px 35px 25px;
+}
+
+
+.bundle-swiper-slide-specific {
+  background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+      no-repeat 50% 50% / cover;
+}
+
+.swiper-3d .swiper-slide-shadow-left,
+.swiper-3d .swiper-slide-shadow-right {
+  background-image: none;
+}
+
+
+.bundle-text {
+  flex: 1; /* This allows both children to grow and take up equal space */
+  min-width: 250px; /* Minimum width before wrapping */
+  margin-top: 7rem;
+}
+
+.bundle-text h1 {
+  text-align: center;
+  color: var(--color-background);
+  filter: drop-shadow(3px 4px 3px rgba(255, 255, 255, 0.25)); /* Initial drop shadow */
+}
+
+.bundle-text h1 img {
+  display: inline-block;
+  vertical-align: middle; /* Aligns the image in the middle of the text */
+  margin: 5px 30px; /* Adjust as needed */
+  height: 150px;
+  width: 180px;
+  transition: var(--transition);
+  filter: drop-shadow(0 6px 2px rgba(0, 0, 0, 0.2)); /* Initial drop shadow */
+}
+
+.bundle-text h1 img:hover {
+  filter: drop-shadow(2px 8px 1px rgba(0, 0, 0, 0.25)); /* Initial drop shadow */
+}
+
+
+
+
+
+
+/*====================  Tablet  =============================*/
+
+
+  @media screen and (max-width:1024px) {
+
+
+    .specific-service-left .strategy-p {
+      margin-bottom: 6rem;
+    }
+
+    .specific-service-right .btn {
+      margin-left: 100px;
+    }
+
+    .importance-title {
+      margin-bottom: 0px;
+    }
+
+    .specific-service-text-group{
+      margin-top: 5rem; /* Move it 3rem higher */
+
+    }
+
+    .specific-service-left img {
+      max-width: 100%; /* Make the image smaller on desktop */
+      height: 500px;
+      filter: drop-shadow(7px 8px 1px rgba(26, 26, 26, 0.374));
+      transition: var(--transition);
+      margin-top: 5rem;
+    }
+    .importance-content {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px 100px 20px 100px; 
+
+    }
+  
+    .importance-text {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  
+    .importance-image {
+      margin-top: 20px;
+    }
+
+    .types-slide {
+      flex-direction: row; /* Ensure flex direction is row for tablet view */
+    }
+
+    .column-slide img {
+      max-width: 70%;
+      margin-bottom: 20px;
+    }
+
+    .services-form input,
+    .services-form textarea {
+      width: 100%; /* Full width on smaller screens */
+    }
+
+  }
+
+
+    /*====================  Phone  =============================*/
+
+
+
+  @media screen and (max-width:768px) {
+
+h5{
+  font-size: 0.8rem;
+}
+
+
+    .specific-service-section {
+      margin-bottom: 0;
+  }
+
+  .specific-service-left {
+      align-items: center; /* Center align items */
+      text-align: center; /* Center align text */
+  }
+
+
+  .services-overview-blobs {
+    grid-template-columns: 1fr; /* Make it single column for mobile view */
+}
+
+.specific-service-right .btn {
+  margin-left: 0;
+}
+
+  .specific-service-left img {
+      min-width: 300px;
+      height: auto;
+      margin-top: 15px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .specific-service-right {
+      margin-left: 0;
+      margin-top: 2rem;
+      align-items: center; /* Center align items */
+      text-align: center; /* Center align text */
+  }
+
+  .specific-service-right h1 {
+      text-align: center;
+  }
+
+  .specific-service-text-group {
+      margin-top: 0; /* Move it 4rem higher */
+      margin-bottom: 2rem;
+      text-align: center;
+      margin-left: 0;
+  }
+
+  .specific-service-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .form-group {
+    flex-direction: column; /* Stack form groups vertically on small screens */
+    gap: 10px; /* Reduce gap on smaller screens */
+  }
+
+  .services-form input,
+  .services-form textarea {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .btn-submit-form {
+    width: 100%;
+}
+
+.importance-content {
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+}
+
+.importance-text {
+  margin-left: 0;
+  margin-top: 20px;
+}
+
+.importance-image {
+  margin-top: 20px;
+}
+
+.types-slide {
+  flex-direction: row; /* Ensure flex direction is row for phone view */
+  flex-wrap: wrap; /* Allow wrapping if necessary */
+  gap:40px;
+}
+
+.types-slide img {
+  max-width: 100%;
+  max-height: 300px;
+}
+
+.bundle-text h1 {
+  margin-left: 0; /* Align text properly on smaller screens */
+  text-align: center;
+}
+
+.bundle-text h1 img {
+  margin: 0 auto; /* Center image in the h1 on smaller screens */
+  height: 100px;
+  width: 120px;
+}
+
+.services-overview-title-select h1 {
+  font-size: 1.5rem; /* Increase font size */
+  margin: 30px;
+}
+
+.services-overview-title-select p {
+    text-align: center;
+}
+
+
+
+}
+    
+

@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #ccccff;
+  --color-secondary: #aaf0d1;
+  --color-background: #474A5C;
+  --color-background-transparent: rgba(71, 74, 92, 0.55); 
+  --color-background-transparent-post: rgba(71, 74, 92, 0.75); 
+  --color-secondary-transparent: rgba(170, 240, 209, 0.7);
+  --color-primary-transparent: rgba(204, 204, 255, 0.6);
+  --color-white: #fff;
+
+  --container-width-lg: 86%;
+  --container-width-md: 90%;
+  --container-width-sm: 94%;
+  --form-width: 50%;
+
+  --transition: all 400ms ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  font-family: "Righteous", sans-serif;
+  line-height: 1.7;
+  color: var(--color-white);
+}
+
+
+.container {
+  width: var(--container-width-lg);
+  margin: 0 auto;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+h1, h2, h3, h4, h5 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-family: "Righteous", sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
+  font-family: "Righteous", sans-serif;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+}
+
+h5 {
+  font-family: "Rocknroll One", sans-serif;
+  font-size: 0.9rem;
+  word-spacing: 0.2rem;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--color-white);
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+}
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
+
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Other container styles */
+.container {
+  width: var(--container-width-lg);
+  margin: 0 auto;
+}
+
+/* Other CSS remains the same... */
+
+
+.btn {
+  display: inline-block;
+  background: var(--color-secondary);
+  color: var(--color-background);
+  padding: 0.33rem 1.4rem;
+  border: 3px solid transparent;
+  border-radius: 112px;
+  font-weight: 400;
+  transition: var(--transition);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adjust shadow to match the design */
+}
+
+.btn:hover {
+  background: var(--color-background);
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.btn-primary {
+  background: var(--color-secondary);
+  color: var(--color-background);
+}
+
+.btn-secondary {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+.btn-background {
+  background: var(--color-background);
+  color: var(--color-white);
+}
+
+/*====================  Hero Template =============================*/
+
+header {
+  display: flex; /* This makes header a flex container */
+  justify-content: center; /* This centers its children horizontally */
+  align-items: center; /* This centers its children vertically */
+  flex-direction: column; /* This stacks children vertically */
+  padding-top: 12rem;
+}
+
+.header-about {
+  text-align: center;
+  margin-bottom: 8rem;
+}
+
+
+
+.header__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 5rem;
+  height: 100%;
+  position: relative;
+}
+
+.hero-btn {
+  text-align: left; /* Align the button to the center */
+}
+
+.hero-btn .btn {
+  /* Style your button as needed */
+  display: inline-block; /* Ensure the button is displayed inline */
+}
+
+.header__left p {
+  margin: 1rem 0 2.4rem;
+}
+
+
+#spline-container {
+  width: 100%;
+  overflow: hidden;
+  height: 400px;
+  min-height: 100px;
+  position: relative;
+  pointer-events: auto;
+}
+
+.header__right {
+  flex-basis: 80%;
+  overflow: hidden;
+  position: relative;
+  pointer-events: auto;
+}
+
+#spline-container::after {
+  content: 'Interact with Synaps!'; /* The text to display */
+  display: flex; /* Makes the pseudo-element a flex container */
+  justify-content: center; /* Centers content horizontally within the container */
+  align-items: center; /* Centers content vertically within the container */
+  position: absolute;
+  bottom: 18px; /* Adjusted to position the element at the bottom */
+  right: 10px; /* Positions the element to the right */
+  width: 50%; /* Width of the element */
+  height: 45px; /* Height of the element, sufficient to cover the watermark */
+  border-radius: 22px; /* Gives rounded corners to the element */
+  background: var(--color-background); /* Sets the background color */
+  color: var(--color-white); /* Sets the text color for visibility */
+  z-index: 4; /* Ensures it sits on top of other content */
+  transition: var(--transition);
+  box-shadow: -4px 3px 4px rgba(0, 0, 0, 0.192); /* Adjust shadow to match the design */
+
+  background: linear-gradient(135deg, rgba(204, 204, 255, 0.101), rgba(204, 204, 255, 0.605));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border:1px solid rgba(255, 255, 255, 0.18);
+}
+
+
+#spline-container:hover::after {
+  box-shadow: -4px 5px 2px rgba(0, 0, 0, 0.192); /* Adjust shadow to match the design */
+  transform: scale(1.07); /* Scale the element */
+}
+
+/*====================  BG  =============================*/
+
+
+.homepage-background {
+  width: 100%;
+  background: url('/assets/Backgrounds/Homepage Background.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.about-background {
+  width: 100%;
+  background: url('/assets/Backgrounds/About Background.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+/* Add other backgrounds similarly... */
+.services-background {
+  width: 100%;
+  background: url('/assets/Backgrounds/Services Background.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.portfolio-background {
+  width: 100%;
+  background: url('/assets/Backgrounds/Portfolio Background.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.blog-background {
+  width: 100%;
+  background: url('/assets/Backgrounds/Blog Background.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.contact-background {
+  width: 100%;
+  background: url('/assets/Backgrounds/Contact Background.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.other-background {
+  width: 100%;
+  /* The min-height is removed here because the content itself will define the height */
+  background: url('/assets/Backgrounds/Other Background.jpg') no-repeat center center;
+  background-size: cover; /* Ensure the background covers the full container */
+  background-attachment: scroll; /* This ensures the background scrolls with the content */
+}
+
+
+
+
+/* ====================== Error Page =============================== */
+
+.error-page h2{
+  margin-top: 3rem;
+  font-family: "Righteous", sans-serif;
+  filter: drop-shadow(4px 5px 3px rgba(26, 26, 26, 0.374)); /* Optional: Larger shadow on hover for a subtle effect */
+}
+
+/* ====================== Loader =============================== */
+
+.loader {
+  position: relative;
+  top:0;
+  left:0;
+  height:100vh;
+  width:100vw;
+  display: grid;
+  place-items: center;
+  opacity: 70%;
+}
+
+
+/* ====================== Responsive Tablets =============================== */
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: var(--container-width-md);
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    padding: 0.4rem 2rem; /* Increases button size */
+  }
+
+  .container, .main-container {
+    padding: 0 20px; /* Adds padding on the sides */
+  }
+  #spline-container::after {
+    width: 70%; /* Width of the element */
+  }
+}
+/* ====================== Responsive Phones =============================== */
+
+@media screen and (max-width: 768px) {
+  /* Existing mobile styles */
+  
+  .container {
+    width: var(--container-width-sm); /* Uses smaller container width */
+  }
+
+  .btn {
+    padding: 0.4rem 1.5rem; /* Reduces button size for space */
+  }
+
+  /* Increase base text size for readability */
+  body {
+    font-size: 1rem; /* Increases text size */
+  }
+
+  /* Make images and sections adapt to smaller screens */
+  img, .section {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-div h1 {
+    font-size: 2.5rem; /* Adjusts hero text size */
+  }
+
+  .header__container, .about-section, .services-section, .portfolio-section {
+    padding: 0 15px; /* Reduces padding */
+    justify-content: center; /* Center the image container */
+  }
+
+  spline-viewer {
+    height: 500px;
+    pointer-events: auto;
+    touch-action: auto;
+  }
+
+  #spline-container::after {
+    width: 98%; /* Adjust to 70% of the container's width */
+    bottom: 18px; /* Adjusted to position the element at the bottom */
+    right: 0; /* Positions the element to the right */
+  }
+
+  #spline-container:hover::after {
+    box-shadow: none;
+    transform: none;
+  }
+
+  .header__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px; /* This adds space between your flex items */
+  }
+
+  .header__left, .header__right {
+    width: 100%; /* This ensures each child takes full width */
+    margin-bottom: 20px; /* This adds space between your flex items */
+  }
+
+  /* Disable interactions on Spline Viewer for mobile */
+  #spline-container {
+    pointer-events: none; /* Disables all pointer events */
+    touch-action: none;    /* Prevents touch interactions */
+    user-select: none;     /* Prevents text selection if applicable */
+  }
+
+  /* Optional: Change cursor to default to indicate non-interactivity */
+  #spline-container {
+    cursor: default;
+  }
+}

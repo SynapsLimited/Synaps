@@ -16,6 +16,7 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
+
 }
 
 :root {
@@ -26,6 +27,7 @@
   --color-background-transparent-post: rgba(71, 74, 92, 0.75); 
   --color-secondary-transparent: rgba(170, 240, 209, 0.7);
   --color-primary-transparent: rgba(204, 204, 255, 0.6);
+  --color-primary-transparent-gray: rgba(204, 204, 255, 0.6);
   --color-white: #fff;
 
   --container-width-lg: 86%;

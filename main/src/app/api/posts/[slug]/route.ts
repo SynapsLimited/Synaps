@@ -8,24 +8,38 @@ import { deleteFromVercelBlob } from '@/lib/utils/deleteFromVercelBlob';
 import { slugify } from '@/utils/slugify';
 import { v4 as uuid } from 'uuid';
 
-export async function GET(request: Request, { params }: { params: { slug: string } }) {
+export async function GET(
+  request: Request,
+  contextPromise: Promise<{ params: { slug: string } }>
+) {
+  // Await the promise to get the params
+  const { params } = await contextPromise;
+  const { slug } = params;
+
   try {
     await connectToDatabase();
-    const { slug } = params;
     const post = await Post.findOne({ slug });
     if (!post) {
       return NextResponse.json({ message: "Post not found." }, { status: 404 });
     }
     return NextResponse.json(post, { status: 200 });
   } catch (error: any) {
-    return NextResponse.json({ message: error.message || "Post does not exist" }, { status: 404 });
+    return NextResponse.json(
+      { message: error.message || "Post does not exist" },
+      { status: 404 }
+    );
   }
 }
 
-export async function PATCH(request: Request, { params }: { params: { slug: string } }) {
+export async function PATCH(
+  request: Request,
+  contextPromise: Promise<{ params: { slug: string } }>
+) {
+  const { params } = await contextPromise;
+  const { slug } = params;
+
   try {
     await connectToDatabase();
-    const { slug } = params;
     const formData = await request.formData();
     const title = formData.get('title') as string;
     const category = formData.get('category') as string;
@@ -33,12 +47,18 @@ export async function PATCH(request: Request, { params }: { params: { slug: stri
     const file = formData.get('thumbnail') as File | null;
 
     if (!title || !category || !description) {
-      return NextResponse.json({ message: "Fill in all fields." }, { status: 422 });
+      return NextResponse.json(
+        { message: "Fill in all fields." },
+        { status: 422 }
+      );
     }
 
     const oldPost = await Post.findOne({ slug });
     if (!oldPost) {
-      return NextResponse.json({ message: "Post not found." }, { status: 404 });
+      return NextResponse.json(
+        { message: "Post not found." },
+        { status: 404 }
+      );
     }
 
     let newThumbnailUrl = oldPost.thumbnail;
@@ -70,17 +90,28 @@ export async function PATCH(request: Request, { params }: { params: { slug: stri
 
     return NextResponse.json(oldPost, { status: 200 });
   } catch (error: any) {
-    return NextResponse.json({ message: error.message || "Couldn't update post" }, { status: 500 });
+    return NextResponse.json(
+      { message: error.message || "Couldn't update post" },
+      { status: 500 }
+    );
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { slug: string } }) {
+export async function DELETE(
+  request: Request,
+  contextPromise: Promise<{ params: { slug: string } }>
+) {
+  const { params } = await contextPromise;
+  const { slug } = params;
+
   try {
     await connectToDatabase();
-    const { slug } = params;
     const post = await Post.findOne({ slug });
     if (!post) {
-      return NextResponse.json({ message: "Post not found." }, { status: 404 });
+      return NextResponse.json(
+        { message: "Post not found." },
+        { status: 404 }
+      );
     }
     if (post.thumbnail) {
       await deleteFromVercelBlob(post.thumbnail);
@@ -93,8 +124,14 @@ export async function DELETE(request: Request, { params }: { params: { slug: str
       currentUser.posts = (currentUser.posts || 1) - 1;
       await currentUser.save();
     }
-    return NextResponse.json({ message: "Post deleted successfully" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Post deleted successfully" },
+      { status: 200 }
+    );
   } catch (error: any) {
-    return NextResponse.json({ message: "Couldn't delete post." }, { status: 400 });
+    return NextResponse.json(
+      { message: "Couldn't delete post." },
+      { status: 400 }
+    );
   }
 }

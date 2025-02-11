@@ -4,13 +4,12 @@ import React, { useState, useEffect } from 'react';
 import PostItem from './PostItem';
 import Loader from './Loader';
 import axios from 'axios';
-import Link from 'next/link'; // Import Link from Next.js
-import { useTranslation } from 'react-i18next'; // Import translation hook
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
-// Define the Post interface with slug instead of postID
-interface Post {
+export interface Post {
   _id: string;
-  slug: string; // Assuming each post has a unique slug
+  slug: string;
   thumbnail: string;
   category: string;
   title: string;
@@ -24,7 +23,7 @@ interface PostsProps {
 }
 
 const Posts: React.FC<PostsProps> = ({ limit }) => {
-  const { t } = useTranslation(); // Initialize translation
+  const { t } = useTranslation();
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -32,7 +31,7 @@ const Posts: React.FC<PostsProps> = ({ limit }) => {
     const fetchPosts = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get<Post[]>(`/posts`);
+        const response = await axios.get<Post[]>(`/api/posts`);
         setPosts(response.data);
       } catch (err) {
         console.error('Error fetching posts:', err);
@@ -58,8 +57,8 @@ const Posts: React.FC<PostsProps> = ({ limit }) => {
           {displayedPosts.map(({ _id, slug, thumbnail, category, title, description, creator, createdAt }) => (
             <PostItem
               key={_id}
-              _id={_id} // Pass _id as a prop
-              slug={slug} // Pass slug instead of postID
+              _id={_id}
+              slug={slug}
               thumbnail={thumbnail}
               category={category}
               title={title}
@@ -74,7 +73,7 @@ const Posts: React.FC<PostsProps> = ({ limit }) => {
       )}
       {limit && posts.length > limit && (
         <div className="read-more-container">
-          <Link href="/posts" className="btn btn-secondary">
+          <Link href="/blog" className="btn btn-secondary">
             {t('posts.readMore')}
           </Link> 
         </div>

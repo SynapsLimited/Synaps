@@ -1,14 +1,12 @@
-// src/app/dashboard/page.tsx
-
 'use client';
 
 import React, { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { UserContext } from './../../../context/userContext';
+import { UserContext } from '@/context/userContext';
 import axios from 'axios';
-import Loader from './../../components/Loader';
-import DeletePost from './../../components/DeletePost';
+import Loader from '@/app/components/Loader';
+import DeletePost from '@/app/components/DeletePost';
 import { useTranslation } from 'react-i18next';
 
 interface Post {
@@ -39,12 +37,11 @@ const Dashboard: React.FC = () => {
       if (!userId) return;
       setIsLoading(true);
       try {
-        const response = await axios.get(`/posts/users/${userId}`, {
-          withCredentials: true,
+        const response = await axios.get(`/api/posts/user/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setPosts(response.data);
-      } catch (error: unknown) {
+      } catch (error: any) {
         console.error('Error fetching dashboard posts:', error);
       }
       setIsLoading(false);
@@ -61,22 +58,20 @@ const Dashboard: React.FC = () => {
       <div className="blog-title-filtered">
         <h1>{t('Dashboard.dashboard')}</h1>
       </div>
-
       {posts.length ? (
         <div className="container dashboard-container">
           {posts.map((post) => (
             <article key={post._id} className="dashboard-post">
               <div className="dashboard-post-info">
                 <div className="dashboard-post-thumbnail">
-                  {/* Use Next.js Image component */}
                   <img src={post.thumbnail} alt={post.title} />
                 </div>
                 <h4>{post.title}</h4>
               </div>
               <div className="dashboard-post-actions">
-                <Link href={`/posts/${post.slug}`} className="btn btn-background">{t('Dashboard.viewButton')}</Link>
-                <Link href={`/posts/${post.slug}/edit`} className="btn btn-primary">{t('Dashboard.editButton')}</Link>
-                <DeletePost postId={post._id} /> {/* Pass the postId here */}
+                <Link href={`/blog/${post.slug}`} className="btn btn-background">{t('Dashboard.viewButton')}</Link>
+                <Link href={`/blog/${post.slug}/edit`} className="btn btn-primary">{t('Dashboard.editButton')}</Link>
+                <DeletePost slug={post.slug} />
               </div>
             </article>
           ))}

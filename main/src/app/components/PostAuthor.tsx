@@ -1,14 +1,8 @@
+'use client';
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 import axios from 'axios';
 import ReactTimeAgo from 'react-time-ago';
-import TimeAgo from 'javascript-time-ago';
-
-import en from 'javascript-time-ago/locale/en.json';
-import ru from 'javascript-time-ago/locale/ru.json';
-
-TimeAgo.addDefaultLocale(en);
-TimeAgo.addLocale(ru);
 
 interface Author {
   avatar?: string;
@@ -17,19 +11,17 @@ interface Author {
 
 const PostAuthor: React.FC<{ authorID: string; createdAt?: string }> = ({ authorID, createdAt }) => {
   const [author, setAuthor] = useState<Author>({});
-
-  const defaultAvatar = `${process.env.PUBLIC_URL}/assets/Avatar-default.png`; // Default avatar path
+  const defaultAvatar = '/assets/Avatar-default.png';
 
   useEffect(() => {
     const getAuthor = async () => {
       try {
-        const response = await axios.get(`/users/${authorID}`);
-        setAuthor(response?.data);
-      } catch (error: unknown) {
-        console.error('Error fetching author:', (error as Error).message || error);
+        const response = await axios.get(`/api/users/${authorID}`);
+        setAuthor(response.data);
+      } catch (error: any) {
+        console.error('Error fetching author:', error.message || error);
       }
     };
-    
 
     if (typeof authorID === 'string') {
       getAuthor();
@@ -40,13 +32,13 @@ const PostAuthor: React.FC<{ authorID: string; createdAt?: string }> = ({ author
 
   return (
     <Link href={`/blog/authors/${authorID}`}  className="post-author">
-      <div  className="post-author-avatar">
+      <div className="post-author-avatar">
         <img
-          src={author?.avatar || defaultAvatar}  // Use default avatar if none exists
+          src={author?.avatar || defaultAvatar}
           alt={author?.name || 'Author Avatar'}
         />
       </div>
-      <div  className="post-author-details">
+      <div className="post-author-details">
         <h5>{author?.name || 'Synaps'}</h5>
         {createdAt && (
           <small>
@@ -59,4 +51,3 @@ const PostAuthor: React.FC<{ authorID: string; createdAt?: string }> = ({ author
 };
 
 export default PostAuthor;
-

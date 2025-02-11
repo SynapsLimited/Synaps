@@ -1,15 +1,12 @@
-// src/app/blog/create/page.tsx
-
 'use client';
 
 import React, { useState, useContext, useEffect, ChangeEvent, FormEvent } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
-import { UserContext } from '../../../context/userContext';
+import { UserContext } from '@/context/userContext';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
-// Dynamically import ReactQuill with SSR disabled
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const CreatePost: React.FC = () => {
@@ -23,7 +20,6 @@ const CreatePost: React.FC = () => {
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
 
-  // Redirect to login page for any user who isn't logged in
   useEffect(() => {
     if (!token) {
       router.push('/login');
@@ -65,25 +61,19 @@ const CreatePost: React.FC = () => {
     postData.set('title', title);
     postData.set('category', category);
     postData.set('description', description);
-
     if (thumbnail) {
-      postData.set('thumbnail', thumbnail); // Attach file if provided
+      postData.set('thumbnail', thumbnail);
     }
 
     try {
-      const response = await axios.post(`/posts`, postData, {
-        withCredentials: true,
+      const response = await axios.post(`/api/posts`, postData, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
       });
       if (response.status === 201) {
         router.push('/blog');
       }
-    } catch (err: unknown) {
-      if (axios.isAxiosError(err) && err.response) {
-        setError(err.response.data.message);
-      } else {
-        setError('An unexpected error occurred.');
-      }
+    } catch (err: any) {
+      setError(err.response?.data.message || 'An unexpected error occurred.');
     }
   };
 

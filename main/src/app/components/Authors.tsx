@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import './../css/blog.css'; // Adjust the path as per your project structure
 import axios from 'axios';
 import Loader from './Loader';
 
@@ -16,14 +15,13 @@ interface Author {
 const Authors: React.FC = () => {
   const [authors, setAuthors] = useState<Author[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const defaultAvatar = '/assets/Avatar-default.png'; // Adjust if needed
+  const defaultAvatar = '/assets/Avatar-default.png';
 
   useEffect(() => {
     const getAuthors = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`/users`);
+        const response = await axios.get(`/api/users`);
         setAuthors(response.data);
       } catch (error) {
         console.error('Error fetching authors:', error);

@@ -1,15 +1,14 @@
-// src/components/PostItem.tsx
 'use client';
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PostAuthor from './PostAuthor';
 import { useTranslation } from 'react-i18next';
-import { slugify } from '../../utils/slugify';
+import { slugify } from '@/utils/slugify';
 
 interface PostItemProps {
-  _id: string;             // Fallback id
-  slug?: string;           // Optional slug field
+  _id: string;
+  slug?: string;
   category: string;
   title?: string;
   description?: string;
@@ -34,8 +33,6 @@ const PostItem: React.FC<PostItemProps> = ({
   const postTitle =
     title.length > 30 ? title.substring(0, 30) + '...' : title;
   const defaultThumbnail = '/assets/Blog-default.webp';
-
-  // Generate a slug if it doesn't exist
   const generatedSlug = slug || slugify(title);
 
   return (

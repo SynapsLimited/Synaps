@@ -1,12 +1,10 @@
-// src/app/blog/[slug]/edit/page.tsx
-
 'use client';
 
 import React, { useState, useContext, useEffect, ChangeEvent, FormEvent } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useRouter, useParams } from 'next/navigation';
-import { UserContext } from '../../../../context/userContext';
+import { UserContext } from '@/context/userContext';
 import axios from 'axios';
 
 interface Post {
@@ -32,7 +30,6 @@ const EditPost: React.FC = () => {
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
 
-  // Redirect to login page for any user who isn't logged in
   useEffect(() => {
     if (!token) {
       router.push('/login');
@@ -62,11 +59,11 @@ const EditPost: React.FC = () => {
     const getPost = async () => {
       if (!slug) return;
       try {
-        const response = await axios.get(`/posts/slug/${slug}`); // Fetch by slug
+        const response = await axios.get(`/api/posts/${slug}`);
         setTitle(response.data.title);
-        setCategory(response.data.category); // Set the category to the existing post's category
+        setCategory(response.data.category);
         setDescription(response.data.description);
-      } catch (error: unknown) {
+      } catch (error: any) {
         console.error('Error fetching post details:', error);
       }
     };
@@ -80,29 +77,22 @@ const EditPost: React.FC = () => {
     postData.set('title', title);
     postData.set('category', category);
     postData.set('description', description);
-
-    // Only append thumbnail if it has changed
     if (thumbnail) {
       postData.append('thumbnail', thumbnail);
     }
 
     try {
-      const response = await axios.patch(`/posts/slug/${slug}`, postData, { // Update by slug
-        withCredentials: true,
+      const response = await axios.patch(`/api/posts/${slug}`, postData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
         },
       });
       if (response.status === 200) {
-        router.push(`/posts/${slug}`);
+        router.push(`/blog/${response.data.slug}`);
       }
-    } catch (err: unknown) {
-      if (axios.isAxiosError(err) && err.response) {
-        setError(err.response.data.message);
-      } else {
-        setError('An unexpected error occurred.');
-      }
+    } catch (err: any) {
+      setError(err.response?.data.message || 'An unexpected error occurred.');
     }
   };
 

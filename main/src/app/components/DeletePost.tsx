@@ -1,22 +1,20 @@
-// src/components/DeletePost.tsx
-
+// src/app/components/DeletePost.tsx
 'use client';
 
 import React, { useEffect, useContext } from 'react';
 import { useRouter } from 'next/navigation';
-import { UserContext } from '../../context/userContext';
+import { UserContext } from '@/context/userContext';
 import axios from 'axios';
 
 interface DeletePostProps {
-  postId: string;
+  slug: string;
 }
 
-const DeletePost: React.FC<DeletePostProps> = ({ postId }) => {
+const DeletePost: React.FC<DeletePostProps> = ({ slug }) => {
   const router = useRouter();
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
 
-  // Redirect to login page for any user who isn't logged in
   useEffect(() => {
     if (!token) {
       router.push('/login');
@@ -28,29 +26,20 @@ const DeletePost: React.FC<DeletePostProps> = ({ postId }) => {
     if (!confirmDelete) return;
 
     try {
-      const response = await axios.delete(`/posts/${postId}`, {
-        withCredentials: true,
+      const response = await axios.delete(`/api/posts/${slug}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.status === 200) {
         console.log('Post deleted successfully. Redirecting to blog page...');
         router.push('/blog');
       }
-    } catch (error: unknown) {
-      if (axios.isAxiosError(error) && error.response) {
-        console.error("Couldn't delete post:", error.response.data.message);
-      } else {
-        console.error("Couldn't delete post:", error);
-      }
+    } catch (error: any) {
+      console.error("Couldn't delete post:", error.response?.data.message || error);
     }
   };
 
   return (
-    <button
-      className='btn btn-secondary'
-      style={{ fontFamily: 'Righteous, sans-serif' }}
-      onClick={removePost}
-    >
+    <button className='btn btn-secondary' onClick={removePost}>
       Delete
     </button>
   );

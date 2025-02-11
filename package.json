@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@vercel/analytics": "^1.4.1",
-    "aos": "^2.3.4"
-  }
-}

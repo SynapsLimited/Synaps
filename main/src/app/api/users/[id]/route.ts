@@ -5,9 +5,10 @@ import { User } from '@/lib/models/User';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
+  // Await the params promise to extract the id.
+  const { id } = await params;
   try {
     await connectToDatabase();
     const user = await User.findById(id).select('-password');

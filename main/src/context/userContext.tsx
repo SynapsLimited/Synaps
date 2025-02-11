@@ -1,13 +1,13 @@
-// src/context/userContext.tsx
 'use client';
 
 import React, { createContext, useState, ReactNode, useEffect } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 export interface User {
   id: string;
   name: string;
-  token?: string; // The token is stored in an HTTP‑only cookie on the server
+  token?: string; // token is stored in an HTTP‑only cookie on the server
 }
 
 interface UserContextType {
@@ -22,29 +22,35 @@ export const UserContext = createContext<UserContextType>({
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    // Check if the user has explicitly logged out on the client.
-    if (localStorage.getItem('loggedOut') === 'true') {
-      // If logged out, don't try to rehydrate the user.
-      setCurrentUser(null);
-      return;
-    }
-
     const fetchCurrentUser = async () => {
       try {
         const response = await axios.get('/api/users/me', { withCredentials: true });
-        if (response.status === 200 && response.data) {
+        // If no profile data is returned, log out immediately.
+        if (!response.data) {
+          await axios.post('/api/users/logout', {}, { withCredentials: true });
+          setCurrentUser(null);
+          router.push('/login');
+        } else {
           setCurrentUser(response.data);
         }
       } catch (error) {
         console.error('Error fetching current user:', error);
+        // On error (e.g. token expired, user not found), logout immediately.
+        try {
+          await axios.post('/api/users/logout', {}, { withCredentials: true });
+        } catch (logoutError) {
+          console.error('Error during logout:', logoutError);
+        }
         setCurrentUser(null);
+        router.push('/login');
       }
     };
 
     fetchCurrentUser();
-  }, []);
+  }, [router]);
 
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>

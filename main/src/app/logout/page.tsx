@@ -18,11 +18,9 @@ const Logout: React.FC = () => {
           { withCredentials: true }
         );
       } catch (error) {
-        console.error('Error during logout:', error);
+        console.error("Error during logout:", error);
       }
       setCurrentUser(null);
-      // Set the flag so that the UserProvider stops trying to rehydrate the user.
-      localStorage.setItem('loggedOut', 'true');
       router.push('/login');
     };
     performLogout();

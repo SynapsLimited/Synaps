@@ -7,7 +7,13 @@ import { UserContext } from '@/context/userContext';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
+// Dynamically import ReactQuill so it only loads on the client.
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
+// --- WORKAROUND FOR findDOMNode ERROR ---
+// Option 1: Disable Strict Mode in your Next.js config by setting reactStrictMode: false
+// Option 2: Upgrade to react-quill@2.0.0-beta (if available) which has better support for React 18.
+// -----------------------------------------
 
 const CreatePost: React.FC = () => {
   const [title, setTitle] = useState<string>('');
@@ -28,9 +34,9 @@ const CreatePost: React.FC = () => {
 
   const modules = {
     toolbar: [
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+      [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
       ['link', 'image'],
       ['clean']
     ],
@@ -44,14 +50,14 @@ const CreatePost: React.FC = () => {
   ];
 
   const POST_CATEGORIES: string[] = [
-    "Uncategorized",
-    "Marketing",
-    "Business",
-    "Technology",
-    "AI",
-    "Gaming",
-    "Product",
-    "Entertainment"
+    'Uncategorized',
+    'Marketing',
+    'Business',
+    'Technology',
+    'AI',
+    'Gaming',
+    'Product',
+    'Entertainment'
   ];
 
   const createPost = async (e: FormEvent<HTMLFormElement>) => {
@@ -67,7 +73,10 @@ const CreatePost: React.FC = () => {
 
     try {
       const response = await axios.post(`/api/posts`, postData, {
-        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data'
+        },
       });
       if (response.status === 201) {
         router.push('/blog');
@@ -87,18 +96,20 @@ const CreatePost: React.FC = () => {
     <section data-aos="fade-up" className="create-post">
       <div className="container">
         <h2>Create Post</h2>
-        {error && <p className='form-error-message'>{error}</p>}
+        {error && <p className="form-error-message">{error}</p>}
         <form className="form create-post-form" onSubmit={createPost}>
           <input 
             type="text" 
-            placeholder='Title' 
+            placeholder="Title" 
             value={title} 
             onChange={e => setTitle(e.target.value)} 
             autoFocus 
             required
           />
           <select name="category" value={category} onChange={e => setCategory(e.target.value)}>
-            {POST_CATEGORIES.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+            {POST_CATEGORIES.map((cat) => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
           </select>
           <ReactQuill 
             modules={modules} 
@@ -111,7 +122,7 @@ const CreatePost: React.FC = () => {
               className="custom-file-input" 
               type="file" 
               onChange={handleThumbnailChange} 
-              accept='image/png, image/jpg, image/jpeg' 
+              accept="image/png, image/jpg, image/jpeg" 
             />
           </div>          
           <button type="submit" className="btn btn-primary btn-submit">Create</button>
@@ -119,6 +130,6 @@ const CreatePost: React.FC = () => {
       </div>
     </section>
   );
-}
+};
 
 export default CreatePost;

@@ -6,7 +6,8 @@ import axios from 'axios';
 import { UserContext } from '@/context/userContext';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import './../css/blog.css';
+import './../css/blog.css'
+
 
 interface LoginData {
   email: string;
@@ -16,7 +17,7 @@ interface LoginData {
 const Login: React.FC = () => {
   const { t } = useTranslation();
   const [userData, setUserData] = useState<LoginData>({ email: '', password: '' });
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState<string>("");
   const router = useRouter();
   const { setCurrentUser } = useContext(UserContext);
 
@@ -35,14 +36,12 @@ const Login: React.FC = () => {
       );
       const user = response.data;
       setCurrentUser(user);
-      // Remove the flag so that the UserProvider knows the user is now logged in.
-      localStorage.removeItem('loggedOut');
       router.push('/');
     } catch (err: unknown) {
       if (axios.isAxiosError(err) && err.response) {
         setError(err.response.data.message);
       } else {
-        setError('An error occurred while logging in. Please try again.');
+        setError("An error occurred while logging in. Please try again.");
       }
     }
   };

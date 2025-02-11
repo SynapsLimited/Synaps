@@ -3,11 +3,14 @@
 'use client';
 
 import React, { useState, useContext, useEffect, ChangeEvent, FormEvent } from 'react';
-import ReactQuill from 'react-quill';
+import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
 import { UserContext } from '../../../context/userContext';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+
+// Dynamically import ReactQuill with SSR disabled
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const CreatePost: React.FC = () => {
   const [title, setTitle] = useState<string>('');
@@ -31,7 +34,7 @@ const CreatePost: React.FC = () => {
     toolbar: [
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{'list':'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
       ['link', 'image'],
       ['clean']
     ],
@@ -44,7 +47,16 @@ const CreatePost: React.FC = () => {
     'link', 'image'
   ];
 
-  const POST_CATEGORIES: string[] = ["Uncategorized", "Marketing", "Business", "Technology", "AI","Gaming", "Product", "Entertainment"];
+  const POST_CATEGORIES: string[] = [
+    "Uncategorized",
+    "Marketing",
+    "Business",
+    "Technology",
+    "AI",
+    "Gaming",
+    "Product",
+    "Entertainment"
+  ];
 
   const createPost = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

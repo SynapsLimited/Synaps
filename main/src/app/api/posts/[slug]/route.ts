@@ -1,5 +1,5 @@
 // app/api/posts/[slug]/route.ts
-import { NextResponse, NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import Post from '@/lib/models/Post';
 import { User } from '@/lib/models/User';
@@ -10,14 +10,19 @@ import { v4 as uuid } from 'uuid';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<NextResponse> {
+  // Await the params promise to extract the slug value
+  const { slug } = await params;
+
   try {
     await connectToDatabase();
-    const { slug } = params;
     const post = await Post.findOne({ slug });
     if (!post) {
-      return NextResponse.json({ message: "Post not found." }, { status: 404 });
+      return NextResponse.json(
+        { message: "Post not found." },
+        { status: 404 }
+      );
     }
     return NextResponse.json(post, { status: 200 });
   } catch (error: any) {
@@ -30,11 +35,14 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<NextResponse> {
+  // Await the params promise to extract the slug value
+  const { slug } = await params;
+
   try {
     await connectToDatabase();
-    const { slug } = params;
+
     const formData = await request.formData();
     const title = formData.get('title') as string;
     const category = formData.get('category') as string;
@@ -42,12 +50,18 @@ export async function PATCH(
     const file = formData.get('thumbnail') as File | null;
 
     if (!title || !category || !description) {
-      return NextResponse.json({ message: "Fill in all fields." }, { status: 422 });
+      return NextResponse.json(
+        { message: "Fill in all fields." },
+        { status: 422 }
+      );
     }
 
     const oldPost = await Post.findOne({ slug });
     if (!oldPost) {
-      return NextResponse.json({ message: "Post not found." }, { status: 404 });
+      return NextResponse.json(
+        { message: "Post not found." },
+        { status: 404 }
+      );
     }
 
     let newThumbnailUrl = oldPost.thumbnail;
@@ -88,14 +102,19 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<NextResponse> {
+  // Await the params promise to extract the slug value
+  const { slug } = await params;
+
   try {
     await connectToDatabase();
-    const { slug } = params;
     const post = await Post.findOne({ slug });
     if (!post) {
-      return NextResponse.json({ message: "Post not found." }, { status: 404 });
+      return NextResponse.json(
+        { message: "Post not found." },
+        { status: 404 }
+      );
     }
     if (post.thumbnail) {
       await deleteFromVercelBlob(post.thumbnail);
@@ -108,7 +127,10 @@ export async function DELETE(
       currentUser.posts = (currentUser.posts || 1) - 1;
       await currentUser.save();
     }
-    return NextResponse.json({ message: "Post deleted successfully" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Post deleted successfully" },
+      { status: 200 }
+    );
   } catch (error: any) {
     return NextResponse.json(
       { message: "Couldn't delete post." },

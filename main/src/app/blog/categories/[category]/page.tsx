@@ -35,7 +35,7 @@ const CategoryPosts: React.FC = () => {
       if (!category) return;
       setIsLoading(true);
       try {
-        const response = await axios.get<Post[]>(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/categories/${category}`);
+        const response = await axios.get<Post[]>(`/posts/categories/${category}`);
         setPosts(response.data);
       } catch (err: unknown) {
         console.error('Error fetching category posts:', err);

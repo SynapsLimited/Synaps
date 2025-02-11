@@ -23,7 +23,7 @@ const PostAuthor: React.FC<{ authorID: string; createdAt?: string }> = ({ author
   useEffect(() => {
     const getAuthor = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/users/${authorID}`);
+        const response = await axios.get(`/users/${authorID}`);
         setAuthor(response?.data);
       } catch (error: unknown) {
         console.error('Error fetching author:', (error as Error).message || error);

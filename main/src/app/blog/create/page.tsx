@@ -59,7 +59,7 @@ const CreatePost: React.FC = () => {
     }
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`, postData, {
+      const response = await axios.post(`/posts`, postData, {
         withCredentials: true,
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
       });

@@ -62,7 +62,7 @@ const EditPost: React.FC = () => {
     const getPost = async () => {
       if (!slug) return;
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/slug/${slug}`); // Fetch by slug
+        const response = await axios.get(`/posts/slug/${slug}`); // Fetch by slug
         setTitle(response.data.title);
         setCategory(response.data.category); // Set the category to the existing post's category
         setDescription(response.data.description);
@@ -87,7 +87,7 @@ const EditPost: React.FC = () => {
     }
 
     try {
-      const response = await axios.patch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/slug/${slug}`, postData, { // Update by slug
+      const response = await axios.patch(`/posts/slug/${slug}`, postData, { // Update by slug
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,

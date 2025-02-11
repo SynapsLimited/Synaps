@@ -39,7 +39,7 @@ const Dashboard: React.FC = () => {
       if (!userId) return;
       setIsLoading(true);
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/users/${userId}`, {
+        const response = await axios.get(`/posts/users/${userId}`, {
           withCredentials: true,
           headers: { Authorization: `Bearer ${token}` },
         });

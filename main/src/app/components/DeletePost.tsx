@@ -28,7 +28,7 @@ const DeletePost: React.FC<DeletePostProps> = ({ postId }) => {
     if (!confirmDelete) return;
 
     try {
-      const response = await axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/${postId}`, {
+      const response = await axios.delete(`/posts/${postId}`, {
         withCredentials: true,
         headers: { Authorization: `Bearer ${token}` },
       });

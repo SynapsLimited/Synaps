@@ -35,12 +35,12 @@ const PostsPage: React.FC = () => {
 
   // Fetch posts and authors
   const { data: posts, error: postsError } = useSWR<Post[]>(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/posts`,
+    `/posts`,
     fetcher
   );
 
   const { data: authors, error: authorsError } = useSWR<Author[]>(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/users`,
+    `/users`,
     fetcher
   );
 

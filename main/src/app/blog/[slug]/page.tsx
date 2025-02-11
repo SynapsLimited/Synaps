@@ -42,7 +42,7 @@ const PostDetail: React.FC = () => {
       setIsLoading(true);
       try {
         // Fetch all posts from the backend (temporary workaround)
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`);
+        const response = await axios.get(`/posts`);
         const posts = response.data;
 
         // Find the post with a matching slug or generate a slug dynamically

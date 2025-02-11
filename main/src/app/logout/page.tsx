@@ -13,7 +13,7 @@ const Logout: React.FC = () => {
     const performLogout = async () => {
       try {
         await axios.post(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/logout`,
+          `/api/users/logout`,
           {},
           { withCredentials: true }
         );

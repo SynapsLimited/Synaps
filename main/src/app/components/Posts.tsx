@@ -32,7 +32,7 @@ const Posts: React.FC<PostsProps> = ({ limit }) => {
     const fetchPosts = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get<Post[]>(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`);
+        const response = await axios.get<Post[]>(`/posts`);
         setPosts(response.data);
       } catch (err) {
         console.error('Error fetching posts:', err);

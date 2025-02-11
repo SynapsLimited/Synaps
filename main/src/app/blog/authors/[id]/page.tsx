@@ -23,12 +23,12 @@ const AuthorPosts: React.FC = () => {
   const id = params?.id as string;
 
   const { data: author, error: authorError } = useSWR<Author>(
-    id ? `${process.env.NEXT_PUBLIC_BASE_URL}/users/${id}` : null,
+    id ? `/users/${id}` : null,
     fetcher
   );
 
   const { data: posts, error: postsError } = useSWR<Post[]>(
-    id ? `${process.env.NEXT_PUBLIC_BASE_URL}/posts/users/${id}` : null,
+    id ? `/posts/users/${id}` : null,
     fetcher
   );
 

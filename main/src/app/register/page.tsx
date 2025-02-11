@@ -34,7 +34,7 @@ const Register: React.FC = () => {
     setError('');
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/register`,
+        `/api/users/register`,
         userData,
         { withCredentials: true }
       );

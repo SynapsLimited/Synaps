@@ -1,20 +1,16 @@
 // app/api/posts/users/[userId]/route.ts
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import Post from '@/lib/models/Post';
 
 export async function GET(
-  request: Request,
-  { params }: { params: { userId: string } }
-) {
+  request: NextRequest,
+  { params }: { params: Promise<{ userId: string }> }
+): Promise<NextResponse> {
   try {
     await connectToDatabase();
-    const { userId } = params;
-    
-    // Find posts whose "creator" matches the provided userId.
-    // (If your creator field is stored as an ObjectId, Mongoose will usually handle conversion.)
+    const { userId } = await params; // Await the params promise to extract userId
     const posts = await Post.find({ creator: userId }).sort({ updatedAt: -1 });
-    
     return NextResponse.json(posts, { status: 200 });
   } catch (error: any) {
     return NextResponse.json(

@@ -26,7 +26,7 @@ const Dashboard: React.FC = () => {
   const token = currentUser?.token;
   const userId = currentUser?.id;
 
-  // If no token is available, redirect to login.
+  // Redirect to login if no token is available.
   useEffect(() => {
     if (!token) {
       router.push('/login');
@@ -39,7 +39,8 @@ const Dashboard: React.FC = () => {
       if (!userId) return;
       setIsLoading(true);
       try {
-        const response = await axios.get(`/posts/users/${userId}`, {
+        // Updated URL includes the /api prefix to match your API route.
+        const response = await axios.get(`/api/posts/users/${userId}`, {
           withCredentials: true,
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -62,13 +63,12 @@ const Dashboard: React.FC = () => {
         <h1>{t('Dashboard.dashboard')}</h1>
       </div>
 
-      {posts.length ? (
+      {posts.length > 0 ? (
         <div className="container dashboard-container">
           {posts.map((post) => (
             <article key={post._id} className="dashboard-post">
               <div className="dashboard-post-info">
                 <div className="dashboard-post-thumbnail">
-                  {/* You might replace <img> with Next.js' <Image> if desired */}
                   <img src={post.thumbnail} alt={post.title} />
                 </div>
                 <h4>{post.title}</h4>

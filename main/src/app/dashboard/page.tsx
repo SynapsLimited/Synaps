@@ -76,8 +76,8 @@ const Dashboard: React.FC = () => {
               <div className="dashboard-post-actions">
                 <Link href={`/posts/${post.slug}`} className="btn btn-background">{t('Dashboard.viewButton')}</Link>
                 <Link href={`/posts/${post.slug}/edit`} className="btn btn-primary">{t('Dashboard.editButton')}</Link>
-                <DeletePost postId={post._id} /> {/* Pass the postId here */}
-              </div>
+                <DeletePost slug={post.slug} /> {/* Pass the slug here */}
+                </div>
             </article>
           ))}
         </div>

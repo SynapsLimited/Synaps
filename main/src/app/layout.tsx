@@ -8,9 +8,9 @@ import LogoShowcase from './components/LogoShowcase';
 import FixedMenu from './components/FixedMenu';
 import ScrollToTop from './components/ScrollToTop';
 import CookieConsent from './components/CookieConsent';
-import { UserProvider } from '../context/userContext'; // Use named import here
-import ClientLoading from './components/ClientLoading'; // Client component
-import ClientWrapper from './components/ClientWrapper'; // Import ClientWrapper
+import { UserProvider } from '../context/userContext';
+import ClientLoading from './components/ClientLoading';
+import ClientWrapper from './components/ClientWrapper';
 
 export const metadata = {
   title: 'Synaps Limited - We are the missing link!',

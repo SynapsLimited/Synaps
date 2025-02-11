@@ -39,7 +39,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         }
       } catch (error) {
         console.error('Error fetching current user:', error);
-        // On error (e.g. token expired), log out immediately.
         try {
           await axios.post('/api/users/logout', {}, { withCredentials: true });
         } catch (logoutError) {

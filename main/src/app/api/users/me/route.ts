@@ -15,11 +15,14 @@ export async function GET(req: NextRequest) {
     // Verify the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { id: string };
     await connectToDatabase();
-    const user = await User.findById(decoded.id).select("-password");
+    const user = await User.findById(decoded.id).select('-password');
     if (!user) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
-    return NextResponse.json(user, { status: 200 });
+    // Convert the Mongoose document to a plain object and destructure _id
+    const { _id, ...userData } = user.toObject() as { _id: any; [key: string]: any };
+    const userObj = { ...userData, id: _id.toString() };
+    return NextResponse.json(userObj, { status: 200 });
   } catch (error) {
     console.error("Error in /me route:", error);
     return NextResponse.json({ message: "Authentication failed" }, { status: 500 });

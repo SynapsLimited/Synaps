@@ -1,3 +1,4 @@
+// app/dashboard/page.tsx
 'use client';
 
 import React, { useState, useContext, useEffect } from 'react';
@@ -23,15 +24,7 @@ const Dashboard: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { currentUser } = useContext(UserContext);
-  const token = currentUser?.token;
   const userId = currentUser?.id;
-
-  // Redirect to login if no token is available.
-  useEffect(() => {
-    if (!token) {
-      router.push('/login');
-    }
-  }, [token, router]);
 
   // Fetch posts for the logged-in user.
   useEffect(() => {
@@ -39,10 +32,9 @@ const Dashboard: React.FC = () => {
       if (!userId) return;
       setIsLoading(true);
       try {
-        // Updated URL includes the /api prefix to match your API route.
+        // Note the /api prefix to correctly target your API route.
         const response = await axios.get(`/api/posts/users/${userId}`, {
           withCredentials: true,
-          headers: { Authorization: `Bearer ${token}` },
         });
         setPosts(response.data);
       } catch (error: unknown) {
@@ -51,7 +43,7 @@ const Dashboard: React.FC = () => {
       setIsLoading(false);
     };
     fetchPosts();
-  }, [userId, token]);
+  }, [userId]);
 
   if (isLoading) {
     return <Loader />;

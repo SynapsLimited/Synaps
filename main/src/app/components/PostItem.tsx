@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PostAuthor from './PostAuthor';
 import { useTranslation } from 'react-i18next';
-import { slugify } from '@/utils/slugify';
 
 interface PostItemProps {
   _id: string;
@@ -33,12 +32,13 @@ const PostItem: React.FC<PostItemProps> = ({
   const postTitle =
     title.length > 30 ? title.substring(0, 30) + '...' : title;
   const defaultThumbnail = '/assets/Blog-default.webp';
-  const generatedSlug = slug || slugify(title);
+  // Use the stored slug if available; otherwise, fall back to the _id.
+  const displaySlug = slug && slug.trim().length > 0 ? slug : _id;
 
   return (
     <article className="post">
       <div className="post-thumbnail">
-        <Link href={`/blog/${generatedSlug}`}>
+        <Link href={`/blog/${displaySlug}`}>
           <Image
             src={thumbnail || defaultThumbnail}
             alt={title}
@@ -49,7 +49,7 @@ const PostItem: React.FC<PostItemProps> = ({
         </Link>
       </div>
       <div className="post-content">
-        <Link href={`/blog/${generatedSlug}`}>
+        <Link href={`/blog/${displaySlug}`}>
           <h3>{postTitle}</h3>
         </Link>
         <p className="blog-text" dangerouslySetInnerHTML={{ __html: shortDescription }} />

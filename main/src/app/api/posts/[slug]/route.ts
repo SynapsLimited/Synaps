@@ -1,8 +1,8 @@
 // app/api/posts/[slug]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
+import mongoose from 'mongoose';
 import { connectToDatabase } from '@/lib/mongodb';
 import Post from '@/lib/models/Post';
-import { User } from '@/lib/models/User';
 import { uploadToVercelBlob } from '@/lib/utils/uploadtoVercelBlob';
 import { deleteFromVercelBlob } from '@/lib/utils/deleteFromVercelBlob';
 import { slugify } from '@/utils/slugify';
@@ -10,21 +10,18 @@ import { v4 as uuid } from 'uuid';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
-) {
-  const { slug } = params;
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<NextResponse> {
+  const { slug } = await params;
   try {
     await connectToDatabase();
+    // First, try to find the post by its slug field.
     let post = await Post.findOne({ slug });
-    if (!post) {
-      // Fallback: perhaps this legacy post was created by _id.
-      try {
-        post = await Post.findById(slug);
-      } catch (error) {
-        // invalid id format
-      }
+    // If not found and the slug looks like a valid ObjectId, try to fetch the post by _id.
+    if (!post && mongoose.Types.ObjectId.isValid(slug)) {
+      post = await Post.findById(slug);
       if (post && !post.slug) {
-        // Generate and update slug for the legacy post.
+        // Generate and update the slug for legacy posts.
         let newSlug = slugify(post.title);
         const duplicate = await Post.findOne({ slug: newSlug });
         if (duplicate && duplicate._id.toString() !== post._id.toString()) {
@@ -51,9 +48,9 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { slug: string } }
-) {
-  const { slug } = params;
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<NextResponse> {
+  const { slug } = await params;
   try {
     await connectToDatabase();
     const formData = await request.formData();
@@ -71,10 +68,10 @@ export async function PATCH(
 
     let oldPost = await Post.findOne({ slug });
     if (!oldPost) {
-      // Fallback: check by _id if not found by slug.
-      try {
+      // If not found by slug, try by _id if the slug parameter is a valid ObjectId.
+      if (mongoose.Types.ObjectId.isValid(slug)) {
         oldPost = await Post.findById(slug);
-      } catch (error) {}
+      }
       if (!oldPost) {
         return NextResponse.json(
           { message: "Post not found." },
@@ -121,16 +118,14 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { slug: string } }
-) {
-  const { slug } = params;
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<NextResponse> {
+  const { slug } = await params;
   try {
     await connectToDatabase();
     let post = await Post.findOne({ slug });
-    if (!post) {
-      try {
-        post = await Post.findById(slug);
-      } catch (error) {}
+    if (!post && mongoose.Types.ObjectId.isValid(slug)) {
+      post = await Post.findById(slug);
       if (!post) {
         return NextResponse.json(
           { message: "Post not found." },
@@ -143,12 +138,6 @@ export async function DELETE(
     }
     await Post.deleteOne({ _id: post._id });
 
-    // Update the dummy user's post count. (Replace with real auth logic as needed)
-    const currentUser = await User.findById("dummyUserId");
-    if (currentUser) {
-      currentUser.posts = (currentUser.posts || 1) - 1;
-      await currentUser.save();
-    }
     return NextResponse.json(
       { message: "Post deleted successfully" },
       { status: 200 }

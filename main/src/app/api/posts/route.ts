@@ -2,10 +2,8 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import Post from '@/lib/models/Post';
-import { User } from '@/lib/models/User';
 import { slugify } from '@/utils/slugify';
 import { uploadToVercelBlob } from '@/lib/utils/uploadtoVercelBlob';
-import { deleteFromVercelBlob } from '@/lib/utils/deleteFromVercelBlob';
 import { v4 as uuid } from 'uuid';
 
 export async function GET() {
@@ -38,7 +36,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // Convert the File into a Buffer.
+    // Convert File to Buffer.
     const fileBuffer = Buffer.from(await file.arrayBuffer());
     const fileName = `thumbnails/${Date.now()}-${file.name}`;
     const thumbnailUrl = await uploadToVercelBlob(fileBuffer, fileName);
@@ -50,7 +48,8 @@ export async function POST(request: Request) {
       slug = `${slug}-${uuid()}`;
     }
 
-    // Replace "dummyUserId" with the actual authenticated user’s id if available.
+    // Create the new post.
+    // (Replace "dummyUserId" with your real user id when integrating authentication.)
     const creatorId = "dummyUserId";
 
     const newPost = await Post.create({
@@ -61,13 +60,6 @@ export async function POST(request: Request) {
       thumbnail: thumbnailUrl,
       creator: creatorId,
     });
-
-    // (Optional) Update the user's post count.
-    const currentUser = await User.findById(creatorId);
-    if (currentUser) {
-      currentUser.posts = (currentUser.posts || 0) + 1;
-      await currentUser.save();
-    }
 
     return NextResponse.json(newPost, { status: 201 });
   } catch (error: any) {

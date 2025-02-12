@@ -1,11 +1,14 @@
 'use client';
 
 import React, { useState, useEffect, ChangeEvent, FormEvent, useContext } from 'react';
-import ReactQuill from 'react-quill';
+import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
 import { useRouter, useParams } from 'next/navigation';
 import { UserContext } from '@/context/userContext';
 import axios from 'axios';
+
+// Dynamically import ReactQuill (client-side only)
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const EditPost = () => {
   const [title, setTitle] = useState<string>('');

@@ -9,6 +9,7 @@ import Loader from '@/app/components/Loader';
 import DeletePost from '@/app/components/DeletePost';
 import PostAuthor from '@/app/components/PostAuthor';
 import { useTranslation } from 'react-i18next';
+import { slugify } from '@/utils/slugify';
 
 interface Creator {
   _id: string;
@@ -17,8 +18,8 @@ interface Creator {
 interface Post {
   _id: string;
   title: string;
-  slug: string;
-  thumbnail: string;
+  slug?: string;
+  thumbnail?: string;
   description: string;
   creator: Creator | string;
   createdAt: string;
@@ -27,51 +28,69 @@ interface Post {
 const PostDetail = () => {
   const { t } = useTranslation();
   const params = useParams();
-  const slug = params?.slug as string;
+  const slugParam = params?.slug as string;
   const [post, setPost] = useState<Post | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
+    if (!slugParam) return;
     const getPost = async () => {
-      if (!slug) return;
       setIsLoading(true);
       try {
-        const response = await axios.get(`/api/posts/${slug}`);
+        const response = await axios.get(`/api/posts/${slugParam}`);
         setPost(response.data);
       } catch (err: any) {
-        setError(err.response?.data.message || 'An error occurred while fetching the post.');
+        setError(
+          err.response?.data.message ||
+            'An error occurred while fetching the post.'
+        );
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
     getPost();
-  }, [slug]);
+  }, [slugParam]);
 
   if (isLoading) return <Loader />;
   if (error) return <p className="error">{error}</p>;
   if (!post) return <p className="error">Post not found.</p>;
 
+  // Fallback: if post does not have a stored slug, generate one from the title.
+  const displaySlug =
+    post.slug && post.slug.trim().length > 0
+      ? post.slug
+      : post.title
+      ? slugify(post.title)
+      : post._id;
+
+  // Determine the post creator's ID.
+  const postCreatorId =
+    typeof post.creator === 'string' ? post.creator : post.creator._id;
+  // Use only currentUser.id because the user type doesn't have an _id property.
+  const currentUserId = currentUser?.id;
+
   return (
     <div className="post-detail-section">
       <section className="container post-detail">
         <div className="post-detail-header">
-          <PostAuthor
-            authorID={typeof post.creator === 'string' ? post.creator : post.creator._id}
-            createdAt={post.createdAt}
-          />
-          {currentUser?.id === (typeof post.creator === 'string' ? post.creator : post.creator._id) && (
+          <PostAuthor authorID={postCreatorId} createdAt={post.createdAt} />
+          {currentUserId === postCreatorId && (
             <div className="post-detail-buttons">
-              <Link href={`/blog/${post.slug}/edit`} className="btn btn-primary">
+              <Link href={`/blog/${displaySlug}/edit`} className="btn btn-primary">
                 {t('Dashboard.editButton')}
               </Link>
-              <DeletePost slug={post.slug} />
+              <DeletePost slug={displaySlug} />
             </div>
           )}
         </div>
         <h1>{post.title}</h1>
         <div className="post-detail-thumbnail">
-          <img src={post.thumbnail || '/assets/Blog-default.webp'} alt={post.title} />
+          <img
+            src={post.thumbnail || '/assets/Blog-default.webp'}
+            alt={post.title}
+          />
         </div>
         <div dangerouslySetInnerHTML={{ __html: post.description }} />
         <div className="navigation-buttons">

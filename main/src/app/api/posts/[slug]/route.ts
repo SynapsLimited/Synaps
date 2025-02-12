@@ -11,9 +11,9 @@ import { v4 as uuid } from 'uuid';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<NextResponse> {
-  const { slug } = params;
+  const { slug } = await params;
   try {
     await connectToDatabase();
 
@@ -54,9 +54,9 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<NextResponse> {
-  const { slug } = params;
+  const { slug } = await params;
   try {
     await connectToDatabase();
     const formData = await request.formData();
@@ -123,9 +123,9 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<NextResponse> {
-  const { slug } = params;
+  const { slug } = await params;
   try {
     await connectToDatabase();
 

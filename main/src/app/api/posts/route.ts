@@ -14,14 +14,17 @@ export async function GET() {
     const posts = await Post.find().sort({ updatedAt: -1 });
     return NextResponse.json(posts);
   } catch (error: any) {
-    return NextResponse.json({ message: error.message || "Something went wrong" }, { status: 500 });
+    return NextResponse.json(
+      { message: error.message || "Something went wrong" },
+      { status: 500 }
+    );
   }
 }
 
 export async function POST(request: Request) {
   try {
     await connectToDatabase();
-    // Parse multipart/form-data
+    // Parse multipart/form-data.
     const formData = await request.formData();
     const title = formData.get('title') as string;
     const category = formData.get('category') as string;
@@ -29,22 +32,25 @@ export async function POST(request: Request) {
     const file = formData.get('thumbnail') as File;
 
     if (!title || !category || !description || !file) {
-      return NextResponse.json({ message: "Fill in all fields and choose a thumbnail." }, { status: 422 });
+      return NextResponse.json(
+        { message: "Fill in all fields and choose a thumbnail." },
+        { status: 422 }
+      );
     }
 
-    // Convert File to Buffer
+    // Convert the File into a Buffer.
     const fileBuffer = Buffer.from(await file.arrayBuffer());
     const fileName = `thumbnails/${Date.now()}-${file.name}`;
     const thumbnailUrl = await uploadToVercelBlob(fileBuffer, fileName);
 
-    // Generate slug from title (append a UUID if duplicate)
+    // Generate slug from title (append a UUID if duplicate exists).
     let slug = slugify(title);
     const existingPost = await Post.findOne({ slug });
     if (existingPost) {
       slug = `${slug}-${uuid()}`;
     }
 
-    // Replace "dummyUserId" with your actual user id from auth
+    // Replace "dummyUserId" with the actual authenticated user’s id if available.
     const creatorId = "dummyUserId";
 
     const newPost = await Post.create({
@@ -56,7 +62,7 @@ export async function POST(request: Request) {
       creator: creatorId,
     });
 
-    // Update user's post count (if applicable)
+    // (Optional) Update the user's post count.
     const currentUser = await User.findById(creatorId);
     if (currentUser) {
       currentUser.posts = (currentUser.posts || 0) + 1;
@@ -65,6 +71,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json(newPost, { status: 201 });
   } catch (error: any) {
-    return NextResponse.json({ message: error.message || "Something went wrong" }, { status: 500 });
+    return NextResponse.json(
+      { message: error.message || "Something went wrong" },
+      { status: 500 }
+    );
   }
 }

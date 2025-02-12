@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 interface Post {
   _id: string;
-  slug: string; // Assuming each post has a unique slug
+  slug: string;
   thumbnail: string;
   category: string;
   title: string;
@@ -35,8 +35,13 @@ const CategoryPosts: React.FC = () => {
       if (!category) return;
       setIsLoading(true);
       try {
-        const response = await axios.get<Post[]>(`/posts/categories/${category}`);
-        setPosts(response.data);
+        // Fetch all posts from the backend endpoint
+        const response = await axios.get<Post[]>(`/api/posts`);
+        // Filter the posts on the client to include only those with the given category
+        const filteredPosts = response.data.filter(
+          (post) => post.category.toLowerCase() === category.toLowerCase()
+        );
+        setPosts(filteredPosts);
       } catch (err: unknown) {
         console.error('Error fetching category posts:', err);
       }
@@ -57,19 +62,30 @@ const CategoryPosts: React.FC = () => {
 
       {posts.length > 0 ? (
         <div className="container posts-container">
-          {posts.map(({ _id: postId, slug, thumbnail, category, title, description, creator, createdAt }) => (
-            <PostItem
-              key={postId}
-              _id={postId} // Pass _id as a prop
-              slug={slug} // Pass slug instead of postID
-              thumbnail={thumbnail}
-              category={category}
-              title={title}
-              description={description}
-              authorID={creator}
-              createdAt={createdAt}
-            />
-          ))}
+          {posts.map(
+            ({
+              _id: postId,
+              slug,
+              thumbnail,
+              category,
+              title,
+              description,
+              creator,
+              createdAt,
+            }) => (
+              <PostItem
+                key={postId}
+                _id={postId}
+                slug={slug}
+                thumbnail={thumbnail}
+                category={category}
+                title={title}
+                description={description}
+                authorID={creator}
+                createdAt={createdAt}
+              />
+            )
+          )}
         </div>
       ) : (
         <h1 className="error-blog-not-found">{t('CategoryPosts.noPostsFound')}</h1>
@@ -80,31 +96,38 @@ const CategoryPosts: React.FC = () => {
           <h1>{t('CategoryPosts.categories')}</h1>
         </div>
         <ul className="blog-categories">
-          <li className="btn btn-secondary"><Link href="/blog/categories/Marketing">{t('CategoryPosts.marketing')}</Link></li>
-          <li className="btn btn-secondary"><Link href="/blog/categories/Business">{t('CategoryPosts.business')}</Link></li>
-          <li className="btn btn-secondary"><Link href="/blog/categories/Technology">{t('CategoryPosts.technology')}</Link></li>
-          <li className="btn btn-secondary"><Link href="/blog/categories/AI">{t('CategoryPosts.ai')}</Link></li>
-          <li className="btn btn-secondary"><Link href="/blog/categories/Gaming">{t('CategoryPosts.gaming')}</Link></li>
-          <li className="btn btn-secondary"><Link href="/blog/categories/Product">{t('CategoryPosts.product')}</Link></li>
-          <li className="btn btn-secondary"><Link href="/blog/categories/Entertainment">{t('CategoryPosts.entertainment')}</Link></li>
+          <li className="btn btn-secondary">
+            <Link href="/blog/categories/Marketing">{t('CategoryPosts.marketing')}</Link>
+          </li>
+          <li className="btn btn-secondary">
+            <Link href="/blog/categories/Business">{t('CategoryPosts.business')}</Link>
+          </li>
+          <li className="btn btn-secondary">
+            <Link href="/blog/categories/Technology">{t('CategoryPosts.technology')}</Link>
+          </li>
+          <li className="btn btn-secondary">
+            <Link href="/blog/categories/AI">{t('CategoryPosts.ai')}</Link>
+          </li>
+          <li className="btn btn-secondary">
+            <Link href="/blog/categories/Gaming">{t('CategoryPosts.gaming')}</Link>
+          </li>
+          <li className="btn btn-secondary">
+            <Link href="/blog/categories/Product">{t('CategoryPosts.product')}</Link>
+          </li>
+          <li className="btn btn-secondary">
+            <Link href="/blog/categories/Entertainment">{t('CategoryPosts.entertainment')}</Link>
+          </li>
         </ul>
       </section>
 
       <div className="flex flex-wrap justify-center items-center pt-[50px] space-x-4">
-  <Link
-    className="btn btn-primary px-6 py-3 text-center"
-    href="/blog"
-  >
-    Back to Blog
-  </Link>
-  <Link
-    className="btn btn-secondary px-6 py-3 text-center"
-    href="/posts"
-  >
-    All Posts
-  </Link>
-</div>
-
+        <Link className="btn btn-primary px-6 py-3 text-center" href="/blog">
+          Back to Blog
+        </Link>
+        <Link className="btn btn-secondary px-6 py-3 text-center" href="/posts">
+          All Posts
+        </Link>
+      </div>
     </section>
   );
 };

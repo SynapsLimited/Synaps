@@ -46,10 +46,10 @@ const FixedMenu = () => {
             </div>
             <ul  className={`menu-content ${isMenuOpen ? 'show' : ''}`}>
                 <li  className="welcome-user"><b>{currentUser?.name}</b></li>
-                <li><Link href="/posts">{t('fixedMenu.allPosts')}</Link></li> {/* Translated "All Posts" */}
                 <li><Link href={`/profile/${currentUser.id}`}>{t('fixedMenu.profile')}</Link></li> {/* Translated "Profile" */}
+                <li><Link href={`/dashboard/${currentUser.id}`}>Dashboard</Link></li> {/* Dashboard */}
+                <li><Link href="/posts">{t('fixedMenu.allPosts')}</Link></li> {/* Translated "All Posts" */}
                 <li><Link href="/blog/create">{t('fixedMenu.create')}</Link></li> {/* Translated "Create" */}
-                <li><Link href="/authors">{t('fixedMenu.authors')}</Link></li> {/* Translated "Authors" */}
                 <li><Link href="/logout">{t('fixedMenu.logout')}</Link></li> {/* Translated "Log out" */}
             </ul>
         </div>

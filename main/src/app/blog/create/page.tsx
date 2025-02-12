@@ -7,22 +7,16 @@ import { UserContext } from '@/context/userContext';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
-// Dynamically import ReactQuill so it only loads on the client.
+// Dynamically import ReactQuill (client-side only)
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-// --- WORKAROUND FOR findDOMNode ERROR ---
-// Option 1: Disable Strict Mode in your Next.js config by setting reactStrictMode: false
-// Option 2: Upgrade to react-quill@2.0.0-beta (if available) which has better support for React 18.
-// -----------------------------------------
-
-const CreatePost: React.FC = () => {
+const CreatePost = () => {
   const [title, setTitle] = useState<string>('');
   const [category, setCategory] = useState<string>('Uncategorized');
   const [description, setDescription] = useState<string>('');
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [error, setError] = useState<string>('');
   const router = useRouter();
-
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
 
@@ -39,7 +33,7 @@ const CreatePost: React.FC = () => {
       [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
       ['link', 'image'],
       ['clean']
-    ],
+    ]
   };
 
   const formats = [
@@ -49,26 +43,19 @@ const CreatePost: React.FC = () => {
     'link', 'image'
   ];
 
-  const POST_CATEGORIES: string[] = [
-    'Uncategorized',
-    'Marketing',
-    'Business',
-    'Technology',
-    'AI',
-    'Gaming',
-    'Product',
-    'Entertainment'
+  const POST_CATEGORIES = [
+    'Uncategorized', 'Marketing', 'Business', 'Technology',
+    'AI', 'Gaming', 'Product', 'Entertainment'
   ];
 
   const createPost = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const postData = new FormData();
     postData.set('title', title);
     postData.set('category', category);
     postData.set('description', description);
     if (thumbnail) {
-      postData.set('thumbnail', thumbnail);
+      postData.append('thumbnail', thumbnail);
     }
 
     try {
@@ -79,7 +66,8 @@ const CreatePost: React.FC = () => {
         },
       });
       if (response.status === 201) {
-        router.push('/blog');
+        // Redirect to the public post detail page using the generated slug
+        router.push(`/blog/${response.data.slug}`);
       }
     } catch (err: any) {
       setError(err.response?.data.message || 'An unexpected error occurred.');
@@ -93,40 +81,30 @@ const CreatePost: React.FC = () => {
   };
 
   return (
-    <section data-aos="fade-up" className="create-post">
+    <section className="create-post">
       <div className="container">
         <h2>Create Post</h2>
         {error && <p className="form-error-message">{error}</p>}
-        <form className="form create-post-form" onSubmit={createPost}>
-          <input 
-            type="text" 
-            placeholder="Title" 
-            value={title} 
-            onChange={e => setTitle(e.target.value)} 
-            autoFocus 
+        <form onSubmit={createPost}>
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            autoFocus
             required
           />
-          <select name="category" value={category} onChange={e => setCategory(e.target.value)}>
-            {POST_CATEGORIES.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
+          <select value={category} onChange={e => setCategory(e.target.value)}>
+            {POST_CATEGORIES.map(cat => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
             ))}
           </select>
-          <ReactQuill 
-            modules={modules} 
-            formats={formats} 
-            value={description} 
-            onChange={setDescription} 
-          />
-          <div className="custom-file-input-container">
-            <input 
-              className="custom-file-input" 
-              type="file" 
-              onChange={handleThumbnailChange} 
-              accept="image/png, image/jpg, image/jpeg" 
-            />
-          </div>          
-          <button type="submit" className="btn btn-primary btn-submit">Create</button>
-        </form> 
+          <ReactQuill modules={modules} formats={formats} value={description} onChange={setDescription} />
+          <input type="file" onChange={handleThumbnailChange} accept="image/png, image/jpg, image/jpeg" />
+          <button type="submit">Create</button>
+        </form>
       </div>
     </section>
   );

@@ -10,14 +10,30 @@ import { v4 as uuid } from 'uuid';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
-): Promise<NextResponse> {
-  // Await the params promise to extract the slug value
-  const { slug } = await params;
-
+  { params }: { params: { slug: string } }
+) {
+  const { slug } = params;
   try {
     await connectToDatabase();
-    const post = await Post.findOne({ slug });
+    let post = await Post.findOne({ slug });
+    if (!post) {
+      // Fallback: perhaps this legacy post was created by _id.
+      try {
+        post = await Post.findById(slug);
+      } catch (error) {
+        // invalid id format
+      }
+      if (post && !post.slug) {
+        // Generate and update slug for the legacy post.
+        let newSlug = slugify(post.title);
+        const duplicate = await Post.findOne({ slug: newSlug });
+        if (duplicate && duplicate._id.toString() !== post._id.toString()) {
+          newSlug = `${newSlug}-${uuid()}`;
+        }
+        post.slug = newSlug;
+        await post.save();
+      }
+    }
     if (!post) {
       return NextResponse.json(
         { message: "Post not found." },
@@ -28,21 +44,18 @@ export async function GET(
   } catch (error: any) {
     return NextResponse.json(
       { message: error.message || "Post does not exist" },
-      { status: 404 }
+      { status: 500 }
     );
   }
 }
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
-): Promise<NextResponse> {
-  // Await the params promise to extract the slug value
-  const { slug } = await params;
-
+  { params }: { params: { slug: string } }
+) {
+  const { slug } = params;
   try {
     await connectToDatabase();
-
     const formData = await request.formData();
     const title = formData.get('title') as string;
     const category = formData.get('category') as string;
@@ -56,12 +69,18 @@ export async function PATCH(
       );
     }
 
-    const oldPost = await Post.findOne({ slug });
+    let oldPost = await Post.findOne({ slug });
     if (!oldPost) {
-      return NextResponse.json(
-        { message: "Post not found." },
-        { status: 404 }
-      );
+      // Fallback: check by _id if not found by slug.
+      try {
+        oldPost = await Post.findById(slug);
+      } catch (error) {}
+      if (!oldPost) {
+        return NextResponse.json(
+          { message: "Post not found." },
+          { status: 404 }
+        );
+      }
     }
 
     let newThumbnailUrl = oldPost.thumbnail;
@@ -74,7 +93,7 @@ export async function PATCH(
       }
     }
 
-    // Update slug if title has changed
+    // If title changes, generate a new slug.
     let newSlug = oldPost.slug;
     if (title !== oldPost.title) {
       newSlug = slugify(title);
@@ -102,26 +121,29 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
-): Promise<NextResponse> {
-  // Await the params promise to extract the slug value
-  const { slug } = await params;
-
+  { params }: { params: { slug: string } }
+) {
+  const { slug } = params;
   try {
     await connectToDatabase();
-    const post = await Post.findOne({ slug });
+    let post = await Post.findOne({ slug });
     if (!post) {
-      return NextResponse.json(
-        { message: "Post not found." },
-        { status: 404 }
-      );
+      try {
+        post = await Post.findById(slug);
+      } catch (error) {}
+      if (!post) {
+        return NextResponse.json(
+          { message: "Post not found." },
+          { status: 404 }
+        );
+      }
     }
     if (post.thumbnail) {
       await deleteFromVercelBlob(post.thumbnail);
     }
     await Post.deleteOne({ _id: post._id });
 
-    // Update user's post count (dummy user; replace with actual auth logic)
+    // Update the dummy user's post count. (Replace with real auth logic as needed)
     const currentUser = await User.findById("dummyUserId");
     if (currentUser) {
       currentUser.posts = (currentUser.posts || 1) - 1;

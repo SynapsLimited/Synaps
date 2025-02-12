@@ -2,11 +2,41 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
-import ReactTimeAgo from 'react-time-ago';
 
 interface Author {
   avatar?: string;
   name?: string;
+}
+
+function timeAgo(date: Date): string {
+  const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+
+  let interval = Math.floor(seconds / 31536000);
+  if (interval >= 1) {
+    return `${interval} year${interval !== 1 ? 's' : ''} ago`;
+  }
+
+  interval = Math.floor(seconds / 2592000);
+  if (interval >= 1) {
+    return `${interval} month${interval !== 1 ? 's' : ''} ago`;
+  }
+
+  interval = Math.floor(seconds / 86400);
+  if (interval >= 1) {
+    return `${interval} day${interval !== 1 ? 's' : ''} ago`;
+  }
+
+  interval = Math.floor(seconds / 3600);
+  if (interval >= 1) {
+    return `${interval} hour${interval !== 1 ? 's' : ''} ago`;
+  }
+
+  interval = Math.floor(seconds / 60);
+  if (interval >= 1) {
+    return `${interval} minute${interval !== 1 ? 's' : ''} ago`;
+  }
+
+  return 'Just now';
 }
 
 const PostAuthor: React.FC<{ authorID: string; createdAt?: string }> = ({ authorID, createdAt }) => {
@@ -16,8 +46,8 @@ const PostAuthor: React.FC<{ authorID: string; createdAt?: string }> = ({ author
   useEffect(() => {
     const getAuthor = async () => {
       try {
-        // Updated endpoint to fetch a single author by ID
-        const response = await axios.get(`/api/users/authors/${authorID}`);
+        // FIX: Use the single user endpoint instead of the authors list.
+        const response = await axios.get(`/api/users/${authorID}`);
         setAuthor(response.data);
       } catch (error: any) {
         console.error('Error fetching author:', error.message || error);
@@ -39,10 +69,7 @@ const PostAuthor: React.FC<{ authorID: string; createdAt?: string }> = ({ author
       <div className="post-author-details">
         <h5>{author?.name || 'Synaps'}</h5>
         {createdAt && (
-          <small>
-            {/* The locale here is set to "en"; adjust as needed based on your current language */}
-            <ReactTimeAgo date={new Date(createdAt)} locale="en" />
-          </small>
+          <small>{timeAgo(new Date(createdAt))}</small>
         )}
       </div>
     </Link>

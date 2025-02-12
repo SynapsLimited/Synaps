@@ -1,22 +1,13 @@
 'use client';
 
-import React, { useState, useContext, useEffect, ChangeEvent, FormEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent, FormEvent, useContext } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useRouter, useParams } from 'next/navigation';
 import { UserContext } from '@/context/userContext';
 import axios from 'axios';
 
-interface Post {
-  _id: string;
-  title: string;
-  slug: string;
-  category: string;
-  description: string;
-  thumbnail: string;
-}
-
-const EditPost: React.FC = () => {
+const EditPost = () => {
   const [title, setTitle] = useState<string>('');
   const [category, setCategory] = useState<string>('Uncategorized');
   const [description, setDescription] = useState<string>('');
@@ -25,7 +16,7 @@ const EditPost: React.FC = () => {
 
   const router = useRouter();
   const params = useParams();
-  const slug = params?.slug;
+  const slug = params?.slug as string;
 
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
@@ -38,12 +29,12 @@ const EditPost: React.FC = () => {
 
   const modules = {
     toolbar: [
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+      [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
       ['link', 'image'],
       ['clean']
-    ],
+    ]
   };
 
   const formats = [
@@ -53,7 +44,9 @@ const EditPost: React.FC = () => {
     'link', 'image'
   ];
 
-  const POST_CATEGORIES: string[] = ["Uncategorized", "Marketing", "Business", "Technology", "AI", "Gaming", "Product", "Entertainment"];
+  const POST_CATEGORIES = [
+    "Uncategorized", "Marketing", "Business", "Technology", "AI", "Gaming", "Product", "Entertainment"
+  ];
 
   useEffect(() => {
     const getPost = async () => {
@@ -72,7 +65,6 @@ const EditPost: React.FC = () => {
 
   const editPost = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const postData = new FormData();
     postData.set('title', title);
     postData.set('category', category);
@@ -80,13 +72,12 @@ const EditPost: React.FC = () => {
     if (thumbnail) {
       postData.append('thumbnail', thumbnail);
     }
-
     try {
       const response = await axios.patch(`/api/posts/${slug}`, postData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data',
-        },
+          'Content-Type': 'multipart/form-data'
+        }
       });
       if (response.status === 200) {
         router.push(`/blog/${response.data.slug}`);
@@ -97,48 +88,39 @@ const EditPost: React.FC = () => {
   };
 
   const handleThumbnailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setThumbnail(file);
+    if (e.target.files && e.target.files[0]) {
+      setThumbnail(e.target.files[0]);
     }
   };
 
   return (
-    <section data-aos="fade-up" className="create-post">
+    <section className="edit-post">
       <div className="container">
         <h2>Edit Post</h2>
         {error && <p className="form-error-message">{error}</p>}
-        <form className="form create-post-form" onSubmit={editPost}>
-          <input 
-            type="text" 
-            placeholder='Title' 
-            value={title} 
-            onChange={e => setTitle(e.target.value)} 
-            autoFocus 
+        <form onSubmit={editPost}>
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            autoFocus
             required
           />
-          <select name="category" value={category} onChange={e => setCategory(e.target.value)}>
-            {POST_CATEGORIES.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+          <select value={category} onChange={e => setCategory(e.target.value)}>
+            {POST_CATEGORIES.map(cat => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
           </select>
-          <ReactQuill 
-            modules={modules} 
-            formats={formats} 
-            value={description} 
-            onChange={setDescription} 
-          />
-          <div className="custom-file-input-container">
-            <input 
-              className="custom-file-input" 
-              type="file" 
-              onChange={handleThumbnailChange} 
-              accept='image/png, image/jpg, image/jpeg' 
-            />
-          </div>
-          <button type="submit" className="btn btn-primary btn-submit">Update</button>
+          <ReactQuill modules={modules} formats={formats} value={description} onChange={setDescription} />
+          <input type="file" onChange={handleThumbnailChange} accept="image/png, image/jpg, image/jpeg" />
+          <button type="submit">Update</button>
         </form>
       </div>
     </section>
   );
-}
+};
 
 export default EditPost;

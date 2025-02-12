@@ -1,5 +1,4 @@
-// src/app/layout.tsx
-import './globals.css'; // Import global CSS
+import './globals.css';
 import { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
@@ -11,6 +10,7 @@ import CookieConsent from './components/CookieConsent';
 import { UserProvider } from '../context/userContext';
 import ClientLoading from './components/ClientLoading';
 import ClientWrapper from './components/ClientWrapper';
+import UserInitializer from './components/userInitializer';
 
 export const metadata = {
   title: 'Synaps Limited - We are the missing link!',
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Ensure metadata and viewport are correctly applied */}
+        {/* Ensure metadata and viewport settings are applied */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>
@@ -60,6 +60,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <ScrollToTop />
           <ClientLoading>
             <ClientWrapper>
+              {/* Initialize the user on the client side */}
+              <UserInitializer />
               <Navbar />
               {children}
               <FixedMenu />

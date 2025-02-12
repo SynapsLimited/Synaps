@@ -1,7 +1,6 @@
-// src/app/components/DeletePost.tsx
 'use client';
 
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { UserContext } from '@/context/userContext';
 import axios from 'axios';
@@ -22,15 +21,12 @@ const DeletePost: React.FC<DeletePostProps> = ({ slug }) => {
   }, [token, router]);
 
   const removePost = async () => {
-    const confirmDelete = confirm('Are you sure you want to delete this post?');
-    if (!confirmDelete) return;
-
+    if (!confirm('Are you sure you want to delete this post?')) return;
     try {
       const response = await axios.delete(`/api/posts/${slug}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.status === 200) {
-        console.log('Post deleted successfully. Redirecting to blog page...');
         router.push('/blog');
       }
     } catch (error: any) {
@@ -39,7 +35,7 @@ const DeletePost: React.FC<DeletePostProps> = ({ slug }) => {
   };
 
   return (
-    <button className='btn btn-secondary' onClick={removePost}>
+    <button className="btn btn-secondary" onClick={removePost}>
       Delete
     </button>
   );

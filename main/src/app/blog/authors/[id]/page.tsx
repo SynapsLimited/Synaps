@@ -1,5 +1,4 @@
 // src/app/blog/authors/[id]/page.tsx
-
 'use client';
 
 import React from 'react';
@@ -15,20 +14,23 @@ import { Post, Author } from './interfaces';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 
-const fetcher = (url: string) => axios.get(url).then(res => res.data);
+// SWR fetcher using axios
+const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 const AuthorPosts: React.FC = () => {
   const { t } = useTranslation();
   const params = useParams();
   const id = params?.id as string;
 
+  // Fetch the specific author details from the API
   const { data: author, error: authorError } = useSWR<Author>(
-    id ? `/users/${id}` : null,
+    id ? `/api/users/${id}` : null,
     fetcher
   );
 
+  // Fetch all posts from the API (the backend does not provide filtering by author)
   const { data: posts, error: postsError } = useSWR<Post[]>(
-    id ? `/posts/users/${id}` : null,
+    `/api/posts`,
     fetcher
   );
 
@@ -46,6 +48,9 @@ const AuthorPosts: React.FC = () => {
     return <Loader />;
   }
 
+  // Filter posts on the client side to include only those by the selected author
+  const authorPosts = posts.filter((post: Post) => post.creator === id);
+
   return (
     <div>
       <Head>
@@ -60,20 +65,18 @@ const AuthorPosts: React.FC = () => {
         </div>
 
         <div className="author-info mb-8 flex flex-col items-center">
-  <img
-    src={author.avatar || '/assets/Avatar-default.png'}
-    alt={author.name}
-    className="w-24 h-24 rounded-full backdrop-blur-sm object-cover mb-4"
-  />
-  <h2 className="text-2xl font-semibold">{author.name}</h2>
-</div>
+          <img
+            src={author.avatar || '/assets/Avatar-default.png'}
+            alt={author.name}
+            className="w-24 h-24 rounded-full backdrop-blur-sm object-cover mb-4"
+          />
+          <h2 className="text-2xl font-semibold">{author.name}</h2>
+        </div>
 
-
-
-        {posts.length > 0 ? (
+        {authorPosts.length > 0 ? (
           <div className="container mx-auto">
             <div className="posts-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {posts.map((post) => (
+              {authorPosts.map((post) => (
                 <PostItem
                   key={post._id}
                   _id={post._id}
@@ -100,20 +103,13 @@ const AuthorPosts: React.FC = () => {
       </section>
 
       <div className="flex flex-wrap justify-center items-center pt-[50px] space-x-4">
-  <Link
-    className="btn btn-primary px-6 py-3 text-center"
-    href="/blog"
-  >
-    Back to Blog
-  </Link>
-  <Link
-    className="btn btn-secondary px-6 py-3 text-center"
-    href="/posts"
-  >
-    All Posts
-  </Link>
-</div>
-
+        <Link className="btn btn-primary px-6 py-3 text-center" href="/blog">
+          Back to Blog
+        </Link>
+        <Link className="btn btn-secondary px-6 py-3 text-center" href="/posts">
+          All Posts
+        </Link>
+      </div>
     </div>
   );
 };

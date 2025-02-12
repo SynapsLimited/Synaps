@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/userContext.tsx", "src/app/components/ScrollToTop.tsx", "src/app/components/SplineViewer.jsx", "src/app/components/LoadingScreen.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/userContext.tsx", "src/app/components/ScrollToTop.tsx", "src/app/components/SplineViewer.jsx", "src/app/components/LoadingScreen.jsx", "../updatePostsSlugs.ts"],
   "exclude": ["node_modules"]
 }

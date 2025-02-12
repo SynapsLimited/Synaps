@@ -10,34 +10,10 @@ import { useRouter, useParams } from 'next/navigation';
 import './../../css/blog.css';
 
 const UserProfile: React.FC = () => {
-  // Get the id from the route parameters.
+  // Always call hooks at the top.
   const { id } = useParams();
   const { currentUser } = useContext(UserContext);
   const router = useRouter();
-
-  // If no user is logged in, show a friendly message with a login link.
-  if (!currentUser) {
-    return (
-      <section className="profile">
-        <div className="container">
-          <p>
-            You must be logged in to view your profile. Please <Link href="/login">login</Link>.
-          </p>
-        </div>
-      </section>
-    );
-  }
-
-  // Optionally: if the route id doesn't match the logged-in user's id, you may show an error.
-  if (currentUser.id !== id) {
-    return (
-      <section className="profile">
-        <div className="container">
-          <p>You are not authorized to view this profile.</p>
-        </div>
-      </section>
-    );
-  }
 
   const [avatar, setAvatar] = useState<File | null>(null);
   const [name, setName] = useState<string>('');
@@ -67,6 +43,30 @@ const UserProfile: React.FC = () => {
     };
     getUser();
   }, [id]);
+
+  // Now conditionally render based on currentUser.
+  if (!currentUser) {
+    return (
+      <section className="profile">
+        <div className="container">
+          <p>
+            You must be logged in to view your profile. Please <Link href="/login">login</Link>.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  // Optionally: if the route id doesn't match the logged-in user's id, show an error.
+  if (currentUser.id !== id) {
+    return (
+      <section className="profile">
+        <div className="container">
+          <p>You are not authorized to view this profile.</p>
+        </div>
+      </section>
+    );
+  }
 
   // Handle avatar file change.
   const handleAvatarChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -122,10 +122,6 @@ const UserProfile: React.FC = () => {
   return (
     <section data-aos="fade-up" className="profile">
       <div className="container profile-container">
-        {/* Updated the Dashboard link to point to the dynamic dashboard route */}
-        <Link href={`/dashboard/${currentUser.id}`} className="btn btn-secondary">
-          Dashboard
-        </Link>
         <div className="profile-details">
           <div className="avatar-wrapper">
             <div className="profile-avatar">

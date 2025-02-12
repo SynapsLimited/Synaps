@@ -1,5 +1,3 @@
-// src/app/posts/page.tsx
-
 'use client';
 
 import React, { useState, Fragment } from 'react';
@@ -11,16 +9,12 @@ import { Post, Author } from '../blog/authors/[id]/interfaces';
 import { useTranslation } from 'react-i18next';
 import { Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import { 
-  UserIcon, 
-  TagIcon, 
-  ClockIcon, 
-  MagnifyingGlassIcon 
-} from '@heroicons/react/24/solid'; // Importing additional icons
+import { UserIcon, TagIcon, ClockIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import Head from 'next/head';
 import '@/app/css/blog.css';
 import Link from 'next/link';
 
+// SWR fetcher using axios
 const fetcher = (url: string) => axios.get(url).then(res => res.data);
 
 const timeOptions = [
@@ -33,16 +27,9 @@ const timeOptions = [
 const PostsPage: React.FC = () => {
   const { t } = useTranslation();
 
-  // Fetch posts and authors
-  const { data: posts, error: postsError } = useSWR<Post[]>(
-    `/posts`,
-    fetcher
-  );
-
-  const { data: authors, error: authorsError } = useSWR<Author[]>(
-    `/users`,
-    fetcher
-  );
+  // Update endpoints to use the /api prefix.
+  const { data: posts, error: postsError } = useSWR<Post[]>(`/api/posts`, fetcher);
+  const { data: authors, error: authorsError } = useSWR<Author[]>(`/api/users/authors`, fetcher);
 
   // State for filters
   const [searchQuery, setSearchQuery] = useState('');
@@ -336,19 +323,13 @@ const PostsPage: React.FC = () => {
 
         </section>
         <div className="flex flex-wrap justify-center items-center pt-[50px] space-x-4">
-  <Link
-    className="btn btn-primary px-6 py-3 text-center"
-    href="/blog"
-  >
-    Back to Blog
-  </Link>
-  <Link
-    className="btn btn-secondary px-6 py-3 text-center"
-    href="/"
-  >
-    Back to Home
-  </Link>
-</div>
+          <Link className="btn btn-primary px-6 py-3 text-center" href="/blog">
+            Back to Blog
+          </Link>
+          <Link className="btn btn-secondary px-6 py-3 text-center" href="/">
+            Back to Home
+          </Link>
+        </div>
       </div>
     </div>
   );

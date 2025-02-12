@@ -126,34 +126,34 @@ const PostsPage: React.FC = () => {
             {/* Search Bar */}
             <div className="w-full md:w-1/3 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <MagnifyingGlassIcon className="w-5 h-5 text-background" />
+                <MagnifyingGlassIcon className="w-5 h-5 text-gray-800" />
               </div>
               <input
                 type="text"
                 placeholder={t('postsPage.searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className=" bg-white w-full pl-10 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-background transition duration-300 text-background"
+                className="bg-white w-full pl-10 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-800 transition duration-300 text-gray-800"
               />
             </div>
 
             {/* Filters Dropdowns */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full md:w-2/3 text-background" >
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full md:w-2/3 text-gray-800">
               {/* Category Filter */}
               <div className="relative w-full sm:w-1/3">
                 <button
                   onClick={() => setIsCategoryOpen(!isCategoryOpen)}
                   className="w-full px-4 py-2 bg-white border rounded-md flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-primary transition duration-300 hover:bg-gray-100"
                 >
-                  <div className="flex items-center space-x-2 text-background">
-                    <TagIcon className="w-5 h-5 text-background" />
+                  <div className="flex items-center space-x-2 text-gray-800">
+                    <TagIcon className="w-5 h-5 text-gray-800" />
                     <span>
                       {selectedCategory === 'all'
                         ? t('postsPage.filters.category')
                         : t(`categories.${selectedCategory}`)}
                     </span>
                   </div>
-                  <ChevronDownIcon className="w-5 h-5 text-background" />
+                  <ChevronDownIcon className="w-5 h-5 text-gray-800" />
                 </button>
 
                 <Transition
@@ -197,14 +197,14 @@ const PostsPage: React.FC = () => {
                   className="w-full px-4 py-2 bg-white border rounded-md flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-primary transition duration-300 hover:bg-gray-100"
                 >
                   <div className="flex items-center space-x-2">
-                    <UserIcon className="w-5 h-5 text-background" />
+                    <UserIcon className="w-5 h-5 text-gray-800" />
                     <span>
                       {selectedAuthor === 'all'
                         ? t('postsPage.filters.author')
                         : authors.find(author => author._id === selectedAuthor)?.name || t('postsPage.filters.author')}
                     </span>
                   </div>
-                  <ChevronDownIcon className="w-5 h-5 text-background" />
+                  <ChevronDownIcon className="w-5 h-5 text-gray-800" />
                 </button>
 
                 <Transition
@@ -252,14 +252,14 @@ const PostsPage: React.FC = () => {
                   className="w-full px-4 py-2 bg-white border rounded-md flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-primary transition duration-300 hover:bg-gray-100"
                 >
                   <div className="flex items-center space-x-2">
-                    <ClockIcon className="w-5 h-5 text-background" />
+                    <ClockIcon className="w-5 h-5 text-gray-800" />
                     <span>
                       {selectedTime === 'all'
                         ? t('postsPage.filters.time')
                         : t(`postsPage.timeOptions.${selectedTime}`)}
                     </span>
                   </div>
-                  <ChevronDownIcon className="w-5 h-5 text-background" />
+                  <ChevronDownIcon className="w-5 h-5 text-gray-800" />
                 </button>
 
                 <Transition

@@ -1,4 +1,3 @@
-// app/components/PostItem.tsx
 'use client';
 
 import React from 'react';
@@ -6,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PostAuthor from './PostAuthor';
 import { useTranslation } from 'react-i18next';
-import { slugify } from '@/utils/slugify';
 
 interface PostItemProps {
   _id: string;
@@ -37,10 +35,9 @@ const PostItem: React.FC<PostItemProps> = ({
   const postTitle =
     title.length > 30 ? title.substring(0, 30) + '...' : title;
   const defaultThumbnail = '/assets/Blog-default.webp';
-  // If no slug is present in the database, generate one using the title.
-  // Fallback to _id only if title is empty.
-  const displaySlug =
-    slug && slug.trim().length > 0 ? slug : title ? slugify(title) : _id;
+  
+  // Updated fallback: if no slug is stored, use _id.
+  const displaySlug = slug && slug.trim().length > 0 ? slug : _id;
 
   return (
     <article className="post">

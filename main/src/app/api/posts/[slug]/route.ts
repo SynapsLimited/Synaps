@@ -1,4 +1,5 @@
 // app/api/posts/[slug]/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 import { connectToDatabase } from '@/lib/mongodb';
@@ -10,18 +11,21 @@ import { v4 as uuid } from 'uuid';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: { slug: string } }
 ): Promise<NextResponse> {
-  const { slug } = await params;
+  const { slug } = params;
   try {
     await connectToDatabase();
-    // First, try to find the post by its slug field.
+
+    // First, try to find the post by its stored slug field.
     let post = await Post.findOne({ slug });
-    // If not found and the slug looks like a valid ObjectId, try to fetch the post by _id.
+
+    // If not found and the slug parameter is a valid ObjectId,
+    // try to fetch the post by its _id.
     if (!post && mongoose.Types.ObjectId.isValid(slug)) {
       post = await Post.findById(slug);
+      // For legacy posts without a stored slug, generate and update one.
       if (post && !post.slug) {
-        // Generate and update the slug for legacy posts.
         let newSlug = slugify(post.title);
         const duplicate = await Post.findOne({ slug: newSlug });
         if (duplicate && duplicate._id.toString() !== post._id.toString()) {
@@ -31,12 +35,14 @@ export async function GET(
         await post.save();
       }
     }
+
     if (!post) {
       return NextResponse.json(
         { message: "Post not found." },
         { status: 404 }
       );
     }
+
     return NextResponse.json(post, { status: 200 });
   } catch (error: any) {
     return NextResponse.json(
@@ -48,9 +54,9 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: { slug: string } }
 ): Promise<NextResponse> {
-  const { slug } = await params;
+  const { slug } = params;
   try {
     await connectToDatabase();
     const formData = await request.formData();
@@ -66,18 +72,17 @@ export async function PATCH(
       );
     }
 
+    // Try to find the post by its stored slug first.
+    // If not found, and the slug parameter is a valid ObjectId, try finding by _id.
     let oldPost = await Post.findOne({ slug });
+    if (!oldPost && mongoose.Types.ObjectId.isValid(slug)) {
+      oldPost = await Post.findById(slug);
+    }
     if (!oldPost) {
-      // If not found by slug, try by _id if the slug parameter is a valid ObjectId.
-      if (mongoose.Types.ObjectId.isValid(slug)) {
-        oldPost = await Post.findById(slug);
-      }
-      if (!oldPost) {
-        return NextResponse.json(
-          { message: "Post not found." },
-          { status: 404 }
-        );
-      }
+      return NextResponse.json(
+        { message: "Post not found." },
+        { status: 404 }
+      );
     }
 
     let newThumbnailUrl = oldPost.thumbnail;
@@ -90,7 +95,7 @@ export async function PATCH(
       }
     }
 
-    // If title changes, generate a new slug.
+    // If the title has changed, generate a new slug.
     let newSlug = oldPost.slug;
     if (title !== oldPost.title) {
       newSlug = slugify(title);
@@ -118,21 +123,25 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: { slug: string } }
 ): Promise<NextResponse> {
-  const { slug } = await params;
+  const { slug } = params;
   try {
     await connectToDatabase();
+
+    // Try to find the post by its stored slug.
     let post = await Post.findOne({ slug });
+    // If not found, try by _id if the slug parameter is a valid ObjectId.
     if (!post && mongoose.Types.ObjectId.isValid(slug)) {
       post = await Post.findById(slug);
-      if (!post) {
-        return NextResponse.json(
-          { message: "Post not found." },
-          { status: 404 }
-        );
-      }
     }
+    if (!post) {
+      return NextResponse.json(
+        { message: "Post not found." },
+        { status: 404 }
+      );
+    }
+
     if (post.thumbnail) {
       await deleteFromVercelBlob(post.thumbnail);
     }

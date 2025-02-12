@@ -1,12 +1,12 @@
 // app/api/posts/route.ts
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import Post from '@/lib/models/Post';
 import { slugify } from '@/utils/slugify';
 import { uploadToVercelBlob } from '@/lib/utils/uploadtoVercelBlob';
 import { v4 as uuid } from 'uuid';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     await connectToDatabase();
     const posts = await Post.find().sort({ updatedAt: -1 });
@@ -19,7 +19,7 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     await connectToDatabase();
     // Parse multipart/form-data.
@@ -48,9 +48,8 @@ export async function POST(request: Request) {
       slug = `${slug}-${uuid()}`;
     }
 
-    // Create the new post.
-    // (Replace "dummyUserId" with your real user id when integrating authentication.)
-    const creatorId = "dummyUserId";
+    // Replace "dummyUserId" with a valid user id. For testing, use a known id.
+    const creatorId = "665f2418e38f20b293d9a3fa";
 
     const newPost = await Post.create({
       title,
@@ -63,6 +62,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(newPost, { status: 201 });
   } catch (error: any) {
+    console.error("POST /api/posts error:", error);
     return NextResponse.json(
       { message: error.message || "Something went wrong" },
       { status: 500 }

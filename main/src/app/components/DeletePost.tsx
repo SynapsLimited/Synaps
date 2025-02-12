@@ -11,20 +11,21 @@ interface DeletePostProps {
 
 const DeletePost: React.FC<DeletePostProps> = ({ slug }) => {
   const router = useRouter();
-  const { currentUser } = useContext(UserContext);
-  const token = currentUser?.token;
+  const { currentUser, loading } = useContext(UserContext);
 
+  // Check for a logged‑in user
   useEffect(() => {
-    if (!token) {
+    if (loading) return;
+    if (!currentUser) {
       router.push('/login');
     }
-  }, [token, router]);
+  }, [currentUser, loading, router]);
 
   const removePost = async () => {
     if (!confirm('Are you sure you want to delete this post?')) return;
     try {
       const response = await axios.delete(`/api/posts/${slug}`, {
-        headers: { Authorization: `Bearer ${token}` },
+        withCredentials: true,
       });
       if (response.status === 200) {
         router.push('/blog');

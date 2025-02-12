@@ -9,7 +9,6 @@ import Loader from '@/app/components/Loader';
 import DeletePost from '@/app/components/DeletePost';
 import PostAuthor from '@/app/components/PostAuthor';
 import { useTranslation } from 'react-i18next';
-import { slugify } from '@/utils/slugify';
 
 interface Creator {
   _id: string;
@@ -57,18 +56,14 @@ const PostDetail = () => {
   if (error) return <p className="error">{error}</p>;
   if (!post) return <p className="error">Post not found.</p>;
 
-  // Fallback: if post does not have a stored slug, generate one from the title.
+  // Updated fallback: if no stored slug, use _id.
   const displaySlug =
-    post.slug && post.slug.trim().length > 0
-      ? post.slug
-      : post.title
-      ? slugify(post.title)
-      : post._id;
+    post.slug && post.slug.trim().length > 0 ? post.slug : post._id;
 
   // Determine the post creator's ID.
   const postCreatorId =
     typeof post.creator === 'string' ? post.creator : post.creator._id;
-  // Use only currentUser.id because the user type doesn't have an _id property.
+  // currentUser.id is assumed to be the correct identifier.
   const currentUserId = currentUser?.id;
 
   return (

@@ -1,11 +1,12 @@
 // app/dashboard/[id]/page.tsx
+
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { getUserFromToken, getPostsByUser } from '@/lib/serverUtils';
 import DashboardContent from '@/app/dashboard/DashboardContent'; // Adjust the path as needed
+import '@/app/css/blog.css';
 
 // Define the props for the dynamic route.
-// Notice that params is a Promise that we await.
 interface DashboardPageProps {
   params: Promise<{ id: string }>;
 }

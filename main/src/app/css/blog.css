@@ -474,17 +474,17 @@ input, select, textarea {
     overflow: scroll;
     background: var(--color-white);
     height: 10rem !important; /* Increased height */
-    color: var(--color-secondary); /* Text color */
+    color: var(--color-background); /* Text color */
   }
   
   .ql-container {
-    height: 16rem; /* Ensure the container height matches */
-    background: var(--color-background); /* Background color of the input text */
+    height: 12rem; /* Ensure the container height matches */
+    background: var(--color-white); /* Background color of the input text */
     border-radius: 22px;
   }
   
   .ql-toolbar.ql-snow {
-    background: var(--color-secondary);
+    background: var(--color-background);
     color: var(--color-background);
     border-radius: 22px 22px 0 0;
   }
@@ -508,7 +508,7 @@ input, select, textarea {
   }
   
   .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
-    background: var(--color-secondary);
+    background: var(--color-background);
   }
   
   .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-item.ql-selected {

@@ -13,8 +13,13 @@ import ClientWrapper from './components/ClientWrapper';
 import UserInitializer from './components/userInitializer';
 
 export const metadata = {
-  title: 'Synaps Limited - We are the missing link!',
-  description: 'Synaps Limited - The solution to your business problems!',
+  title: {
+    
+    default: 'Synaps Limited - We are the missing link!',
+    template: "%s - Synaps Limited"
+
+  },
+  description: 'Explore Synaps and lets work together to solve your business problems!',
   icons: {
     icon: '/assets/Synaps Logos/Synaps Logo Icon.ico',
     shortcut: '/favicon.ico',
@@ -22,7 +27,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'Synaps Limited',
-    description: 'The solution to your business problems!',
+    description: 'We are the missing link & the solution to your business problems!',
     url: 'https://www.synapslimited.eu',
     type: 'website',
     images: [
@@ -37,7 +42,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Synaps Limited',
-    description: 'The solution to your business problems!',
+    description: 'The missing link! Synaps is the solution to your business problems!',
     images: ['https://www.synapslimited.eu/assets/Synaps-Meta.png'],
   },
 };

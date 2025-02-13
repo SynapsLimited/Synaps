@@ -6,6 +6,7 @@ import './../css/about.css'; // Import only in About.jsx
 import { useTranslation } from 'react-i18next';
 import SplineViewer from '../components/SplineViewer';
 
+
 const About = () => {
   const { t } = useTranslation();
 

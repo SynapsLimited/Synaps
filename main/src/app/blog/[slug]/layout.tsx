@@ -29,15 +29,17 @@ export async function generateMetadata({
   const fullTitle = `${truncatedTitle}`;
   const imageUrl = post.thumbnail || '/assets/Blog-default.webp';
 
-  // Remove HTML tags from description for OG metadata
+  // Remove HTML tags from description
   const plainDescription = stripHtml(post.description);
+  // Truncate description after 80 words
+  const truncatedDescription = truncateWords(plainDescription, 80);
 
   return {
     title: fullTitle,
-    description: plainDescription,
+    description: truncatedDescription,
     openGraph: {
       title: fullTitle,
-      description: plainDescription,
+      description: truncatedDescription,
       images: [
         {
           url: imageUrl,
@@ -54,6 +56,14 @@ function stripHtml(html: string): string {
   return html.replace(/<[^>]+>/g, '');
 }
 
+function truncateWords(text: string, wordLimit: number): string {
+  const words = text.split(/\s+/);
+  if (words.length > wordLimit) {
+    return words.slice(0, wordLimit).join(' ') + '...';
+  }
+  return text;
+}
+
 interface LayoutProps {
   children: React.ReactNode;
   params: Promise<{ slug: string }>;
@@ -63,6 +73,6 @@ export default async function DynamicLayout({
   children,
   params,
 }: LayoutProps) {
-  await params; // or use if needed
+  await params; // Use params if needed
   return <>{children}</>;
 }

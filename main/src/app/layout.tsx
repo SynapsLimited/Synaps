@@ -20,6 +20,7 @@ export const metadata = {
 
   },
   description: 'Explore Synaps and lets work together to solve your business problems!',
+  keywords:['Synaps', 'Marketing','Marketing Outsource','Outsource', 'Web Design', 'Web Development', 'App Design', 'App Development', 'Social Media', 'Social Media Management','Branding', 'Video Editing', 'Marketing Strategy', 'Advertiement', 'Physical Advertising', 'Europe', 'EU', 'European Union', 'Saudi Arabia', 'UAE', 'United Arab Emirates', 'Qatar', 'USA', 'United States of America', 'Canada'],
   icons: {
     icon: '/assets/Synaps Logos/Synaps Logo Icon.ico',
     shortcut: '/favicon.ico',

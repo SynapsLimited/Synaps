@@ -151,7 +151,7 @@ const Home = () => {
 
           </div>
           <div className="services-image">
-            <img src="/assets/Art for Synaps/Services - appdesign.png" alt="Phone" className="service-phone" />
+            <img src="/assets/Art for Synaps/Phone - Homepage.png" alt="Phone" className="service-phone" />
             <a href="/services" className="btn btn-primary service-btn">{t('indexPage.services.servicesButton')}</a>
           </div>
         </section>

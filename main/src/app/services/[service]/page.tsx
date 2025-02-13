@@ -388,7 +388,7 @@ const ServicePage = ({ params }: { params: Promise<{ service: string }> }) => {
       imgSrc={`/assets/Art for Synaps/Portfolio - ${unwrappedParams.service}.png`}
       importanceTitle={t(`${translationKey}Services.importanceTitle`)}
       importanceText={t(`${translationKey}Services.importanceText`)}
-      importanceImgSrc={`/assets/Art for Synaps/Services - ${unwrappedParams.service}.png`}
+      importanceImgSrc={`/assets/Art for Synaps/ServicesImporttance${unwrappedParams.service}.png`}
       types={currentService.types}
       bundles={currentService.bundles}
     />

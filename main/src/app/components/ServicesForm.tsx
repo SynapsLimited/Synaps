@@ -9,9 +9,9 @@ const services = [
   { id: 1, name: 'Web Design', imgSrc: '/assets/Art for Synaps/Services - Web Design.png' },
   { id: 2, name: 'AppDesign', imgSrc: '/assets/Art for Synaps/Phone - Homepage.png' },
   { id: 3, name: 'Social Media', imgSrc: '/assets/Art for Synaps/Services - Social Media.png' },
-  { id: 4, name: 'Branding', imgSrc: '/assets/Art for Synaps/Services - branding.png' },
-  { id: 5, name: 'Video', imgSrc: '/assets/Art for Synaps/Services - video.png' },
-  { id: 6, name: 'Advertisement', imgSrc: '/assets/Art for Synaps/Services - advertisement.png' }
+  { id: 4, name: 'Branding', imgSrc: '/assets/Art for Synaps/Services - Branding.png' },
+  { id: 5, name: 'Video', imgSrc: '/assets/Art for Synaps/Services - Video.png' },
+  { id: 6, name: 'Advertisement', imgSrc: '/assets/Art for Synaps/Services - Advertisement.png' }
 ];
 
 const ServicesForm = () => {

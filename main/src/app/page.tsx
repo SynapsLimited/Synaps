@@ -137,15 +137,15 @@ const Home = () => {
               <span>{t('indexPage.services.items.socialMedia')}</span>
             </a>
             <a href="/services/branding" className="service-blob">
-              <img src="/assets/Art for Synaps/Services - branding.png" alt={t('indexPage.services.items.branding')} />
+              <img src="/assets/Art for Synaps/Services - Branding.png" alt={t('indexPage.services.items.branding')} />
               <span>{t('indexPage.services.items.branding')}</span>
             </a>
             <a href="/services/video" className="service-blob">
-              <img src="/assets/Art for Synaps/Services - video.png" alt={t('indexPage.services.items.video')} />
+              <img src="/assets/Art for Synaps/Services - Video.png" alt={t('indexPage.services.items.video')} />
               <span>{t('indexPage.services.items.video')}</span>
             </a>
             <a href="/services/advertisement" className="service-blob">
-              <img src="/assets/Art for Synaps/Services - advertisement.png" alt={t('indexPage.services.items.advertisement')} />
+              <img src="/assets/Art for Synaps/Services - Advertisement.png" alt={t('indexPage.services.items.advertisement')} />
               <span>{t('indexPage.services.items.advertisement')}</span>
             </a>
 

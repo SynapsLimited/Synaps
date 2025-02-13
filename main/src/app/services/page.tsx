@@ -68,15 +68,15 @@ const Services: React.FC = () => {
             <span>{t('servicesPage.items.socialMedia.title')}</span>
           </a>
           <a href="/services/branding" className="service-overview-blob-art">
-            <img src="/assets/Art for Synaps/Services - branding.png" alt={t('servicesPage.items.branding.title')} />
+            <img src="/assets/Art for Synaps/Services - Branding.png" alt={t('servicesPage.items.branding.title')} />
             <span>{t('servicesPage.items.branding.title')}</span>
           </a>
           <a href="/services/video" className="service-overview-blob-art">
-            <img src="/assets/Art for Synaps/Services - video.png" alt={t('servicesPage.items.video.title')} />
+            <img src="/assets/Art for Synaps/Services - Video.png" alt={t('servicesPage.items.video.title')} />
             <span>{t('servicesPage.items.video.title')}</span>
           </a>
           <a href="/services/advertisement" className="service-overview-blob-art">
-            <img src="/assets/Art for Synaps/Services - advertisement.png" alt={t('servicesPage.items.advertisement.title')} />
+            <img src="/assets/Art for Synaps/Services - Advertisement.png" alt={t('servicesPage.items.advertisement.title')} />
             <span>{t('servicesPage.items.advertisement.title')}</span>
           </a>
 
@@ -148,7 +148,7 @@ const Services: React.FC = () => {
           <div className="specific-service-left">
             <h1>{t('servicesPage.items.branding.title')}</h1>
             <h5>{t('servicesPage.items.branding.description')}</h5>
-            <img src="/assets/Art for Synaps/Services - branding.png" alt={t('servicesPage.items.branding.title')} />
+            <img src="/assets/Art for Synaps/Services - Branding.png" alt={t('servicesPage.items.branding.title')} />
           </div>
           <div className="specific-service-right">
             <div className="specific-service-text-group">
@@ -168,7 +168,7 @@ const Services: React.FC = () => {
           <div className="specific-service-left">
             <h1>{t('servicesPage.items.video.title')}</h1>
             <h5>{t('servicesPage.items.video.description')}</h5>
-            <img src="/assets/Art for Synaps/Services - video.png" alt={t('servicesPage.items.video.title')} />
+            <img src="/assets/Art for Synaps/Services - Video.png" alt={t('servicesPage.items.video.title')} />
           </div>
           <div className="specific-service-right">
             <div className="specific-service-text-group">
@@ -188,7 +188,7 @@ const Services: React.FC = () => {
           <div className="specific-service-left">
             <h1>{t('servicesPage.items.advertisement.title')}</h1>
             <h5>{t('servicesPage.items.advertisement.description')}</h5>
-            <img src="/assets/Art for Synaps/Services - advertisement.png" alt={t('servicesPage.items.advertisement.title')} />
+            <img src="/assets/Art for Synaps/Services - Advertisement.png" alt={t('servicesPage.items.advertisement.title')} />
           </div>
           <div className="specific-service-right">
             <div className="specific-service-text-group">

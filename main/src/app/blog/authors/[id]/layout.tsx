@@ -12,10 +12,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  // Now params is used directly (no need to await it)
-  const { id } = params;
+  // Await params before destructuring
+  const { id } = await params;
   const res = await fetch(`https://synapslimited.eu/api/users/${id}`, { cache: 'no-cache' });
   if (res.status === 404) {
     notFound();
@@ -55,11 +55,12 @@ function truncateWords(text: string, wordLimit: number): string {
 
 interface LayoutProps {
   children: React.ReactNode;
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function AuthorLayout({ children, params }: LayoutProps) {
-  // Optional delay before rendering children
+  // Await params to ensure they resolve properly
+  await params;
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return <>{children}</>;
 }

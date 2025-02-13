@@ -32,7 +32,7 @@ export async function generateMetadata({
   // Remove HTML tags from description
   const plainDescription = stripHtml(post.description);
   // Truncate description after 80 words
-  const truncatedDescription = truncateWords(plainDescription, 80);
+  const truncatedDescription = truncateWords(plainDescription, 40);
 
   return {
     title: fullTitle,

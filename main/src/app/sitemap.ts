@@ -4,9 +4,7 @@ import { getAuthors } from "@/lib/api";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL ||
-    (process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`) ||
-    "https://synapslimited.eu";
+    process.env.NEXT_PUBLIC_BASE_URL || "https://synapslimited.eu";
 
   // --- Static Routes ---
   const staticRoutes = [

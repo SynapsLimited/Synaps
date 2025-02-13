@@ -12,10 +12,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }): Promise<Metadata> {
-  // Await params before destructuring
-  const { id } = await params;
+  // Now params is used directly (no need to await it)
+  const { id } = params;
   const res = await fetch(`https://synapslimited.eu/api/users/${id}`, { cache: 'no-cache' });
   if (res.status === 404) {
     notFound();

@@ -1,7 +1,6 @@
-// src/app/blog/authors/[id]/page.tsx
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import useSWR from 'swr';
 import PostItem from '@/app/components/PostItem';
 import '@/app/css/blog.css';
@@ -11,7 +10,7 @@ import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import Head from 'next/head';
 import { Post, Author } from './interfaces';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 // SWR fetcher using axios
@@ -21,6 +20,7 @@ const AuthorPosts: React.FC = () => {
   const { t } = useTranslation();
   const params = useParams();
   const id = params?.id as string;
+  const router = useRouter();
 
   // Fetch the specific author details from the API
   const { data: author, error: authorError } = useSWR<Author>(
@@ -33,6 +33,13 @@ const AuthorPosts: React.FC = () => {
     `/api/posts`,
     fetcher
   );
+
+  // If the author API returns a 404, automatically navigate to the 404 page.
+  useEffect(() => {
+    if (authorError && authorError.response && authorError.response.status === 404) {
+      router.push('/404');
+    }
+  }, [authorError, router]);
 
   if (authorError || postsError) {
     return (

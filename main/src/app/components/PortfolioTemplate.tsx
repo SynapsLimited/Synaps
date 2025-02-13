@@ -1,15 +1,28 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React from 'react'; // Add this import
+import { useEffect } from 'react';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import './../css/portfolio.css';
 import SplineViewer from './SplineViewer';
 
-const Gallery = ({ items }: { items: Array<{ imgSrc: string; alt: string; title: string; description: string; link: string }> }) => {
+interface GalleryItem {
+  imgSrc: string;
+  alt: string;
+  title: string;
+  description: string;
+  link: string;
+}
+
+interface GalleryProps {
+  items: GalleryItem[];
+}
+
+const Gallery = ({ items }: GalleryProps) => {
   const { t } = useTranslation();
-  const [openItem, setOpenItem] = useState<string | null>(null);
+  const [openItem, setOpenItem] = React.useState<string | null>(null);
 
   const handleItemClick = (event: React.MouseEvent<HTMLAnchorElement>, itemId: string) => {
     event.preventDefault();
@@ -34,12 +47,15 @@ const Gallery = ({ items }: { items: Array<{ imgSrc: string; alt: string; title:
     }
   };
 
+  // Safeguard: if items is undefined, use an empty array
+  const safeItems = Array.isArray(items) ? items : [];
+
   return (
     <section className="container gallery">
       <div className="row">
         <ul>
           <a href="#" className="close" onClick={handleCloseClick}></a>
-          {items.map((item, index) => (
+          {safeItems.map((item, index) => (
             <li key={index}>
               <a href={`#item${index + 1}`} onClick={(event) => handleItemClick(event, `item${index + 1}`)}>
                 <img src={item.imgSrc} alt={item.alt} />
@@ -49,7 +65,7 @@ const Gallery = ({ items }: { items: Array<{ imgSrc: string; alt: string; title:
         </ul>
       </div>
 
-      {items.map((item, index) => (
+      {safeItems.map((item, index) => (
         <div
           id={`item${index + 1}`}
           key={index}
@@ -75,7 +91,7 @@ interface PortfolioTemplateProps {
   title: string;
   description: string;
   imgSrc: string;
-  galleryItems: Array<{ imgSrc: string; alt: string; title: string; description: string; link: string }>;
+  galleryItems: GalleryItem[];
 }
 
 const PortfolioTemplate = ({ title, description, imgSrc, galleryItems }: PortfolioTemplateProps) => {
@@ -109,7 +125,7 @@ const PortfolioTemplate = ({ title, description, imgSrc, galleryItems }: Portfol
             </Link>
           </div>
           <div className="header__right" id="spline-container">
-            <SplineViewer url="https://prod.spline.design/TUJchywqt3sObPx0/scene.splinecode"></SplineViewer>
+            <SplineViewer url="https://prod.spline.design/TUJchywqt3sObPx0/scene.splinecode" />
           </div>
         </div>
       </header>
@@ -134,7 +150,6 @@ const PortfolioTemplate = ({ title, description, imgSrc, galleryItems }: Portfol
           <li className="btn btn-secondary">
             <Link href="/portfolio/advertisement">{t('portfolioTemplatePage.categories.advertisement')}</Link>
           </li>
-   
         </ul>
       </section>
 

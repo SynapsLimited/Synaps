@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-// Map portfolio slugs to proper translation keys (or display keys)
 const PORTFOLIO_TRANSLATION_KEYS: Record<string, string> = {
   webdesign: 'Web Design',
   socialmedia: 'Social Media',
@@ -10,20 +10,28 @@ const PORTFOLIO_TRANSLATION_KEYS: Record<string, string> = {
   appdesign: 'App Design',
 };
 
+export async function generateStaticParams() {
+  // Pre-render only allowed portfolio keys
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return Object.keys(PORTFOLIO_TRANSLATION_KEYS).map((key) => ({ portfolio: key }));
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ portfolio: string }>;
 }): Promise<Metadata> {
   const { portfolio } = await params;
-  // Use the translation key if available; otherwise, use the raw portfolio slug
-  const translationKey =
-    PORTFOLIO_TRANSLATION_KEYS[portfolio.toLowerCase()] || portfolio;
+  const normalizedPortfolio = portfolio.toLowerCase();
 
+  // If not an allowed portfolio, trigger 404
+  if (!PORTFOLIO_TRANSLATION_KEYS[normalizedPortfolio]) {
+    notFound();
+  }
+  
+  const translationKey = PORTFOLIO_TRANSLATION_KEYS[normalizedPortfolio];
   const title = `${translationKey} Portfolio - Synaps`;
   const description = `Explore our ${translationKey} portfolio, showcasing creative projects and designs. Yours could be next on our website ;)!`;
-
-  // Use the image path with the translationKey
   const imageUrl = `/assets/Art for Synaps/Portfolio - ${translationKey}.png`;
 
   return {
@@ -49,10 +57,9 @@ interface LayoutProps {
   params: Promise<{ portfolio: string }>;
 }
 
-export default async function PortfolioLayout({
-  children,
-  params,
-}: LayoutProps) {
+export default async function PortfolioLayout({ children, params }: LayoutProps) {
+  // Simulate delay before rendering children
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   await params;
   return <>{children}</>;
 }

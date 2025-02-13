@@ -1,28 +1,30 @@
 import type { Metadata } from 'next';
 
-// This function generates metadata based on the portfolio slug.
+// Map portfolio slugs to proper translation keys (or display keys)
+const PORTFOLIO_TRANSLATION_KEYS: Record<string, string> = {
+  webdesign: 'Web Design',
+  socialmedia: 'Social Media',
+  branding: 'Branding',
+  video: 'Video',
+  advertisement: 'Advertisement',
+  appdesign: 'App Design',
+};
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ portfolio: string }>;
 }): Promise<Metadata> {
   const { portfolio } = await params;
+  // Use the translation key if available; otherwise, use the raw portfolio slug
+  const translationKey =
+    PORTFOLIO_TRANSLATION_KEYS[portfolio.toLowerCase()] || portfolio;
 
-  // Map URL slugs to proper display names for portfolio pages.
-  const PORTFOLIO_DISPLAY_NAMES: Record<string, string> = {
-    webdesign: 'Web Design',
-    socialmedia: 'Social Media',
-    branding: 'Branding',
-    video: 'Video',
-    advertisement: 'Advertisement',
-    appdesign: 'App Design',
-  };
+  const title = `${translationKey} Portfolio - Synaps`;
+  const description = `Explore our ${translationKey} portfolio, showcasing creative projects and designs. Yours could be next on our website ;)!`;
 
-  // Use the display name if available; otherwise, fall back to the slug.
-  const displayName = PORTFOLIO_DISPLAY_NAMES[portfolio] || portfolio;
-
-  const title = `${displayName} Portfolio - Synaps`;
-  const description = `Explore our ${displayName} portfolio, showcasing creative projects and designs. Yours could be next on our website ;)!`;
+  // Use the image path with the translationKey
+  const imageUrl = `/assets/Art for Synaps/Portfolio - ${translationKey}.png`;
 
   return {
     title,
@@ -32,10 +34,10 @@ export async function generateMetadata({
       description,
       images: [
         {
-          url: `/assets/Art for Synaps/Portfolio - ${displayName.toLowerCase()}.png`,
+          url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${displayName} Portfolio`,
+          alt: `${translationKey} Portfolio`,
         },
       ],
     },
@@ -47,7 +49,6 @@ interface LayoutProps {
   params: Promise<{ portfolio: string }>;
 }
 
-// The layout component simply awaits the dynamic parameters and renders its children.
 export default async function PortfolioLayout({
   children,
   params,

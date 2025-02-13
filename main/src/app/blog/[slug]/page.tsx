@@ -9,6 +9,9 @@ import Loader from '@/app/components/Loader';
 import DeletePost from '@/app/components/DeletePost';
 import PostAuthor from '@/app/components/PostAuthor';
 import { useTranslation } from 'react-i18next';
+import '@/app/css/blog.css'
+
+
 
 interface Creator {
   _id: string;
@@ -23,6 +26,7 @@ interface Post {
   creator: Creator | string;
   createdAt: string;
 }
+
 
 const PostDetail = () => {
   const { t } = useTranslation();
@@ -89,8 +93,8 @@ const PostDetail = () => {
         </div>
         <div dangerouslySetInnerHTML={{ __html: post.description }} />
         <div className="navigation-buttons">
-          <Link className="btn btn-primary" href="/blog">
-            Back to Blog
+          <Link className="btn btn-primary" href="/posts">
+            Back to Posts
           </Link>
         </div>
       </section>

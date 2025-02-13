@@ -5,6 +5,6 @@ export const metadata: Metadata = {
   description: 'Explore and Discover some of our best creative works regarding web & app designing, social media, branding & video solutions, and advertisement reachs.',
 };
 
-export default function AboutLayout({ children }: { children: React.ReactNode }) {
+export default function PortfolioLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

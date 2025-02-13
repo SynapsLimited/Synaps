@@ -5,6 +5,6 @@ export const metadata: Metadata = {
   description: 'If you are ready then give it a try! The consult is free and so is conversating with us for a better future and greater success.',
 };
 
-export default function AboutLayout({ children }: { children: React.ReactNode }) {
+export default function ContactLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

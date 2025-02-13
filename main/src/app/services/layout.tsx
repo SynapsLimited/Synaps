@@ -5,6 +5,6 @@ export const metadata: Metadata = {
   description: 'Dive into our services and explore the potential solutions and bundles Synaps provides!',
 };
 
-export default function AboutLayout({ children }: { children: React.ReactNode }) {
+export default function ServicesLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

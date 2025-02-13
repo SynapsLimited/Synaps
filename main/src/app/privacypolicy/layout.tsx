@@ -5,6 +5,6 @@ export const metadata: Metadata = {
   description: 'Privacy Policy and Information regarding Synaps data information!',
 };
 
-export default function AboutLayout({ children }: { children: React.ReactNode }) {
+export default function PrivacyPolicyLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

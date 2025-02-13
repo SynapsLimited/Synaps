@@ -1,3 +1,4 @@
+// src/app/blog/authors/[id]/page.tsx
 'use client';
 
 import React, { useEffect } from 'react';
@@ -29,10 +30,7 @@ const AuthorPosts: React.FC = () => {
   );
 
   // Fetch all posts from the API (the backend does not provide filtering by author)
-  const { data: posts, error: postsError } = useSWR<Post[]>(
-    `/api/posts`,
-    fetcher
-  );
+  const { data: posts, error: postsError } = useSWR<Post[]>(`/api/posts`, fetcher);
 
   // If the author API returns a 404, automatically navigate to the 404 page.
   useEffect(() => {

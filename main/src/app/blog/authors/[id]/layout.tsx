@@ -1,12 +1,11 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+// src/app/blog/authors/[id]/layout.tsx
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getAuthors } from "@/lib/api";
 
+// Pre-render author IDs using direct data fetching.
 export async function generateStaticParams() {
-  // Pre-render author IDs from API
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  const res = await fetch(`https://synapslimited.eu/api/users`, { cache: 'no-cache' });
-  if (!res.ok) return [];
-  const authors = await res.json();
+  const authors = await getAuthors();
   return authors.map((author: any) => ({ id: author._id }));
 }
 
@@ -15,6 +14,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
+  // Await params before destructuring
   const { id } = await params;
   const res = await fetch(`https://synapslimited.eu/api/users/${id}`, { cache: 'no-cache' });
   if (res.status === 404) {
@@ -55,12 +55,11 @@ function truncateWords(text: string, wordLimit: number): string {
 
 interface LayoutProps {
   children: React.ReactNode;
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
 export default async function AuthorLayout({ children, params }: LayoutProps) {
-  // Simulate delay before rendering children
+  // Optional delay before rendering children
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  await params;
   return <>{children}</>;
 }

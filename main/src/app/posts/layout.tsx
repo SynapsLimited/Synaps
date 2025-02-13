@@ -5,6 +5,6 @@ export const metadata: Metadata = {
   description: 'Explore through all of our posts and filter based on your interests!',
 };
 
-export default function AboutLayout({ children }: { children: React.ReactNode }) {
+export default function PostsLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

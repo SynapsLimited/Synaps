@@ -3,13 +3,11 @@ import type { Metadata } from 'next';
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = params;
-  
-  // Replace the URL below with your actual API endpoint.
+  const { slug } = await params;
   const res = await fetch(`https://synapslimited.eu/api/posts/${slug}`, {
-    cache: 'no-cache', // Adjust caching as needed.
+    cache: 'no-cache',
   });
 
   if (!res.ok) {
@@ -21,14 +19,13 @@ export async function generateMetadata({
 
   const post = await res.json();
 
-  // If the post title exceeds 40 characters, truncate and add "..."
+  // Truncate title after 40 characters and append "..."
   const MAX_TITLE_LENGTH = 40;
   const truncatedTitle =
     post.title.length > MAX_TITLE_LENGTH
       ? post.title.slice(0, MAX_TITLE_LENGTH) + '...'
       : post.title;
 
-  // Here, we’re not appending any suffix.
   const fullTitle = `${truncatedTitle}`;
   const imageUrl = post.thumbnail || '/assets/Blog-default.webp';
 
@@ -52,9 +49,16 @@ export async function generateMetadata({
 
 interface LayoutProps {
   children: React.ReactNode;
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
-export default function DynamicLayout({ children, params }: LayoutProps) {
+export default async function DynamicLayout({
+  children,
+  params,
+}: LayoutProps) {
+  // Await params if you need to use them here
+  const resolvedParams = await params;
+  // You can use resolvedParams.slug if needed
+
   return <>{children}</>;
 }

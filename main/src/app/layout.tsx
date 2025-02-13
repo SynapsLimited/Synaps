@@ -26,8 +26,8 @@ export const metadata = {
     apple: '/assets/Synaps Logos/Synaps Logo Icon.ico',
   },
   openGraph: {
-    title: 'Synaps Limited',
-    description: 'We are the missing link & the solution to your business problems!',
+    title: 'Synaps Limited - We are the missing link',
+    description: 'Reach new goals, more audience, and bigger success with Synaps. We can find and solve your company problems. Still waiting? Contact Now!',
     url: 'https://www.synapslimited.eu',
     type: 'website',
     images: [

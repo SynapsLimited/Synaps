@@ -41,7 +41,7 @@ const AuthorPosts: React.FC = () => {
 
   if (authorError || postsError) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div className="container py-8">
         <h1 className="text-center text-red-500 text-xl">
           {t('authorPosts.errorFetchingData')}
         </h1>
@@ -62,7 +62,7 @@ const AuthorPosts: React.FC = () => {
         <title>{`${author.name} - Synaps Blog`}</title>
       </Head>
 
-      <section data-aos="fade-up" className="posts-page px-4 py-8">
+      <section data-aos="fade-up" className="posts-page py-8">
         <div className="blog-title-filtered mb-6">
           <h1 className="text-3xl font-bold text-center">
             {t('AuthorPosts.postsBy', { authorName: author.name })}

@@ -19,7 +19,7 @@ export async function generateMetadata({
 
   const post = await res.json();
 
-  // Truncate title after 40 characters and append "..."
+  // If the post title exceeds 40 characters, truncate and add "..."
   const MAX_TITLE_LENGTH = 40;
   const truncatedTitle =
     post.title.length > MAX_TITLE_LENGTH
@@ -29,12 +29,15 @@ export async function generateMetadata({
   const fullTitle = `${truncatedTitle}`;
   const imageUrl = post.thumbnail || '/assets/Blog-default.webp';
 
+  // Remove HTML tags from description for OG metadata
+  const plainDescription = stripHtml(post.description);
+
   return {
     title: fullTitle,
-    description: post.description,
+    description: plainDescription,
     openGraph: {
       title: fullTitle,
-      description: post.description,
+      description: plainDescription,
       images: [
         {
           url: imageUrl,
@@ -47,6 +50,10 @@ export async function generateMetadata({
   };
 }
 
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]+>/g, '');
+}
+
 interface LayoutProps {
   children: React.ReactNode;
   params: Promise<{ slug: string }>;
@@ -56,9 +63,6 @@ export default async function DynamicLayout({
   children,
   params,
 }: LayoutProps) {
-  // Await params if you need to use them here
-  const resolvedParams = await params;
-  // You can use resolvedParams.slug if needed
-
+  await params; // or use if needed
   return <>{children}</>;
 }

@@ -1,27 +1,31 @@
+// components/CookieConsent.tsx
 'use client'
-
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
+import Cookies from 'js-cookie';
 import './../css/cookieconsent.css';
 
 const CookieConsent = () => {
   const [showConsent, setShowConsent] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('synapsCookieConsent');
+    const consent = Cookies.get('synapsCookieConsent');
     if (!consent) {
       setShowConsent(true);
     }
   }, []);
 
   const acceptCookies = () => {
-    localStorage.setItem('synapsCookieConsent', 'true');
+    Cookies.set('synapsCookieConsent', 'true', { expires: 365 });
     setShowConsent(false);
+    // Optional: reload to trigger any consent‑dependent logic
+    // window.location.reload();
   };
 
   const declineCookies = () => {
-    localStorage.setItem('synapsCookieConsent', 'false');
+    Cookies.set('synapsCookieConsent', 'false', { expires: 365 });
     setShowConsent(false);
+    // Add any additional logic to disable services if needed
   };
 
   if (!showConsent) {

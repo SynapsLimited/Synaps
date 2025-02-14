@@ -1,6 +1,6 @@
+// app/layout.tsx (or wherever your RootLayout is defined)
 import './globals.css';
 import { ReactNode } from 'react';
-import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LogoShowcase from './components/LogoShowcase';
@@ -11,16 +11,22 @@ import { UserProvider } from '../context/userContext';
 import ClientLoading from './components/ClientLoading';
 import ClientWrapper from './components/ClientWrapper';
 import UserInitializer from './components/userInitializer';
+import ConditionalAnalytics from './components/ConditionalAnalytics';
 
 export const metadata = {
   title: {
-    
     default: 'Synaps Limited - We are the missing link!',
     template: "%s - Synaps Limited"
-
   },
   description: 'Explore Synaps and lets work together to solve your business problems!',
-  keywords:['Synaps', 'Marketing','Marketing Outsource','Outsource', 'Web Design', 'Web Development', 'App Design', 'App Development', 'Social Media', 'Social Media Management','Branding', 'Video Editing', 'Marketing Strategy', 'Advertiement', 'Physical Advertising', 'Europe', 'EU', 'European Union', 'Saudi Arabia', 'UAE', 'United Arab Emirates', 'Qatar', 'USA', 'United States of America', 'Canada'],
+  keywords: [
+    'Synaps', 'Marketing', 'Marketing Outsource', 'Outsource', 'Web Design',
+    'Web Development', 'App Design', 'App Development', 'Social Media',
+    'Social Media Management','Branding', 'Video Editing', 'Marketing Strategy',
+    'Advertiement', 'Physical Advertising', 'Europe', 'EU', 'European Union',
+    'Saudi Arabia', 'UAE', 'United Arab Emirates', 'Qatar', 'USA',
+    'United States of America', 'Canada'
+  ],
   icons: {
     icon: '/assets/Synaps Logos/Synaps Logo Icon.ico',
     shortcut: '/favicon.ico',
@@ -57,16 +63,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Ensure metadata and viewport settings are applied */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>
         <UserProvider>
-          <Analytics />
+          <ConditionalAnalytics />
           <ScrollToTop />
           <ClientLoading>
             <ClientWrapper>
-              {/* Initialize the user on the client side */}
               <UserInitializer />
               <Navbar />
               {children}

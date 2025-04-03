@@ -247,6 +247,7 @@
 
   "servicesTemplatePage": {
     "titlePrefix": "Synaps - Services - ",
+    "servicesTitle": " {{title}} Bundles",
     "header": {
       "servicesHeading": "Services",
       "contactButton": "Contact"
@@ -994,5 +995,14 @@
     "noPostsFound": "No posts found for this author.",
     "backToBlog": "Back to Blog",
     "allPosts": "All Posts"
-  }   
-}
+    
+  },
+  
+    "service": {
+      "getInTouch": "Get in touch",
+      "deliveryDays": "{{days}} days delivery",
+      "basedOnProject": "Based on project"
+    }
+  
+  }
+

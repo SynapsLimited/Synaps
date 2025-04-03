@@ -855,5 +855,10 @@
             "Branding": "Branding",
             "Video": "Vidéo",
             "Advertisement": "Publicité"
-          }
+          },
+          "service": {
+    "getInTouch": "Contactez-nous",
+    "deliveryDays": "Livraison en {{days}} jours",
+    "basedOnProject": "Basé sur le projet"
+  }
 }

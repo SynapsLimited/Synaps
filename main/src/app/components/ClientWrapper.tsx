@@ -79,7 +79,7 @@ const ClientWrapper = ({ children }: ClientWrapperProps) => {
       case '/services/branding':
       case '/services/video':
       case '/services/advertisement':
-        return 'portfolio-background';
+        return 'other-background';
       case '/blog':
         return 'blog-background';
       case '/contact':

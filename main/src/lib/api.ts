@@ -2,7 +2,7 @@
 export async function getAuthors() {
     try {
       // Use the correct endpoint for authors
-      const res = await fetch("https://synapslimited.eu/api/users/authors", { cache: "no-store" });
+      const res = await fetch("https://www.synapslimited.eu/api/users/authors", { cache: "no-store" });
       if (!res.ok) {
         console.error("Failed to fetch authors with status:", res.status);
         // Return an empty array instead of throwing an error

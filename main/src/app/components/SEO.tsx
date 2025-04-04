@@ -11,7 +11,7 @@ interface SEOProps {
 }
 
 const supportedLocales = ['en', 'fr', 'nl', 'it', 'de', 'es'];
-const domain = 'https://synapslimited.eu';
+const domain = 'https://www.synapslimited.eu';
 
 // Removes *any* leading /en, /fr, etc. from the path
 function removeLocaleFromPath(path: string) {

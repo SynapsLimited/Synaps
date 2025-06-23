@@ -1,28 +1,56 @@
+// app/components/ServicesTemplate.tsx
 'use client';
 
 import { useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper/modules';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
-import SplineViewer from './SplineViewer';
-import ServiceCards from '@/components/ui/service-cards'; // Adjust the import path as needed
-import { Service } from '@/types/service';
+import Image from 'next/image';
 
-// Import styles
-import './../css/services.css';
-import './../css/portfolio.css';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
+import SplineViewer from './SplineViewer';
+import './../css/services.css'
+import './../css/portfolio.css'
+
+
+interface ServiceType {
+  imgSrc: string;
+  title: string;
+  description: string;
+  link: string;
+}
+
+interface Bundle {
+  name: string;
+  description: string;
+  imgSrc: string;
+}
 
 interface ServicesTemplateProps {
   title: string;
   description: string;
   imgSrc: string;
-  services: Service[];
+  importanceTitle: string;
+  importanceText: string;
+  importanceImgSrc: string;
+  types?: ServiceType[];
+  bundles?: Bundle[];
 }
 
 const ServicesTemplate = ({
   title,
   description,
   imgSrc,
-  services,
+  importanceTitle,
+  importanceText,
+  importanceImgSrc,
+  types = [],
+  bundles = []
 }: ServicesTemplateProps) => {
   const { t } = useTranslation();
 
@@ -37,9 +65,16 @@ const ServicesTemplate = ({
     };
   }, []);
 
+  const formatTitleToURL = (title: string) => {
+    const specialCases: Record<string, string> = {
+      'Web Design': 'webdesign',
+    };
+
+    return specialCases[title] || title.toLowerCase().replace(/\s+/g, '-');
+  };
+
   return (
     <div>
-      {/* Hero Section */}
       <header>
         <div className="container header__container">
           <div className="header__left header-about">
@@ -51,12 +86,11 @@ const ServicesTemplate = ({
             </Link>
           </div>
           <div className="header__right" id="spline-container">
-            <SplineViewer url="https://prod.spline.design/l7zIP1lmkJQWSetc/scene.splinecode" />
+            <SplineViewer url="https://prod.spline.design/l7zIP1lmkJQWSetc/scene.splinecode"></SplineViewer>
           </div>
         </div>
       </header>
 
-      {/* Navigation Buttons */}
       <section data-aos="fade-up" className="container portfolio-categories-section">
         <ul className="portfolio-categories">
           <li className="btn btn-primary">
@@ -80,12 +114,123 @@ const ServicesTemplate = ({
         </ul>
       </section>
 
-      {/* Service Cards Section */}
-      <section data-aos="fade-up" className="container service-cards-section">
-        <h2 className=" py-12 text-4xl font-bold text-secondary mb-8 text-center">
-          {t('servicesTemplatePage.servicesTitle', { title })}
+      <section data-aos="fade-up" className="importance-section">
+        <h2 className="importance-title">
+          {t('servicesTemplatePage.importanceTitle', { title: importanceTitle })}
         </h2>
-        <ServiceCards services={services} />
+        <div className="importance-content">
+          <div className="importance-text">
+            <p>{importanceText}</p>
+          </div>
+          <div className="importance-image">
+            <Image 
+              src={importanceImgSrc} 
+              alt={t('servicesTemplatePage.importanceTitle', { title: importanceTitle })}
+              width={500}
+              height={300}
+            />
+          </div>
+        </div>
+      </section>
+
+      {types.length > 0 && (
+        <section data-aos="fade-up" className="container types-section">
+          <h2 className="types-title">
+            {t('servicesTemplatePage.typesTitle', { title })}
+          </h2>
+          <Swiper
+            spaceBetween={100}
+            slidesPerView={1}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            modules={[Pagination, Navigation, EffectCoverflow, Autoplay]}
+            breakpoints={{
+              640: { slidesPerView: 1, spaceBetween: 20 },
+              768: { slidesPerView: 1, spaceBetween: 40 },
+              1024: { slidesPerView: 1, spaceBetween: 100 },
+            }}
+          >
+            {types.map((type, index) => (
+              <SwiperSlide key={index}>
+                <div className="types-slide">
+                  <Image src={type.imgSrc} alt={type.title} width={400} height={300} />
+                  <div>
+                    <h4>{type.title}</h4>
+                    <p>{type.description}</p>
+                    <Link 
+                      href={`/portfolio/${formatTitleToURL(title)}`} 
+                      className="btn btn-secondary"
+                    >
+                      {t('servicesTemplatePage.portfolioButton')}
+                    </Link>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+      )}
+
+      <div className="bundle-text container">
+        <h1>
+          {t('servicesTemplatePage.bundlesTitle', { title })} 
+          <Image 
+            src="/assets/Synaps Logos/Synaps Logo Art copy - DARK.png" 
+            alt="Synaps logo"
+            width={100}
+            height={50}
+          />
+        </h1>
+      </div>
+
+      <section data-aos="fade-up" className="bundle-section">
+        <div className="bundle-swiper">
+          <Swiper
+            modules={[Navigation, Pagination, EffectCoverflow, Autoplay]}
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView="auto"
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2,
+              slideShadows: true
+            }}
+            keyboard={{ enabled: true }}
+            mousewheel={{ thresholdDelta: 70 }}
+            spaceBetween={60}
+            loop={true}
+            pagination={{
+              el: `.${t('servicesTemplatePage.bundles.swiperPagination')}`,
+              clickable: true
+            }}
+          >
+            {bundles.map((bundle, index) => (
+              <SwiperSlide 
+                key={index} 
+                className="bundle-swiper-slide bundle-swiper-slide-specific" 
+                style={{ backgroundImage: `url(${bundle.imgSrc})` }}
+              >
+                <span>{title}</span>
+                <div>
+                  <h2>{bundle.name}</h2>
+                  <p>{bundle.description}</p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="swiper-pagination"></div>
+        </div>
       </section>
     </div>
   );

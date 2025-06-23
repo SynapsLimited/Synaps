@@ -1,51 +1,31 @@
 /*====================  Navbar  =============================*/
 
 .page-wrapper {
-  width: 100%;
+  width: auto;
   height: auto;
 }
 
 .nav-wrapper {
+  width: 100%;
   position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  z-index: 998;
-  margin-top: 10px;
-  border-radius: 50px;
-  box-shadow: 0 0 10px var(--color-primary);
-  animation: glow 2s infinite;
-  /* Ensure a transparent background color for the blur effect to show */
-  transition: background-color 0.3s ease;
-}
-
-.nav-wrapper::before {
-  content: "";
-  position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  /* Use the same transparent background to blend in */
-  background-color: var(--color-background-transparent-post);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-radius: inherit;
-  z-index: -1; /* Place behind the content */
+  transition: background-color 0.3s ease;
+  background-color: transparent; /* Set initial background to transparent */
+  z-index: 998; /* Ensures the navbar stays on top */
 }
 
-
+.nav-wrapper.scrolled {
+  background-color: var(--color-white);
+  transition: background-color 200ms linear;
+  box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.192); /* Adjust shadow to match the design */
+}
 
 .navbar {
   display: grid;
-  grid-template-columns: 1fr 3fr; /* Keep this for now, but we'll center the content inside */
+  grid-template-columns: 1fr 3fr;
   align-items: center;
-    height: 70px;
-  overflow: visible; /* Changed from hidden to visible to allow dropdown to show */
-  margin: 0 auto; /* Ensure the navbar itself is centered within the nav-wrapper */
-  max-width: 1200px; /* Optional: Set a max-width to prevent the navbar from stretching too wide on large screens */
-  position: relative; /* Added for absolute positioning of dropdown */
+  height: 80px;
+  overflow: hidden;
 }
 
 .navbar img {
@@ -63,9 +43,8 @@
 .navbar ul {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  justify-self: end; /* Changed from center to end to align with the right side */
-  margin-right: 20px; /* Add some margin to balance the spacing */
+  grid-template-columns: repeat(7,1fr);
+  justify-self: end;
 }
 
 .nav-item a {
@@ -79,7 +58,7 @@
 }
 
 .nav-item a.scrolled {
-  color: var(--color-white-transparent);
+  color: var(--color-background);
 }
 
 .nav-item a:hover {
@@ -90,6 +69,46 @@
   color: var(--color-primary);
 }
 
+/* Dropdown Menu */
+.nav-item.has-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: transparent;
+  z-index: 999;
+  width: 90px;
+  border: 22px;
+  transition: background-color 0.3s ease;
+  margin-top: 26.5px;
+}
+
+.nav-item.has-dropdown .dropdown-menu.scrolled {
+  background-color: var(--color-white);
+  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.4);
+  transition: background-color 200ms linear;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show {
+  display: block;
+  border-radius: 0 0 22px 22px;
+}
+
+.nav-item.has-dropdown .dropdown-menu li,
+.nav-item.has-dropdown .dropdown-menu .last-link {
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  transition: var(--transition);
+  padding-left: 0px;
+}
+
+.nav-item.has-dropdown .dropdown-menu li.scrolled,
+.nav-item.has-dropdown .dropdown-menu .last-link.scrolled {
+  color: var(--color-background);
+}
+
 .country-flags {
   width: 2em;
   height: 1.5em;
@@ -98,82 +117,19 @@
   border-radius: 50%;
 }
 
-/* Glass effect for dropdowns */
-.glass-effect {
-  background-color: var(--color-background-transparent-post) !important;
-  backdrop-filter: blur(5px) !important;
-  -webkit-backdrop-filter: blur(5px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+.nav-item.has-dropdown .dropdown-menu li:hover {
+  background-color: var(--color-secondary-transparent);
 }
 
-/* Desktop dropdown styling */
-.desktop-dropdown {
-  position: absolute;
-  top: 105%; /* Position right below the language selector */
-  right: 0; /* Align with the right edge of the language selector */
-  z-index: 999;
-  text-align: center;
-  border-radius: 15px !important;
-  padding: 8px !important;
-  min-width: 100px !important;
-  box-shadow: 0 0 15px var(--color-primary) !important;
-  background-color: var(--color-background-transparent-post);
-  backdrop-filter: blur(5px);
-  margin-top: 5px; /* Add a small gap between selector and dropdown */
-  overflow: hidden; /* Ensure content doesn't overflow during animation */
-  will-change: transform, opacity; /* Optimize animations */
+.nav-item.has-dropdown .dropdown-menu li.scrolled:hover {
+  background-color: var(--color-primary-transparent);
 }
 
 
-
-/* Mobile dropdown styling */
-.mobile-dropdown {
-  border-radius: 10px !important;
-  padding: 15px !important; /* More padding for mobile */
-  margin: 10px auto !important;
-  overflow: hidden; /* Ensure content doesn't overflow during animation */
-  will-change: transform, opacity; /* Optimize animations */
-  background-color: transparent !important; /* Transparent background for mobile */
-  text-align: center; /* Center align text */
+.nav-item.has-dropdown .dropdown-menu .last-link:hover {
+  border-radius: 0 0 22px 22px;
 }
 
-.language-item {
-  display: flex !important;
-  align-items: center !important;
-  padding: 12px 15px 12px 5px!important;
-  border-radius: 8px !important;
-  margin: 5px 0 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  color: white !important;
-  will-change: transform; /* Optimize animations */
-  justify-content: center; /* Center content */
-  text-align: center;
-}
-
-.language-item:hover {
-  transform: scale(1.1) !important;
-}
-
-.language-selector {
-  position: relative !important;
-  font-weight: 500 !important;
-  display: flex !important;
-  flex-direction: column !important; /* Changed to column to align dropdown directly below */
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.language-toggle {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.current-language {
-  display: inline-flex;
-  align-items: center;
-}
 
 /* MOBILE MENU & ANIMATION */
 
@@ -185,9 +141,11 @@
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  will-change: transform, opacity; /* Optimize animations */
 }
 
+.menu-toggle .bar.scrolled {
+  background-color: var(--color-background);
+}
 
 .menu-toggle {
   justify-self: end;
@@ -217,212 +175,179 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Desktop nav specific styles */
-.desktop-nav {
-  justify-content: flex-end; /* Ensure items are aligned to the right */
+
+/* Dropdown Menu Animation */
+.nav-item.has-dropdown .dropdown-menu.show {
+  display: block;
+  animation: fadeIn 0.4s ease forwards; /* Fade in for the whole dropdown */
+  border-radius: 0 0 22px 22px;
 }
 
-.desktop-nav .nav-item {
-  display: flex;
-  align-items: center;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Menu starts slightly above */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Menu settles into place */
+  }
 }
 
-.desktop-nav .language-selector {
-  margin-left: auto; /* Push language selector to the right */
+/* Staggered Animation for showing each item */
+.nav-item.has-dropdown .dropdown-menu.show li {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(-10px); /* Starts slightly above */
+  animation: fadeInItem 0.3s ease forwards;
 }
+
+@keyframes fadeInItem {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add delay for each item to create staggered effect */
+.nav-item.has-dropdown .dropdown-menu.show li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show li:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.show .last-link {
+  animation-delay: 0.6s;
+}
+
+/* Dropdown Menu Closing Animation */
+.nav-item.has-dropdown .dropdown-menu.hide li {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeOutItem 0.3s ease forwards;
+}
+
+@keyframes fadeOutItem {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px); /* Items roll back up as they fade out */
+  }
+}
+
+/* Staggered Animation for closing each item in reverse */
+.nav-item.has-dropdown .dropdown-menu.hide li:nth-child(1) {
+  animation-delay: 0.6s; /* Delayed more so it's the last to disappear */
+}
+
+.nav-item.has-dropdown .dropdown-menu.hide li:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.hide li:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.hide li:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.hide li:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.nav-item.has-dropdown .dropdown-menu.hide .last-link {
+  animation-delay: 0.1s; /* First to disappear */
+}
+
+
+
+
 
 /* Mobile Devices - Phones/Tablets */
-@media only screen and (max-width: 800px) {
+
+@media only screen and (max-width: 800px) { 
+
   /* MOBILE NAVIGATION */
-  .navbar .nav {
+     
+  .navbar ul {
     display: flex;
     flex-direction: column;
     position: fixed;
     justify-content: start;
-    top: 80px; /* Matches navbar height for perfect vertical alignment */
-    background-color: var(--color-background-transparent-post);
-    backdrop-filter: blur(5px);
-    width: 90%; /* Matches nav-wrapper width */
-    left: 5%; /* Centers the menu horizontally */
-    height: auto; /* Changed from fixed height to auto */
-    max-height: 900px; /* Added max-height instead */
+    top: 55px;
+    background-color: var(--color-background);
+    width: 100%;
+    height: calc(100vh - 55px);
+    transform: translateX(-100%);
     text-align: center;
-    overflow: auto; /* Changed from scroll to auto */
-    border-radius: 20px;
-    animation: glow 2s infinite; /* Glowing animation */
-    padding-bottom: 20px; /* Added padding at the bottom */
-    transform-origin: top center; /* Set transform origin for pop-up effect */
-    will-change: transform, opacity; /* Optimize animations */
+    overflow: scroll;
+    
   }
 
+  .navbar ul.scrolled {
+    background-color: var(--color-white);
+  }
+  
   .navbar li {
     padding: 15px;
   }
-
+  
   .navbar li:first-child {
     margin-top: 50px;
-    background-color: transparent;
   }
-
+  
   .navbar li a {
     font-size: 1rem;
   }
-
-  .menu-toggle,
-  .bar {
+   
+  .menu-toggle, .bar {
     display: block;
     cursor: pointer;
   }
-
-  /* Enhanced mobile menu items */
-  .nav-item {
-    position: relative;
-    overflow: visible; /* Changed from hidden to visible for dropdown */
-  }
-
-  .nav-item:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-    will-change: width; /* Optimize animations */
-  }
-
-  .nav-item:hover:after {
-    width: 70%;
-    box-shadow: 0 0 10px var(--color-primary);
-  }
-
-  /* Make the menu toggle visible on mobile */
-  .menu-toggle {
-    display: block;
-  }
-
-  /* Hide desktop nav on mobile */
-  .desktop-nav {
-    display: none;
-  }
-
-  /* Mobile language selector specific styles */
-  .mobile-nav .language-selector {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .mobile-nav .language-toggle {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Center align language items in mobile view */
-  .mobile-nav .language-item {
-    justify-content: center;
-    width: 100%;
-    margin: 5px auto !important;
-  }
-
   
-/* Update the mobile nav item underline styles */
-.nav-item:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--color-primary);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-  will-change: width; /* Optimize animations */
-}
-
-/* Reduce underline width to half its size */
-.nav-item:hover:after {
-  width: 15%; /* Reduced from 70% to half the size */
-  box-shadow: 0 0 10px var(--color-primary);
-}
-
-/* Add active class styling for persistent underline */
-.nav-item.active:after {
-  width: 15%; /* Same width as hover */
-  box-shadow: 0 0 10px var(--color-primary);
-}
-
-/* Make sure the active class doesn't show underline when not on a matching page */
-.nav-item:not(.active):after {
-  width: 0;
-}
-
-/* Ensure mobile nav has proper backdrop blur */
-.mobile-nav {
-  backdrop-filter: blur(5px) !important;
-  -webkit-backdrop-filter: blur(5px) !important;
-}
-
-}
-
-/* Keyframes for glowing effect */
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 10px var(--color-primary);
+  .mobile-nav {
+    transform: translate(0%)!important;
   }
-  50% {
-    box-shadow: 0 0 15px var(--color-secondary);
+
+  .nav-item.has-dropdown .dropdown-menu {
+    position: static; /* Remove absolute positioning */
+    width: 100%; /* Full width */
+    background-color: none !important;
+    display: none; /* Hidden by default */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center; /* Center items horizontally */
+    margin-top: -10px; /* Optional: Add padding for spacing */
+    transition: max-height 0.3s ease, opacity 0.3s ease; /* Smooth transition for opening */
+    overflow: hidden; /* Hide overflowing content */
+    opacity: 0; /* Transparent by default */
+    box-shadow: none !important;
   }
-  100% {
-    box-shadow: 0 0 10px var(--color-primary);
+
+  .nav-item.has-dropdown .dropdown-menu.scrolled {
+    background-color: transparent;
   }
+
 }
 
-/* Focus animation for interactive elements */
-.nav-item a:focus,
-.language-item:focus {
-  outline: none;
-  animation: focusGlow 1.5s infinite;
-}
-
-@keyframes focusGlow {
-  0% {
-    text-shadow: 0 0 5px var(--color-primary);
-  }
-  50% {
-    text-shadow: 0 0 10px var(--color-secondary), 0 0 15px var(--color-secondary);
-  }
-  100% {
-    text-shadow: 0 0 5px var(--color-primary);
-  }
-}
-
-/* Add a subtle pulse animation to the language selector when dropdown is open */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.language-toggle:has(+ .desktop-dropdown),
-.language-toggle:has(+ .mobile-dropdown) {
-  animation: pulse 2s infinite;
-}
-
-/* Update the CSS for the backdrop blur effect */
-.glass-effect {
-  background-color: var(--color-background-transparent-post) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
 

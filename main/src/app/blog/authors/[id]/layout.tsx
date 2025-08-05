@@ -16,7 +16,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   // Await params before destructuring
   const { id } = await params;
-  const res = await fetch(`https://www.synapslimited.eu/api/users/${id}`, { cache: 'no-cache' });
+  const res = await fetch(`https://synapslimited.eu/api/users/${id}`, { cache: 'no-cache' });
   if (res.status === 404) {
     notFound();
   }

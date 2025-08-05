@@ -27,7 +27,7 @@ const Home = () => {
   const { t } = useTranslation();
   const pathname = usePathname();
   const supportedLocales = ['en', 'fr', 'nl', 'it', 'de', 'es'];
-  const domain = 'https://www.synapslimited.eu'; // Replace with your actual domain
+  const domain = 'https://synapslimited.eu'; // Replace with your actual domain
 
   // Function to remove existing locale from pathname
   const removeLocaleFromPath = (path: string): string => {

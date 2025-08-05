@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 // Pre-render all blog post slugs by fetching from the API
 export async function generateStaticParams() {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  const res = await fetch(`https://www.synapslimited.eu/api/posts`, { cache: 'no-cache' });
+  const res = await fetch(`https://synapslimited.eu/api/posts`, { cache: 'no-cache' });
   if (!res.ok) return [];
   const posts = await res.json();
   return posts.map((post: any) => ({ slug: post.slug }));
@@ -16,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const res = await fetch(`https://www.synapslimited.eu/api/posts/${slug}`, { cache: 'no-cache' });
+  const res = await fetch(`https://synapslimited.eu/api/posts/${slug}`, { cache: 'no-cache' });
   if (res.status === 404) {
     notFound();
   }

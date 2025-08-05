@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+// Define service translations for display
 const SERVICE_TRANSLATION_DISPLAY: Record<string, string> = {
   webdesign: 'Web Design',
   appdesign: 'App Design',
@@ -10,12 +11,14 @@ const SERVICE_TRANSLATION_DISPLAY: Record<string, string> = {
   advertisement: 'Advertisement',
 };
 
+/** Generate static parameters for pre-rendering */
 export async function generateStaticParams() {
-  // Pre-render only allowed service keys
+  // Pre-render only allowed service keys with a simulated delay
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return Object.keys(SERVICE_TRANSLATION_DISPLAY).map((key) => ({ service: key }));
 }
 
+/** Generate metadata dynamically based on the service parameter */
 export async function generateMetadata({
   params,
 }: {
@@ -24,11 +27,11 @@ export async function generateMetadata({
   const { service } = await params;
   const normalizedService = service.toLowerCase();
 
-  // If not an allowed service, trigger 404
+  // Trigger 404 if the service is not recognized
   if (!SERVICE_TRANSLATION_DISPLAY[normalizedService]) {
     notFound();
   }
-  
+
   const displayName = SERVICE_TRANSLATION_DISPLAY[normalizedService];
   const title = `${displayName} Services - Synaps`;
   const description = `Discover our comprehensive ${displayName} services, offering innovative solutions and creative strategies to elevate your brand.`;
@@ -52,14 +55,16 @@ export async function generateMetadata({
   };
 }
 
+/** Define the props interface for the layout component */
 interface LayoutProps {
   children: React.ReactNode;
   params: Promise<{ service: string }>;
 }
 
+/** Default layout component for services */
 export default async function ServicesLayout({ children, params }: LayoutProps) {
-  // Simulate delay before rendering children
+  // Simulate a delay before rendering children
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  await params;
+  await params; // Resolve params if needed
   return <>{children}</>;
 }

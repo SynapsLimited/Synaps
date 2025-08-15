@@ -1,10 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&display=swap');
 
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+    @font-face {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica'), url('/assets/fonts/Helvetica.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Helvetica Oblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica Oblique'), url('/assets/fonts/Helvetica-Oblique.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Helvetica Compressed';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica Compressed'), url('/assets/fonts/helvetica-compressed-5871d14b6903a.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Helvetica Rounded Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica Rounded Bold'), url('/assets/fonts/helvetica-rounded-bold-5871d05ead8de.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica'), url('/assets/fonts/Helvetica-Bold.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Helvetica Bold Oblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica Bold Oblique'), url('/assets/fonts/Helvetica-BoldOblique.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Helvetica Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica Light'), url('/assets/fonts/helvetica-light-587ebe5a59211.woff') format('woff');
+    }
 
 
 
@@ -46,7 +101,7 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden; /* Prevent horizontal scrolling */
-  font-family: "Righteous", sans-serif;
+  font-family: "Helvetica", sans-serif;
   line-height: 1.7;
   color: var(--color-white);
 }
@@ -67,13 +122,15 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-  font-size: 2.4rem;
-  font-family: "Righteous", sans-serif;
+  font-size: 2.3rem;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1.5px;
 }
 
 h2 {
   font-size: 2rem;
-  font-family: "Righteous", sans-serif;
+  font-family: "Helvetica", sans-serif;
 }
 
 h3 {
@@ -85,9 +142,8 @@ h4 {
 }
 
 h5 {
-  font-family: "Rocknroll One", sans-serif;
-  font-size: 0.9rem;
-  word-spacing: 0.2rem;
+  font-family: "Helvetica Oblique", sans-serif;
+  font-size: 1.05rem;
   line-height: 1.5;
 }
 
@@ -96,7 +152,8 @@ a {
 }
 
 p {
-  font-family: "Roboto", sans-serif;
+  font-family: "Outfit", sans-serif;
+  font-weight: 300; 
 }
 
 img {
@@ -305,7 +362,7 @@ header {
 
 .error-page h2{
   margin-top: 3rem;
-  font-family: "Righteous", sans-serif;
+  font-family: "Helvetica", sans-serif;
   filter: drop-shadow(4px 5px 3px rgba(26, 26, 26, 0.374)); /* Optional: Larger shadow on hover for a subtle effect */
 }
 

@@ -65,7 +65,7 @@
   font-size: 1.8rem;
   color: var(--color-white);
   text-align: center;
-  font-family: "Righteous", sans-serif;
+  font-family: "Helvetica", sans-serif;
 }
 
 
@@ -95,7 +95,7 @@
     font-size: 1.8rem;
     color: var(--color-background);
     text-align: center;
-    font-family: "Righteous", sans-serif;
+    font-family: "Helvetica", sans-serif;
   }
 
 
@@ -622,7 +622,7 @@
       font-size: 1.8rem;
       color: var(--color-background);
       text-align: center;
-      font-family: "Righteous", sans-serif;
+      font-family: "Helvetica", sans-serif;
     }
   
     /* Ensure the services blobs wrap in rows of two */

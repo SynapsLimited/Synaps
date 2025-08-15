@@ -168,11 +168,11 @@ const Home = () => {
               <span>{t('indexPage.portfolio.heading')}</span>
             </div>
             <div className="portfolio-text-line">
-              <span>
+              <p>
                 {t('indexPage.portfolio.textLine1')} <br />
                 {t('indexPage.portfolio.textLine2')} <br />
                 {t('indexPage.portfolio.textLine3')}
-              </span>
+              </p>
             </div>
           </div>
         </section>

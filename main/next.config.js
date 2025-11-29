@@ -1,4 +1,5 @@
 // next.config.js
+/*
 module.exports = {
   i18n: {
     locales: ['en', 'fr', 'nl', 'it', 'de', 'es'],
@@ -23,4 +24,18 @@ module.exports = {
     // ],
   },
   // ...other configurations
+};
+
+*/
+
+// next.config.js
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: '/:path*', // Match all paths on your custom domain
+        destination: 'https://goodness-video-913243.framer.app/:path*', // Route to your Framer domain
+      },
+    ];
+  },
 };
